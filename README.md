@@ -47,3 +47,18 @@ Lista de Tarefas:
 - [x] Finalizar a reunião
 - [ ] Receber o pagamento
 
+Para adicionar imagens, no caso aqui no GitHub, basta apenas clicar, e arrastar ela para para o espaço vazio especial aqui na barra de texto:
+Obs.: O recomendavél é utilizar imagens 400x400, ou por ai
+
+![download](https://user-images.githubusercontent.com/89665241/145050947-7c6ea857-b835-45d4-a90b-96ea0f0c5440.png)
+
+Para adicionar links basta apenas tirar o !:
+
+Acesse meu [GitHub](https://github.com/PereiraLegend)
+
+Tabelas:
+
+Id | Nome | Idade
+---|---|---
+1 | Lucas | 19
+
