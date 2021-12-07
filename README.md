@@ -79,6 +79,7 @@ print(f'O valor digitado somado a 4 é {soma}')
 ```
 
 Para adicionar emojis digite os dois pontos (:) separado e digite a inicial do emoji que você quer em letra minúscula ao lado
+Se quiser ver um mapa de emojis acesse [repositorio ika](https://github.com/ikatyang)
 
 🕵️‍♀️ 👽
 
