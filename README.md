@@ -62,3 +62,21 @@ Id | Nome | Idade
 ---|---|---
 1 | Lucas | 19
 2 | Ana | 18
+3 | Angela | 15
+
+Para deixar palavras selecionadas ou monoespaçadas, como links, códigos ou comandos especificos:
+Obs.: Utilize crases e não aspas simples
+
+Não entendo direito para que serve o comando `document.getElementById()` da linguagem Java!
+
+Para trechos de programas, caso você queira colocar um:
+Obs.: Utilize três crases para abrir e três crases para fechar
+
+```
+num = int(input("Digite um número: "))
+soma = num + 4
+print(f'O valor digitado somado a 4 é {soma}')
+```
+
+Para adicionar emojis digite os dois pontos : separado
+🕵️‍♀️
