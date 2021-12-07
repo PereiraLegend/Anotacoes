@@ -1,0 +1,7 @@
+-classpath 'C:\\Users\\Lucas\\OneDrive\\Documentos\\NetBeansProjects\\OlaMundojavaFXII\\build\\classes\\java\\main;C:\\Users\\Lucas\\OneDrive\\Documentos\\NetBeansProjects\\OlaMundojavaFXII\\build\\resources\\main;C:\\Users\\Lucas\\.gradle\\caches\\modules-2\\files-2.1\\org.netbeans.html\\net.java.html.json\\1.7.2\\b801fd4a689f1443a108e79bbea24893eb8f2935\\net.java.html.json-1.7.2.jar;C:\\Users\\Lucas\\.gradle\\caches\\modules-2\\files-2.1\\com.dukescript.api\\javafx.beaninfo\\0.6\\a8fd0e02083e7bec48dc70dccb686d30e6acce29\\javafx.beaninfo-0.6.jar;C:\\Users\\Lucas\\.gradle\\caches\\modules-2\\files-2.1\\com.dukescript.api\\javafx.base\\8.60.11\\b9417225c4480ae8737c6b483cbf2da84b01e6ac\\javafx.base-8.60.11.jar;C:\\Users\\Lucas\\.gradle\\caches\\modules-2\\files-2.1\\org.netbeans.html\\net.java.html\\1.7.2\\fd957a7bd4652eed5f4e982b186cab036ba2dbbe\\net.java.html-1.7.2.jar'
+-d 'C:\\Users\\Lucas\\OneDrive\\Documentos\\NetBeansProjects\\OlaMundojavaFXII\\build\\docs\\javadoc'
+-doctitle 'OlaMundojavaFXII API'
+-notimestamp 
+-quiet 
+-windowtitle 'OlaMundojavaFXII API'
+'C:\\Users\\Lucas\\OneDrive\\Documentos\\NetBeansProjects\\OlaMundojavaFXII\\src\\main\\java\\OlaMundojavaFXII\\Demo.java'
