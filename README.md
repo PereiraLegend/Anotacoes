@@ -83,3 +83,4 @@ Se quiser ver um mapa de emojis acesse [repositorio ika](https://github.com/ikat
 
 🕵️‍♀️ 👽
 
+Para ver mais sobre o básico de markdown acesse [Repositório Guanabara](https://github.com/gustavoguanabara/git-github/blob/master/manuais-PDF/guia-markdown.pdf)
