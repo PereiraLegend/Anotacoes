@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Exercicio Aula 3</h1>
+
+
+    <script>
+        const nome = prompt('Informe o seu nome completo: ')
+        // document.body.innerHTML = 'Escrever' // Dessa forma ele escreve algo dentro do body do html, mas não é 'reincrementado', pois se eu trocar o escrever por outra coisa ele vai tocar o escrever, para evitar isso eu uso o de baixo:
+        document.body.innerHTML += 'Escrever <br />' // Aqui recebe funções de HTML, no caso o br para quebrar a linha
+        document.body.innerHTML += 'Site <br/>'
+        document.body.innerHTML += 'Planta <br/>'
+        document.body.innerHTML += `O seu nome é: <strong>${nome}</strong> <br/>`
+        document.body.innerHTML += `O seu nome tem ${nome.length} letras <br/>`
+        document.body.innerHTML += `A segunda letra do seu nome é ${nome.slice(1,2)} <br/>`// Também poderia reduzir a ${nome[1]}
+        document.body.innerHTML += `O primeiro indice da letra 'a' no seu nome é ${nome.indexOf('a')} <br/>` // Também poderia utilizar ${nome.search(/a/)}
+        document.body.innerHTML += `O último índice da letra 'a' no seu nome é ${nome.lastIndexOf('a')} <br/>`
+        document.body.innerHTML += `As três últimas letras do seu nome são: ${nome.slice(-3)} <br/>` // Também podeira reduzir a ${nome[-3]}
+        document.body.innerHTML += `As palavras dos eu nome são: ${nome.split(' ')} <br/>`
+        document.body.innerHTML += `Seu nome com letras maiúsculas: ${nome.toUpperCase()} <br/>`
+        document.body.innerHTML += `Seu nome com letras minúsculas: ${nome.toLowerCase()} <br/>`
+    </script>
+</body>
+</html>
