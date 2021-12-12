@@ -2,7 +2,7 @@ package com.mycompany.av2Viewn;
 
 /**
  *
- * @author Lucas Pereira Dos Santos(202002552051) & Alexandre Lucas Carvalho Souza(202002120991) & João Lucas de Sousa Santos (201802367462) 
+ * @author Lucas Pereira
  */
 public class Menu extends javax.swing.JFrame {
 
