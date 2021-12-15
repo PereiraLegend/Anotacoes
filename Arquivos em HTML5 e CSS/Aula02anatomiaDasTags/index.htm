@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu HTML</title>
+    <style> /*serve para chamar um CSS, que no caso define um estilo a ser seguido*/
+        h1 { /*quero definir um estilo para todas as tags h1*/
+            background: red; /*Aqui eu defini a cor a ser dada paroa o fundo dos elementos*/ 
+        }
+        /*se eu tentasse colocar dois h1s, só que com um uma cor diferente da do exemplo*/
+        h1 {
+            background: blue; /*Vai dar certo, mas o navegador só vai considerar o útimo digitado, no caso o azul*/
+        }
+        p {
+            background: yellow;/*Agora se eu quiser que todos os meus parágrafos tenham fundo amarelo*/
+        }
+        #cabecalho-dois { /*Para especificar um id, observe que ele não se sobrepõe*/
+            background: violet; /*Assim ele deixa o selecionado do jeito que eu quero*/
+        }
+        /*agora e se eu quiser selecionar pelo id usando o CSS*/
+        /*Ou seja, posso selecionar uma tag especifica, ou o grupo das mesmas iguais*/
+        /*tembém posso utilizar classes no lugar dos ids, pois com as classes posso pegar um grupo especifico de diferentes tags*/
+        .fundo-branco { /*esse classe pode ser usada em qualquer instância do código*/ 
+            background: wheat;/*obs.: para diferenciar do braco da página, usei isso*/
+            color: red;/*define a cor da fonte*/
+        }
+
+        /*Obs.: se eu definir uma classe primeiro com uma cor e o id depois com outra cor, o que vai valer vai ser o id, pois ele é quem possui maior especificidade, no caso um dos*/
+        /*ou seja, um id só sobrescreve outro id*/
+        /*mas se for realmente necessário sobrescrever a cor do id, eu uso o !important, em algo como
+        .fundo-vermelho {
+            background: red !important;
+        }
+        Mas não é nada recomendável que se faça isso
+        */
+
+    </style>
+</head>
+<body>
+    <!--Preste bem atenção para não colocar o texto fora da tag correta, pois algumas vezes o navegador pode corrigir por conta própria, ou pode dar um erro-->
+    <!--Dentro da própria tag eu posso colocar alguns atributos, como por exemplo:-->
+    <h1 id="cabecalho-um" class="fundo-vermelho borda-esquerda"><!--O id é um didentificador, ou seja, ele serve única e exclusivamente a essa tag, ou seja, não pode haver outro igual a esse-->
+                          <!--Quanto as classes, elas também são identificadores de elementos, só que diferente do id, as classes podem se repetir, ou seja, eu posso ter 10 elementos com a mesma classe-->
+                          <!--geralmente as classes são usadas para comandos CSS e JavaScript, que como você pode ver no exemplo elas podem definir diferentes fatores, como fonte, fundo, cor da mesma, etc-->
+        <!--obs.: esse traço acima entre cabecalho e dosi podemos nos perguntar para que ele serve, é apenas um padrão para ids dentro da internet, mas poderia colocar outra coisa como cavalo 123-->
+        Vai vir Aqui
+    </h1>
+    <h1 id="cabecalho-dois" class="fundo-vermelho"><!--Se eu quiser dois indentificadores na página eles não podem ser iguais-->
+        Vai vir Aqui
+    </h1>
+    <h1 id="cabecalho-tres" class="fundo-branco">Hello World</h1>
+    <!--Observe abaixo que mesmo com o CSS "Ativo", o texto abixo escrito no parágrafo não foi alterado em nenhum aspecto-->
+    <p>Lorem, ipsum <b class="fundo-branco">dolor</b> sit amet consectetur adipisicing elit. Sunt modi dolores deserunt tenetur assumenda accusamus quasi, eos commodi itaque! Reiciendis tenetur amet quae veniam debitis natus nobis? Accusantium, est molestiae.</p>
+    <!--Acima está a tag <b></b>, que serve para deixar um trecho do texto maiúsculo-->
+    <p class="fundo-branco">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim excepturi inventore nobis impedit consequuntur dicta laboriosam provident pariatur quibusdam nihil eaque itaque rem, totam animi exercitationem quo tempore ratione dolorem!</p>
+</body>
+</html>
