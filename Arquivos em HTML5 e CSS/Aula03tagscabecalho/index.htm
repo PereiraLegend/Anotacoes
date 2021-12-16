@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula03 HTML</title>
+    <style>
+        .img-in-text {
+            width: 50px;
+            height: 44px;
+        }
+        .vermelho {
+            font-size: 24px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Meu Titulo</h1><!--Tag para título, pois navegadores como o google buscam o seu título para descobrir sobre o conteúdo e a estrutura do código-->
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum expedita atque, corporis quia laboriosam commodi doloremque autem amet tenetur quam repudiandae delectus deserunt minima quas dolorum ratione ullam iure praesentium!</p>
+    <h2>Meu Titulo</h2><!-- Os cabecalhos assim dizendo, possuem graus de importância, que vão do 1 ao 6, sendo o 1 o mais inportante e o 6 menos-->
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit excepturi tempore expedita deleniti omnis hic eos vero quidem, modi quibusdam quo praesentium obcaecati quia nam ipsam unde in inventore facere?</p>
+    <h2>Meu Titulo</h2><!--hieráquicamente um é subtítulo do outro-->
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit rerum dolorum omnis placeat odio. Doloribus corporis voluptatibus quis id, nisi voluptas deleniti voluptatem. Provident in exercitationem nam veritatis odit illum.</p>
+    
+    <h3>Meu Titulo</h3><!--Obs.: os "h"s podem tem seis estágios de herança, mas entre um mesmo ele pode se repetir quantas vezes for necessário-->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ab sequi possimus, culpa veritatis porro, totam ratione vel, corporis ut unde amet. Laboriosam sequi perspiciatis voluptate inventore hic sint repudiandae?</p>
+    
+    <h4>Meu Titulo</h4>
+    
+    <h5>Meu Titulo</h5>
+    
+    <h6>Meu Titulo</h6>
+    <!--Mas isso não quer dizer que ele obrigatóriamente tem que seguir o padrão de altura pré-determinado -->
+    <h6 style="font-size: 50px;">Meu Titulo</h6><!--Observe que eu invoquei o CSS aqui dentro da tag para alterar o tamanho da fonte, além disso essa tag style só se aplica a esse cabeçalho-->
+    <!--Preste muito atenção na própria semântica assim dizendo, pois quando o leitor abre o site, ele vai ler o h1, e dentro da seção tem mais outro conteúdo referente que é o h2, e dentro do h2 pode ter outra seção que é o h3 e assim por diante-->
+    <!--note que o site ficaria confuso se vc não repetisse o 'h' igualmente para outras classes parecidas-->
+
+    <h1 style="background: red">Cabeçalho</h1><!--Posso mover o style para o head-->
+    <p><b>Lorem</b> ipsum <strong>dolor</strong> sit, <i>amet</i> consectetur <em>adipisicing</em> elit. <del>Magni</del> <ins>quia</ins> unde laborum labore praesentium officia aliquam.<br> <!--A tag <b></b> deixa em negrito, a tag <strong></strong> também deixa em negrito, só que deixa a palavra mais forte, <i></i> deixa em itálico, e em também deixa o texto em itálico dando êmfase, <del></del> server para riscar uma palavra, <ins></ins> serve para sublinhar uma palavra-->
+        Hic <s>cum</s> <u>magnam</u> sit <small>accusantium</small> odio 2<sup>2</sup>, H<sub>2</sub>O tenetur, <q>blanditiis</q> doloremque et dicta expedita laudantium tempore.</p> <!--<s></s> assim como "del", seve para riscar uma palavra, <u></u> assim como "ins" sublinha uma palavra, para deixar uma palavra um pouco menor usamos <small></small>, para elevar um número ao quadrado <sup></sup> com o númeor ao quadrado desejado dentro da tag, do memso jeito que posso elevar um número, eu posso abaixar o mesmo usando <sub></sub>, como em H2O-->
+        <!--<br> é utilizado para a quebra de linha, para citar algo utilizamos <q></q>, t5ambém há outras formas de utilizar essa taga, mas pesquise eplo cite-->
+    <!--Para criar um bloco de citação: (Obs.: aqui também podemos usar o cite dentro da tag "blockquote")-->
+    <blockquote>Aqui sim estou fazendo um <P>bloco</P> de citação.</blockquote> <!--Obs.: Isso aqui não pode ser escrito dentro de uma tag <p></p>, mas um tag <p></p> pode sim ser escrita dentro de um "blockquote", isso acaba quebrando o texto com um parágráfo no meio-->
+    <hr><!--Cria uma linha separando os parágrafos-->
+    <!--Para citar um código eu uso <code></code>: (Obs.: ele trás uma fonte diferente para a parte marcada dele)-->
+    <p>Lorem ipsum dolor sit amet <code>Console.log("Olá Mundo")</code> consectetur, adipisicing elit. <spam class="vermelho">Repellat</spam> cum ut cupiditate !</p> <!--Posso definir um estilo utilizando a tag <spam></spam>-->
+    <!--Para colocar um texto remalmente com todas os espaços corretamente sem usar o <br> utilizamos a tag <pre>, como exemplo utilizamos um código: (Obs.: Ela não pode ser colocada dentro da tag <p>)-->
+        <pre>
+            <code>
+                print("-=-"*15)
+                reta1 = float(input("Informe o valor da reta 1: "))
+                reta2 = float(input("Informe o valor da reta 2: "))
+                reta3 = float(input("Informe o valor da reta 3: "))
+                print("-=-"*15)
+                if reta1 < reta2 + reta3 and reta2 < reta1 + reta3 and reta3 < reta1 + reta2:
+                    print("Os segmentos acima podem formar triângulos!")
+                    print("Podem formar um triângulo ", end = "")
+                if reta1!=reta2!=reta3!=reta1:
+                    print("Escaleno!")
+                elif reta1 == reta2 == reta3:
+                    print("Equilátero!")
+                else:
+                    print("Isósceles!")
+                else:
+                    print("Os segmentos acima não podem formar triângulo")
+            </code>
+        </pre>
+    <!--Utilizando a tag <div></div> eu posso criar um bloco:-->
+    <div class="vermelho">Eu sou um bloco.</div> <!--Como um bloco ela não mpode ficar dentro de <p>, pois vai quebrar a linha-->
+        <!--Para colocar links-->
+    <a href="https://www.piskelapp.com/p/agxzfnBpc2tlbC1hcHByEwsSBlBpc2tlbBiAgOCU1b70Cgw/edit" target="_blank">amet</a><br> <!--Posso colocar dentro do href tanto um arquivo quano um site, além disso posso colocar também um target, que serve para decidir sobre como será aberto essa URL, se vai ser na mesma aba, fora dela, etc, o _blank utilizado abre em uma nova abab-->
+    <!--além dessa tag outra que pode ser utilizada no texto é uma tag de imagem, como: (se eu tentar usar um emoticon)-->
+    <img src="https://seeklogo.com/images/M/mdn-logo-6DB9B0093F-seeklogo.com.png" alt="Não foi possivél carregar a imagem"><br> <!--Posso carregar tanto uma imagem dentro do arquivo do site, quanto de fora, da internet, e a tag alt, serve para descrever a imagem/justificar caso ela não carregue-->
+    <!--Se eu qusier editar a imagem, seja o seu tamanho ou transformalá em um link:-->
+    <a href="https://www.piskelapp.com/p/agxzfnBpc2tlbC1hcHByEwsSBlBpc2tlbBiAgOCU1b70Cgw/edit" target="_blank"><img src="https://seeklogo.com/images/M/mdn-logo-6DB9B0093F-seeklogo.com.png" alt="Não foi possivél carregar a imagem" width="50" height="44"></a><br> <!--Width e heigth serve para alterar o tammanho, e o <a><a/> como o <img> dentro o transforma em um link-->
+    <!--Se eu não quiser usar os atributos de tamanho da imagem posso usar o CSS para defini-lo -->
+    <a href="https://www.piskelapp.com/p/agxzfnBpc2tlbC1hcHByEwsSBlBpc2tlbBiAgOCU1b70Cgw/edit" target="_blank"><img class="img-in-text" src="https://seeklogo.com/images/M/mdn-logo-6DB9B0093F-seeklogo.com.png" alt="Não foi possivél carregar a imagem"></a>
+    <hr>
+    <!--Caso eu queira criar listas não ordenadas:-->
+    <ul>
+        <li>Feijão</li>
+        <li>Arroz</li>
+        <li>Açucar</li>
+        <li>Doce</li>
+        <!--Posso ter uma lista dentro de uma lista-->
+        <ul>
+            <li>Chocolate</li>
+            <li>Pirulito</li>
+            <li>Chiclete</li>
+                <ul>
+                    <!--Posso criar um link aqui dentro também-->
+                    <a href="https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal"><li>Morango</li></a>
+                    <li>Uva</li>
+                        <ul>
+                            <li>Verde</li><!--Preste atenção na hiérarquia da lista, pois ela só vi até os quadrados pretos-->
+                            <li>Madura</li>
+                        </ul>
+                </ul>
+        </ul>
+    </ul>
+    <hr>
+    <!--Agora se eu quiser criar listas ordenadas: (eu troco todos os 'ul' por 'ol')-->
+    <ol>
+        <li>Feijão</li>
+        <li>Arroz</li>
+        <li>Açucar</li>
+        <li>Doce</li>
+        <ol>
+            <li>Chocolate</li>
+            <li>Pirulito</li>
+            <li>Chiclete</li>
+                <ol>
+                    <li>Morengo</li>
+                    <li>Uva</li>
+                        <ol>
+                            <li>Verde</li>
+                            <li>Madura</li>
+                        </ol>
+                </ol>
+        </ol>
+    </ol>
+    <hr>
+    <!--Para criar o rodapé do site:-->
+    <footer>Copyright 2021@</footer>
+</body>
+</html>
