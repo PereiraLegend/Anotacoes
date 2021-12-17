@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { /*Esse asterisco "*" seleciona tudo dentro da página, e o comando de bgaixo deixa tudo sem margem*/
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+        #heading {
+            background: red;
+        }
+        */
+
+        #heading div{ /*aqui eu seleciona toda a div que tiver no código*/
+            width: 90%; /*Deixa proporcional ao navegador*/
+            display: flex; /*serve para criar colunas*/
+            /*background: blue; /*Muda a cor do background*/
+            justify-content: space-between; /*serve para justificar o que está na barra, ou seja se eu colocar "center" ele centraliza, e se eu colocar o "space-between" ele separa para os cantos os heades*/
+            margin: 0 auto;/*0 - pra cima e pra baixo | auto - pra esquerda e para a direita*/
+        }
+
+        #heading .h1 {
+            /*margin-top: 20px; Move a margem inteira para baixo, ou margem para o topo*/
+            padding-top: 15px; /*move a palavra dentro da barra para baixo*/
+            padding-left: 15px; /*move a palvra dentro da barra mas para a direita*/
+            padding-bottom: 15px; /*para o meio*/
+            /*para simplificar posso colocar apenas : padding: 15px;*/
+            font-size: 28px; /*Define o tamanho da fonte do texto*/
+            text-transform: uppercase; /*Deixa o texto maiúsculo*/
+        }
+
+        #heading a {
+            color: red; /*Dá cor para as letras*/
+            text-decoration: none; /*Define ou retira a decoração de um texto*/
+            font-family: sans-serif; /*Define o estilo das letras*/
+        }
+
+        body {
+            /*O comando de baixo define uma imagem de plano de fundo para o site*/
+            background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/3679b63e-5d92-47a1-96ec-b26d86fc0f0a/b15d4f67-d3f3-4210-9cd4-8b02babf6eea/BR-pt-20211213-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+            background-size: cover; /*Ajusta a imagem ao tamanho da tela*/
+            background-position: top center;/*para a imagem sempre tentar se alinhar ao centro da tela*/
+        }
+
+    </style>
+
+</head>
+<body>
+    <header id="heading"> <!--os h1 e h2 seriam filhas diretas do header, mas com a div abaixo, ela se torna a filha do header-->
+        <div> <!---->
+            <h1 class="h1">
+                <a href="#">Netflix</a>
+            </h1>
+            <h2 class="h1 ">
+                <a href="#"><button>Entrar</button></a>
+            </h2>
+        </div>
+    </header>
+</body>
+</html>

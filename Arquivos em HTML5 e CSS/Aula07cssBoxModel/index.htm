@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CssBoxModel</title>
+    <style>
+        /*
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        */
+        .section-one {
+            width: 200px;/*largura*/
+            height: 150px;/*Posso usálo para deixar fixo, mas se eu não colocar isso ele vai se ajustar conforme o texto*//*altura*/
+            background-color: orange;/*Posso definir uma cor para ficar dentro no background */
+            background-image: url(https://media.springernature.com/full/springer-cms/rest/v1/img/18893370/v1/height/320);/*Posso definir uma imagem para ficar dentro no background*/
+            background-size: cover; /*Para ajustar a imagem ao tamanho*/
+            background-position: center; /*Para definir a posição da imagem cnetralizada*/
+            /*Preste atenção que a imagem passou para o padding*/
+            color: white;
+            border: 5px solid black;/*aqui deifne a espessura da borda, se ela é sólida, e a cor, ou seja, seu esilo, cor, e largura*/
+            padding: 15px;/*Dessa forma ele define automaticamenmte a erquerda, direita, cima, e baixo como 150px, assim fica sempre centralizado*/
+            /*a margin serve para enpurrar um conteúdo dentro de outro conteúdo*/
+            margin: 20px; /*É a margin que empurra dos cantos para o centro, ou da direita para a esquerda, ou de cima para baixo*/
+        }
+        .section-two {
+            background: cornflowerblue;
+            width: 200px;
+            height: 150px;
+            border: 5px solid black;/*posso colocar o border separado*/
+            padding: 15px;/*Dessa forma ele define automaticamenmte a erquerda, direita, cima, e baixo como 150px, assim fica sempre centralizado*/
+            margin: 20px;
+        }
+        .section-tree {
+            background: cornflowerblue;
+            width: 200px;
+            height: 150px;
+            border-style: solid;
+            border-width: 10px;
+            border-right-color: firebrick ; /*Utilizando esse comando e os derivados do mesmo, posso escolher qual lado da borda eu preencho de cor*/
+            border-top-color: yellow;
+            border-left-color: blue;
+            /*padding: 150px; /*Dessa forma ele define automaticamenmte a erquerda, direita, cima, e baixo como 150px, assim fica sempre centralizado*/
+            padding: 60px 150px 0 0; /*Lembre-se: padding: Topo | Direta | baixo | esquerda *//*Dessa forma eu quem decido a centralização, se quero mais pra esquerda ou direta, emcima, o em baixo, etc.:*/
+            margin: 20px;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <section class="section-one">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nostrum et quas tempora eveniet, qui praesentium facere ut itaque ab nemo! Officia voluptates repellat minus hic perferendis ab. Excepturi, velit.</section>
+    <section class="section-two">2</section>
+    <section class="section-tree">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod placeat similique nihil illo, consequuntur labore id. Sunt modi amet quae, et, sapiente exercitationem eligendi dolorem aspernatur dicta aliquid perferendis officiis!</section>
+
+</body>
+</html>

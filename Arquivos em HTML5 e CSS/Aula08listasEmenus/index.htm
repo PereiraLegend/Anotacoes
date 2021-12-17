@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: rgb(175, 161, 161);
+            height: 50px;
+        }
+
+        nav ul li a {
+            /*Aqui fiz a descrição do caminho do trecho que eu quero */
+            color: white;
+            text-decoration: none;
+            /*Aqui eu tiro a linha do link <a>*/
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 10px 10px;
+            /*Aqui eu uso para separar as teclas/partes dos menus uns dos outros*/
+            display: block;
+            text-transform: uppercase;
+            /*Para deixar o texto em maiúsculo*/
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            /*background: red;*/
+            /*Pra eu dar uma olhada no boxMode*/
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav a:hover {
+            /*Dá as cores aos "botões" do menu quando o mause passa encima*/
+            background: rgb(194, 194, 151);
+        }
+    </style>
+</head>
+
+<body>
+    <!--MENU-->
+    <aside> <!--Posso tambvém usar o aside, que server para descrever melhor o conteúdo-->
+        <nav>
+            <!--Para que eu crie um menu eu crio uma navbar-->
+            <ul>
+                <li><a href="#">Home </a></li>
+                <li><a href="#">About </a></li>
+                <li><a href="#">Products</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <!--LISTAS-->
+    <!--Aqui eu utilizo os códigos de listas da Aula03-->
+    <ul>
+        <li>Feijão</li>
+        <li>Arroz</li>
+        <li>Açucar</li>
+        <li>Doce</li>
+        <ul>
+            <li>Chocolate</li>
+            <li>Pirulito</li>
+            <li>Chiclete</li>
+            <ul>
+                <a href="https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal">
+                    <li>Morango</li>
+                </a>
+                <li>Uva</li>
+                <ul>
+                    <li>Verde</li>
+                    <li>Madura</li>
+                </ul>
+            </ul>
+        </ul>
+    </ul>
+    <hr>
+    <ol>
+        <li>Feijão</li>
+        <li>Arroz</li>
+        <li>Açucar</li>
+        <li>Doce</li>
+        <ol type="1" start="1">
+            <li>Chocolate</li>
+            <li>Pirulito</li>
+            <li>Chiclete</li>
+            <ol>
+                <li>Morengo</li>
+                <li>Uva</li>
+                <ol>
+                    <li>Verde</li>
+                    <li>Madura</li>
+                </ol>
+            </ol>
+        </ol>
+    </ol>
+    <hr>
+    <dl>
+        <dt>Café</dt>
+        <dd>uma bebida preta</dd>
+        <dt>Fanta Laranja</dt>
+        <dd>uma bebida laranja</dd>
+        <dt>Sprite</dt>
+        <dd>uma bebida incolor</dd>
+    </dl>
+    <hr>
+</body>
+
+</html>
