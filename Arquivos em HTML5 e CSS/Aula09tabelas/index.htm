@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula09</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            /*Serve para unir as bordas*/
+            width: 800%;
+            /*Serve para fazer a tabela ocupar toda a página no 100% , mas alteria pra 800%*/
+        }
+
+        table td,
+        table th {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+            /*Para colocar o título alinhado á esquerda*/
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        table caption {
+            caption-side: top;
+            /*Posso colocar a descrição abaixo colocando bottom, assim ficando a descriçã abaixo da tabela*/
+            text-align: center;
+            font-style: italic;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        tfoot td,
+        table th {
+            /*Aquei eu decido a cor do título e do rodapé*/
+            background: gray;
+        }
+
+        tfoot td {
+            font-style: italic;
+        }
+        .responsive-table {
+            max-width: 100%; /*Nessa classe, o que passar de 100% do tamanho do site */
+            overflow-x: auto; /*Vai selecionar apenas a tabela para ter um scroll da barra do eixo x, assim mesmo que o tamanho da tabela ocasionado seja pelo que for, mesmo para um celular, não ficará espremido, assim a tabela fica altamente responsiva*/
+        }
+    </style>
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto repellendus mollitia tempore maiores debitis
+        impedit!</p>
+
+    <div class="responsive-table"> <!--Para caso eu queira formatar a tabela, par acelulares, e eu quero que a pessoa consiga arrastar para o lado com o dedo, caso fique muito grande-->
+        <table>
+            <!--Para colocar uma descrição para a tabela, usamos caption:-->
+            <caption>Uma descrição para a tabela</caption>
+            <thead>
+                <!--Cabeçalho da Tabela-->
+                <tr>
+                    <!--Linhas da Tabela-->
+                    <th>Titulo 1</th>
+                    <!--Coluna da Tabela-->
+                    <th>Titulo 2</th>
+                    <th>Titulo 3</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!--Aqui vai ser dadoo corpo da tabela-->
+                <tr>
+                    <!--Linha da Tabela-->
+                    <td>Corpo 1</td>
+                    <td>Corpo 2</td>
+                    <td>Corpo 3</td>
+                </tr>
+
+                <tr>
+                    <!--Linha da Tabela-->
+                    <td>Corpo 1</td>
+                    <td>Corpo 2</td>
+                    <td>Corpo 3</td>
+                </tr>
+
+                <tr>
+                    <!--Linha da Tabela-->
+                    <td>Corpo 1</td>
+                    <td>Corpo 2</td>
+                    <td>Corpo 3</td>
+                </tr>
+
+                <tr>
+                    <!--Linha da Tabela-->
+                    <td colspan="2">Corpo 1</td>
+                    <!--Se eu quiser que uma célula da coluna ocupe mais de uma célula na mesma linha| Dentro do colspan posso colocar quantas colunas ele vai ocupar-->
+                    <td>Corpo 2</td>
+                </tr>
+
+                <tr>
+                    <!--Linha da Tabela-->
+                    <td>Corpo 1</td>
+                    <td>Corpo 2</td>
+                    <td>Corpo 3</td>
+                </tr>
+
+                <tr>
+                    <!--Linha da Tabela-->
+                    <td colspan="2" rowspan="2">Corpo 1</td>
+                    <!--Agora se eu quiser que uma célula ocupe mais de uma linha dentro de uma tabela-->
+                    <td>Corpo 2</td>
+                </tr>
+
+                <tr>
+                    <!--Linha da Tabela-->
+                    <td>Corpo 3</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <!--Aqui eu decido o rodapé da tabela-->
+                <tr>
+                    <td>Footer 1</td>
+                    <td>Footer 2</td>
+                    <td>Footer 3</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+
+</html>

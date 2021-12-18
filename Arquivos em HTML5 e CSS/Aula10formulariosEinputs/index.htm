@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula10</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        label {
+            cursor: pointer; /*Deixa o texto dentro do label clicável/ ou seja clicando nele, a caixa de texto é selecionada*/
+            /*display: block; /*Quebra a linha do label com o input*/
+        }
+    </style>
+</head>
+<body>
+    
+    <!--Obs.: A única coisa que não se pode colocar dentro de uma tag do fórmulario é outro formulário-->
+    <form action="#" method="get" target="_blank" autocomplete="off"> <!--O action serve para enviar o fórmulario para outro lugar | também posso usar métodos, como get ou post | o target _blank serve para ver se o fórmulario foi realmente enviado | E o off serve para ele não me dizer coisas que já foi dado no fórmulario, geralmente não é usado-->
+        <section>
+            <h1>Cabeçalho</h1>
+            <p>O formulário</p>
+
+            <fieldset>
+                <legend>Descrição</legend>
+                <p>
+                    <input type="text">
+                </p>
+            </fieldset>
+        </section>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <form action="#" method="get" target="_blank" autocomplete="off">
+        <p>O Meu fórmulario</p>
+        <p>
+            <label> <!--Uma caixa de texto usada para "lidar"/"descrever" o input-->
+            Nome:
+            <input type="text" id="nome" name="nome" placeholder="Seu Nome"> <!-- Aqui no caso o id e o name servem como identificadores, o name serve mais para o back-end | Também se eu quisesse eu poderia passar uma classe | O place holder serve como uma marca dágua , onde quando digitamos ele desaparece | se eu quiser já deixar algo digitado eu adiciono o value, mas no geral não preciso, pois o value já é o que eu vou digitar-->
+            <!--Posso também deixar o input desabilitado usando "disabled", posso deixar ele interagivél e ao mesmo tempo não editavél usando "readonly", obs.: eu posso estilizar no css para deixar ele vermlho ou outra coisa-->
+            </label>
+            <br>
+            <br>
+
+            <!--Caso eu queira deixar o input fora do label-->
+            <label for="sobrenome">Sobrenome:</label> <!--para-->
+            <input type="text" id="sobrenome" name="sobrenome" placeholder="Seu Nome" required> <!--No "required", se eu não preenche-lo, vai aparecer uma mensagem dizendo para preenche-lo-->
+            <br>
+            <br>
+
+            <!--Também existem outros tipos de inputs-->
+            <label>Sou um dev:</label>
+            <input type="checkbox" id="dev" name="dev" value="sim"> <!--Caso eu queira deixar ele marcado uso o "checked"-->
+            <br>
+            <br>
+
+            <!--Para eu ter algo como o de cima e quiser marcar apenas um dentre múltiplas escolhas eu uso algo como um 'radiobutton do java'-->
+            <!--é necessário que tenham o mesmo name = "genero", e o type = radio-->
+            <!--Agora entre os três de baixo só posso selecionar um-->
+            Gênero:<br>
+            <label>Feminino</label>
+            <input type="radio" id="feminino" name="genero" value="feminino"><br> <!--O value é o que retorna para min no back-end, ou seja o que será salvo no banco de dados-->
+            <label>Masculino</label>
+            <input type="radio" id="masculino" name="genero" value="masculino"><br>
+            <label>Helicoptero de Combate</label>
+            <input type="radio" id="hcombate" name="genero" value="helicoptero de combate"><br>
+        </p>
+
+        <!--Botões-->
+        <p>
+            <!--Tipos de botões-->
+            <button type="reset">Resetar</button> <!--Reseta os fórmularios para os valores padrão, ou seja retorna para o estado normal-->
+            <button type="submit">Enviar</button>
+        </p>
+    </form>
+</body>
+</html>
