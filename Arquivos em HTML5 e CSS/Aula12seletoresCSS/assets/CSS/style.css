@@ -1,0 +1,38 @@
+/*Seletores*/
+* { /*o '*' seleciona tudo*/
+    margin: 0px;
+    padding: 0px;
+}
+h1 { /*todas as tags 'h1' vão ter isso*/
+    color: brown;
+}
+p { /*todas as tags 'p' vão ter isso*/
+    color: red;
+}
+body div section p, body div section h1 { /*Posso selecionar diretamente o caminho que eu quero que ele percorra para inplementar o CSS, além disso posso colocar mais de um separando ambos por uma vírgula ","*/
+    color:blueviolet;
+}
+.cor { /*Seleciona e cria uma classe*/
+    background: aquamarine;
+}
+/*Para especificar a classe eu seleciono e aponto ↓*/
+.main-content h2 { /*Posso utilizar uma classe e uma tag, ou vice versa*/
+    color:green;
+    font-style: italic;
+}
+.main-content h3.heading{ /*O elemento tem que estar dentro de uma classe main content, mas tem que ser um h3 que tenha a classe heading | Dessa forma ua depende de que a outra esteja no lugar, ou seja, uma depende que a outra exista*/
+    color: orange;
+    font-style: italic;
+}
+body div.main-content h4.heading { /*Caso haja alguma mudança no elemento div, isso deixará de funcionar, pois ele estará apontando para outro local | No caso do body, ele não é obrigatório, mas é bom para uma alta especificidade*/
+    color: purple;
+    font-style: italic;
+}
+.pai .filha {
+    color:burlywood;
+    font-style: oblique;
+}
+.pai.filha { /*Aqui significa que o seletor precisa ter a classe pai e a classe filha declaradas, também posso ter outras classes declaradas, mas obrigatóriamente preciso ter a classe pai e a filha*/
+    color: greenyellow;
+    font-family: 'Times New Roman', Times, serif;
+}
