@@ -68,8 +68,75 @@
             <input type="radio" id="masculino" name="genero" value="masculino"><br>
             <label>Helicoptero de Combate</label>
             <input type="radio" id="hcombate" name="genero" value="helicoptero de combate"><br>
+            <br>
+            <br>
+            <label for="nome">Date:</label>
+            <input type="date" id="nome" name="nome"> <!--Aqui ele invoca um calendário e uma caixa de texto prédefinida para números-->
+            <br>
+            <br>
+            <label for="nome">Date:</label>
+            <input type="datetime-local" id="datetime-local" name="datetime" value="2020-04-20T20:00"> <!--Invoca uma caixa de texto para inserir data e hora, assim como um calendário com função para escolha da data e hora-->
+            <br>
+            <br>
+            <label>Hora:</label>
+            <input type="time" id="time" name="time" value="20:00:01"> <!--Define a hora, selecionando a mesma por uma barra na caixa de texto | obs.: os segundos são opcionais-->
+            <br>
+            <br>
+            <label>Cor Preferida:</label>
+            <input type="color" id="cor" name="cor" value="#FF0000"> <!--Aqui cria uma pasta para a seleção de cores-->
+            <br>
+            <br>
+            <label>Email:</label>
+            <input type="email" id="email" name="email" placeholder="email@email.com"> <!--Aqui ele só aceita textos no formato de email, ou seja, com o @, tag pós o @, e o .com-->
+            <br>
+            <br>
+            <label for="file">Sua Foto:</label>
+            <input type="file" id="file" name="file" accept=".png,.pdf" multiple> <!--Aqui ele seleciona um arquivo para a anexação e posteriormente o envio na página | se eu quiser apenas aceitar um único tipo de arquivo eu uso o 'accept=""'-->
+            <!--Para pegar todo tipo de imagem em geral, usamos o 'image/*' dentro de accept | Para selecionar mais de um arquivo e enviar usamos "múltiple"-->
+            <br>
+            <br>
+            <label for="numner">Número:</label><!--Para colocar números -->
+            <input type="number" id="number" name="number" placeholder="Informe um número" min="20" max="30" step="5"> <!--Obs.: algumas letras podem ser digitadas, pois elas também podem representar um número, como o "e", que é o número de Euler | Obs.: eu utilizo o min e o max para delimitar o tamanho mínimo e o máximo, ou seja, ele começa do minimo e vai até o máximo, também posso usar o step para fazer ele "pular" de tanto em tanto-->
+            <br>
+            <br>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" placeholder="Informe a senha"> <!--Vai invocar um texto 'mascarádo', ou seja, com pontos pretos para não mostrar o conteúdo-->
+            <br>
+            <br>
+            <!--Uma funcionalidade que não está em todos os navegadores, mas que coloca uma barra de contagem-->
+            <label for="range">Range:</label>
+            <input type="range" id="range" name="range" min="0" max="10" step="2">
+            <br>
+            <br>
+            <!--Se eu quiser colocar uma url, subir uma url-->
+            <label for="url">Sua url:</label>
+            <input type="url" id="url" name="url" placeholder="URL"> <!--Se eu não digitar uma url corretamente ele não vai enviar, vai aparecer uma mensagem para inserir uma url-->
+            <br>
+            <br>
+            <label for="search">Sua url:</label>
+            <input type="search" id="search" name="search" placeholder="Search"> <!--É um buscador que checa a semântica, ele mostra um x-->
+            <br>
+            <br>
+            <!--Se eu quiser colocar uma lista de selação-->
+            <label for="select">Selecione Algo:</label>
+            <select id="select" name="select" > <!-- Caso eu queira selecionar múltiplas escolhas, eu coloco o "múltiple" depois do name-->
+                <optgroup label="Teste1"> <!--Serve para "Agrupar" a lista de seleção-->
+                <option value="qualquer 1" label="Label 1" selected></option> <!--Para deixar uma das opções pré selecionada eu coloco "selected"-->
+                <option value="qualquer 2" label="Label 2" disabled></option> <!--Para deixar que uma pessoa não consiga selecionar uma opção, colocamos o "disable"-->
+                <option value="qualquer 3" label="Label 3"></option>
+                </optgroup>
+                <optgroup label="Teste1">
+                <option value="qualquer 4" label="Label 4"></option>
+                <option value="qualquer 5" label="Label 5"></option>
+                </optgroup>
+            </select>
+            <br>
+            <br>
+            <!--Se eu quiser colocar uma caixa de texto-->
+            <label for="textarea">Texto:</label>
+            <textarea name="textarea" id="textarea" rows="20"></textarea> <!--Não colocamos nada dentro dela, mas se colocarmos, vai aparecer na caixa como um valor pré-definido | Se eu quiser dizer quantas linhas vai possuir a caixa de texto-->
         </p>
-
+        <br>
         <!--Botões-->
         <p>
             <!--Tipos de botões-->
