@@ -1,0 +1,66 @@
+.heading:hover { /*Quano om mause passar por cima do texto ele ficará vermelho*/
+    background-color: red;
+}
+.heading {
+    transition: all 1s ease-in-out; /*Aqui eu digo que se tiver alguma transição ou ação, ele vai dar um delay de tempo nela*/
+}
+a {  /*Defino todos os links com a cor laranja*/
+    color: orange;
+}
+a:Link { /*Links que não foram visitados */
+    color: red;
+}
+a:visited {/*links que foram visitados*/
+    color:aqua;
+}
+a:hover {
+    background-color: black;
+    color: white;
+    text-decoration: none; /*aqui ele tira a linha de baixo do link quando eu passo o mause encima*/
+}
+a:active { /*Ele troca a cor quando eu clico e ativo, ou seja, se eu clico e seguro com o mause o link*/
+    background-color: blue;
+    color:brown;
+}
+input:focus { /*Quando estiver selecionado*/
+    background-color:grey; /*aqui o background fica cinza quando clicado*/
+    box-shadow: 0 0 5px grey; /*Deixa as bordas com uma sonbra de tonalidade cinza*/
+}
+input:disabled { /*caso o input esteja desabilitado*/
+    background-color: rgb(163, 35, 35);
+    /*Para mudar o cursor e dizer que não é permitido:*/
+    cursor: not-allowed; /*Deixa o cursor com o simbolo de não permitido*/
+}
+input:checked { /*Quandp a check box for marcada, aqui ela aumenta de tamanho*/
+    width: 50px;
+    height: 50px;
+}
+input:checked + p{ /*Com a caixa checada e um p vindo após ocheck box, assim  que ele for marcado o que está dentro do p fica vermelho*/
+    /*Como é o seletor de + será apenas o primerio p após o check box*/
+    background: red;
+}
+.pai .lista li { /*Seleção normal direta para um filho*/
+    background: rgb(59, 59, 116);
+}
+.pai .lista li:last-child { /*Last-child seleciona o ultimo item da lista*/
+    background-color: aqua;
+}
+
+/*Para utilizar o not, suponha que eu quero que todos os p´s dentro de section sejam background aquamarine, exceto o que esta com a classe meio*/
+section p:not(.meio) { /*Aqui posso colocar uma classe, tag, comando (que começe com ':')*/
+    background:aquamarine;
+}
+/*A classe ntf-child, com elemnetos irmãos, serve para selecionar pares ou inpares*/
+ul li:nth-child(odd){ /*odd, even | todos os odd vao ser amarelos*/
+    background: yellow;
+}
+ul li:nth-child(even){ /*todos os even vão ser azuis*/
+    background: rgb(95, 95, 226);
+}
+/*Se eu quiser de x em x ter uma cor diferente*/
+ul li:nth-child(3n){ /*De 3 em 3 vou ter uma cor vermelha*/
+    background: red;
+}
+ul li:nth-child(3n+5){ /*A partir do 5 ele começa a contagen de 3 em 3 */
+    background: green; 
+}

@@ -36,3 +36,30 @@ body div.main-content h4.heading { /*Caso haja alguma mudança no elemento div, 
     color: greenyellow;
     font-family: 'Times New Roman', Times, serif;
 }
+.pai h1+p { /*Aqui eu quero que todo p que venha depois de h1 que esteja com a classe pai, tenha as especificações de cor abaixo*/
+    color: black;
+    background-color: aquamarine;
+} /*Para selecionar todos os 'p's que vem depois de h1 como no de cima, nós trocamos o '+' pelo '~'*/
+
+.pai p+h1 { /*Aqui eu quero que todo h1 que venha depois de p que esteja com a classe pai, tenha as especificações de cor abaixo*/
+    color: red;
+    background-color: yellow;
+} /*Pegando os dois últimos, o mais (+) é colocado quando quero que seja selecionado algo apenas se ele estiver depois de algo, e o tio(~) sõa várias coisas depois de algo*/
+
+/*Se eu quiser selecionar um atributo que declarei dentro de uma tag*/
+[meu-atributo] { /*Atributos sempre são declarados dentro de colchetes*/
+    color: gold;
+    background-color: slategray;
+}
+[meu-atributo=cord] { /*Posso atribuir um valor para diferencialo de outros atributos, aqui no caso foi 'cord'*/
+    color: violet;
+    background-color: brown;
+}
+[meu-atributo~=valor2] { /*O '~' e serve para selecionar o valor numa lista de valores, que no caso aqui tinha valo1,valor2, e valor3 e eu selecionei o valor2*/
+    color: blue;
+    background-color: crimson;
+}
+[meu-atributo*="ba bo"] { /*Se dentro do atributo conter 'ba bo' ele vai executar*/
+    color:chocolate;
+    background-color: yellowgreen;
+}

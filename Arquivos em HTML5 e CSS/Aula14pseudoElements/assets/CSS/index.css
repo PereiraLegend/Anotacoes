@@ -1,0 +1,33 @@
+/*Se depois de todos os itens da tabela eu quiser adicionar um elemento*/
+ul li::after { /*after é usado antes do elemnto e before depois do elemento*/
+    content: ' - '; /*aqui eu criei um pseudo elemento, ou seja, esse traço "-" não está na página*/
+    background: red;
+    display: block;
+}
+
+/*se eu quiser que a primeira letr seja especial*/
+p {
+    font-size: 24px;
+}
+p::first-letter { /*Seleciona apenas a primeira letra*/
+    font-size: 50px; /*Aumento apenas a primeira letra para que ela fique grande*/
+    display: block;
+    float: left; /*deixa a letra como se fosse uma revista*/
+    margin: 0 10px 10px 0; /*Altera a margem*/
+}
+p::first-line { /*Seleciona apenas a primeira linha*/
+    background-color: blue;
+}
+p::selection { /*quando eu seleciono o testo com o mause*/
+    background: black;
+    color: white;
+}
+/*Para formatar o placeholder do input*/
+::placeholder { /*posso selecionar diretamente*/
+    font-size: 50px;
+    color: red;
+}
+.texto-edit::placeholder {
+    font-size: 10px;
+    color: blue
+}
