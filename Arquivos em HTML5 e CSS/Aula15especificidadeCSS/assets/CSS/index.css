@@ -1,0 +1,26 @@
+/*
+ID na especificidade CSS é o que possui a maior pontuação, ou seja as classes, os atributos, e pseudo-elementos        Elementos e pseudo-elementos
+1                                                                     0                                                0
+0                                                                     1                                                0
+1                                                                     1                                                0
+Obs.: o seletor de especificidade aparece quando passamos om mause em cima das tags da classe ou ids aqui no css do VSCode
+empate
+especificidade
+style
+!important ****
+*/
+#p {
+    background-color: red;
+}
+.p {
+    background-color: yellow;
+}
+#p.p { /*aqui o elemento deve possuir uma classe e um id p*/
+    background-color: pink;
+}
+p#p { /*Aqui o p  para inserir um texto no css deve possuir um id p*/
+    background-color: blue !important;/* Obs.:  a tag important escrita ao lado sobrescreve todos os comandos, fazendo com que esse que ela está seja o escolhido, e ela só pode ser sobrescrita por outra tag igual*/
+}
+body#b.bclass p#p.p {
+    background-color: green !important;/*Obs.: Usar muito essa regra pode acarretar problemas para o mnavegador, e só utilizar ela como último recurso*/
+}
