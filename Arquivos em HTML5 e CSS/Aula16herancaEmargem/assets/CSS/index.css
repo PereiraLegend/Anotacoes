@@ -1,0 +1,56 @@
+#texto {
+    color: red;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.texto {
+    display: block;
+    /*se eu colocar como display:inline; o navegador não vai colocar as alterações abaixo*/
+    background: aquamarine;
+    width: 50%;
+    /*?Aqui eu diminuo o bloco visualizado, ou seja deixa ele pela metade*/
+}
+
+.neotexto {
+    background: greenyellow;
+    width: 200px;
+    height: 200px;
+    /*Aqui eu delimito o tamanho máximo do quadrado*/
+    overflow: hidden;
+    /*Aqui eu digo que o texto não pode passar do que foi delimitadop, ou seja ainda está lá, mas não aparece*/
+}
+
+.xptexto {
+    background: greenyellow;
+    width: 200px;
+    height: 200px;
+    /*Aqui eu delimito o tamanho máximo do quadrado*/
+    overflow: scroll;
+    /*Aqui eu coloco um scroll na barra de texto que diferente do último aparece o que foi ocultado*/
+    /*N última linha eu posso colocar em "auto" no lugar de scroll, ou seja, se passar do que foi delimitado ele cria um scroll automáticamente*/
+}
+
+.kitexto {
+    box-sizing: border-box;
+    /*Cria uma caixa*/
+    background: skyblue;
+    width: 100%;
+    /*Aqui é o tanto da tela que ele ocupa*/
+    height: 100%;
+    /*Aqui é o tanto da tela que ele ocupa*/
+    max-height: 600px;
+    /*Na responsividade ele cresce até 600px*/
+    min-height: 500px;
+    /*Na responsividade ele cresce até 500px*/
+    min-width: 0;
+    /*Na responsividade ele diminui até 0*/
+    min-height: 0;
+    /*Na responsividade ele diminui até 0*/
+    overflow: auto;
+    margin: 0 auto 50px auto;
+    padding: 50px;
+    /*coloca 50px em todas as bordas entre o texo e a borda*/
+    border: 5px solid black;
+    /*Aqui eu coloco uma "Moldura"/borda*/
+}
