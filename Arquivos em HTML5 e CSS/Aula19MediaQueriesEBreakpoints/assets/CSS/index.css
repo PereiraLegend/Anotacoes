@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.grid .col {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    background: skyblue;
+    margin: 20px;
+    box-shadow: -10px -10px 10px 5px rebeccapurple;/*Sonbra em uma caixa*//*os dois primeiros -10 definem onde vai ficar a sonbra, o terceiro o borrão, o quarto o tamanho do borrão*/
+    float: left; /*Ele meio que deuixa os elementos como um texto normal, que está fora do grid ficar bem do lado, no espaço que ele não está usando, posso colocar tanto para a esquerda quanto para a direita*/
+}
+
+/*O comando media abaixo serve para dispositivos móveis, assim criamos uma configuração facilitada para que não fique bugada nesses dispositivos*/
+@media (min-width: 320px) {
+    .grid .col {
+        width: 50%; /*Aqui para dispositivos como 320 pixels ele melhora o modo de visualização*/
+    }
+}
+/*Para estruturas condicionais*/
+@media all and (min-width: 1200px) and (max-width:1200) {
+    .grid .col {
+        width: 33.33%;
+    }
+}

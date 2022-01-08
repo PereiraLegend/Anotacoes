@@ -1,0 +1,16 @@
+p {
+    color: seagreen; /*Cor da fonte*/
+    background-color: aquamarine; /*Cor do fundo das letras*/
+    font-size: 20px;/*Tamanho da fonte*/
+    font-style: italic;/*Estilo da fonte*/
+    font-weight: bold;/*Negrito*/
+    direction: rtl; /*alinhamento do texto*/
+    letter-spacing: 3px; /*Define o espaço entre as letras*/
+    word-spacing: 10px; /*Define o espaço entre as palavras*/
+    line-height: 25px; /*Define o espaço entre as linhas*/
+    text-align: left; /*Alinhamento do texto*/
+    text-decoration: overline;/*Decoração no texto*//*Overline: linha acima da palavra, line-through: linha riscando o texto, Underline: linha sublinhando o texto*/
+    text-indent: 50px;/*A indentação nos paragráfos*/
+    text-shadow: 2px 2px 2px yellow; /*Sombra no texto*/
+    text-transform: capitalize; /*transforma o texto, com o comando captalize ele fica com cada palavra com letra maiúscula*/
+}
