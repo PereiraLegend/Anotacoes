@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+.flex-container {
+    background: yellow;
+    display: flex;
+    flex-direction: row; /*Mostra a direção do eixo principal, se eu colocar "column" ele vai ficar como estava inicialmente*/
+    justify-content: flex-start;/*Mostra aonde eu quero que isso se alinhe/justifique, observe que do jeito que ta ele fica colado na esquerda, mas também posso deixar colado na direita ou no centro, dependendo do comando, também posso distribuir de forma proporcional*/
+    align-content: center;/*Alinhamento*/
+    align-items: stretch;/*Alinhamento*/
+    height: 500px;
+}
+.flex-item {
+    background: red;
+}
