@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    font: sans-serif;
+    font-size: 40px;
+}
+
+.grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));/*O 1fr se adequa até ao final da aba, posso usar a função repeat para evitar repetir isso até acabar*/
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 30px;
+}
+
+.grid div {
+    background: tomato;
+    min-height: 100px;
+}
+
+.grid div:nth-child(5) {
+    background: darkred;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.grid div:nth-child(13) {
+    background: darkred;
+    grid-row: span 2;  /*Aqui faz o spam para duas colunas*/
+}
+
+@media (max-width: 308px){
+    .grid div:nth-child(5) {
+        grid-column: span 1;
+    }
+}

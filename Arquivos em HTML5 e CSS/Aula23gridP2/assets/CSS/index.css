@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    font: sans-serif;
+    font-size: 40px;
+}
+
+.grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: [um] 1fr [dois] 1fr [tres] 1fr [quatro];/*Aqui eu atribuo nomes, ou seja crio variavéis com os indices*/
+    grid-gap: 30px; /*Gap define o espaçamento entre as linhas*/
+}
+
+.grid div {
+    background: tomato;
+    min-height: 100px;
+}
+
+.grid div:nth-child(5) {
+    background: darkred;
+    /*
+    grid-column-start: um;
+    grid-column-end: quatro;
+    */
+    /*Ou*/
+    /*
+    grid-column: um / tres;
+    grid-row: um / quatro;
+    */
+    grid-area: 1 / 1 / 4 / 4;
+}
+
+.grid div:nth-child(13) {
+    background: darkred;
+    grid-row: span 2;  /*Aqui faz o spam para duas colunas*/
+}
+
+@media (max-width: 308px){
+    .grid div:nth-child(5) {
+        grid-column: span 1;
+    }
+}
