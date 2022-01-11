@@ -28,7 +28,7 @@ let nomeAluno; // undefined -> não aponta para local nenhum na memória
 let sobrenomeAluno = null; // Nulo -> não aponta para local nenhum na memória, mas esse é diferente do de cima, e utilizamos quando quisermos colocar uma variável como nulo
 const boolean = true; // or false (valor lógico), ex.: cosnt aprovado = true; 
 // Para ver o tipo de cada função
-console.log(typeof num1,num2)
+console.log(typeof num1,num2);
 
 // Exemplo fora da aula
 /**
