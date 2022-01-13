@@ -11,20 +11,20 @@
 
 <body>
     <section class="container">
-        <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
+        <h1>Tabela IMC</h1>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum quae distinctio nostrum, amet assumenda dolor
             illo aut quod cupiditate! Rem quod pariatur nulla ullam impedit est sed ea, possimus aspernatur.</p>
+        <h1>Calcule seu IMC</h1>
+        <form action="/" id="formulario" method="POST">
+            <label for="peso">Peso:</label>
+            <input type="text" id="peso" name="peso">
 
-        <form action="">
-            <label for="input-teste-1">Label teste #1</label>
-            <input type="number" id="input-teste-1">
-
-            <label for="input-teste-1">Label teste #3</label>
-            <input type="number" id="input-teste-3">
+            <label for="altura">Altura</label>
+            <input type="text" id="altura" name="altura">
 
             <button>Enviar</button>
         </form>
-
+        <div id="resultado"></div>
     </section>
     <script src="../assets/js/main.js"></script>
 </body>

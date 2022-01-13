@@ -1,12 +1,14 @@
 :root {
-    --primary-color : cadetblue;
+    --primary-color: cadetblue;
     --primary-color-darker: rgb(17, 86, 102);
     ;
 }
+
 * {
     box-sizing: border-box;
     outline: 0;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -18,26 +20,33 @@ body {
 
 .container {
     max-width: 640px;
-    margin: 20px auto; /*Se refere ao topo, e obs.: o auto depois dos 20px serve para a centralização da section, ou seja ele deixa as laterais automaticamnete*/
-    background-color: aquamarine;
+    margin: 20px auto;
+    /*Se refere ao topo, e obs.: o auto depois dos 20px serve para a centralização da section, ou seja ele deixa as laterais automaticamnete*/
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
 }
 
-form input, form label, form button{
-    display: block;/*Os bloqueia*/
-    width: 100%; /*Ocupa 100% da área*/
+form input,
+form label,
+form button {
+    display: block;
+    /*Os bloqueia*/
+    width: 100%;
+    /*Ocupa 100% da área*/
     margin-bottom: 10px;
 }
+
 form input {
     font-size: 24px;
     height: 50px;
     padding: 0 20px;
 }
 
-form input:focus{
+form input:focus {
     outline: cadetblue;
 }
+
 form button {
     border: none;
     background-color: cadetblue;
@@ -47,9 +56,20 @@ form button {
     height: 50px;
     cursor: pointer;
 }
+
 form button:hover {
     background: var(--primary-color-darker);
 }
+
 form button:active {
-    background-color: red; /*Define a cor ao apertar o botão*/
+    background-color: red;
+    /*Define a cor ao apertar o botão*/
+}
+
+.paragrafo-resultado, .bad {
+    background: aquamarine;
+    padding: 10px 20px;
+}
+.bad {
+    background: orange;
 }
