@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(46, 139, 116);
+}
+
+.cor-caixa1{
+    margin-top: 50px;
+    width: 600px;
+    height: 200px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    text-align:center;
+}
