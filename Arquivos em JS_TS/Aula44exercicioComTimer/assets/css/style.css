@@ -53,15 +53,3 @@ form button:hover {
 form button:active {
     background-color: red; /*Define a cor ao apertar o botão*/
 }
-
-.relogio {
-    font-size: 50px;
-}
-
-.pausado {
-    color: red;
-}
-
-.zerado {
-    color: green;
-}
