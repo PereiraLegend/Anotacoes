@@ -3,7 +3,7 @@ const conectar = async () =>{
     if(global.conexao && global.conexao.state != "disconected")
         return global.conexao
     const mysql=require("mysql2/promise")
-    const con=mysql.createConnection("mysql://root:1234567localhost:3306/cursonode")//--Não esquecer da senha
+    const con=mysql.createConnection("mysql://root:20140126aB#$%@127.0.0.1:3306/cursonode")//--Não esquecer da senha
     console.log("Conectou ao Banco")
     global.conexao=con
     return con
@@ -15,5 +15,11 @@ const todosClientes = async()=>{
     return await linhas
 }
 
-conectar()
-module.exports = {todosClientes}
+const insereClientes = async(clientes)=>{
+    const con = await conectar()
+    const sql = "INSERT INTO clientes (Clientescol, Clientescol1) VALUES (?,?)"
+    const valores = [clientes.Clientescol, clientes.Clientescol1]
+    await con.query(sql, valores)
+}
+
+module.exports = {todosClientes, insereClientes}
