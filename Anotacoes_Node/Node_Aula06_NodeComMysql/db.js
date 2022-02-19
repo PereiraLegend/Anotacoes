@@ -22,4 +22,22 @@ const insereClientes = async(clientes)=>{
     await con.query(sql, valores)
 }
 
-module.exports = {todosClientes, insereClientes}
+
+const atualizaClientes = async(idClientes,clientes)=>{
+    const con = await conectar()
+    const sql = "UPDATE clientes SET Clientescol = ?, Clientescol1 = ? WHERE id=?"
+    const valores = [clientes.Clientescol, clientes.Clientescol1, idClientes]
+    console.log(idClientes)
+    console.log(clientes.Clientescol)
+    console.log(clientes.Clientescol1)
+    await con.query(sql, valores)
+}
+
+const deletarCliente = async(id) =>{
+    const con = await conectar()
+    const sql = "DELETE FROM clientes WHERE idClientes=?"
+    const valores = [id]
+    await con.query(sql,valores)
+}
+
+module.exports = {todosClientes, insereClientes, atualizaClientes}
