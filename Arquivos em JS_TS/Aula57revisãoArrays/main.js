@@ -44,3 +44,4 @@ console.log(nomes_)
 const nomevv = [ 'Luiz', 'Otávio', 'Miranda' ]
 const _nomes = nomevv.join(" ") // Aqui mostra o que é que vai definir o separador, no caso esse foi dado como espaço
 console.log(_nomes)
+                    
