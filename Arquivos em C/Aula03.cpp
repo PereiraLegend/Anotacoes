@@ -30,7 +30,8 @@ int main(){
 		return 0;
 	}
 	if (selecao==4){
-		printf("A divisão de %i e de %i é de %i", num1, num2, num1 / num2);
+		printf("A divisão de %i e de %i é de %i \n", num1, num2, num1 / num2);
+		printf("O resto da divisão é de %i", num1 % num2); // Para ver o resto de uma divisão basta colocar o "%" como operador entre as variáveis
 		return 0;
 	} 
 	return 0;
