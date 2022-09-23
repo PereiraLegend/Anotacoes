@@ -22,6 +22,9 @@ int main(){
 	else {
 		printf("Ele é menor que 5");
 	}
-	
+	// Obs.:
+	// == comparação positiva
+	// != comparação negativa
+	// se dada em uma frase !(i==1) significa que é uma expressão "not"
 	return 0;
 }
