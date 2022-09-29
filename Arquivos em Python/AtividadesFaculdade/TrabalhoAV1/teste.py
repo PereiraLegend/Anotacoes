@@ -1,1 +1,1 @@
-print("Ola Mundo")
+import mysql.connector

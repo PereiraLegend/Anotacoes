@@ -8,25 +8,76 @@ if os.path.exists("AtividadesFaculdade/TrabalhoAV1/Arquivo.txt"):
 else:
     print("ESTO NON ECZISTE")
 """
-Arquivo = open("Arquivo.txt", "w") # Colocar para criar arquivos
-#print(Arquivo.read())
+import os
 
+# Aqui eu entro
+n = 1
 
-print("Insira as suas Informações:")
+while n == 1:
+    print("====================================================================")
+    print("|Você deseja criar um novo arquivo ou abrir um já existente?")
+    selecionar = int(input("|Para Criar [1] - Para Abrir [2] - Para Alterar [3] - Para sair [4]:"))
 
-Arquivo.write(input("Informe seu cpf:"))
-Arquivo.write(",")
-Arquivo.write(input("Informe o seu nome:"))
-Arquivo.write(",")
-Arquivo.write(input("Informe o seu sobrenome:"))
-Arquivo.write(",")
-Arquivo.write(input("Informe a sua Idade:"))
-Arquivo.write(",")
-Arquivo.write(input("Informe a sua Conta:"))
-Arquivo.write(",")
+    if selecionar == 1:
+        print("====================================================================")
+        #nomeArquivo = str(input("Informe o nome do arquivo a ser criado: "))
+        Arquivo = open(str(input("|Informe o nome do arquivo a ser criado [Obs.: Insira o formato do arquivo ex.: .txt no final]: ")), "w") # Colocar para criar arquivos
+        #print(Arquivo.read()
+        print("====================================================================")
+        print("|--Insira as suas Informações --")
 
+        # Pessoa
 
-Arquivo.close()
+        Arquivo.write("-> Cpf: ")
+        Cpf = Arquivo.write(str(input("Informe seu cpf: ")) + "\n")
 
-# Plano : Tirar o que exclui o ultimo arquivo, colocar tudo o que pergunta em loop com comando para sair do loop e
-# encerrar o código, depois perguntar se quer abrir o arquivo gerado
+        Arquivo.write("-> Nome: ")
+        Nome = Arquivo.write(str(input("Informe o seu nome: ")) + "\n")
+
+        Arquivo.write("-> Sobrenome: ")
+        Sobrenome = Arquivo.write(str(input("Informe o seu sobrenome: ")) + "\n")
+
+        Arquivo.write("-> Idade: ")
+        Identidade = Arquivo.write(str(input("Informe a sua Idade: ")) + "\n")
+
+        Arquivo.write("-> Conta: ")
+        Conta = Arquivo.write(str(input("Informe a sua Conta: ")) + "\n")
+
+        # Conta
+
+        Arquivo.write("-> Agência: ")
+        Agência = Arquivo.write(str(input("Informe a sua Agência: ")) + "\n")
+
+        Arquivo.write("-> Número: ")
+        Número = Arquivo.write(str(input("Informe o seu Número: ")) + "\n")
+
+        Arquivo.write("-> Saldo: ")
+        Saldo = Arquivo.write(str(input("Informe o seu Saldo: ")) + "\n")
+
+        Arquivo.write("-> Gerente: ")
+        Gerente = Arquivo.write(str(input("Informe o seu Gerente: ")) + "\n")
+
+        Arquivo.write("-> Titular: ")
+        Titular = Arquivo.write(str(input("Informe a sua Titular: ")) + "\n")
+
+        Arquivo.close()
+        print("====================================================================")
+        n = int(input("|Vc quer criar outro cadastro? Menu [1] Não[2]: "))
+
+    if selecionar == 2:
+        print("====================================================================")
+        print("|Informe o arquivo a ser Aberto/Editado: ")
+        with open(input("|Informe o nome do arquivo a ser aberto [Obs.: Insira o formato do arquivo ex.: .txt no final]: "), "r+") as abrir: # Colocar para criar arquivos
+            for Abrir in abrir:
+                print(Abrir)
+
+    if selecionar == 3:
+        print("Em construção")
+        #print("====================================================================")
+        #n = int(input("|Você deseja voltar ao menu? Sim [1] Sair [2]: "))
+
+    else:
+        print("====================================================================")
+        n = int(input("|Você deseja voltar ao menu ou  sair? Sim [1] Sair [2]: "))
+
+#Falta o if 3, que serve para alterar valores verificar o cadastro, banco de dados, procurar função para deletar os arquivos criados
