@@ -1,5 +1,0 @@
-Cpf: 2
-Nome: 2
-Sobrenome: 3
-Idade: 2
-Conta: 2

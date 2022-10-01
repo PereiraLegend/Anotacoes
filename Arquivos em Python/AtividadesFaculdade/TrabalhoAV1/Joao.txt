@@ -1,0 +1,10 @@
+-> Cpf: 999999
+-> Nome: joao
+-> Sobrenome: lucas
+-> Idade: 20
+-> Conta: 99999
+-> Agência: 9999
+-> Número: 77777
+-> Saldo: 300
+-> Gerente: gustavo
+-> Titular: 00000

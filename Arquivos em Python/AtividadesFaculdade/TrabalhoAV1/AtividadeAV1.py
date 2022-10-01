@@ -38,7 +38,7 @@ while n == 1:
         Sobrenome = Arquivo.write(str(input("Informe o seu sobrenome: ")) + "\n")
 
         Arquivo.write("-> Idade: ")
-        Identidade = Arquivo.write(str(input("Informe a sua Idade: ")) + "\n")
+        Idade = Arquivo.write(str(input("Informe a sua Idade: ")) + "\n")
 
         Arquivo.write("-> Conta: ")
         Conta = Arquivo.write(str(input("Informe a sua Conta: ")) + "\n")
@@ -81,3 +81,6 @@ while n == 1:
         n = int(input("|Você deseja voltar ao menu ou  sair? Sim [1] Sair [2]: "))
 
 #Falta o if 3, que serve para alterar valores verificar o cadastro, banco de dados, procurar função para deletar os arquivos criados
+
+
+# AVVVAAAAA
