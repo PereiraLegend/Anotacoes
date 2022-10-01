@@ -1,5 +1,0 @@
-Cpf: 0000000
-Nome: gustavo
-Sobrenome: gustavo
-Idade: 78
-Conta: 69

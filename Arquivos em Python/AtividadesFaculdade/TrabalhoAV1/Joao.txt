@@ -1,10 +1,10 @@
--> Cpf: 999999
--> Nome: joao
--> Sobrenome: lucas
--> Idade: 20
--> Conta: 99999
--> Agência: 9999
--> Número: 77777
--> Saldo: 300
--> Gerente: gustavo
--> Titular: 00000
+-> Cpf: 1
+-> Nome: 1
+-> Sobrenome: 1
+-> Idade: 
+-> Conta: 1
+-> Agência: 1
+-> Número: 
+-> Saldo: 1
+-> Gerente: 1
+-> Titular: 1
