@@ -29,36 +29,36 @@ while n == 1:
         #Parte da Pessoa
         Arquivo.write("===============================")
         Arquivo.write("|Cpf: ")
-        Cpf = Arquivo.write(str(input("Informe seu cpf: ")) + "\n")
+        cpf_bd = Arquivo.write(str(input("Informe seu cpf: ")) + "\n")
 
         Arquivo.write("|Nome: ")
-        Nome = Arquivo.write(str(input("Informe o seu nome: ")) + "\n")
+        nome = Arquivo.write(str(input("Informe o seu nome: ")) + "\n")
 
         Arquivo.write("|Sobrenome: ")
-        Sobrenome = Arquivo.write(str(input("Informe o seu sobrenome: ")) + "\n")
+        sobrenome_bd = Arquivo.write(str(input("Informe o seu sobrenome: ")) + "\n")
 
         Arquivo.write("|Idade: ")
-        Idade = Arquivo.write(str(input("Informe a sua Idade: ")) + "\n")
+        idade_bd = Arquivo.write(str(input("Informe a sua Idade: ")) + "\n")
 
         Arquivo.write("|Conta: ")
-        Conta = Arquivo.write(str(input("Informe a sua Conta: ")) + "\n")
+        conta_bd = Arquivo.write(str(input("Informe a sua Conta: ")) + "\n")
 
         # Parte da Conta
 
         Arquivo.write("|Agência: ")
-        Agência = Arquivo.write(str(input("Informe a sua Agência: ")) + "\n")
+        agencia_bd = Arquivo.write(str(input("Informe a sua Agência: ")) + "\n")
 
         Arquivo.write("|Número: ")
-        Número = Arquivo.write(str(input("Informe o seu Número: ")) + "\n")
+        numero_bd = Arquivo.write(str(input("Informe o seu Número: ")) + "\n")
 
         Arquivo.write("|Saldo: ")
-        Saldo = Arquivo.write(str(input("Informe o seu Saldo: ")) + "\n")
+        saldo_bd = Arquivo.write(str(input("Informe o seu Saldo: ")) + "\n")
 
         Arquivo.write("|Gerente: ")
-        Gerente = Arquivo.write(str(input("Informe o seu Gerente: ")) + "\n")
+        gerente_bd = Arquivo.write(str(input("Informe o seu Gerente: ")) + "\n")
 
         Arquivo.write("|Titular: ")
-        Titular = Arquivo.write(str(input("Informe a sua Titular: ")) + "\n")
+        titular_bd = Arquivo.write(str(input("Informe a sua Titular: ")) + "\n")
 
         Arquivo.close()
 
@@ -102,19 +102,19 @@ while n == 1:
         # Parte da Conta a ser editada
 
         Arquivo.write("|Agência: ")
-        Agência = Arquivo.write(str(input("Informe a sua Agência: ")) + "\n")
+        agencia_bd = Arquivo.write(str(input("Informe a sua Agência: ")) + "\n")
 
         Arquivo.write("|Número: ")
-        Número = Arquivo.write(str(input("Informe o seu Número: ")) + "\n")
+        numero_bd = Arquivo.write(str(input("Informe o seu Número: ")) + "\n")
 
         Arquivo.write("|Saldo: ")
-        Saldo = Arquivo.write(str(input("Informe o seu Saldo: ")) + "\n")
+        saldo_bd = Arquivo.write(str(input("Informe o seu Saldo: ")) + "\n")
 
         Arquivo.write("|Gerente: ")
-        Gerente = Arquivo.write(str(input("Informe o seu Gerente: ")) + "\n")
+        gerente_bd = Arquivo.write(str(input("Informe o seu Gerente: ")) + "\n")
 
         Arquivo.write("|Titular: ")
-        Titular = Arquivo.write(str(input("Informe a sua Titular: ")) + "\n")
+        titular_bd = Arquivo.write(str(input("Informe a sua Titular: ")) + "\n")
 
         Arquivo.close()
 
