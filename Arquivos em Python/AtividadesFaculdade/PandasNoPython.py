@@ -54,3 +54,4 @@ print(df.sort_values(by="B")) # Ordenando por uma coluna, no caso pela coluna B 
 print("\n\n")
 
 # Ver mais informações no github Evandro, ainda há a metade para anotar
+#a
