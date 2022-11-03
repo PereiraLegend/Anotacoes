@@ -5,6 +5,8 @@ import tkinter.messagebox
 janelamenu = tk.Tk()
 janelamenu.title("Menu")
 janelamenu.geometry('300x270+800+300')
+janelamenu.minsize(300,270)
+janelamenu.maxsize(300,270)
 
 def criarArquivo():
     def btnStitulo():
@@ -16,6 +18,8 @@ def criarArquivo():
             janelaapresentar = tk.Toplevel()
             janelaapresentar.title("Dados Salvos")
             janelaapresentar.geometry('300x270+800+300')
+            janelaapresentar.minsize(300, 270)
+            janelaapresentar.maxsize(300, 270)
 
             A = tk.Label(janelaapresentar,text="Os dados foram salvos como:")
             A.grid(row=0,column=0)
@@ -89,6 +93,8 @@ def criarArquivo():
         janelainserir = tk.Toplevel()
         janelainserir.title("Inserindo os Dados")
         janelainserir.geometry('300x270+800+300')
+        janelainserir.minsize(300, 270)
+        janelainserir.maxsize(300, 270)
 
         tk.Label(janelainserir, text="--Insira as suas Informações --").grid(row=0, column=0)
         # Parte da Pessoa
@@ -140,6 +146,8 @@ def criarArquivo():
     janelacriar = tk.Toplevel()
     janelacriar.title("Criar Arquivo")
     janelacriar.geometry('300x270+800+300')
+    janelacriar.minsize(300, 270)
+    janelacriar.maxsize(300, 270)
 
     tk.Label(janelacriar,text="Informe o nome do arquivo a ser Criado \n[Obs.: Insira o formato do arquivo ex.: .txt no final]:").grid(row=0, column=0)
     NomeArquivo = tk.Entry(janelacriar, width=10)
@@ -153,6 +161,8 @@ def abrirArquivo():
         janelaapresentar = tk.Toplevel()
         janelaapresentar.title("Dados Salvos")
         janelaapresentar.geometry('300x270+800+300')
+        janelaapresentar.minsize(300, 270)
+        janelaapresentar.maxsize(300, 270)
 
         Arquivo = NomeArquivo.get()
         with open(Arquivo, 'r+', encoding="utf-8") as Ler:
@@ -212,6 +222,8 @@ def abrirArquivo():
     janelaabrir = tk.Toplevel()
     janelaabrir.title("Abrir Arquivo")
     janelaabrir.geometry('300x270+800+300')
+    janelaabrir.minsize(300, 270)
+    janelaabrir.maxsize(300, 270)
     tk.Label(janelaabrir,text="Informe o nome do arquivo a ser Aberto \n[Obs.: Insira o formato do arquivo ex.: .txt no final]:").grid(row=0, column=0)
     NomeArquivo = tk.Entry(janelaabrir, width=10)
     NomeArquivo.grid(row=1, column=0)
@@ -229,6 +241,8 @@ def editarArquivo():
             janelaapresentar = tk.Toplevel()
             janelaapresentar.title("Dados Salvos")
             janelaapresentar.geometry('300x270+800+300')
+            janelaapresentar.minsize(300, 270)
+            janelaapresentar.maxsize(300, 270)
 
             A = tk.Label(janelaapresentar,text="Os dados foram salvos como:")
             A.grid(row=0,column=0)
@@ -302,6 +316,8 @@ def editarArquivo():
         janelainserir = tk.Toplevel()
         janelainserir.title("Inserindo os Dados")
         janelainserir.geometry('300x270+800+300')
+        janelainserir.minsize(300, 270)
+        janelainserir.maxsize(300, 270)
 
         tk.Label(janelainserir, text="--Insira as suas Informações --").grid(row=0, column=0)
         # Parte da Pessoa
@@ -352,6 +368,8 @@ def editarArquivo():
     janelaeditar = tk.Toplevel()
     janelaeditar.title("Editar Arquivo")
     janelaeditar.geometry('300x270+800+300')
+    janelaeditar.minsize(300, 270)
+    janelaeditar.maxsize(300, 270)
     tk.Label(janelaeditar,text="Informe o nome do arquivo a ser Editado \n[Obs.: Insira o formato do arquivo ex.: .txt no final]:").grid(row=0, column=0)
     NomeArquivo = tk.Entry(janelaeditar, width=10)
     NomeArquivo.grid(row=1, column=0)
@@ -367,6 +385,8 @@ def deletarArquivo():
     janeladeletar = tk.Toplevel()
     janeladeletar.title("Deletar Arquivo")
     janeladeletar.geometry('300x270+800+300')
+    janeladeletar.minsize(300, 270)
+    janeladeletar.maxsize(300, 270)
 
     tk.Label(janeladeletar,text="Informe o nome do arquivo a ser Deletado \n[Obs.: Insira o formato do arquivo ex.: .txt no final]:").grid(row=0, column=0)
     NomeArquivo = tk.Entry(janeladeletar, width=10)
