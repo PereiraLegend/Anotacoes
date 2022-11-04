@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ba1324e3-9349-4ca0-9867-d655ee2d92a5" name="Changes" comment="">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/AtividadesFaculdade/InterfaceGraficaTkider.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/AtividadesFaculdade/InterfaceGraficaTkinder2.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/AtividadesFaculdade/InterfaceGraficaTkinder3.py" afterDir="false" />
@@ -16,6 +17,8 @@
       <change afterPath="$PROJECT_DIR$/AtividadesFaculdade/TrabalhoAV2/TabalhoAV2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Arquivos em Python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Arquivos em Python.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AtividadesFaculdade/PandasNoPython.py" beforeDir="false" afterPath="$PROJECT_DIR$/AtividadesFaculdade/PandasNoPython.py" afterDir="false" />
