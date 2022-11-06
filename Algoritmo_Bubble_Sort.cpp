@@ -1,22 +1,37 @@
-#include <stdio.h>,
 #include <stdlib.h>
-#include <locale.h>
+#include <stdio.h>
+#define vinte 20
 
 int main(){
-	setlocale(LC_ALL,"Portuguese");
-	int i, n, l, x;
-	int numeros[] = {9,8,7,6,5,4,3,2,1,15,14,13,12,11,10,16,17,20,19,18};
-	printf("Vetor => %i", numeros[i]);
+	int i, x, cont, num[vinte] = {9,8,7,6,5,4,3,2,1,15,14,13,12,11,10,16,17,20,19,18};
 	
-	for(l = 1; l < 20 -1; l++) {
-		if(numeros[i] > numeros[i+1]) {
-			x = numeros[i];
-			numeros[i] = numeros[i+1];
-			numeros[i+1]=x;
-		}
+	// Mosrando os arrays
+	printf("Valores no Array:\n");
+	for (i = 0; i < vinte; i++) {
+ 		printf("%d \n", num[i]);
 	}
 	
-	for (i = 0; i < 20; i++) {
-		printf("%4d", numeros[i]);
+	// Ordenando:
+	
+ 	for (cont = 1; cont < vinte; cont++) {
+    	for (i = 0; i < vinte - 1; i++) {
+     		if (num[i] > num[i + 1]) {
+       			x = num[i];
+       			num[i] = num[i + 1];
+       			num[i + 1] = x;
+     		}
+   		}
+ 	}
+	
+	// Deixando em ordem crescente
+	printf("Valores no Array em ordem crescente:\n");
+	for (i = 0; i < vinte; i++) {
+ 		printf("%d \n", num[i]);
 	}
+	
+	printf("\n");
+	
+	return 0;
 }
+
+
