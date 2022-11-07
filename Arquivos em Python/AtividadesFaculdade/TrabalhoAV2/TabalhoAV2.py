@@ -24,6 +24,21 @@ def criarArquivo():
             janelaapresentar.minsize(300, 270)
             janelaapresentar.maxsize(300, 270)
 
+            # Abrindo Arquivo
+            Arquivo = NomeArquivo.get()
+            with open(Arquivo, 'r+', encoding="utf-8") as Ler:
+                Linha = Ler.readlines()
+                print(Linha[0])
+                print(Linha[1])
+                print(Linha[2])
+                print(Linha[3])
+                print(Linha[4])
+                print(Linha[5])
+                print(Linha[6])
+                print(Linha[7])
+                print(Linha[8])
+                print(Linha[9])
+
             # Parte para Apresentação ao usuário
             A = tk.Label(janelaapresentar,text="Os dados foram salvos como:")
             A.grid(row=0,column=0)
@@ -53,16 +68,16 @@ def criarArquivo():
             M.grid(row=13, column=0)
 
             B["text"] = NomeArquivo.get()
-            D["text"] = cpf_bd.get()
-            E["text"] = nome_bd.get()
-            F["text"] = sobrenome_bd.get()
-            G["text"] = idade_bd.get()
-            H["text"] = conta_bd.get()
-            I["text"] = agencia_bd.get()
-            J["text"] = numero_bd.get()
-            K["text"] = saldo_bd.get()
-            L["text"] = gerente_bd.get()
-            M["text"] = titular_bd.get()
+            D["text"] = Linha[0].rstrip("\n")
+            E["text"] = Linha[1].rstrip("\n")
+            F["text"] = Linha[2].rstrip("\n")
+            G["text"] = Linha[3].rstrip("\n")
+            H["text"] = Linha[4].rstrip("\n")
+            I["text"] = Linha[5].rstrip("\n")
+            J["text"] = Linha[6].rstrip("\n")
+            K["text"] = Linha[7].rstrip("\n")
+            L["text"] = Linha[8].rstrip("\n")
+            M["text"] = Linha[9].rstrip("\n")
 
             tk.Button(janelaapresentar, text="Voltar o menu", command=lambda:[janelaapresentar.destroy(),janelacriar.destroy(),janelainserir.destroy()]).grid(row=13, column=1)
 
@@ -261,6 +276,21 @@ def editarArquivo(): # Função Editar Arquivo
             janelaapresentar.minsize(300, 270)
             janelaapresentar.maxsize(300, 270)
 
+            # Abrindo Arquivo
+            Arquivo = NomeArquivo.get()
+            with open(Arquivo, 'r+', encoding="utf-8") as Ler:
+                Linha = Ler.readlines()
+                print(Linha[0])
+                print(Linha[1])
+                print(Linha[2])
+                print(Linha[3])
+                print(Linha[4])
+                print(Linha[5])
+                print(Linha[6])
+                print(Linha[7])
+                print(Linha[8])
+                print(Linha[9])
+
             # Parte para apresentar ao usuário
             A = tk.Label(janelaapresentar,text="Os dados foram salvos como:")
             A.grid(row=0,column=0)
@@ -289,17 +319,18 @@ def editarArquivo(): # Função Editar Arquivo
             M = tk.Label(janelaapresentar, text="-------------")
             M.grid(row=13, column=0)
 
+            # Alterando os Valores de texto acima
             B["text"] = NomeArquivo.get()
-            D["text"] = cpf_bd.get()
-            E["text"] = nome_bd.get()
-            F["text"] = sobrenome_bd.get()
-            G["text"] = idade_bd.get()
-            H["text"] = conta_bd.get()
-            I["text"] = agencia_bd.get()
-            J["text"] = numero_bd.get()
-            K["text"] = saldo_bd.get()
-            L["text"] = gerente_bd.get()
-            M["text"] = titular_bd.get()
+            D["text"] = Linha[0].rstrip("\n")
+            E["text"] = Linha[1].rstrip("\n")
+            F["text"] = Linha[2].rstrip("\n")
+            G["text"] = Linha[3].rstrip("\n")
+            H["text"] = Linha[4].rstrip("\n")
+            I["text"] = Linha[5].rstrip("\n")
+            J["text"] = Linha[6].rstrip("\n")
+            K["text"] = Linha[7].rstrip("\n")
+            L["text"] = Linha[8].rstrip("\n")
+            M["text"] = Linha[9].rstrip("\n")
 
             tk.Button(janelaapresentar, text="Voltar o menu", command=lambda:[janelaapresentar.destroy(),janelaeditar.destroy(),janelainserir.destroy()]).grid(row=13, column=1)
 
