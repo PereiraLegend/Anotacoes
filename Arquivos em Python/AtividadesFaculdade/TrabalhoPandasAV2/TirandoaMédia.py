@@ -14,6 +14,7 @@ iris_df = pd.read_csv("iris.data")
 wine_df = pd.read_csv("wine.data")
 accelerometer_df = pd.read_csv("accelerometer.csv")
 tetuancity_df = pd.read_csv("Tetuan City power consumption.csv", low_memory= False)
+pedalmeedges_df = pd.read_csv("pedalme_edges.csv")
 
 print("#############################################################################################################")
 print("#############################################################################################################")
@@ -138,7 +139,6 @@ print(iris_df.mode()) # Tirando a moda (amostral) [["5.1","3.5","1.4","0.2"]]
 print("========================================================================")
 print("========================================================================")
 print("========================================================================")
-
 
 
 print("#############################################################################################################")
@@ -527,7 +527,6 @@ print("------------------------------------------------------------------------"
 print(accelerometer_df.sort_values('z', ascending= False))
 
 
-
 print("========================================================================")
 print("DESCRIÇÃO:")
 print("========================================================================")
@@ -565,7 +564,6 @@ print("COLUNA 5:")
 print("MÉDIA:", accelerometer_df[["z"]].mean())
 print("------------------------------------------------------------------------")
 print(accelerometer_df[["z"]] < accelerometer_df[["z"]].mean())
-
 
 
 print("========================================================================")
@@ -666,7 +664,6 @@ print("------------------------------------------------------------------------"
 print(tetuancity_df.sort_values('Zone 3  Power Consumption'))
 
 
-
 print("========================================================================")
 print("ORDENANDO DE FORMA DECRESCENTE CADA UMA DAS COLUNAS:")
 print("========================================================================")
@@ -705,7 +702,6 @@ print("------------------------------------------------------------------------"
 print("COLUNA 9:")
 print("------------------------------------------------------------------------")
 print(tetuancity_df.sort_values('Zone 3  Power Consumption', ascending= False))
-
 
 
 print("========================================================================")
@@ -764,7 +760,6 @@ print("------------------------------------------------------------------------"
 print(tetuancity_df[['Zone 3  Power Consumption']] < tetuancity_df[['Zone 3  Power Consumption']].mean())
 
 
-
 print("========================================================================")
 print("VALORES ACIMA DA MÉDIA EM CADA COLUNA:")
 print("========================================================================")
@@ -819,24 +814,137 @@ print("========================================================================"
 print("========================================================================")
 
 
+print("#############################################################################################################")
+print("#############################################################################################################")
+print("USANDO O PEDALME EDGES")
+print("#############################################################################################################")
+print("#############################################################################################################")
+
+print("========================================================================")
+print("TIPOS DE DADOS DO DATAFRAME:")
+print("========================================================================")
+print(pedalmeedges_df.dtypes)
+
+print("========================================================================")
+print("TIPOS DE DADOS DE CADA COLUNA:")
+print("========================================================================")
+print(pedalmeedges_df.info())
+
+print("========================================================================")
+print("DADOS BRUTOS")
+print("========================================================================")
+print(pedalmeedges_df)
+
+print("========================================================================")
+print("ORDENANDO DE FORMA ASCENDENTE CADA UMA DAS COLUNAS:")
+print("========================================================================")
+print("COLUNA 1:")
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df.sort_values("from"))
+print("------------------------------------------------------------------------")
+print("COLUNA 2:")
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df.sort_values("to"))
+print("------------------------------------------------------------------------")
+print("COLUNA 3:")
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df.sort_values('weight'))
+
+
+print("========================================================================")
+print("ORDENANDO DE FORMA DECRESCENTE CADA UMA DAS COLUNAS:")
+print("========================================================================")
+print("COLUNA 1:")
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df.sort_values("from", ascending= False))
+print("------------------------------------------------------------------------")
+print("COLUNA 2:")
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df.sort_values("to", ascending= False))
+print("------------------------------------------------------------------------")
+print("COLUNA 3:")
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df.sort_values('weight', ascending= False))
+
+
+print("========================================================================")
+print("DESCRIÇÃO:")
+print("========================================================================")
+print(pedalmeedges_df.describe())
+
+print("========================================================================")
+print("MÉDIA:")
+print("========================================================================")
+# DateTima é data
+print(pedalmeedges_df[["from","to","weight"]].mean()) # Tirando a média
+
+print("========================================================================")
+print("VALORES ABAIXO DA MÉDIA EM CADA COLUNA:")
+print("========================================================================")
+print("COLUNA 1:")
+print("MÉDIA:", pedalmeedges_df[['from']].mean())
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df[['from']] < pedalmeedges_df[['from']].mean())
+print("------------------------------------------------------------------------")
+print("COLUNA 2:")
+print("MÉDIA:", pedalmeedges_df[['to']].mean())
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df[['to']] < pedalmeedges_df[['to']].mean())
+print("------------------------------------------------------------------------")
+print("COLUNA 3:")
+print("MÉDIA:", pedalmeedges_df[['weight']].mean())
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df[['weight']] < pedalmeedges_df[['weight']].mean())
+
+
+print("========================================================================")
+print("VALORES ACIMA DA MÉDIA EM CADA COLUNA:")
+print("========================================================================")
+print("COLUNA 1:")
+print("MÉDIA:", pedalmeedges_df[['from']].mean())
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df[['from']] > pedalmeedges_df[['from']].mean())
+print("------------------------------------------------------------------------")
+print("COLUNA 2:")
+print("MÉDIA:", pedalmeedges_df[['to']].mean())
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df[['to']] > pedalmeedges_df[['to']].mean())
+print("------------------------------------------------------------------------")
+print("COLUNA 3:")
+print("MÉDIA:", pedalmeedges_df[['weight']].mean())
+print("------------------------------------------------------------------------")
+print(pedalmeedges_df[['weight']] > pedalmeedges_df[['weight']].mean())
+
+
+print("========================================================================")
+print("MODA:")
+print("========================================================================")
+print(pedalmeedges_df.mode()) # Tirando a moda (amostral)
+print("========================================================================")
+print("========================================================================")
+print("========================================================================")
+
+
 # Criando os Gráficos:
 
-"""
+
 iris_dfG = px.data.iris()
 grf = px.scatter(iris_dfG, x='sepal_width', y='sepal_length', color='species', symbol='species')
 grf.show()
-"""
-"""
+
+
 wine_dfG = px.data.wine()
 grf2 = px.scatter(wine_dfG, x='sepal_width', y='sepal_length', color='species', symbol='species')
 grf2.show()
-"""
+
 accelerometer_dfG = px.csv.accelerometer()
 grf3 = px.scatter(accelerometer_dfG, x='sepal_width', y='sepal_length', color='species', symbol='species')
 grf3.show()
-"""
+
 tetuancity_dfG = px.csv.Tetuan()
 grf4 = px.scatter(tetuancity_dfG, x='sepal_width', y='sepal_length', color='species', symbol='species')
 grf4.show()
-"""
-# Pesquisar gráfico com atributo csv
+
+pedalmeedges_df = px.csv.pedalme()
+grf5 = px.scatter(pedalmeedges_df, x='sepal_width', y='sepal_length', color='species', symbol='species')
+grf5.show()
