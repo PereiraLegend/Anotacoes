@@ -924,10 +924,14 @@ print("========================================================================"
 print("========================================================================")
 print("========================================================================")
 
-
+"""
+print("Mediana do iris data:")
+media_iris = iris_df.median(numeric_only=True)
+print(media_iris)
+"""
 # Criando os Gráficos:
 
-
+"""
 iris_dfG = px.data.iris()
 grf = px.scatter(iris_dfG, x='sepal_width', y='sepal_length', color='species', symbol='species')
 grf.show()
@@ -948,3 +952,4 @@ grf4.show()
 pedalmeedges_df = px.csv.pedalme()
 grf5 = px.scatter(pedalmeedges_df, x='sepal_width', y='sepal_length', color='species', symbol='species')
 grf5.show()
+"""
