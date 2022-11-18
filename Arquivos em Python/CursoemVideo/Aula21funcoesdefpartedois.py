@@ -23,7 +23,7 @@ def contador(i, f, p):
 
 
 contador(2, 10, 2) # Obs.: aqui vai de 2 a 10 pulando de 2 em 2
-help(contador) # Se eu pegar o help do contador para peagar a descrição dele ele só irá mostrar contador(i, f, p)
+help(contador) # Se eu pegar o help do contador para peagar a descrição dele ele só irá mostrar contador(x, f, p)
 
 print("-=-"*30)
 print('\n')

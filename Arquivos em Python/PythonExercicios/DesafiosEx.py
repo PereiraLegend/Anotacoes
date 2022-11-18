@@ -1169,14 +1169,14 @@ for c in range(0,5):
             menor = valores[c]
 print("Você digitou os valores:",valores)
 print(f"O maior é {maior} nas posições ", end="")
-for i,v in enumerate(valores):
+for x,v in enumerate(valores):
     if v == maior:
-        print(f"{i}...",end="")
+        print(f"{x}...",end="")
 print()
 print(f"O menor é {menor} nas posições ", end="")
-for i,v in enumerate(valores):
+for x,v in enumerate(valores):
     if v == menor:
-        print(f"{i}...", end="")
+        print(f"{x}...", end="")
 print()
 #"""
 # --Desafio79
@@ -1245,7 +1245,7 @@ while True:
     continuar = str(input("Você quer continuar? [S/N]")).strip().upper()
     if "N" in continuar:
         break
-for i, v in enumerate(lista):# Obs.: aqui é dado a separação dos números pares e impares da lista geral para as respectivas listas
+for x, v in enumerate(lista):# Obs.: aqui é dado a separação dos números pares e impares da lista geral para as respectivas listas
     if v % 2 == 0:
         pares.append(v)
     elif v % 2 == 1:
@@ -1464,8 +1464,8 @@ while True:
 print("-"*40)
 print(f'{"No.":<4}{"NOME":<10}{"MÈDIA":>8}')
 print("-"*26)
-for i, a in enumerate(ficha):
-    print(f"{i:<4}{a[0]:<10}{a[2]:>8.1f}")
+for x, a in enumerate(ficha):
+    print(f"{x:<4}{a[0]:<10}{a[2]:>8.1f}")
 while True:
     print("-"*35)
     opc = int(input("Mostrar notas de qual aluno? (999 interrompe): "))
@@ -1516,8 +1516,8 @@ ranking = sorted(jogo.items(), key=itemgetter(1), reverse=True)# Nessa linha oco
 print("-"*20)
 print("Ranking Dos Jogadores")
 print("-"*20)
-for i,v in enumerate(ranking):
-    print(f"{i+1}º lugar: {v[0]} com {v[1]}.")
+for x,v in enumerate(ranking):
+    print(f"{x+1}º lugar: {v[0]} com {v[1]}.")
     sleep(1)
 
 #"""
@@ -1557,8 +1557,8 @@ for k, v in Jogador.items():
     print(f"O campo {k} tem o valor {v}")
 print("-"*30)
 print(f"O jogador {Jogador['Nome']} jogou {len(Jogador['Gols'])} partidas.")
-for i, v in enumerate(Jogador['Gols']):
-    print(f" => Na pertida {i}, fez {v} gols.")
+for x, v in enumerate(Jogador['Gols']):
+    print(f" => Na pertida {x}, fez {v} gols.")
 print(f"Foi um total de {Jogador['Total']} gols.")
 #"""
 # --Desafio094
@@ -1629,8 +1629,8 @@ while True:
 print("-"*40)
 #Essa parte do código aqui vai mostrar os cabeçalhos
 print('Cod ', end="")
-for i in Jogadores.keys():
-    print(f"{i:<15}", end="")
+for x in Jogadores.keys():
+    print(f"{x:<15}", end="")
 print()
 
 print("-"*40)
@@ -1649,8 +1649,8 @@ while True:
         print(f"ERRO! Não existe jogador com esse código {busca}")
     else:
         print(f" -- LEVANTAMENTO DO JOGADOR {Time[busca]['Nome']}:")
-        for i, g in enumerate(Time[busca]['Gols']):
-            print(f'    No jogo {i + 1} fez {g} gols.')
+        for x, g in enumerate(Time[busca]['Gols']):
+            print(f'    No jogo {x + 1} fez {g} gols.')
     print('-'*40)
 print("<< VOLTE SEMPRE >>")
 #"""
@@ -1683,9 +1683,9 @@ escreva('Casa Grande')
 # --Desafio098
 """
 from time import sleep
-def contagem(i,f,p):
-    print(f"Contagem de {i} até {f} de {p} em {p}")
-    for t in range(i,f,p):
+def contagem(x,f,p):
+    print(f"Contagem de {x} até {f} de {p} em {p}")
+    for t in range(x,f,p):
         print(f"{t} ", end="")
         sleep(0.5)
     print("FIM!")
@@ -1703,23 +1703,23 @@ contagem(inicio,fim,passo)
 # --Ou posso fazer dessa forma:
 """
 from time import sleep
-def contagem(i,f,p):
+def contagem(x,f,p):
     # Esse comando abaixo, os dois primeiros ifs, servem para que o programa se certtifique que não dará erro, pois o p não pode ser zero e nem negativo;
     if p < 0:
         p *= -1
     if p == 0:
         p = 1
-    print(f"Contagem de {i} até {f} de {p} em {p}")
+    print(f"Contagem de {x} até {f} de {p} em {p}")
 
-    if i < f:
-        cont = i
+    if x < f:
+        cont = x
         while cont <= f:
             print(f'{cont} ', end='')
             sleep(0.5)
             cont += p
         print('FIM!')
     else:
-        cont = i
+        cont = x
         while cont >= f:
             print(f'{cont} ',end='')
             sleep(0.5)

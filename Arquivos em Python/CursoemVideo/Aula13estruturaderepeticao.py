@@ -15,10 +15,10 @@ for c in range(0,n+1):
 print("FIM")
 """
 """
-i = int(input("Inicio: "))
+x = int(input("Inicio: "))
 f = int(input("Fim: "))
 p = int(input("Passo: "))
-for c in range(i,f+1,p):
+for c in range(x,f+1,p):
     print(c)
 print("FIM")
 """

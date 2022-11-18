@@ -1,13 +1,8 @@
-# Parte feita por Lucas Pereira Dos Santos
-import colorsys
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import pyplot
 import plotly.express as px
-import seaborn as sns
-
-# Tirando informações de média e moda do iris.data
 """
  Obs.: Mantive o iris data na sua forma original, logo o pandas o lê como coluna 1 = 5.1,
  coluna 2 = 3.5, coluna 3 = 1.4, coluna 4= 0.2, ele os associa como seus respectivos nomes
@@ -30,16 +25,19 @@ print("========================================================================"
 print("TIPOS DE DADOS DO DATAFRAME:")
 print("========================================================================")
 print(iris_df.dtypes)
+print("========================================================================")
 
 print("========================================================================")
 print("TIPOS DE DADOS DE CADA COLUNA:")
 print("========================================================================")
 print(iris_df.info())
+print("========================================================================")
 
 print("========================================================================")
 print("DADOS BRUTOS")
 print("========================================================================")
 print(iris_df)
+print("========================================================================")
 
 print("========================================================================")
 print("ORDENANDO DE FORMA ASCENDENTE CADA UMA DAS COLUNAS:")
@@ -59,6 +57,7 @@ print("------------------------------------------------------------------------"
 print("COLUNA 4:")
 print("------------------------------------------------------------------------")
 print(iris_df.sort_values('0.2'))
+print("========================================================================")
 
 print("========================================================================")
 print("ORDENANDO DE FORMA DECRESCENTE CADA UMA DAS COLUNAS:")
@@ -78,16 +77,19 @@ print("------------------------------------------------------------------------"
 print("COLUNA 4:")
 print("------------------------------------------------------------------------")
 print(iris_df.sort_values('0.2', ascending = False))
+print("========================================================================")
 
 print("========================================================================")
 print("DESCRIÇÃO:")
 print("========================================================================")
 print(iris_df.describe())
+print("========================================================================")
 
 print("========================================================================")
-print("MÉDIA:")
+print("MÉDIA DO IRIS.DATA:")
 print("========================================================================")
 print(iris_df[["5.1","3.5","1.4","0.2"]].mean()) # Tirando a média
+print("========================================================================")
 
 print("========================================================================")
 print("VALORES ABAIXO DA MÉDIA EM CADA COLUNA:")
@@ -111,6 +113,7 @@ print("COLUNA 4:")
 print("MÉDIA:",iris_df[["0.2"]].mean())
 print("------------------------------------------------------------------------")
 print(iris_df[["0.2"]] < iris_df[["0.2"]].mean())
+print("========================================================================")
 
 print("========================================================================")
 print("VALORES ACIMA DA MÉDIA EM CADA COLUNA:")
@@ -134,15 +137,52 @@ print("COLUNA 4:")
 print("MÉDIA:",iris_df[["0.2"]].mean())
 print("------------------------------------------------------------------------")
 print(iris_df[["0.2"]] > iris_df[["0.2"]].mean())
+print("========================================================================")
 
 print("========================================================================")
-print("MODA:")
+print("DESVIO-PADRÃO DO IRIS.DATA:")
+print("========================================================================")
+desviopd1  = iris_df.loc[:,].std(numeric_only=True)
+print(str(desviopd1))
+print("========================================================================")
+
+print("========================================================================")
+print("MODA DO IRIS.DATA:")
 print("========================================================================")
 print(iris_df.mode()) # Tirando a moda (amostral) [["5.1","3.5","1.4","0.2"]]
 print("========================================================================")
+
 print("========================================================================")
+print("MEDIANA DO IRIS.DATA:")
+print("========================================================================")
+media_iris = iris_df.median(numeric_only=True)
+print(media_iris)
 print("========================================================================")
 
+maximo_coluna1 = iris_df.loc[:,'5.1'].max()
+minimo_coluna1 = iris_df.loc[:,'5.1'].min()
+maximo_coluna2 = iris_df.loc[:,'3.5'].max()
+minimo_coluna2 = iris_df.loc[:,'3.5'].min()
+maximo_coluna3 = iris_df.loc[:,'1.4'].max()
+minimo_coluna3 = iris_df.loc[:,'1.4'].min()
+maximo_coluna4 = iris_df.loc[:,'0.2'].max()
+minimo_coluna4 = iris_df.loc[:,'0.2'].min()
+
+print("========================================================================")
+print("MAIOR E MENOR VALOR DAS COLUNAS DO IRIS.DATA:")
+print("========================================================================")
+print("Maximo da coluna 1 = "+str(maximo_coluna1))
+print("Minimo coluna 1 = "+str(minimo_coluna1))
+print("========================================================================")
+print("Maximo da coluna 2 = "+str(maximo_coluna2))
+print("Minimo coluna 2 = "+str(minimo_coluna2))
+print("========================================================================")
+print("Maximo da coluna 3 = "+str(maximo_coluna3))
+print("Minimo coluna 3 = "+str(minimo_coluna3))
+print("========================================================================")
+print("Maximo da coluna 4 = "+str(maximo_coluna4))
+print("Minimo coluna 4 = "+str(minimo_coluna4))
+print("========================================================================")
 
 print("#############################################################################################################")
 print("#############################################################################################################")
@@ -155,16 +195,19 @@ print("========================================================================"
 print("TIPOS DE DADOS DO DATAFRAME:")
 print("========================================================================")
 print(wine_df.dtypes)
+print("========================================================================")
 
 print("========================================================================")
 print("TIPOS DE DADOS DE CADA COLUNA:")
 print("========================================================================")
 print(wine_df.info())
+print("========================================================================")
 
 print("========================================================================")
 print("DADOS BRUTOS")
 print("========================================================================")
 print(wine_df)
+print("========================================================================")
 
 print("========================================================================")
 print("ORDENANDO DE FORMA ASCENDENTE CADA UMA DAS COLUNAS:")
@@ -224,6 +267,7 @@ print("------------------------------------------------------------------------"
 print("COLUNA 14:")
 print("------------------------------------------------------------------------")
 print(wine_df.sort_values('1065'))
+print("========================================================================")
 
 
 print("========================================================================")
@@ -284,16 +328,19 @@ print("------------------------------------------------------------------------"
 print("COLUNA 14:")
 print("------------------------------------------------------------------------")
 print(wine_df.sort_values('1065', ascending= False))
+print("========================================================================")
 
 print("========================================================================")
 print("DESCRIÇÃO:")
 print("========================================================================")
 print(wine_df.describe())
+print("========================================================================")
 
 print("========================================================================")
-print("MÉDIA:")
+print("MÉDIA DO WINE.DATA:")
 print("========================================================================")
 print(wine_df[["1","14.23",'1.71','2.43','15.6','127','2.8','3.06','.28','2.29','5.64','1.04','3.92','1065']].mean()) # Tirando a média
+print("========================================================================")
 
 print("========================================================================")
 print("VALORES ABAIXO DA MÉDIA EM CADA COLUNA:")
@@ -372,7 +419,7 @@ print("COLUNA 15:")
 print("MÉDIA:",wine_df[["1065"]].mean())
 print("------------------------------------------------------------------------")
 print(wine_df[["1065"]] < wine_df[["1065"]].mean())
-
+print("========================================================================")
 
 print("========================================================================")
 print("VALORES ACIMA DA MÉDIA EM CADA COLUNA:")
@@ -451,14 +498,114 @@ print("COLUNA 15:")
 print("MÉDIA:",wine_df[["1065"]].mean())
 print("------------------------------------------------------------------------")
 print(wine_df[["1065"]] > wine_df[["1065"]].mean())
-
+print("========================================================================")
 
 print("========================================================================")
-print("MODA:")
+print("DESVIO-PADRÃO DO WINE.DATA:")
+print("========================================================================")
+desviopd2  = wine_df.loc[:,].std(numeric_only=True)
+print(str(desviopd2))
+print("========================================================================")
+
+print("========================================================================")
+print("MODA DO WINE.DATA:")
 print("========================================================================")
 print(wine_df.mode()) # Tirando a moda (amostral)
 print("========================================================================")
+
 print("========================================================================")
+print("MEDIANA DO WINE.DATA:")
+print("========================================================================")
+media_wine = wine_df.median(numeric_only=True)
+print(media_wine)
+print("========================================================================")
+
+maximo_coluna1_wine = wine_df.loc[:,'1'].max()
+minimo_coluna1_wine = wine_df.loc[:,'1'].min()
+
+maximo_coluna2_wine = wine_df.loc[:,'14.23'].max()
+minimo_coluna2_wine = wine_df.loc[:,'14.23'].min()
+
+maximo_coluna3_wine = wine_df.loc[:,'1.71'].max()
+minimo_coluna3_wine = wine_df.loc[:,'1.71'].min()
+
+maximo_coluna4_wine = wine_df.loc[:,'2.43'].max()
+minimo_coluna4_wine = wine_df.loc[:,'2.43'].min()
+
+maximo_coluna5_wine = wine_df.loc[:,'15.6'].max()
+minimo_coluna5_wine = wine_df.loc[:,'15.6'].min()
+
+maximo_coluna6_wine = wine_df.loc[:,'127'].max()
+minimo_coluna6_wine = wine_df.loc[:,'127'].min()
+
+maximo_coluna7_wine = wine_df.loc[:,'2.8'].max()
+minimo_coluna7_wine = wine_df.loc[:,'2.8'].min()
+
+maximo_coluna8_wine = wine_df.loc[:,'3.06'].max()
+minimo_coluna8_wine = wine_df.loc[:,'3.06'].min()
+
+maximo_coluna9_wine = wine_df.loc[:,'.28'].max()
+minimo_coluna9_wine = wine_df.loc[:,'.28'].min()
+
+maximo_coluna10_wine = wine_df.loc[:,'2.29'].max()
+minimo_coluna10_wine = wine_df.loc[:,'2.29'].min()
+
+maximo_coluna11_wine = wine_df.loc[:,'5.64'].max()
+minimo_coluna11_wine = wine_df.loc[:,'5.64'].min()
+
+maximo_coluna12_wine = wine_df.loc[:,'1.04'].max()
+minimo_coluna12_wine = wine_df.loc[:,'1.04'].min()
+
+maximo_coluna13_wine = wine_df.loc[:,'3.92'].max()
+minimo_coluna13_wine = wine_df.loc[:,'3.92'].min()
+
+maximo_coluna14_wine = wine_df.loc[:,'1065'].max()
+minimo_coluna14_wine = wine_df.loc[:,'1065'].min()
+
+print("========================================================================")
+print("MAIOR E MENOR VALOR DAS COLUNAS DO WINE.DATA:")
+print("========================================================================")
+print("Maximo da coluna 1 = "+str(maximo_coluna1_wine))
+print("Minimo coluna 1 = "+str(minimo_coluna1_wine))
+print("========================================================================")
+print("Maximo da coluna 2 = "+str(maximo_coluna2_wine))
+print("Minimo coluna 2 = "+str(minimo_coluna2_wine))
+print("========================================================================")
+print("Maximo da coluna 3 = "+str(maximo_coluna3_wine))
+print("Minimo coluna 3 = "+str(minimo_coluna3_wine))
+print("========================================================================")
+print("Maximo da coluna 4 = "+str(maximo_coluna4_wine))
+print("Minimo coluna 4 = "+str(minimo_coluna4_wine))
+print("========================================================================")
+print("Maximo da coluna 5 = "+str(maximo_coluna5_wine))
+print("Minimo coluna 5 = "+str(minimo_coluna5_wine))
+print("========================================================================")
+print("Maximo da coluna 6 = "+str(maximo_coluna6_wine))
+print("Minimo coluna 6 = "+str(minimo_coluna6_wine))
+print("========================================================================")
+print("Maximo da coluna 7 = "+str(maximo_coluna7_wine))
+print("Minimo coluna 7 = "+str(minimo_coluna7_wine))
+print("========================================================================")
+print("Maximo da coluna 8 = "+str(maximo_coluna8_wine))
+print("Minimo coluna 8 = "+str(minimo_coluna8_wine))
+print("========================================================================")
+print("Maximo da coluna 9 = "+str(maximo_coluna9_wine))
+print("Minimo coluna 9 = "+str(minimo_coluna9_wine))
+print("========================================================================")
+print("Maximo da coluna 10 = "+str(maximo_coluna10_wine))
+print("Minimo coluna 10 = "+str(minimo_coluna10_wine))
+print("========================================================================")
+print("Maximo da coluna 11 = "+str(maximo_coluna11_wine))
+print("Minimo coluna 11 = "+str(minimo_coluna11_wine))
+print("========================================================================")
+print("Maximo da coluna 12 = "+str(maximo_coluna12_wine))
+print("Minimo coluna 12 = "+str(minimo_coluna12_wine))
+print("========================================================================")
+print("Maximo da coluna 13 = "+str(maximo_coluna13_wine))
+print("Minimo coluna 13 = "+str(minimo_coluna13_wine))
+print("========================================================================")
+print("Maximo da coluna 14 = "+str(maximo_coluna14_wine))
+print("Minimo coluna 14 = "+str(minimo_coluna14_wine))
 print("========================================================================")
 
 print("#############################################################################################################")
@@ -471,16 +618,19 @@ print("========================================================================"
 print("TIPOS DE DADOS DO DATAFRAME:")
 print("========================================================================")
 print(accelerometer_df.dtypes)
+print("========================================================================")
 
 print("========================================================================")
 print("TIPOS DE DADOS DE CADA COLUNA:")
 print("========================================================================")
 print(accelerometer_df.info())
+print("========================================================================")
 
 print("========================================================================")
 print("DADOS BRUTOS")
 print("========================================================================")
 print(accelerometer_df)
+print("========================================================================")
 
 print("========================================================================")
 print("ORDENANDO DE FORMA ASCENDENTE CADA UMA DAS COLUNAS:")
@@ -504,6 +654,7 @@ print("------------------------------------------------------------------------"
 print("COLUNA 5:")
 print("------------------------------------------------------------------------")
 print(accelerometer_df.sort_values('z'))
+print("========================================================================")
 
 
 print("========================================================================")
@@ -528,6 +679,7 @@ print("------------------------------------------------------------------------"
 print("COLUNA 5:")
 print("------------------------------------------------------------------------")
 print(accelerometer_df.sort_values('z', ascending= False))
+print("========================================================================")
 
 
 print("========================================================================")
@@ -536,9 +688,10 @@ print("========================================================================"
 print(accelerometer_df.describe())
 
 print("========================================================================")
-print("MÉDIA:")
+print("MÉDIA DO ACCELEROMETER:")
 print("========================================================================")
 print(accelerometer_df[["wconfid", "pctid", 'x', 'y', 'z']].mean()) # Tirando a média
+print("========================================================================")
 
 print("========================================================================")
 print("VALORES ABAIXO DA MÉDIA EM CADA COLUNA:")
@@ -567,6 +720,7 @@ print("COLUNA 5:")
 print("MÉDIA:", accelerometer_df[["z"]].mean())
 print("------------------------------------------------------------------------")
 print(accelerometer_df[["z"]] < accelerometer_df[["z"]].mean())
+print("========================================================================")
 
 
 print("========================================================================")
@@ -596,14 +750,60 @@ print("COLUNA 5:")
 print("MÉDIA:", accelerometer_df[["z"]].mean())
 print("------------------------------------------------------------------------")
 print(accelerometer_df[["z"]] > accelerometer_df[["z"]].mean())
-
+print("========================================================================")
 
 print("========================================================================")
-print("MODA:")
+print("DESVIO-PADRÃO DO ACCELEROMETER:")
+print("========================================================================")
+desviopd3  = accelerometer_df.loc[:,].std(numeric_only=True)
+print(str(desviopd3))
+print("========================================================================")
+
+print("========================================================================")
+print("MODA DO ACCELEROMETER:")
 print("========================================================================")
 print(accelerometer_df.mode()) # Tirando a moda (amostral)
 print("========================================================================")
+
 print("========================================================================")
+print("MEDIANA DO ACCELEROMETER:")
+print("========================================================================")
+media_accelerometer = accelerometer_df.median(numeric_only=True)
+print(media_accelerometer)
+print("========================================================================")
+
+maximo_A = accelerometer_df.loc[:,'wconfid'].max()
+minimo_A = accelerometer_df.loc[:,'wconfid'].min()
+
+maximo_B = accelerometer_df.loc[:,'pctid'].max()
+minimo_B = accelerometer_df.loc[:,'pctid'].min()
+
+maximo_C = accelerometer_df.loc[:,'x'].max()
+minimo_C = accelerometer_df.loc[:,'x'].min()
+
+maximo_D = accelerometer_df.loc[:,'y'].max()
+minimo_D = accelerometer_df.loc[:,'y'].min()
+
+maximo_E = accelerometer_df.loc[:,'z'].max()
+minimo_E = accelerometer_df.loc[:,'z'].min()
+
+print("========================================================================")
+print("MAIOR E MENOR VALOR DAS COLUNAS DO ACCELEROMETER:")
+print("========================================================================")
+print("Maximo da coluna 1 = "+str(maximo_A))
+print("Minimo coluna 1 = "+str(minimo_A))
+print("========================================================================")
+print("Maximo da coluna 2 = "+str(maximo_B))
+print("Minimo coluna 2 = "+str(minimo_B))
+print("========================================================================")
+print("Maximo da coluna 3 = "+str(maximo_C))
+print("Minimo coluna 3 = "+str(minimo_C))
+print("========================================================================")
+print("Maximo da coluna 4 = "+str(maximo_D))
+print("Minimo coluna 4 = "+str(minimo_D))
+print("========================================================================")
+print("Maximo da coluna 5 = "+str(maximo_E))
+print("Minimo coluna 5 = "+str(minimo_E))
 print("========================================================================")
 
 print("#############################################################################################################")
@@ -616,16 +816,19 @@ print("========================================================================"
 print("TIPOS DE DADOS DO DATAFRAME:")
 print("========================================================================")
 print(tetuancity_df.dtypes)
+print("========================================================================")
 
 print("========================================================================")
 print("TIPOS DE DADOS DE CADA COLUNA:")
 print("========================================================================")
 print(tetuancity_df.info())
+print("========================================================================")
 
 print("========================================================================")
 print("DADOS BRUTOS")
 print("========================================================================")
 print(tetuancity_df)
+print("========================================================================")
 
 print("========================================================================")
 print("ORDENANDO DE FORMA ASCENDENTE CADA UMA DAS COLUNAS:")
@@ -665,6 +868,7 @@ print("------------------------------------------------------------------------"
 print("COLUNA 9:")
 print("------------------------------------------------------------------------")
 print(tetuancity_df.sort_values('Zone 3  Power Consumption'))
+print("========================================================================")
 
 
 print("========================================================================")
@@ -705,6 +909,7 @@ print("------------------------------------------------------------------------"
 print("COLUNA 9:")
 print("------------------------------------------------------------------------")
 print(tetuancity_df.sort_values('Zone 3  Power Consumption', ascending= False))
+print("========================================================================")
 
 
 print("========================================================================")
@@ -713,10 +918,11 @@ print("========================================================================"
 print(tetuancity_df.describe())
 
 print("========================================================================")
-print("MÉDIA:")
+print("MÉDIA DO TETUAN CITY:")
 print("========================================================================")
 # DateTima é data
 print(tetuancity_df[['Temperature','Humidity','Wind Speed','general diffuse flows','diffuse flows','Zone 1 Power Consumption','Zone 2  Power Consumption','Zone 3  Power Consumption']].mean()) # Tirando a média
+print("========================================================================")
 
 print("========================================================================")
 print("VALORES ABAIXO DA MÉDIA EM CADA COLUNA:")
@@ -761,6 +967,7 @@ print("COLUNA 9:")
 print("MÉDIA:", tetuancity_df[['Zone 3  Power Consumption']].mean())
 print("------------------------------------------------------------------------")
 print(tetuancity_df[['Zone 3  Power Consumption']] < tetuancity_df[['Zone 3  Power Consumption']].mean())
+print("========================================================================")
 
 
 print("========================================================================")
@@ -806,16 +1013,86 @@ print("COLUNA 9:")
 print("MÉDIA:", tetuancity_df[['Zone 3  Power Consumption']].mean())
 print("------------------------------------------------------------------------")
 print(tetuancity_df[['Zone 3  Power Consumption']] > tetuancity_df[['Zone 3  Power Consumption']].mean())
+print("========================================================================")
+
+print("========================================================================")
+print("DESVIO-PADRÃO DO TETUAN CITY:")
+print("========================================================================")
+desviopd4  = tetuancity_df.loc[:,].std(numeric_only=True)
+print(str(desviopd4))
+print("========================================================================")
 
 
 print("========================================================================")
-print("MODA:")
+print("MODA DO TETUAN CITY:")
 print("========================================================================")
 print(tetuancity_df.mode()) # Tirando a moda (amostral)
 print("========================================================================")
+
 print("========================================================================")
+print("MEDIANA DO TETUAN CITY:")
+print("========================================================================")
+media_tetuancity = tetuancity_df.median(numeric_only=True)
+print(media_tetuancity)
 print("========================================================================")
 
+maximo_1 = tetuancity_df.loc[:,'DateTime'].max()
+minimo_1 = tetuancity_df.loc[:,'DateTime'].min()
+
+maximo_2 = tetuancity_df.loc[:,'Temperature'].max()
+minimo_2 = tetuancity_df.loc[:,'Temperature'].min()
+
+maximo_3 = tetuancity_df.loc[:,'Humidity'].max()
+minimo_3 = tetuancity_df.loc[:,'Humidity'].min()
+
+maximo_4 = tetuancity_df.loc[:,'Wind Speed'].max()
+minimo_4 = tetuancity_df.loc[:,'Wind Speed'].min()
+
+maximo_5 = tetuancity_df.loc[:,'general diffuse flows'].max()
+minimo_5 = tetuancity_df.loc[:,'general diffuse flows'].min()
+
+maximo_6 = tetuancity_df.loc[:,'diffuse flows'].max()
+minimo_6 = tetuancity_df.loc[:,'diffuse flows'].min()
+
+maximo_7 = tetuancity_df.loc[:,'Zone 1 Power Consumption'].max()
+minimo_7 = tetuancity_df.loc[:,'Zone 1 Power Consumption'].min()
+
+maximo_8 = tetuancity_df.loc[:,'Zone 2  Power Consumption'].max()
+minimo_8 = tetuancity_df.loc[:,'Zone 2  Power Consumption'].min()
+
+maximo_9 = tetuancity_df.loc[:,'Zone 3  Power Consumption'].max()
+minimo_9 = tetuancity_df.loc[:,'Zone 3  Power Consumption'].min()
+
+print("========================================================================")
+print("MAIOR E MENOR VALOR DAS COLUNAS DO TETUAN CITY:")
+print("========================================================================")
+print("Maximo da coluna 1 = "+str(maximo_1))
+print("Minimo coluna 1 = "+str(minimo_1))
+print("========================================================================")
+print("Maximo da coluna 2 = "+str(maximo_2))
+print("Minimo coluna 2 = "+str(minimo_2))
+print("========================================================================")
+print("Maximo da coluna 3 = "+str(maximo_3))
+print("Minimo coluna 3 = "+str(minimo_3))
+print("========================================================================")
+print("Maximo da coluna 4 = "+str(maximo_4))
+print("Minimo coluna 4 = "+str(minimo_4))
+print("========================================================================")
+print("Maximo da coluna 5 = "+str(maximo_5))
+print("Minimo coluna 5 = "+str(minimo_5))
+print("========================================================================")
+print("Maximo da coluna 6 = "+str(maximo_6))
+print("Minimo coluna 6 = "+str(minimo_6))
+print("========================================================================")
+print("Maximo da coluna 7 = "+str(maximo_7))
+print("Minimo coluna 7 = "+str(minimo_7))
+print("========================================================================")
+print("Maximo da coluna 8 = "+str(maximo_8))
+print("Minimo coluna 8 = "+str(minimo_8))
+print("========================================================================")
+print("Maximo da coluna 9 = "+str(maximo_9))
+print("Minimo coluna 9 = "+str(minimo_9))
+print("========================================================================")
 
 print("#############################################################################################################")
 print("#############################################################################################################")
@@ -827,16 +1104,19 @@ print("========================================================================"
 print("TIPOS DE DADOS DO DATAFRAME:")
 print("========================================================================")
 print(pedalmeedges_df.dtypes)
+print("========================================================================")
 
 print("========================================================================")
 print("TIPOS DE DADOS DE CADA COLUNA:")
 print("========================================================================")
 print(pedalmeedges_df.info())
+print("========================================================================")
 
 print("========================================================================")
 print("DADOS BRUTOS")
 print("========================================================================")
 print(pedalmeedges_df)
+print("========================================================================")
 
 print("========================================================================")
 print("ORDENANDO DE FORMA ASCENDENTE CADA UMA DAS COLUNAS:")
@@ -852,6 +1132,7 @@ print("------------------------------------------------------------------------"
 print("COLUNA 3:")
 print("------------------------------------------------------------------------")
 print(pedalmeedges_df.sort_values('weight'))
+print("========================================================================")
 
 
 print("========================================================================")
@@ -868,18 +1149,21 @@ print("------------------------------------------------------------------------"
 print("COLUNA 3:")
 print("------------------------------------------------------------------------")
 print(pedalmeedges_df.sort_values('weight', ascending= False))
+print("========================================================================")
 
 
 print("========================================================================")
 print("DESCRIÇÃO:")
 print("========================================================================")
 print(pedalmeedges_df.describe())
+print("========================================================================")
 
 print("========================================================================")
-print("MÉDIA:")
+print("MÉDIA DO PEDALME EDGES:")
 print("========================================================================")
 # DateTima é data
 print(pedalmeedges_df[["from","to","weight"]].mean()) # Tirando a média
+print("========================================================================")
 
 print("========================================================================")
 print("VALORES ABAIXO DA MÉDIA EM CADA COLUNA:")
@@ -898,6 +1182,7 @@ print("COLUNA 3:")
 print("MÉDIA:", pedalmeedges_df[['weight']].mean())
 print("------------------------------------------------------------------------")
 print(pedalmeedges_df[['weight']] < pedalmeedges_df[['weight']].mean())
+print("========================================================================")
 
 
 print("========================================================================")
@@ -917,69 +1202,82 @@ print("COLUNA 3:")
 print("MÉDIA:", pedalmeedges_df[['weight']].mean())
 print("------------------------------------------------------------------------")
 print(pedalmeedges_df[['weight']] > pedalmeedges_df[['weight']].mean())
-
+print("========================================================================")
 
 print("========================================================================")
-print("MODA:")
+print("DESVIO-PADRÃO DO PEDALME EDGES:")
+print("========================================================================")
+desviopd5  = pedalmeedges_df.loc[:,].std(numeric_only=True)
+print(str(desviopd5))
+print("========================================================================")
+
+print("========================================================================")
+print("MODA DO PEDALME EDGES:")
 print("========================================================================")
 print(pedalmeedges_df.mode()) # Tirando a moda (amostral)
 print("========================================================================")
+
+print("========================================================================")
+print("MEDIANA DO PEDALME EDGES:")
+print("========================================================================")
+media_pedalmeedges = pedalmeedges_df.median(numeric_only=True)
+print(media_pedalmeedges)
+print("========================================================================")
+
+maximo_l = pedalmeedges_df.loc[:,'from'].max()
+minimo_l = pedalmeedges_df.loc[:,'from'].min()
+
+maximo_m = pedalmeedges_df.loc[:,'to'].max()
+minimo_m = pedalmeedges_df.loc[:,'to'].min()
+
+maximo_n = pedalmeedges_df.loc[:,'weight'].max()
+minimo_n = pedalmeedges_df.loc[:,'weight'].min()
+
+print("========================================================================")
+print("MAIOR E MENOR VALOR DAS COLUNAS DO PEDALME EDGES:")
+print("========================================================================")
+print("Maximo da coluna 1 = "+str(maximo_l))
+print("Minimo coluna 1 = "+str(minimo_l))
 print("========================================================================")
 print("========================================================================")
+print("Maximo da coluna 2 = "+str(maximo_m))
+print("Minimo coluna 2 = "+str(minimo_m))
+print("========================================================================")
+print("========================================================================")
+print("Maximo da coluna 3 = "+str(maximo_n))
+print("Minimo coluna 3 = "+str(minimo_n))
+print("========================================================================")
 
-"""
-print("Mediana do iris data:")
-media_iris = iris_df.median(numeric_only=True)
-print(media_iris)
-"""
-# Criando os Gráficos:
+#Gerando gráficos
 
-"""
-iris_dfG = px.data.iris()
-grf = px.scatter(iris_dfG, x='sepal_width', y='sepal_length', color='species', symbol='species')
-grf.show()
-
-wine_dfG = px.data.wine()
-grf2 = px.scatter(wine_dfG, x='1.71', y='127', color='species', symbol='species')
-grf2.show()
-
-accelerometer_dfG = px.accelerometer().read_csv()
-grf3 = px.scatter(accelerometer_dfG, x='sepal_width', y='sepal_length', color='species', symbol='species')
-grf3.show()
-
-tetuancity_dfG = px.csv.Tetuan()
-grf4 = px.scatter(tetuancity_dfG, x='sepal_width', y='sepal_length', color='species', symbol='species')
-grf4.show()
-
-pedalmeedges_df = px.csv.pedalme()
-grf5 = px.scatter(pedalmeedges_df, x='sepal_width', y='sepal_length', color='species', symbol='species')
-grf5.show()
-"""
-"""
-w = pd.DataFrame("wine.data")
-wine_dfG = pd.DataFrame(w = w)
-wine_dfG.plot.scartter( color='species', symbol='species')
-"""
-"""
-grf2 = px.scatter(wine_dfG, x='1.71', y='127', color='species', symbol='species')
-grf2.show()
-"""
-"""
-plt.figure(figsize=(12,4), dpi=200)
-sns.scatterplot(x="from", y="to", data=pedalmeedges_df)"""
-#pedalmeedges_df.plot.scatter(x="from", y="to")
-plt.scatter(iris_df["5.1"],iris_df["3.5"],color = "black")
-plt.style()
+plt.scatter(iris_df["5.1"],iris_df["3.5"],color = "black", marker="o")
+pyplot.xlabel("5.1")
+pyplot.ylabel("3.5")
+plt.title("Iris.data")
 plt.show()
 
-plt.scatter(pedalmeedges_df["weight"],pedalmeedges_df["from"],pedalmeedges_df["to"],color = "red")
+plt.scatter(pedalmeedges_df["weight"],pedalmeedges_df["from"],pedalmeedges_df["to"],color = "red", marker="*")
+pyplot.xlabel("weight")
+pyplot.ylabel("from")
+pyplot.xlabel("to")
+plt.title("Pedalme_edges.csv")
 plt.show()
 
-plt.scatter(wine_df["1"],wine_df["1.71"],color = "blue")
+plt.scatter(wine_df["1"],wine_df["1.71"],color = "blue", marker="+")
+pyplot.xlabel("1")
+pyplot.ylabel("1.71")
+plt.title("Wine.data")
+
 plt.show()
 
-plt.scatter(accelerometer_df["x"],accelerometer_df["y"],color = "yellow")
+plt.scatter(accelerometer_df["x"],accelerometer_df["y"],color = "yellow", marker="o")
+pyplot.xlabel("x")
+pyplot.ylabel("y")
+plt.title("Accelerometer.csv")
 plt.show()
 
-plt.scatter(tetuancity_df["Temperature"],tetuancity_df["Humidity"],color = "green")
+plt.scatter(tetuancity_df["Temperature"],tetuancity_df["Humidity"],color = "green", marker="*")
+pyplot.xlabel("Temperature")
+pyplot.ylabel("Humidity")
+plt.title("Tetuan City power consuption.csv")
 plt.show()
