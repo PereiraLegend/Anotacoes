@@ -6,9 +6,29 @@
 </head>
 <body>
     <h1>Index</h1>
-    <! –Adicionando algo que foi escrito na view -->
+    <!--Adicionando algo que foi escrito na view-->
     <h2>{{ curso }}</h2>
     <p>{{ outro }}</p>
-    <span>{{ logado }}</span>
+    <!-- <span>{{ logado }}</span> -->
+
+    <!-- Abaixo eu chamo os itens apartir da viewn-->
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produto in produtos %}
+            <tr>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.preco }}</td>
+                <td>{{ produto.estoque }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
