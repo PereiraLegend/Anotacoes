@@ -33,3 +33,6 @@ def index(request):
     return render(request, "index.html", context)  # Aqui defino templates
 def contato(request):
     return render(request, "contato.html") # Aqui crio mais uma página html
+def produto(request, pk):
+    print(f"PK:{pk}")
+    return render(request, 'produto.html')
