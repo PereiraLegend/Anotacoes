@@ -1,11 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Django 1 - Index</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
     <h1>Index</h1>
+    <img src="{% static 'images/lazy-loading-nativo-imagens-iframes_.jpg' %}"/>
     <!--Adicionando algo que foi escrito na view-->
     <h2>{{ curso }}</h2>
     <p>{{ outro }}</p>
@@ -30,5 +33,8 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <button onclick="teste();">Clique-me</button>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

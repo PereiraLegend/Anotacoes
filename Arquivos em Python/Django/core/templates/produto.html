@@ -15,13 +15,13 @@
             </tr>
         </thead>
         <tbody>
-        {% for produto in produtos %}
+        <!-- {% for produto in produtos %} -->
             <tr>
                 <td><a href="{% url 'index' %}">{{ produto.nome }}</a></td>
                 <td>{{ produto.preco }}</td>
                 <td>{{ produto.estoque }}</td>
             </tr>
-        {% endfor %}
+        <!-- {% endfor %}-->
         </tbody>
     </table>
 </body>

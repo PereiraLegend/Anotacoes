@@ -28,11 +28,18 @@ def index(request):
     context = {
         'curso': 'Programação Web com Django Framework',
         'outro': 'Outro Djkango',
-        'produtos': produtos
+        'produtos': produtos,
     }
-    return render(request, "index.html", context)  # Aqui defino templates
+    return render(request,"index.html",context)  # Aqui defino templates
+
 def contato(request):
     return render(request, "contato.html") # Aqui crio mais uma página html
+
 def produto(request, pk):
-    print(f"PK:{pk}")
-    return render(request, 'produto.html')
+    prod = Produto.objects.get(id=pk)
+
+    context = {
+        'produto' : prod
+    }
+    #print(f"PK:{pk}")
+    return render(request, 'produto.html', context)

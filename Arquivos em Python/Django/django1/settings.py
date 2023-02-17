@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ab3v^&g&_hk+_um(_#^)507(q-*d=tmhfb7*hvfn(u09git(28'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Debug True significa que está em modo de desenvolvimento
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"] ## Ao colocar "*" dentro dessa variável estamos dizendo que qualquer máquina com o link do site pode acessá-lo
 
@@ -56,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['templates'],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -116,8 +117,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = 'static/' # Usado durante o desenvolvimento
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles") #usado durante a produção
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
