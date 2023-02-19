@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-ab3v^&g&_hk+_um(_#^)507(q-*d=tmhfb7*hvfn(u09git(28
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Debug True significa que está em modo de desenvolvimento
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"] ## Ao colocar "*" dentro dessa variável estamos dizendo que qualquer máquina com o link do site pode acessá-lo
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,3 +124,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles") #usado durante a produção
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGOUT_REDIRECT_URL = 'index' # Aqui quando eu encerro a sessão ele redireciona para a página do mindex, ou seja a página principal

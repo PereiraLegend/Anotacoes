@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
+    <center>
     <h1>Index</h1>
-    <img src="{% static 'images/lazy-loading-nativo-imagens-iframes_.jpg' %}"/>
+    <img src="{% static 'images/download.png' %}"/>
     <!--Adicionando algo que foi escrito na view-->
     <h2>{{ curso }}</h2>
     <p>{{ outro }}</p>
@@ -35,6 +36,7 @@
     </table>
 
     <button onclick="teste();">Clique-me</button>
+    </center>
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
