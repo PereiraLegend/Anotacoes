@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,8 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
+    {% bootstrap_css %}
 </head>
 <body>
-    <h1>Contato</h1>
+    <div class="container">
+        <h1>Contato</h1>
+        {% bootstrap_messages %}
+
+        <form action="{% url 'contato' %}" method="post" class="form" autocomplete="off"> <!-- Aqui agente vai ter um botão onde a ação desse formulário será pegar os dados que foram digitados e enviar para a url, o autocomplete é para evitar que apareça o nome de outros usuários quando passar o mause encima--> 
+            {% csrf_token %} <!-- É um mecanismo de segurança obrigatório para saber se os dados não foram alterados-->
+            {% bootstrap_form form %} <!-- Aqui eu falo para o css que eu tenho um formulário e falo para ele aplicar o css nesse formulário -->
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            {% endbuttons %}
+        </form>
+    </div>
+{% bootstrap_javascript jquery='full' %}
 </body>
 </html>

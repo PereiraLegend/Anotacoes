@@ -1,7 +1,7 @@
 # Trabalhando com formulários
 from django import forms
 
-class Contatoform(forms.form):
+class ContatoForm(forms.Form):
     nome = forms.CharField(label='Nome', max_length=100)
     email = forms.EmailField(label='E-mail', max_length=100)
     assunto = forms.CharField(label = 'E-mail', max_length=120)
