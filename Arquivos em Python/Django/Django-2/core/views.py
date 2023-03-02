@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.contrib import messages #Serve para mandar mensagens no bootstrap
 from .forms import ContatoForm, ProdutoModelForm
+from .models import Produto
+from django.shortcuts import redirect
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'produtos': Produto.objects.all()
+    }
+    return render(request, 'index.html', context)
 
 def contato(request):
     form = ContatoForm(request.POST or None)
@@ -34,25 +39,29 @@ def contato(request):
     return render(request, 'contato.html', context)
 
 def produto(request):
-    if str(request.method) == 'POST':
-        form = ProdutoModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save() # Basta isso para salvar dados no modelo
-            """
-            prod = form.save(commit=False)
+    print(f'Usuário: {request.user}')
+    if str(request.user) != 'AnonymousUser': # Pra evitar que um usuário anonymo acesse a parte produto sem estar logado
+        if str(request.method) == 'POST':
+            form = ProdutoModelForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save() # Basta isso para salvar dados no modelo
+                """
+                prod = form.save(commit=False)
 
-            print(f'Nome: {prod.nome}')
-            print(f'Preço: {prod.preco}')
-            print(f'Estoque {prod.estoque}')
-            print(f'Imagem: {prod.imagem}')
-            """
-            messages.success(request, 'Produto salvo com sucesso.')
-            form = ProdutoModelForm()
+                print(f'Nome: {prod.nome}')
+                print(f'Preço: {prod.preco}')
+                print(f'Estoque {prod.estoque}')
+                print(f'Imagem: {prod.imagem}')
+                """
+                messages.success(request, 'Produto salvo com sucesso.')
+                form = ProdutoModelForm()
+            else:
+                messages.error(request, 'Erro ao salvar produto.')
         else:
-            messages.error(request, 'Erro ao salvar produto.')
+            form = ProdutoModelForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'produto.html', context)
     else:
-        form = ProdutoModelForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'produto.html', context)
+        return redirect('index') # Se o usuário não estuiver cadastrado ele é redirecionado para esta página
