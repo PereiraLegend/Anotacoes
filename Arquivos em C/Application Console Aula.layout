@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="main.c" Top="No" Tabpos="1" TopLine="1">
+			<Cursor Line="10" Column="22"/>
+		</File>
+		<File Name="biblioteca.h" Top="No" Tabpos="2" TopLine="1">
+			<Cursor Line="10" Column="2"/>
+		</File>
+		<File Name="Calendario.c" Top="Yes" Tabpos="5" TopLine="1">
+			<Cursor Line="1" Column="1"/>
+			<Selection Line="16" Column="3"/>
+		</File>
+	</Files>
+</Layout>
