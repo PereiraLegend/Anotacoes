@@ -3,19 +3,18 @@
 #include <locale.h>
 int main (){
 	setlocale(LC_ALL,"portuguese");
-	int a, b;
+	int a, b, r;
 	printf("Informe o primeiro valor inteiro: \n");
 	scanf("%i",&a);
 	printf("Informe o segundo valor inteiro: \n");
 	scanf("%i",&b);
 	
 	if(a > b){
-		printf("O maior valor é: %i",a);
+		r = a-b;
+		printf("O resultado é: %i", r);
 	}
 	else if(a < b){
-		printf("O maior valor é: %i",b);
-	}
-	else{
-		printf("Os valores são iguais: %i", a);
+		r = b-a;
+		printf("O resultado é: %i", r);
 	}
 }

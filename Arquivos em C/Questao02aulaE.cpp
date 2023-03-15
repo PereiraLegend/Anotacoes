@@ -11,23 +11,23 @@ int main(){
 	printf("Informe o número C: \n");
 	scanf("%i",&C);
 	
-	if(A>(B>C)){
+	if((A>B) && B>C){
+		printf("%i %i %i\n",A,B,C);
+	}
+	else if((A>C) && (C>B)){
+		printf("%i %i %i\n",A,C,B);
+	}
+	else if((B>A) && (A>C)){
+		printf("%i %i %i\n",B,A,C);
+	}
+	else if((B>C) && (C>A)){
+		printf("%i %i %i\n",B,C,A);
+	}
+	else if((C>A) && (A>B)){
+		printf("%i %i %i\n",C,A,B);
+	}
+	else if((C>B) && (B>A)){
 		printf(" %i %i %i\n",C,B,A);
-	}
-	else if(A>(C>B)){
-		printf(" %i %i %i\n",B,C,A);
-	}
-	else if(B>(A>C)){
-		printf(" %i %i %i\n",C,A,B);
-	}
-	else if(B>(C>A)){
-		printf(" %i %i %i\n",A,C,B);
-	}
-	else if(C>(A>B)){
-		printf(" %i %i %i\n",B,A,C);
-	}
-	else if(C>(B>A)){
-		printf(" %i %i %i\n",A,B,C);
 	}
 	
 
