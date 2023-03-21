@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Libs Value="-mwindows -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32"/>
+	<Flags Value=""/>
+	<Target Value="ContadorSimples.exe"/>
+	<CommandLine Value=""/>
+	<CompilerOptions Value="-Wall -s"/>
+	<DeleteObjectsBefore Value="Yes"/>
+	<DeleteObjectsAfter Value="Yes"/>
+	<DeleteMakefileAfter Value="Yes"/>
+	<DeleteResourcesAfter Value="Yes"/>
+	<EnableTheme Value="Yes"/>
+	<RequiresAdmin Value="No"/>
+	<CompilerType Value="CPP"/>
+	<AppType Value="GUI"/>
+	<Files>
+		<File Name="Graphics.cpp"/>
+	</Files>
+</Project>
