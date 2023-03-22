@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout>
 	<Files>
-		<File Name="Teste.cpp" Top="No" Tabpos="1" TopLine="1">
+		<File Name="Teste2.cpp" Top="Yes" Tabpos="1" TopLine="1">
 			<Cursor Line="33" Column="1"/>
+		</File>
+		<File Name="miniwin.cpp" Top="No" Tabpos="2" TopLine="526">
+			<Cursor Line="549" Column="32"/>
+		</File>
+		<File Name="miniwin.h" Top="No" Tabpos="3" TopLine="37">
+			<Cursor Line="1" Column="1"/>
 		</File>
 	</Files>
 </Layout>

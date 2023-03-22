@@ -14,6 +14,8 @@
 	<CompilerType Value="CPP"/>
 	<AppType Value="GUI"/>
 	<Files>
-		<File Name="Teste.cpp"/>
+		<File Name="miniwin.h"/>
+		<File Name="miniwin.cpp"/>
+		<File Name="Teste2.cpp"/>
 	</Files>
 </Project>
