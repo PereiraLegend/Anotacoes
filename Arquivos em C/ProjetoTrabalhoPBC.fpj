@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-	<Libs Value="-mwindows -lOpenGL32"/>
-	<Flags Value=""/>
+	<Libs Value="-mwindows -lOpenGL32 -lopengl32 -lglut32 -lglu32"/>
+	<Flags Value="-I..\..\..\..\Downloads\glut"/>
 	<Target Value="ProjetoTrabalhoPBC.exe"/>
 	<CommandLine Value=""/>
 	<CompilerOptions Value="-Wall -s"/>
@@ -14,7 +14,8 @@
 	<CompilerType Value="CPP"/>
 	<AppType Value="GUI"/>
 	<Files>
-		<File Name="main.cpp"/>
+		<File Name="glut.h"/>
+		<File Name="trabalho.c"/>
 	</Files>
 	<AppIcon>
 		0000010001003030000001002000A82500001600000028000000300000006000
