@@ -1,0 +1,10 @@
+|CPF: asdsa
+|Nome: adasd
+|Sobrenome: adsad
+|Idade: adsada
+|Conta: asdas
+|Agencia: dasdasda
+|Numero: asdasd
+|Saldo: adasda
+|Gerente: adasd
+|Titular: asdad
