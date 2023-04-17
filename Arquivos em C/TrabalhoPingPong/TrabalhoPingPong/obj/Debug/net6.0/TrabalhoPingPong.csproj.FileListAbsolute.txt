@@ -1,0 +1,5 @@
+C:\Users\lp359\Documentos\GitHub\Anotacoes\Arquivos em C\TrabalhoPingPong\TrabalhoPingPong\obj\Debug\net6.0\TrabalhoPingPong.csproj.AssemblyReference.cache
+C:\Users\lp359\Documentos\GitHub\Anotacoes\Arquivos em C\TrabalhoPingPong\TrabalhoPingPong\obj\Debug\net6.0\TrabalhoPingPong.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lp359\Documentos\GitHub\Anotacoes\Arquivos em C\TrabalhoPingPong\TrabalhoPingPong\obj\Debug\net6.0\TrabalhoPingPong.AssemblyInfoInputs.cache
+C:\Users\lp359\Documentos\GitHub\Anotacoes\Arquivos em C\TrabalhoPingPong\TrabalhoPingPong\obj\Debug\net6.0\TrabalhoPingPong.AssemblyInfo.cs
+C:\Users\lp359\Documentos\GitHub\Anotacoes\Arquivos em C\TrabalhoPingPong\TrabalhoPingPong\obj\Debug\net6.0\TrabalhoPingPong.csproj.CoreCompileInputs.cache
