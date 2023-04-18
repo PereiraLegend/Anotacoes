@@ -15,3 +15,10 @@ C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabal
 C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\obj\Debug\Trabalho PingPong.csproj.CoreCompileInputs.cache
 C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\obj\Debug\Trabalho PingPong.exe
 C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\obj\Debug\Trabalho PingPong.pdb
+C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\bin\Debug\Trabalho PingPong.exe.config
+C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\bin\Debug\Trabalho PingPong.exe
+C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\bin\Debug\Trabalho PingPong.pdb
+C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\bin\Debug\OpenTK.dll
+C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\bin\Debug\OpenTK.pdb
+C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\bin\Debug\OpenTK.xml
+C:\Users\lp359\Documents\GitHub\Anotacoes\Arquivos em C\Trabalho PingPong\Trabalho PingPong\obj\Debug\Trabalho PingPong.csproj.CopyComplete

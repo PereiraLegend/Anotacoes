@@ -110,11 +110,11 @@ namespace Trabalho_PingPong
             Console.WriteLine("Pontos Jogador 2: " + pJogador2);
 
             // Desenha o texto "pong" no meio da janela
-
+            /*
             TextPrinter printer = new TextPrinter();
             printer.Begin();
             printer.Print("pong", new Font("Arial", 40.0f), Color4.White, new RectangleF(-50.0f, -10.0f, 100.0f, 100.0f), TextPrinterOptions.Default);
-
+            */
             // Jogadores
             // Jogador 1
             if (Keyboard.GetState().IsKeyDown(Key.Up))
@@ -161,6 +161,8 @@ namespace Trabalho_PingPong
             Matrix4 projection = Matrix4.CreateOrthographic(ClientSize.Width,ClientSize.Height, 0.0f, 1.0f);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref projection);
+            GL.ClearColor(0.5f, 0.9f, 0.5f, 1.0f); // Cor do fundo
+
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             DesenharBola(xBola,yBola, tBola, tBola, 1.0f, 1.0f, 1.0f);
