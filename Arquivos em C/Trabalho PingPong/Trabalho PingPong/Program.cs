@@ -161,6 +161,8 @@ namespace Trabalho_PingPong
             Matrix4 projection = Matrix4.CreateOrthographic(ClientSize.Width,ClientSize.Height, 0.0f, 1.0f);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref projection);
+            GL.ClearColor(0.5f, 0.9f, 0.5f, 1.0f); // Cor do fundo
+
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             DesenharBola(xBola,yBola, tBola, tBola, 1.0f, 1.0f, 1.0f);
