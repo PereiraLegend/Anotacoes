@@ -16,6 +16,7 @@
 	<Files>
 		<File Name="glut.h"/>
 		<File Name="trabalho.c"/>
+		<File Name="trabalho2.c"/>
 	</Files>
 	<AppIcon>
 		0000010001003030000001002000A82500001600000028000000300000006000

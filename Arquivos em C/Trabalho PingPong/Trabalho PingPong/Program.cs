@@ -110,11 +110,11 @@ namespace Trabalho_PingPong
             Console.WriteLine("Pontos Jogador 2: " + pJogador2);
 
             // Desenha o texto "pong" no meio da janela
-
+            /*
             TextPrinter printer = new TextPrinter();
             printer.Begin();
             printer.Print("pong", new Font("Arial", 40.0f), Color4.White, new RectangleF(-50.0f, -10.0f, 100.0f, 100.0f), TextPrinterOptions.Default);
-
+            */
             // Jogadores
             // Jogador 1
             if (Keyboard.GetState().IsKeyDown(Key.Up))
