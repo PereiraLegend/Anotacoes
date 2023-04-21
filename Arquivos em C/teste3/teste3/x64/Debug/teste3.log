@@ -1,0 +1,2 @@
+﻿  teste3.cpp
+C:\Users\lp359\Documentos\GitHub\Anotacoes\Arquivos em C\teste3\teste3\teste3.cpp(9,10): fatal  error C1083: Não é possível abrir arquivo incluir: 'GL\freeglut.h': No such file or directory

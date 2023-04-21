@@ -1,0 +1,2 @@
+﻿  teste5.cpp
+C:\Users\lp359\Documentos\GitHub\Anotacoes\Arquivos em C\teste5\teste5\teste5.cpp(1,9): fatal  error C1083: Não é possível abrir arquivo incluir: 'SFML/Graphics.hpp': No such file or directory

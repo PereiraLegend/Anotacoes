@@ -8,8 +8,20 @@ using OpenTK.Input;
 
 namespace Trabalho_PingPong
 {
+    class menu
+    {
+        public void Show()
+        {
+            Console.WriteLine("1 - Jogar");
+            Console.WriteLine("2 - Opções");
+            Console.WriteLine("3 - Sair");
+        }
+    }
     internal class Program : GameWindow
     {
+        menu menu = new menu();
+        
+
         int xBola = 0; // Posição
         int yBola = 0; // Posição
         int tBola = 20; // Tamanho
