@@ -12,4 +12,4 @@ class ChassAdmin(admin.ModelAdmin):
 
 @admin.register(Carro)
 class CarroAdmin(admin.ModelAdmin):
-    list_display = ('Montadora','modelo','chassi','preco')
+    list_display = ('montadora','modelo','chassi','preco')

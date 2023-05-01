@@ -26,7 +26,7 @@ class Carro(models.Model):
     tem vários carros.
     """ 
     chassi = models.OneToOneField(Chassi, on_delete=models.CASCADE)
-    Montadora = models.ForeignKey(Montadora, on_delete=models.CASCADE)
+    montadora = models.ForeignKey(Montadora, on_delete=models.CASCADE)
     modelo = models.CharField('Modelo', max_length=30, help_text="Informe 16 caracteres")
     preco = models.DecimalField('Preço', max_digits=8, decimal_places=2)
 
@@ -34,5 +34,5 @@ class Carro(models.Model):
         verbose_name = "Carro"
         verbose_name_plural = "Carros"
     def __str__(self):
-        return f'{self.Montadora} {self.modelo}'
+        return f'{self.montadora} {self.modelo}'
     
