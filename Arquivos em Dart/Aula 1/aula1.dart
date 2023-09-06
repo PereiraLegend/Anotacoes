@@ -28,7 +28,7 @@ void main(){
   //Mas se eu querer dizer (forçar) que a variavel não é nula eu escrevo "print(none!)" // Irá resultar em erro pois eu disse que a variave é não é nula, mas ela é nulo
   // Isso pode ser usado em casos bem especificos
 
-  late String sobrenome;
+  late String sobrenome; // No late a variável será utilizada antes e depois de a mesma ser inicializada
   sobrenome = 'Lucas P';
   print(sobrenome);
 
