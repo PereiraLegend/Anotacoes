@@ -1,7 +1,6 @@
 void main() async{ // Adicionando o asyc eu transformo tudo (todo o método em uma "Future")
   // Future, Async e Await
   
-  String nome = "Lucas";
   late String cep;
   // Se fosse para ser feito apenas com String seria assim:
   // String cep = getCepByName("Rua dos Bobos");

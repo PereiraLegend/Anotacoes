@@ -2,7 +2,6 @@
 
 void main(){
   Carro mercedes = Carro("mercedes");
-  Carro gol = Carro("gol");
   //Para acessar o valor de um objeto basta usar o ponto "."
   //Se eu utilizar o mesmo assim:
   mercedes._segredo; // Eu acabo tendo acesso á variável 

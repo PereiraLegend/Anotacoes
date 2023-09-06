@@ -37,6 +37,7 @@ void main(){
   if(seguirEmFrente){
     print("Andar");
   }
+  // ignore: dead_code
   else {
     print("Parar");
   }
