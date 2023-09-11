@@ -7,7 +7,9 @@ void main(){
   } on PasswordLengthError catch(e){
     print("Falhou ao logar");
   } catch(e) {
-    print('Outro erro')
+    print('Outro erro');
+  } finally { // Pouco usado, mas existe, é o último caso de erro
+    print('Finalizou'); 
   }
 }
 
@@ -15,7 +17,8 @@ class Login {
   void logar() {
     String user = 'admin';
     String pass = '123';
-    if(pass.length <= 6) throw PasswordLengthError();
+    //if(pass.length <= 6) throw PasswordLengthError(); // Irá para o "print('Falhou ao Logar');"
+    if(pass.length <= 6) throw Exception(); // Irá para o "print('Outro erro')"
   }
 }
 
