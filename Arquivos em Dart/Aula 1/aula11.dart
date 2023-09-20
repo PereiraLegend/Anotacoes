@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, unused_catch_clause
+
 void main(){
   // Tratamento de Erros 2
   Login login = Login();
