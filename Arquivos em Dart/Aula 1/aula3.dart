@@ -20,7 +20,7 @@ void main(){
 //Isso também pode ser visto como um tipo de objeto conposto
 class Celular {
   // Quando quero que o celular tenha valores normais eu declaro a string normal
-  // Mas qunaod eu não quero que ela já tenha um valor padrão adicionamos final, ou seja, a responsabilidade de passar valores fica com o consultor
+  // Mas quando eu não quero que ela já tenha um valor padrão adicionamos final, ou seja, a responsabilidade de passar valores fica com o consultor
   final String cor;
   final int qtdPros;
   final double tamanho;
