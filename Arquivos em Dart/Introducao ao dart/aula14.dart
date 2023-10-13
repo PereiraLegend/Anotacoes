@@ -13,7 +13,7 @@ enum TipoPagamento {
   // A diferença é que eu crio um "Construtor" dentro do enum, crio ele e passo para o enum os valores, onde depois nós podemos adicionar os valores no enum
   final String value;
   final int id;
-  const TipoPagamento(this.id, this.value);
+  const TipoPagamento(this.id, this.value); 
 }
 
 class Pagamento {

@@ -1,4 +1,4 @@
-void main() async{ // Adicionando o asyc eu transformo tudo (todo o método em uma "Future")
+void main() async{ // Adicionando o async eu transformo tudo (todo o método em uma "Future")
   // Future, Async e Await
   
   late String cep;

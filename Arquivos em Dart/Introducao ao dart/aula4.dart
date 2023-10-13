@@ -22,7 +22,7 @@ class Carro {
   // Métodos Getters e Setters
   int _valor = 1000;
   int get valorDoCarro => _valor; //Dessa forma o valor da variável fica pública
-
+  
   //Para permitir a alteração de valor
   // Obs.: O "=>" é uma arrow function
   void setValue(int valor) => _valor = valor;
