@@ -3,7 +3,7 @@ def funcao(x):
 
 def bissecao(funcao, x, y, p=1e-5, max=100):
     if funcao(x) * funcao(y) >= 0:
-        print("A função não cumpre os critérios do método da bisseção.")
+        print("A função não pode executar o método da bisseção.")
         return None
     ni = 0
     while (y - x) / 2.0 > p and ni < max:
