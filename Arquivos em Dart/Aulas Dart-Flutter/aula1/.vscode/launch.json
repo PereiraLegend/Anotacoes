@@ -32,7 +32,7 @@
         "name": "Seu Nome de Configuração",
         "request": "launch",
         "type": "dart",
-        "program": "lib/AulaFlutter6/MainAula6.dart",
+        "program": "lib/AulaFlutter10/MainAula10.dart",
         // outras configurações
       },
       {

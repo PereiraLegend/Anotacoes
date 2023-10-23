@@ -1,3 +1,4 @@
+// MODULARIZAÇÃO EXEMPLOS
 //import 'package:aula1/AulaFlutter4/MeuAppAula4.dart';
 import 'package:aula1/AulaFlutter4/HomeControleAula4.dart';
 import 'package:flutter/material.dart';

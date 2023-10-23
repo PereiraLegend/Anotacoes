@@ -1,4 +1,4 @@
-// LISTAS E COLUNAS
+// LISTAS E COLUNAS ALINHAMENTO, ITENS, BORDAS, MARGENS, SIZEDBOX, CENTER, HERANÇA
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,9 +31,9 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly, // A MESMA COISA QUE A PARTE DE CIMA, MAS COM PEQUENAS DIFERENÇAS 
                                                             // UTILIZADO NA RESPONSIVIDADE
           // TRABALHANDO COM EIXOS NA COLUNA: // ELES RECENTRALIZAM A COLUNA 
-          //crossAxisAlignment: CrossAxisAlignment.center, // O ALINHAMENTO VAI SER CENTRALIZADO
+          crossAxisAlignment: CrossAxisAlignment.center, // O ALINHAMENTO VAI SER CENTRALIZADO
           //crossAxisAlignment: CrossAxisAlignment.end, // VAI SER REALINHADO NO FINAL (LADO DIREITO DA TELA)
-          crossAxisAlignment: CrossAxisAlignment.start, // VAI SER REALINHADO NO COMEÇO (LADO ESQUERDO DA TELA)
+          //crossAxisAlignment: CrossAxisAlignment.start, // VAI SER REALINHADO NO COMEÇO (LADO ESQUERDO DA TELA)
           // TRABALHANDO COM EIXOS NAS LINHAS: // ELES RECENTRALIZAM A LINHA INVERTENDO OS VALORES ACIMA
 
 
