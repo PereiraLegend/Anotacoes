@@ -1,3 +1,5 @@
+# Trabalho 2 De Algoritmos de Processamento de Imagem
+# Aluno: Lucas Pereira Dos Santos
 import tkinter as tk
 import numpy as np
 import cv2
