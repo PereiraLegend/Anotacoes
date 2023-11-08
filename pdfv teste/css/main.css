@@ -48,7 +48,7 @@ header .div-b3{
 .caixa-img {
     background-color: var(--cor-secundaria);
     width: 30%;
-    height: 100%;
+    height: 97.5%;
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -61,19 +61,23 @@ header .div-b3{
 
 .caixa-dados {
     background-color: var(--background-g);
-    height: 100%;
+    height: 80%;
     width:70%;
     margin-top: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
     font-family: 'Roboto', sans-serif;
 }
-
 .caixa-r1 {
     background-color: var(--background-b);
     /*margin-bottom: 20px;*/
     display: flex;
     flex-direction: column;
+}
+
+.caixa-r1-t1{
+    margin-left: 10px;
+    margin-top: 8px;
 }
 
 .caixa-prod {
@@ -106,14 +110,22 @@ header .div-b3{
     font-size: 30px;
 }
 
-.caixa-r2 {
+.borda-redonda {
+    border-radius: 15px;
     background-color: var(--background-b);
+}
+
+.caixa-r2 {
+    background-color: var(--background-g);
+    /*border-radius: 10px;*/
 }
 
 .caixa-r2-t {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .caixa-r2-t-cor {
@@ -147,7 +159,7 @@ header .div-b3{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 390px;
+    margin-top: 23%;
 }
 .caixa-r3-al {
     display: flex;
@@ -160,4 +172,19 @@ header .div-b3{
 }
 .caixa-r3-font {
     font-size: 50px;
+}
+.footer-al {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--background-g);
+    height: 13.2%;
+}
+
+.al-linha-2 {
+    padding-top: 1%;
+}
+.al-texto-footer {
+    display: flex;
+    flex-direction: row;
+    padding-top: 2.2%;
+    justify-content: space-around;
 }
