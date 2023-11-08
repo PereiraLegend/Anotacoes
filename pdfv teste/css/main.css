@@ -159,7 +159,7 @@ header .div-b3{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 23%;
+    margin-top: 20%;
 }
 .caixa-r3-al {
     display: flex;
@@ -173,6 +173,25 @@ header .div-b3{
 .caixa-r3-font {
     font-size: 50px;
 }
+
+.botão-al {
+    display: flex;
+    justify-content: end;
+}
+.botão-1 {
+    position: relative;
+}
+
+.botao-1-b {
+    position: fixed;
+    width: 300px;
+    height: 45px;
+    margin-top: 10px;
+    margin-left: 51.5%;
+    background-color: var(--cor-principal);
+    color: var(--cor-font-2);
+}
+
 .footer-al {
     font-family: 'Ubuntu', sans-serif;
     background-color: var(--background-g);
