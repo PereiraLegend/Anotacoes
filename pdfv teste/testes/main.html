@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Cards</title>
+    <style>
+        /* Estilo para o card */
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Insira as Informações:</h2>
+    <form id="formulario">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required><br><br>
+
+        <label for="preco">Preço:</label>
+        <input type="text" id="preco" name="preco" required><br><br>
+
+        <label for="quantidade">Quantidade:</label>
+        <input type="text" id="quantidade" name="quantidade" required><br><br>
+
+        <button type="button" onclick="gerarCard()">Gerar Card</button>
+    </form>
+
+    <div id="cardsContainer"></div>
+
+    <script>
+        function gerarCard() {
+            // Obter os valores dos campos do formulário
+            var codigo = document.getElementById("codigo").value;
+            var preco = document.getElementById("preco").value;
+            var quantidade = document.getElementById("quantidade").value;
+
+            // Criar um novo card
+            var novoCard = document.createElement("div");
+            novoCard.className = "card";
+            novoCard.innerHTML = "<h2>Card Gerado:</h2>" +
+                                "<p><strong>Código:</strong> " + codigo + "</p>" +
+                                "<p><strong>Preço:</strong> $" + preco + "</p>" +
+                                "<p><strong>Quantidade:</strong> " + quantidade + "</p>";
+
+            // Adicionar o novo card ao container de cards
+            document.getElementById("cardsContainer").appendChild(novoCard);
+
+            // Limpar os campos do formulário
+            document.getElementById("codigo").value = "";
+            document.getElementById("preco").value = "";
+            document.getElementById("quantidade").value = "";
+        }
+    </script>
+
+</body>
+</html>
