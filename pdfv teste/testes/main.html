@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Cards</title>
+    <title>Produtos Adicionados</title>
     <style>
         /* Estilo para o card */
         .card {
@@ -11,6 +11,21 @@
             padding: 10px;
             margin-top: 20px;
             width: 300px;
+        }
+
+        .excluir-btn {
+            cursor: pointer;
+            color: red;
+            text-decoration: underline;
+        }
+
+        /* Estilo para a div que comportará os cards */
+        #cardsContainer {
+            max-height: 400px; /* Altura máxima */
+            overflow-y: auto; /* Adiciona uma barra de rolagem vertical se necessário */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
     </style>
 </head>
@@ -33,19 +48,46 @@
     <div id="cardsContainer"></div>
 
     <script>
+        var contadorCards = 0; // Contador para identificar cards
+
         function gerarCard() {
             // Obter os valores dos campos do formulário
             var codigo = document.getElementById("codigo").value;
             var preco = document.getElementById("preco").value;
             var quantidade = document.getElementById("quantidade").value;
 
-            // Criar um novo card
+            // Incrementar o contador para garantir identificadores únicos
+            contadorCards++;
+
+            // Criar um novo card com identificador único
             var novoCard = document.createElement("div");
             novoCard.className = "card";
-            novoCard.innerHTML = "<h2>Card Gerado:</h2>" +
-                                "<p><strong>Código:</strong> " + codigo + "</p>" +
-                                "<p><strong>Preço:</strong> $" + preco + "</p>" +
-                                "<p><strong>Quantidade:</strong> " + quantidade + "</p>";
+            novoCard.id = "card" + contadorCards; // ID único para o card
+            novoCard.innerHTML = 
+                "<h2>Produtos Adicionados</h2>" +
+                "<div class='container-dados-compra'>" +
+                    "<div class='dados-produto-single'>" +
+                        "<div class='compra-single'>" +
+                            "<h3>Ean:</h3>" + 
+                            "<span>" + codigo + "</span>" +
+                        "</div>" + 
+                        "<div class='compra-single'>" +
+                            "<h3>Nome:</h3>" +
+                            "<span>Brahma Duplo Malte</span>" +
+                        "</div>" +
+                        "<div class='compra-single'>" +
+                            "<h3>Qt:</h3>" +
+                            "<span>" + quantidade + "</span>" +
+                        "</div>" +
+                        "<div class='compra-single'>" +
+                            "<h3>Preço:</h3>" +
+                            "<span>" + preco + "</span>" +
+                        "</div>" +
+                        "<div class='ed-del-btn'>" +
+                            "<span class='excluir-btn' onclick='excluirCard(" + contadorCards + ")'>Excluir</span>" +
+                        "</div>" + 
+                    "</div>" +
+                "</div>";
 
             // Adicionar o novo card ao container de cards
             document.getElementById("cardsContainer").appendChild(novoCard);
@@ -54,6 +96,14 @@
             document.getElementById("codigo").value = "";
             document.getElementById("preco").value = "";
             document.getElementById("quantidade").value = "";
+        }
+
+        function excluirCard(cardID) {
+            // Obter o card pelo ID
+            var card = document.getElementById("card" + cardID);
+
+            // Remover o card do DOM
+            card.remove();
         }
     </script>
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Caracteres</title>
+  <style>
+    /* Adicione algum estilo se desejar */
+  </style>
+</head>
+<body>
+
+  <label for="myInput">Digite algo:</label>
+  <input type="text" id="myInput" oninput="checkInputLength()">
+  <div id="result"></div>
+  
+  <script>
+    function checkInputLength() {
+      var inputElement = document.getElementById("myInput");
+      var inputValue = inputElement.value;
+
+      // Defina o número de caracteres desejado
+      var charLimit = 5; // Altere para o número desejado
+
+      if (inputValue.length >= charLimit) {
+        // Chame a função que você deseja executar
+        minhaFuncao(); // Substitua 'minhaFuncao' pela sua função real
+      }
+
+      // Atualiza o conteúdo da div com o que foi digitado
+      document.getElementById("result").innerText = "Texto digitado: " + inputValue;
+    }
+
+    function minhaFuncao() {
+      // Esta é a função que será chamada quando o número de caracteres for atingido
+      alert("Número de caracteres atingido!");
+      // Adicione aqui o código que você deseja executar
+    }
+  </script>
+
+</body>
+</html>
