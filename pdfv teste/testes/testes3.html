@@ -1,42 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contador de Caracteres</title>
-  <style>
-    /* Adicione algum estilo se desejar */
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Botão de Seleção</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        /* Estilo do botão de seleção */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        /* Estilo do input (checkbox) oculto */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        /* Estilo do slider (visualização do botão de seleção) */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        /* Estilo do indicador (círculo dentro do botão de seleção) */
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        /* Altera a cor do fundo do botão de seleção quando ativado */
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        /* Move o indicador para a posição correta quando ativado */
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        
+    </style>
 </head>
 <body>
-
-  <label for="myInput">Digite algo:</label>
-  <input type="text" id="myInput" oninput="checkInputLength()">
-  <div id="result"></div>
-  
-  <script>
-    function checkInputLength() {
-      var inputElement = document.getElementById("myInput");
-      var inputValue = inputElement.value;
-
-      // Defina o número de caracteres desejado
-      var charLimit = 5; // Altere para o número desejado
-
-      if (inputValue.length >= charLimit) {
-        // Chame a função que você deseja executar
-        minhaFuncao(); // Substitua 'minhaFuncao' pela sua função real
-      }
-
-      // Atualiza o conteúdo da div com o que foi digitado
-      document.getElementById("result").innerText = "Texto digitado: " + inputValue;
-    }
-
-    function minhaFuncao() {
-      // Esta é a função que será chamada quando o número de caracteres for atingido
-      alert("Número de caracteres atingido!");
-      // Adicione aqui o código que você deseja executar
-    }
-  </script>
-
+    <label class="switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+    </label>
 </body>
 </html>
