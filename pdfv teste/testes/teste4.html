@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card com Edição</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #card {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px;
+      text-align: center;
+    }
+
+    #editModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #modalContent {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="card">
+    <p><strong>Código:</strong> <span id="codigo">123</span></p>
+    <p><strong>Quantidade:</strong> <span id="quantidade">5</span></p>
+    <p><strong>Valor:</strong> <span id="valor">R$ 50,00</span></p>
+    <button onclick="openEditModal()">Editar</button>
+  </div>
+
+  <div id="editModal">
+    <div id="modalContent">
+      <label for="editCodigo">Código:</label>
+      <input type="text" id="editCodigo">
+
+      <label for="editQuantidade">Quantidade:</label>
+      <input type="text" id="editQuantidade">
+
+      <label for="editValor">Valor:</label>
+      <input type="text" id="editPreco">
+
+      <button onclick="saveChanges()">Salvar</button>
+      <button onclick="closeEditModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <script>
+    function openEditModal() {
+      // Preencha o modal com as informações atuais do card
+      document.getElementById("editCodigo").value = document.getElementById("codigo").innerText;
+      document.getElementById("editQuantidade").value = document.getElementById("quantidade").innerText;
+      document.getElementById("editValor").value = document.getElementById("valor").innerText;
+
+      // Exiba o modal
+      document.getElementById("editModal").style.display = "flex";
+    }
+
+    function closeEditModal() {
+      // Feche o modal
+      document.getElementById("editModal").style.display = "none";
+    }
+
+    function saveChanges() {
+      // Atualize as informações no card com os novos valores do modal
+      document.getElementById("codigo").innerText = document.getElementById("editCodigo").value;
+      document.getElementById("quantidade").innerText = document.getElementById("editQuantidade").value;
+      document.getElementById("valor").innerText = document.getElementById("editValor").value;
+
+      // Feche o modal
+      closeEditModal();
+    }
+  </script>
+
+</body>
+</html>
