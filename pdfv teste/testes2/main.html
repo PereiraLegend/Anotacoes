@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Cards</title>
+    <style>
+        .produto-single-store {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+        }
+        .dados-compra-single {
+            margin-top: 10px;
+        }
+        #totalPreco {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo">
+        <br>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" value="1" min="1">
+        <br>
+        <label for="preco">Preço Unitário:</label>
+        <input type="text" id="preco">
+        <br>
+        <button onclick="gerarCard()">Gerar Card</button>
+    </div>
+
+    <div id="cardsContainer"></div>
+
+    <div id="totalPreco">Total: R$0.00</div>
+
+    <script>
+        var contadorCards = 0;
+        var totalPreco = 0;
+
+        function gerarCard() {
+            var codigo = document.getElementById("codigo").value;
+            var quantidade = parseInt(document.getElementById("quantidade").value);
+            var precoUnitario = document.getElementById("preco").value;
+            
+            // Validar se o preço unitário é um número antes de continuar
+            if (isNaN(parseFloat(precoUnitario))) {
+                alert("Por favor, insira um preço unitário válido.");
+                return;
+            }
+
+            // Validar se a quantidade é um número inteiro maior que zero
+            if (isNaN(quantidade) || quantidade <= 0 || !Number.isInteger(quantidade)) {
+                alert("Por favor, insira uma quantidade válida (um número inteiro maior que zero).");
+                return;
+            }
+
+            var precoTotal = quantidade * parseFloat(precoUnitario);
+
+            totalPreco += precoTotal; // Adiciona o preço total ao total geral
+
+            contadorCards++;
+            var novoCard = document.createElement("div");
+            novoCard.id = "card" + contadorCards;
+            novoCard.innerHTML = 
+               "<div class='produto-single-store'>" +
+                  "<br>" +
+                  "<span class='nome-produto-compra'> Código:" + codigo +"</span>" +
+                  "<div class='dados-compra-single'>" +
+                    "<span>Quantidade: "+ quantidade +"</span>" +
+                    "<span>Valor Total: R$" + precoTotal.toFixed(2) + "</span>" +
+                  "</div>" +
+                  "<div class='btn-comp-al'>" +
+                    "<button class='btn-editar' onclick='abrirModal()'>Editar</button>" +
+                    "<button class='btn-excluir' onclick='excluirCard(" + contadorCards + ")'>Excluir</button>" +
+                  "</div>"
+                "</div>"
+
+            document.getElementById("cardsContainer").appendChild(novoCard);
+            document.getElementById("codigo").value = "";
+            document.getElementById("preco").value = "";
+            document.getElementById("quantidade").value = 1; // Reinicia a quantidade para 1
+
+            atualizarTotal(); // Chama a função para atualizar o total na tela
+        }
+
+        function atualizarTotal() {
+            // Atualiza o conteúdo de algum elemento HTML com o total do preço
+            document.getElementById("totalPreco").innerHTML = "Total: R$" + totalPreco.toFixed(2);
+        }
+
+        // Função de exemplo para abrir modal (não implementada)
+        function abrirModal() {
+            console.log("Modal aberto");
+        }
+
+        // Função de exemplo para excluir card (não implementada)
+        function excluirCard(cardId) {
+            console.log("Card excluído: " + cardId);
+        }
+    </script>
+</body>
+</html>
