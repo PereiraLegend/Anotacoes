@@ -52,7 +52,8 @@ console.log(y);
  */
 // Outras funcionalidades do typescript:
 /**
- *      inferência x anotation
+ * Inferência x Anotation:
  * São duas maneiras de definir um valor com um tipo:
- * +
+ * Para criar uma váriável basta digita-la e informar o valor:
+ *
  */ 
