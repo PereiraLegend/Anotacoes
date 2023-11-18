@@ -1,73 +1,41 @@
 // Por padrão o nome do arquivo do controller vai ser o arquivo que ele vai manipular aconpanhado com o nome controller
-import conexao from "../database/conexao.js"
+//import conexao from "../database/conexao.js" Isso aqui é apagado pois o código não usa
+import SelecaoRepository from "../repositories/SelecaoRepository.js"
 
 class SelecaoController{ //Aqui no controller é criado um método para cada uma das ações - Select - Update - Read - Delete
 
     async index(req,res) { //READ // Quando trago para cá tiro a arroy string .
-        const sql = "SELECT * FROM selecoes;"
-        conexao.query(sql, (erro, result, fields) => { 
-            if(erro) {
-                console.log(`Erro no Select ${erro}`)
-                res.status(404).json({'erro':'Dados Não Localizado'})
-            } else {
-                res.status(201).json(result)
-            }
-        })
-        
+        // Aqui crio regras genéricas para chamar o método responsável por fazer a tarefa
+        const linha = await SelecaoRepository.findAll() //O tempo de resposta é totalmente assincrono e por isso é necessário colocar async na frente desse método e para informar que ele é assincrono
+                                                  //e colocar await na frente dessa chamada para dizer para ele "aguardar" pela resposta, já que ela não é imediata
+        res.json(linha) // Eu retorno no formato json
     }
 
     async show(req,res) { //READ
+        // como ele requer um id eu o coloco aqui:
         const id = req.params.id
-        const sql = "SELECT * FROM selecoes WHERE id=?;"
-        conexao.query(sql, id, (erro,result, fields) => {
-            const linha = result[0]
-            if(erro) {
-                console.log(`Erro no Select ID ${erro}`)
-                res.status(404).json({'erro':'Dado Não Localizado'})
-            } else {
-                res.status(201).json(linha)
-            }
-        })
+        const linha = await SelecaoRepository.findById(id) // Ele retorna o id aqui
+        res.json(linha)
     }
 
     async store (req,res) { //CREATE 
-        const selecao = req.body 
-        const sql = "INSERT INTO selecoes SET ?;" 
-        conexao.query(sql, selecao, (erro,result,fields) => {
-             if(erro) {
-                 console.log(`Erro no Select ${erro}`)
-                 res.status(404).json({'erro':'Dado Não pôde ser alterado - Aquisição não atendida'})
-             } else {
-                 res.status(201).json(result)
-             }
-        })
+        const body = req.body 
+        const linha = await SelecaoRepository.create(body)
+        res.json(linha)
+
     }
     
     async update(req,res) { //UPDATE 
         const id = req.params.id
-        const selecao = req.body
-        const sql = "UPDATE selecoes SET ? WHERE id=?;"
-        conexao.query(sql, [selecao, id], (erro, result, fields) => {
-             if(erro){
-                 console.log(`Erro no Update ${erro}`)
-                 res.status(400).json({'erro':'Dado não pôde ser alterado'})
-             } else {
-                 res.status(200).json(result)
-             }
-        })
-     }
+        const body = req.body
+        const linha = await SelecaoRepository.update(body, id)
+        res.json(linha)
+    }
 
      async delete(req,res) { //DELETE
         const id = req.params.id
-        const sql = "DELETE FROM selecoes WHERE id=?;"
-        conexao.query(sql, id, (erro, result, fields) => {
-            if(erro){
-                console.log(`Erro no Select ${erro}`)
-                res.status(404).json({'erro':'Dado não pôde ser excluido'})
-            } else {
-                res.status(200).json(result)
-            }
-        })
+        const linha = await SelecaoRepository.delete(id)
+        res.json(linha)
     }
 
 }
