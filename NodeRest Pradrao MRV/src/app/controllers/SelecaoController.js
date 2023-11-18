@@ -3,7 +3,7 @@ import conexao from "../database/conexao.js"
 
 class SelecaoController{ //Aqui no controller é criado um método para cada uma das ações - Select - Update - Read - Delete
 
-    index(req,res) { //READ // Quando trago para cá tiro a arroy string .
+    async index(req,res) { //READ // Quando trago para cá tiro a arroy string .
         const sql = "SELECT * FROM selecoes;"
         conexao.query(sql, (erro, result, fields) => { 
             if(erro) {
@@ -16,7 +16,7 @@ class SelecaoController{ //Aqui no controller é criado um método para cada uma
         
     }
 
-    show(req,res) { //READ
+    async show(req,res) { //READ
         const id = req.params.id
         const sql = "SELECT * FROM selecoes WHERE id=?;"
         conexao.query(sql, id, (erro,result, fields) => {
@@ -30,7 +30,7 @@ class SelecaoController{ //Aqui no controller é criado um método para cada uma
         })
     }
 
-    store (req,res) { //CREATE 
+    async store (req,res) { //CREATE 
         const selecao = req.body 
         const sql = "INSERT INTO selecoes SET ?;" 
         conexao.query(sql, selecao, (erro,result,fields) => {
@@ -43,7 +43,7 @@ class SelecaoController{ //Aqui no controller é criado um método para cada uma
         })
     }
     
-    update(req,res) { //UPDATE 
+    async update(req,res) { //UPDATE 
         const id = req.params.id
         const selecao = req.body
         const sql = "UPDATE selecoes SET ? WHERE id=?;"
@@ -57,7 +57,7 @@ class SelecaoController{ //Aqui no controller é criado um método para cada uma
         })
      }
 
-    delete(req,res) { //DELETE
+     async delete(req,res) { //DELETE
         const id = req.params.id
         const sql = "DELETE FROM selecoes WHERE id=?;"
         conexao.query(sql, id, (erro, result, fields) => {
