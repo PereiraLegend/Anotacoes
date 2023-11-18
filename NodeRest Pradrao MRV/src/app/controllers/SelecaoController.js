@@ -3,7 +3,7 @@ import conexao from "../database/conexao.js"
 
 class SelecaoController{ //Aqui no controller é criado um método para cada uma das ações - Select - Update - Read - Delete
 
-    index(req,res) { //READ // Quando trago para cá tiro a arroy string
+    index(req,res) { //READ // Quando trago para cá tiro a arroy string .
         const sql = "SELECT * FROM selecoes;"
         conexao.query(sql, (erro, result, fields) => { 
             if(erro) {
