@@ -38,7 +38,7 @@ app.get('/teste', (req,res) => { //READ - LISTAR OS DADOS DO BANCO DE DADOS
             console.log(`Erro no Select ${erro}`) // Aqui eu indico e enfeito o erro
             res.status(404).json({'erro':'Dados Não Localizado'}) // Aqui eu indico e enfeito o erro 
         } else {
-            res.status(200).json(result)
+            res.status(201).json(result)
         }
     }) // Aqui passo três parâmetros sql. arroy function,
     
@@ -53,7 +53,7 @@ app.get('/teste/:id', (req,res) => { //READ
             console.log(`Erro no Select ID ${erro}`)
             res.status(404).json({'erro':'Dado Não Localizado'})
         } else {
-            res.status(200).json(linha) // aqui eu puxo a linha
+            res.status(201).json(linha) // aqui eu puxo a linha
         }
     })
 })
@@ -69,7 +69,7 @@ app.post('/teste', (req,res) => { //CREATE - FAZER A POSTAGEM DE DADOS
         //const linha = result[0] aqui não é necessário pegar o valor de apenas um indice
         if(erro) {
             console.log(`Erro no Select ${erro}`)
-            res.status(400).json({'erro':'Dado Não pôde ser alterado - Aquisição não atendida'})
+            res.status(404).json({'erro':'Dado Não pôde ser alterado - Aquisição não atendida'})
         } else {
             res.status(201).json(result)
         }
