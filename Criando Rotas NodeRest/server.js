@@ -1,6 +1,6 @@
 import app from './src/app.js'
-const port = 3000
+const PORT = 5000
 
-app.listen(port, () => { // Escutar
-    console.log(`Servidor Rodando no endereço http://localhost:${port}`)
+app.listen(PORT, () => { // Escutar
+    console.log(`Servidor Rodando no endereço http://localhost:${PORT}`)
 })

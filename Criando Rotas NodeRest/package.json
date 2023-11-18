@@ -1,16 +1,21 @@
 {
   "name": "criando-rotas-noderest",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-    "nodemon": "nodemon src/app.js", 
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
