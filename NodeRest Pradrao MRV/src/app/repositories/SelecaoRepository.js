@@ -1,3 +1,4 @@
+// Para melhorias no código: https://www.youtube.com/watch?v=4GdHVfqWxOw&list=RDCMUCN-wFj5TQDNMjQZEOp2RNfA&index=13
 import conexao from "../database/conexao.js"
 
 class SelecaoRepository {
@@ -125,3 +126,4 @@ class SelecaoRepository {
 }
 
 export default new SelecaoRepository()
+// Para Melhorias no código: https://www.youtube.com/watch?v=4GdHVfqWxOw&list=RDCMUCN-wFj5TQDNMjQZEOp2RNfA&index=13
