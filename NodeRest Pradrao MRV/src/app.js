@@ -1,3 +1,4 @@
+// Para mais melhorias ver video: https://www.youtube.com/watch?v=I9TxMBnWrdg&t=3s
 import express from 'express' 
 //import conexao from './app/database/conexao.js'
 import SelecaoController from './app/controllers/SelecaoController.js'
@@ -16,6 +17,9 @@ function buscaIndexSelecao(id){
 }
 
 // ROTAS
+
+//Há algumas melhorias que posso fazer nas rotas, como um arquivo proprio, para mais informações ver o video do final do arquivo:
+
 app.get('/teste', SelecaoController.index) 
 
 app.get('/teste/:id', SelecaoController.show)
@@ -28,3 +32,4 @@ app.delete('/teste/:id', SelecaoController.delete)
 
 
 export default app 
+// Para mais melhorias ver video: https://www.youtube.com/watch?v=I9TxMBnWrdg&t=3s

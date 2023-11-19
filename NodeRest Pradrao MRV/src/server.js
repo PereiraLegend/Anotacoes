@@ -1,7 +1,7 @@
 import app from './app.js'
 // a conexao com o bd será chamada pelo servidor, pois só poderá ser usado o programa e a base de dados se o servidor estiver em pé
 
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 /* abaixo tem o exemplo de se fazer com tratamento de erros
 //antes de chamar o servidor precisamos trabalhar a conexão:
