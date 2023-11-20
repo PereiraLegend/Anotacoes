@@ -1,0 +1,8 @@
+fetch('')  // Rota a ser percorrida
+      .then(response => response.json())  
+      .then(data =>{
+        console.log(data.ean) // Retorno 
+      })  // os dados estão vindo aqui,
+      .catch(error => console.error('Erro:', error));
+
+Ex.: Projeto Savant

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #inputField {
+      margin-bottom: 10px;
+    }
+
+    #cardsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 5px;
+    }
+
+    .cancelButton {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+    }
+
+    #clearButton {
+      margin-top: 10px;
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <label for="inputField">Insira dados:</label>
+  <input type="text" id="inputField">
+  <button onclick="adicionarCard()">Adicionar Card</button>
+
+  <div id="cardsContainer"></div>
+
+  <div id="clearButton">Limpar Todos</div>
+
+  <script>
+    function adicionarCard() {
+      var inputField = document.getElementById('inputField');
+      var inputValue = inputField.value.trim();
+
+      if (inputValue !== '') {
+        // Cria um novo elemento card
+        var card = document.createElement('div');
+        card.className = 'card';
+        card.textContent = inputValue;
+
+        // Adiciona o botão cancelar ao card
+        var cancelButton = document.createElement('span');
+        cancelButton.className = 'cancelButton';
+        cancelButton.textContent = 'Cancelar';
+        cancelButton.onclick = function() {
+          card.remove();
+          salvarCardsNoLocalStorage();
+        };
+
+        card.appendChild(cancelButton);
+
+        // Adiciona o card ao container
+        var cardsContainer = document.getElementById('cardsContainer');
+        cardsContainer.appendChild(card);
+
+        // Salva os cards no localStorage
+        salvarCardsNoLocalStorage();
+
+        // Limpa o campo de entrada
+        inputField.value = '';
+      }
+    }
+
+    function salvarCardsNoLocalStorage() {
+      var cardsContainer = document.getElementById('cardsContainer');
+      var cards = cardsContainer.getElementsByClassName('card');
+      var cardsArray = Array.from(cards).map(card => card.textContent);
+
+      // Salva os cards no localStorage como uma string JSON
+      localStorage.setItem('cards', JSON.stringify(cardsArray));
+    }
+
+    function limparTodosOsCards() {
+      var cardsContainer = document.getElementById('cardsContainer');
+      cardsContainer.innerHTML = ''; // Remove todos os cards do container
+      localStorage.removeItem('cards'); // Remove os cards do localStorage
+    }
+
+    // Carrega os cards do localStorage ao carregar a página
+    window.onload = function() {
+      var cardsContainer = document.getElementById('cardsContainer');
+      var storedCards = localStorage.getItem('cards');
+
+      if (storedCards) {
+        var cardsArray = JSON.parse(storedCards);
+
+        // Cria cards a partir dos dados armazenados
+        cardsArray.forEach(function(cardText) {
+          var card = document.createElement('div');
+          card.className = 'card';
+          card.textContent = cardText;
+
+          // Adiciona o botão cancelar ao card
+          var cancelButton = document.createElement('span');
+          cancelButton.className = 'cancelButton';
+          cancelButton.textContent = 'Cancelar';
+          cancelButton.onclick = function() {
+            card.remove();
+            salvarCardsNoLocalStorage();
+          };
+
+          card.appendChild(cancelButton);
+
+          cardsContainer.appendChild(card);
+        });
+      }
+    };
+
+    // Adiciona um evento de clique ao botão de limpar todos
+    document.getElementById('clearButton').addEventListener('click', limparTodosOsCards);
+  </script>
+</body>
+</html>

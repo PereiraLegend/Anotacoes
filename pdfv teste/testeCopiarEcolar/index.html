@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leitura Automática de 16 Caracteres</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #inputContainer {
+      margin-bottom: 20px;
+    }
+
+    #resultCard {
+      display: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="inputContainer">
+    <label for="inputField">Digite ou cole 16 caracteres:</label>
+    <input type="text" id="inputField" maxlength="16">
+  </div>
+  <div id="resultCard"></div>
+
+  <script>
+    document.getElementById('inputField').addEventListener('input', function() {
+      var input = this.value;
+      var resultCard = document.getElementById('resultCard');
+
+      if (input.length === 16) {
+        resultCard.innerHTML = "Dados: " + input;
+        resultCard.style.display = 'block';
+      } else {
+        resultCard.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

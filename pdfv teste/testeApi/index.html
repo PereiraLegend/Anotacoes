@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obter EAN e Fazer Requisição</title>
+</head>
+    <body>
+        <label for="codigo">Digite o EAN:</label>
+        <input type="text" id="codigo">
+        <button onclick="buscarProduto()">Buscar Produto</button>
+    </body>
+    <script>
+        function buscarProduto() {
+            // Obter o valor do input com ID 'codigo'
+            const ean = document.getElementById('codigo').value;
+        
+            // Fazer a requisição usando o valor de ean
+            fetch(`https://api-n56x.onrender.com/v1/api/produto?ean=${ean}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(`Ean: ${data.ean}`);
+                })
+                .catch(error => console.error('Erro:', error));
+        }
+
+    </script>
+</html>
