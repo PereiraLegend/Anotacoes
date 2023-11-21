@@ -33,27 +33,27 @@
 
     <script>
         function processarCodigoQuantidade() {
-            const inputElement = document.getElementById("inputCodigoQuantidade");
-            const inputValue = inputElement.value.trim();
+            const codigo = document.getElementById("inputCodigoQuantidade");
+            const Icodigo = codigo.value.trim();
 
             // Verifica se o valor inserido segue o padrão "X1234567890123" ou "1234567890123"
-            const match = /^(\d{0,})?(X\d{13})?$/.exec(inputValue);
+            const calcseparador = /^(\d{0,})?(X\d{13})?$/.exec(Icodigo);
 
-            if (match && (match[2] && match[2].length === 14 || inputValue.length === 13)) {
-                const quantidade = match[1] ? parseInt(match[1], 10) : 1;
-                const codigo = match[2] ? match[2].substring(1) : inputValue;
+            if (calcseparador && (calcseparador[2] && calcseparador[2].length === 14 || Icodigo.length === 13)) {
+                const quantidadeA = calcseparador[1] ? parseInt(calcseparador[1], 10) : 1;
+                const codigoA = calcseparador[2] ? calcseparador[2].substring(1) : Icodigo;
 
                 // Cria um novo card com os valores
 
-                if(quantidade == codigo) {
-                    const quantidade = 1
-                    criarNovoCard(quantidade, codigo);
+                if(quantidadeA == codigoA) {
+                    const quantidadeA = 1
+                    criarNovoCard(quantidadeA, codigoA);
                 } else {
-                    criarNovoCard(quantidade, codigo);
+                    criarNovoCard(quantidadeA, codigoA);
                 }
 
                 // Limpa o campo de entrada após criar o card
-                inputElement.value = "";
+                codigo.value = "";
             }
         }
 
