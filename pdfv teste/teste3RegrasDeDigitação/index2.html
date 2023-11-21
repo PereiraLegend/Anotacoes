@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            max-width: 300px;
+        }
+    </style>
+    <title>Divisão de Código e Quantidade</title>
+</head>
+<body>
+    <label for="inputCodigoQuantidade">Insira o Código e Quantidade:</label>
+    <input type="text" id="inputCodigoQuantidade" oninput="processarCodigoQuantidade()">
+    <div id="output"></div>
+
+    <script>
+        function processarCodigoQuantidade() {
+            const inputElement = document.getElementById("inputCodigoQuantidade");
+            const inputValue = inputElement.value.trim();
+
+            // Verifica se o valor inserido segue o padrão "X1234567890123" ou "1234567890123"
+            const match = /^(\d{1,})?(X\d{13})?$/.exec(inputValue);
+
+            if (match && match[2] && match[2].length === 14) {
+                const quantidade = match[1] ? parseInt(match[1], 10) : 1;
+                const codigo = match[2] ? match[2].substring(1) : inputValue;
+
+                // Cria um novo card com os valores
+                criarNovoCard(quantidade, codigo);
+
+                // Limpa o campo de entrada após criar o card
+                inputElement.value = "";
+            }
+        }
+
+        function criarNovoCard(quantidade, codigo) {
+            const outputDiv = document.getElementById("output");
+
+            // Cria um novo elemento div para o card
+            const novoCard = document.createElement("div");
+            novoCard.classList.add("card");
+            novoCard.innerHTML = `
+                <h3>Novo Card</h3>
+                <p>Quantidade: ${quantidade}</p>
+                <p>Código: ${codigo}</p>
+            `;
+
+            // Adiciona o novo card à saída
+            outputDiv.appendChild(novoCard);
+        }
+    </script>
+</body>
+</html>
