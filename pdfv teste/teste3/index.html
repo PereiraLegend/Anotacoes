@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Estilizando a lista personalizada */
+    .custom-select {
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+
+    .custom-select select {
+      display: none; /* Oculta a caixa de seleção padrão */
+    }
+
+    /* Estilizando as opções da lista personalizada */
+    .custom-select:after {
+      content: '\25BC'; /* Seta para baixo (▼) */
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      font-size: 14px;
+    }
+
+    .custom-options {
+      display: none;
+      position: absolute;
+      width: 100%;
+      max-height: 150px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      z-index: 1;
+    }
+
+    .custom-options div {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    /* Mostra as opções ao clicar na seta para baixo */
+    .custom-select.active .custom-options {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="custom-select" style="width:200px;">
+  <select>
+    <option value="1">Opção 1</option>
+    <option value="2">Opção 2</option>
+    <option value="3">Opção 3</option>
+  </select>
+  <div class="custom-options">
+    <div>Opção 1</div>
+    <div>Opção 2</div>
+    <div>Opção 3</div>
+  </div>
+</div>
+
+</body>
+</html>
