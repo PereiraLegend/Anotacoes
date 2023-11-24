@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra Lateral com Summary e Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav {
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        details {
+            margin-bottom: 10px;
+        }
+
+        summary {
+            cursor: pointer;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li>
+                <details>
+                    <summary>Sublinks</summary>
+                    <ul>
+                        <li><a href="#">Sublink 1</a></li>
+                        <li><a href="#">Sublink 2</a></li>
+                    </ul>
+                </details>
+            </li>
+            <li><a href="#">Link 3</a></li>
+        </ul>
+    </nav>
+
+    <div>
+        <!-- Conteúdo principal da página -->
+        <h1>Conteúdo Principal</h1>
+        <p>Seu conteúdo vai aqui...</p>
+    </div>
+
+</body>
+</html>

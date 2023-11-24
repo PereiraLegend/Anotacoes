@@ -1,0 +1,40 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    /*background-color: yellow;*/
+    margin: 0;
+}
+.sidebar {
+    background-color: rgba(181, 177, 203, 0.691);
+    height: 100%;
+    border-radius: 15px;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    display: flex;
+    padding-left: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+.sidebar ul{
+    margin-top: 20px;
+}
+
+.lista-menu-l {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lista-menu-l-seletor {
+    list-style: none;
+}
+
+.lista-menu-l a {
+    text-decoration: none;
+}
+
+.lista-menu-l li {
+    margin-bottom: 10px;
+}
+

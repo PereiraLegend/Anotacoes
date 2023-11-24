@@ -1,0 +1,19 @@
+body{
+    background-color: var(--cor-background-g);
+}
+.container{
+    display: flex;
+    flex:1;
+}
+
+.barra-lateral {
+    width: 205px;
+    height: 100%;
+    background-color: aqua;
+}
+
+.content {
+    flex: 1;
+    background-color: rgb(188, 215, 188);
+    border-radius: 15px;
+}
