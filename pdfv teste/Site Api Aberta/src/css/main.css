@@ -1,5 +1,6 @@
 body{
     background-color: var(--cor-background-g);
+    font-family: "Ubuntu", sans-serif;
 }
 .container{
     display: flex;
@@ -8,12 +9,48 @@ body{
 
 .barra-lateral {
     width: 205px;
-    height: 100%;
-    background-color: aqua;
+    /*height: 100%;*/
+    /*background-color: aqua;*/
 }
 
 .content {
     flex: 1;
-    background-color: rgb(188, 215, 188);
+    background-color: var(--cor-background-menu-s);
     border-radius: 15px;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.cards-intro {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.cards-intro-txt {
+    flex:1;
+    max-width: 50%;
+    box-sizing: border-box;
+}
+.cards-intro-txt p {
+    margin: 30px;
+}
+
+.cards-intro-img {
+    flex:1;
+    max-width: 50%;
+    box-sizing: border-box;
+    /*padding: 10px;*/
+}
+
+.img-server {
+    width: 350px;
+    /*padding: 20px;*/
+}
+.texto-In {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+.texto-In hr{
+    margin-right: 50px;
+    margin-left: 50px;
 }

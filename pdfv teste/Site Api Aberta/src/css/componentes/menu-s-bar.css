@@ -1,7 +1,7 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Ubuntu", sans-serif;
 }
 
 nav {
@@ -9,16 +9,18 @@ nav {
     height: 65px;
     display: flex;
     /*justify-content: center;*/
-    background-color: #8a8989;
+    background-color: var(--cor-background-menu-s);
     /*padding: 10px;*/
     justify-content: space-around;
     border-radius: 15px;
+    font-family: "Ubuntu", sans-serif;
 }
 
 nav a {
     padding: 14px 20px;
     text-decoration: none;
-    color: #333;
+    color: var(--cor-fonte-2);
+    /*color: var(--cor-fonte-1);*/
     font-weight: bold;
     text-align: center;
     transition: background-color 0.3s;
@@ -29,4 +31,14 @@ nav a:hover {
 }
 .al-navbar {
     padding-top: 22.5px;
+}
+
+.img-savant {
+    width:170px ;
+    padding-top: 8px;
+}
+
+.img-iceberg {
+    width:120px;
+    padding-top: 8px;
 }

@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/css/componentes/menu-l-bar.css">
+    <link rel="stylesheet" href="/src/css/all.css">
 </head>
 
 <body>
@@ -66,7 +67,7 @@
             </li>
             <li>
                 <details>
-                    <summary>Relatórios de Perdas</summary>
+                    <summary>Relatório de Perdas</summary>
                     <ul class="">
                         <li><a href="#">Página 13</a></li>
                         <li><a href="#">Página 14</a></li>
@@ -80,5 +81,25 @@
     </div>
 
 </body>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var detailsElements = document.querySelectorAll('details');
+    
+        detailsElements.forEach(function (details) {
+          details.addEventListener('toggle', function (event) {
+            if (details.open) {
+              // Se o detalhe está sendo aberto, fecha todos os outros elementos <details>
+              detailsElements.forEach(function (otherDetails) {
+                if (otherDetails !== details) {
+                  otherDetails.removeAttribute('open');
+                }
+              });
+            } else {
+              // Se o detalhe está sendo fechado, evita que o evento seja propagado
+              event.preventDefault();
+            }
+          });
+        });
+      });
+  </script>
 </html>

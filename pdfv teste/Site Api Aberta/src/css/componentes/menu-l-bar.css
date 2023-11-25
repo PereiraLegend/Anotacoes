@@ -7,14 +7,14 @@ body {
     margin: 0;
 }
 .sidebar {
-    background-color: rgba(181, 177, 203, 0.691);
+    background-color: var(--cor-background-menu-s);
     height: 100%;
     border-radius: 15px;
     /*justify-content: center;*/
     /*align-items: center;*/
     display: flex;
     padding-left: 20px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 .sidebar ul{
     margin-top: 20px;
@@ -38,3 +38,14 @@ body {
     margin-bottom: 10px;
 }
 
+summary {
+    cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+    transition: background-color 0.2s ease; /* para navegadores WebKit, como o Chrome e o Safari */
+}
+  
+summary {
+  transition: background-color 0.2s ease; /* para navegadores não-WebKit */
+}
