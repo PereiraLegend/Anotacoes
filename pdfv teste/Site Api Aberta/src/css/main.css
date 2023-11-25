@@ -101,13 +101,13 @@ textarea {
 
 #codigo-textarea {
     width: 100%;
-    max-width: 365px;
+    max-width: 275px;
     resize:vertical;
 }
 
 #codigo-textarea-2 {
     width: 100%;
-    max-width: 538px;
+    max-width: 450px;
     resize:vertical;
 }
 
