@@ -83,7 +83,7 @@ textarea {
 
 textarea {
     padding: 10px;
-    max-width: 100%;
+    /*max-width: 100%;*/
     line-height: 1.5;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -105,8 +105,9 @@ textarea {
 }
 
 #codigo-textarea {
-    width: 100%;
-    max-width: 275px;
+    /*width: 100%;*/
+    /*max-width: 275px;*/
+    box-sizing: border-box;
     resize:vertical;
 }
 
