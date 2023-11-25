@@ -44,6 +44,11 @@ body{
     max-width: 50%;
     box-sizing: border-box;
 }
+.cards-intro-txt-2 {
+    flex:1;
+    max-width: 50%;
+    box-sizing: border-box;
+}
 .cards-intro-txt p {
     margin: 30px;
 }
