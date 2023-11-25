@@ -15,6 +15,7 @@ body {
     display: flex;
     padding-left: 20px;
     font-family: 'Ubuntu', sans-serif;
+    /*font-weight: bold;*/
 }
 .sidebar ul{
     margin-top: 20px;
@@ -32,6 +33,7 @@ body {
 
 .lista-menu-l a {
     text-decoration: none;
+    color: var(--cor-fonte-1);
 }
 
 .lista-menu-l li {
@@ -40,6 +42,16 @@ body {
 
 summary {
     cursor: pointer;
+}
+summary:hover{
+    color: var(--cor-fonte-1);
+}
+
+summary:active {
+    color: var(--cor-fonte-1);
+}
+summary:not(:active){
+    colro: var(--cor-fonte-2);
 }
 
 summary::-webkit-details-marker {

@@ -24,10 +24,13 @@ nav a {
     font-weight: bold;
     text-align: center;
     transition: background-color 0.3s;
+    border-radius: 15px;
 }
 
 nav a:hover {
-    background-color: #ddd;
+    background-color: var(--cor-fonte-1);
+    color: var(--cor-background-menu-s);
+    border-radius: 15px;
 }
 .al-navbar {
     padding-top: 22.5px;

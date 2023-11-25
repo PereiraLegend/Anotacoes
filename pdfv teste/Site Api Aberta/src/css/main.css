@@ -8,9 +8,13 @@ body{
 }
 
 .barra-lateral {
-    width: 205px;
+    width: 210px;
     /*height: 100%;*/
     /*background-color: aqua;*/
+}
+
+.barra-superior {
+    margin-bottom: 4.5px;
 }
 
 .content {
@@ -18,6 +22,15 @@ body{
     background-color: var(--cor-background-menu-s);
     border-radius: 15px;
     font-family: "Ubuntu", sans-serif;
+}
+.content h1{
+    color: var(--cor-fonte-1);
+}
+.content h2{
+    color: var(--cor-fonte-1);
+}
+.content h3{
+    color: var(--cor-fonte-1);
 }
 
 .cards-intro {
@@ -47,10 +60,66 @@ body{
     /*padding: 20px;*/
 }
 .texto-In {
-    margin-right: 30px;
-    margin-left: 30px;
+    margin-right: 40px;
+    margin-left: 40px;
 }
 .texto-In hr{
+    margin-top: 30px;
+    margin-bottom: 30px;
     margin-right: 50px;
     margin-left: 50px;
+}
+
+
+textarea {
+    font-size: 1.0rem;
+    letter-spacing: 1px;
+}
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+.textarea-form {
+    background-color: var(--cor-background-g);
+    border-radius: 15px;
+    /*margin: 30px;*/
+}
+.textarea-form h3 {
+    margin: 10px;
+}
+.textarea-form textarea {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#codigo-textarea {
+    width: 100%;
+    max-width: 365px;
+    resize:vertical;
+}
+
+#codigo-textarea-2 {
+    width: 100%;
+    max-width: 538px;
+    resize:vertical;
+}
+
+.form-span{
+    /*margin-right: 10px;*/
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+.barra-footer{
+    margin-bottom: -10px;
+    margin-left: -8px;
+    margin-right: -8px;
+    padding-bottom: -10px;
 }

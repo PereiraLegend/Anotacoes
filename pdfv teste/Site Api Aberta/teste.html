@@ -3,71 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barra Lateral com Summary e Links</title>
+    <title>Snippet de HTML e CSS</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        nav {
-            width: 200px;
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        a {
+        /* Estilos para o botão */
+        .meu-botao {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
             text-decoration: none;
-            color: #fff;
-        }
-
-        details {
-            margin-bottom: 10px;
-        }
-
-        summary {
             cursor: pointer;
-            outline: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #007bff;
+            border: 2px solid #007bff;
         }
+
+        /* Efeito de hover no botão */
+        .meu-botao:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        label,
+        textarea {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        }
+
+        textarea {
+        padding: 10px;
+        max-width: 100%;
+        line-height: 1.5;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-shadow: 1px 1px 1px #999;
+        }
+
+        label {
+        display: block;
+        margin-bottom: 10px;
+        }
+
     </style>
 </head>
 <body>
+    <!-- Botão com a classe 'meu-botao' -->
+    <a href="#" class="meu-botao">Clique Aqui</a>
+    <label for="story">Tell us your story:</label>
 
-    <nav>
-        <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li>
-                <details>
-                    <summary>Sublinks</summary>
-                    <ul>
-                        <li><a href="#">Sublink 1</a></li>
-                        <li><a href="#">Sublink 2</a></li>
-                    </ul>
-                </details>
-            </li>
-            <li><a href="#">Link 3</a></li>
-        </ul>
-    </nav>
-
-    <div>
-        <!-- Conteúdo principal da página -->
-        <h1>Conteúdo Principal</h1>
-        <p>Seu conteúdo vai aqui...</p>
-    </div>
-
+    <textarea id="story" name="story" rows="5" cols="33">
+    It was a dark and stormy night...
+    </textarea>
 </body>
 </html>
