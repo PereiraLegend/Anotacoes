@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*Obs.: esse é o css global das informações // O que está acima está predefinido*/
+
+img {
+  width: 100px;
+}
