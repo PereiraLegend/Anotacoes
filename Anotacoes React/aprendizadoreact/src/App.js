@@ -5,6 +5,8 @@ import Imagens from './components/Imagens';
 import Hoks from './components/Hoks'
 import List from './components/List'
 import Rendercomd from './components/Rendercomd';
+import Fragmentos from './components/Fragmentos';
+import Container from './components/Container';
 
 function App() {
   return ( // Para importar um outro componente criado eu o passo como uma tag html, <Componente1 />
@@ -15,7 +17,11 @@ function App() {
       <Imagens />
       <Hoks />
       <List />
-      <Rendercomd x={5}/>
+      <Rendercomd x={5} y={3}/>
+      <Fragmentos/>
+      <Container> {/**Aqui estou utilizando o container como uma tag, mas para utilizar isso é necessário utilizar "children" */}
+        <h1>Este é o filho do container</h1>
+      </Container>
     </div>
   );
 }
