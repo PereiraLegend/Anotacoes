@@ -1,1 +1,10 @@
 Explicação: https://www.youtube.com/watch?v=pOVyVivyfok&t=2989s aos 58:00 minutos
+
+Sempre instalar os pacotes necessários: json-server, react, e npx, pode ser usado o ejs também
+
+Para inicializar a Api eu passo o comando no arquivo package.json como um script  o "server" onde seto o arquivo da Api e a porta a ser utilizada e dou um "npm run server"
+
+Para inicializar o servidor react eu antesd e tudo crio a aplicação com "npx create-react-app nomeaplicação" e dou um "npm start"
+
+O servidor com a Api que está rodando na porta 5000
+E o servidor React está rodando na porta 3000
