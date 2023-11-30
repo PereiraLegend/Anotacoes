@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Centralizada</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #overlay-final {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1000; /* Z-index alto para ficar à frente de outros elementos */
+        }
+    </style>
+</head>
+<body>
+
+
+
+<script>
+    function minhaFuncao() {
+        // Código da sua função aqui
+
+        // Exemplo de código (pode ser substituído pela lógica da sua função)
+        let resultado = 42;
+
+        // Exibindo a mensagem após a execução da função
+        exibirMensagem(resultado);
+    }
+
+    function exibirMensagem() {
+        // Obtendo elementos
+        const overlay = document.getElementById('overlay');
+        const mensagemElemento = document.getElementById('mensagem');
+        //const resultadoElemento = document.getElementById('resultado');
+
+        // Definindo o texto da mensagem
+        //resultadoElemento.textContent = resultado;
+
+        // Exibindo o overlay
+        overlay.style.display = 'block';
+
+        // Ocultando o overlay após 3 segundos (3000 milissegundos)
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 3000);
+    }
+
+    // Chame a função
+    minhaFuncao();
+</script>
+
+</body>
+</html>
