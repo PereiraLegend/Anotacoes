@@ -3,66 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagem Centralizada</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            margin: 0;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
-
-        #overlay-final {
+        
+        .modal {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            text-align: center;
+            background-color: #fefefe;
             padding: 20px;
-            box-sizing: border-box;
-            z-index: 1000; /* Z-index alto para ficar à frente de outros elementos */
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
         }
+        
+        .modal-content {
+            max-width: 100%;
+        }
+        
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
     </style>
+    <title>Modal com CPF</title>
 </head>
 <body>
 
+<button id="openModalBtn">Abrir Modal</button>
 
+<div id="cpfModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <label for="cpfInput">Deseja incluir seu CPF na nota?</label>
+    <input type="text" id="cpfInput" maxlength="8" placeholder="CPF (opcional)">
+    <button onclick="submitCPF()">Confirmar</button>
+  </div>
+</div>
 
 <script>
-    function minhaFuncao() {
-        // Código da sua função aqui
+    document.getElementById('openModalBtn').addEventListener('click', openModal);
 
-        // Exemplo de código (pode ser substituído pela lógica da sua função)
-        let resultado = 42;
-
-        // Exibindo a mensagem após a execução da função
-        exibirMensagem(resultado);
+    function openModal() {
+        document.getElementById('cpfModal').style.display = 'block';
     }
 
-    function exibirMensagem() {
-        // Obtendo elementos
-        const overlay = document.getElementById('overlay');
-        const mensagemElemento = document.getElementById('mensagem');
-        //const resultadoElemento = document.getElementById('resultado');
-
-        // Definindo o texto da mensagem
-        //resultadoElemento.textContent = resultado;
-
-        // Exibindo o overlay
-        overlay.style.display = 'block';
-
-        // Ocultando o overlay após 3 segundos (3000 milissegundos)
-        setTimeout(() => {
-            overlay.style.display = 'none';
-        }, 3000);
+    function closeModal() {
+        document.getElementById('cpfModal').style.display = 'none';
     }
 
-    // Chame a função
-    minhaFuncao();
+    function submitCPF() {
+        var cpf = document.getElementById('cpfInput').value;
+        alert('CPF digitado: ' + cpf);
+        closeModal();
+    }
+
 </script>
-
 </body>
 </html>

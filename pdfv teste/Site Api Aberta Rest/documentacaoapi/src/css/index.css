@@ -1,0 +1,5 @@
+@import url(/src/css/cores.css);
+@import url(/src/css/fontes.css);
+body {
+    background-color: var(--cor-background-g);
+}

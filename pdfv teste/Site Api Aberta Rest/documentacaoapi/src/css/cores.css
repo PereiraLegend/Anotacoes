@@ -1,0 +1,14 @@
+:root {
+    --cor--principal: gray;
+    --cor-secundaria: aquamarine;
+    --cor-background-g: rgb(229, 223, 223);
+    --cor-background-menu-s: white;
+    --cor-cinza: rgb(234, 233, 233);
+    --cor-footer: #15161C;
+    --cor-fonte-1: #017BF3;
+    --cor-fonte-1-fraca: #017af350;
+    --cor-fonte-2: #333;
+    --cor-teste1: red;
+    --cor-teste2: green;
+    --cort-teste3: yellow;
+}

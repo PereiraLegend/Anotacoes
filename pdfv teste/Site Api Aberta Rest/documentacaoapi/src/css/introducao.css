@@ -1,0 +1,138 @@
+.container{
+    display: flex;
+    flex:1;
+}
+
+.barra-lateral {
+    width: 210px;
+    /*height: 100%;*/
+    /*background-color: aqua;*/
+}
+
+.barra-superior {
+    margin-bottom: 4.5px;
+}
+
+.content {
+    flex: 1;
+    height: 100%;
+    background-color: var(--cor-background-menu-s);
+    border-radius: 15px;
+    font-family: "Ubuntu", sans-serif;
+}
+.content h1{
+    color: var(--cor-fonte-1);
+}
+.content h2{
+    color: var(--cor-fonte-1);
+}
+.content h3{
+    color: var(--cor-fonte-1);
+}
+
+#introducao {
+    padding-top: 1px;
+    margin-top: 9px;
+    height: 100%;
+    padding-bottom: 30px;
+}
+
+.cards-intro {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.cards-intro-txt {
+    flex:1;
+    max-width: 50%;
+    box-sizing: border-box;
+}
+.cards-intro-txt-2 {
+    flex:1;
+    max-width: 50%;
+    box-sizing: border-box;
+}
+.cards-intro-txt p {
+    margin: 30px;
+}
+
+.cards-intro-img {
+    flex:1;
+    max-width: 50%;
+    box-sizing: border-box;
+    /*padding: 10px;*/
+}
+
+.img-server {
+    width: 350px;
+    /*padding: 20px;*/
+}
+.texto-In {
+    margin-right: 40px;
+    margin-left: 40px;
+}
+.texto-In hr{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.form-txt-al {
+
+}
+
+textarea {
+    font-size: 1.0rem;
+    letter-spacing: 1px;
+}
+
+textarea {
+    padding: 10px;
+    /*max-width: 100%;*/
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+.textarea-form {
+    background-color: var(--cor-background-g);
+    border-radius: 15px;
+    /*margin: 30px;*/
+}
+.textarea-form h3 {
+    margin: 10px;
+}
+.textarea-form textarea {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#codigo-textarea {
+    /*width: 100%;*/
+    /*max-width: 275px;*/
+    box-sizing: border-box;
+    resize:vertical;
+}
+
+#codigo-textarea-2 {
+    width: 100%;
+    max-width: 450px;
+    resize:vertical;
+}
+
+.form-span{
+    /*margin-right: 10px;*/
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+.barra-footer{
+    margin-bottom: -10px;
+    margin-left: -8px;
+    margin-right: -8px;
+    padding-bottom: -10px;
+}

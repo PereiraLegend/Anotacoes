@@ -1,0 +1,44 @@
+footer {
+    background-color: var(--cor-footer);
+    color: var(--cor-background-menu-s);
+    border-radius: 15px;
+    margin-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.main-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.imgfooterlogo {
+    width: 100px;
+}
+
+.main-footer h2{
+    font-size: 18px;
+}
+
+.main-footer a{
+    text-decoration: none;
+    color: var(--cor-background-menu-s);
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.main-footer a:hover{
+    color: var(--cor-fonte-1);
+}
+
+.al-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.img-logo-menor {
+    width: 60px;
+}
+
+.spanfooter {
+    font-weight: bold;
+}
