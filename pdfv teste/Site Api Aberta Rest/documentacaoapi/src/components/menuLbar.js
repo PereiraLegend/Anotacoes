@@ -1,3 +1,5 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
 import '../css/all.css'
 //import React, {useEffect} from 'react';
 
@@ -10,16 +12,16 @@ function menuLbar(){
 
                 <li><p>APIs</p></li>
 
-                <li><a href="./main.html" target="_top">Introdução</a></li>
+                <li><Link to="/">Introdução</Link></li>
                 <li><hr/></li>
                 <li>
                     <details>
                         <summary>Site</summary>
                         <ul class="lista-menu-l-seletor">
-                            <li><a href="./site-Post.html" target="_top">Site Post</a></li>
-                            <li><a href="./site-Get.html" target="_top">Site Get</a></li>
-                            <li><a href="./site-Put.html" target="_top">Site Put</a></li>
-                            <li><a href="./site-Delete.html" target="_top">Site Delete</a></li>
+                        <li><Link to="/sitepost">Site Post</Link></li>
+                        <li><Link to="/siteget">Site Get</Link></li>
+                        <li><Link to="/siteput">Site Put</Link></li>
+                        <li><Link to="/sitedelete">Site Delete</Link></li>
                         </ul>
                     </details>
                 </li>
