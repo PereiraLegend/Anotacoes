@@ -1,0 +1,13 @@
+Nesse arquivo eu instalo o next.js usando o comando "npx create-next-app@latest", se não tiver o next instalado ele automáticamente irá dar um comando para a instalação, depois 
+de passar por todas as verificações dando o nome para o projeto e aceitando todas as dependencias opcionais;
+
+Para verificar se foi instalado corretamente eu rodo o projeto utilizando o comando "npm run dev", e uma página padrão na rota básica do next abrirá na porta referênciada;
+
+Após instalar e verificar, eu crio na pasta "app" caso não tenha uma pasta pages, ou eu posso adicionar os arquivos diretamente, no caso é melhor criar uma pasta para cada item,
+de inicio foi criada uma pasta dashborad e um arquivo "page.tsx", no caso o next não chama por arquivo na url ele chama por pasta, ou seja:
+
+app -> é a rota principal
+app/dashboard -> uma rota já criada com um arquivo dentro
+
+e assim por diante para criar rotas eu sigo criando pastas em app para cada página criada, e se eu quiser agrupar várias pastas rotas em uma pasta dentro de app sem quebrar a lógica delas
+eu crio uma pasta com o nome dela entre parênteses ex.: "(auth)"
