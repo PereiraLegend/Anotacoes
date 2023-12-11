@@ -11,3 +11,7 @@ app/dashboard -> uma rota já criada com um arquivo dentro
 
 e assim por diante para criar rotas eu sigo criando pastas em app para cada página criada, e se eu quiser agrupar várias pastas rotas em uma pasta dentro de app sem quebrar a lógica delas
 eu crio uma pasta com o nome dela entre parênteses ex.: "(auth)"
+
+Para definir a imagem do site a ser associada ao link quando envio ou compartilho para alguém, basta eu arrastar uma imagem para o diretório app e renomea-la como "opengraph-image.jpg" dessa
+forma assim que o link for conpartilhado a imagem que vai estar associada a ele será esta, obs.: Ela pode ser em qualquer formato .jpg, .png, etc. (Mais informaçôes no minuto 56:00 do vídeo:
+https://www.youtube.com/watch?v=Sbl04kOL1dM)
