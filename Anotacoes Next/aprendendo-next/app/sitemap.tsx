@@ -23,7 +23,7 @@ export default async function sitemap(){ // Obrigatóriamente o nome da função
         url: `http://localhost:3000/post/${route}`,
         ultimaModificacao: new Date().toISOString()
     }))
-    return [...routes, ...posts] // Aqui ele retorna as consultas no banco de dados para a web , no caso as postagens, e as páginas em si, para facilitar a busca
+    return [...routes, ...posts] // Aqui ele retorna as consultas no banco d/e dados para a web , no caso as postagens, e as páginas em si, para facilitar a busca
 }
 
 // Para verificar o SEO vá para a rota no navegador: http://localhost:3000/sitemap.xml
