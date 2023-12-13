@@ -1,10 +1,11 @@
 "use client"
-import './styles/all.modules.css';
-import './styles/App.modules.css'
-import MenuSbar from './components/menuSbar';
-import MenuLbar from './components/menuLbar';
-import Footer from './components/footerBar';
-import Introducao from './components/introducao';
+import '../../styles/all.modules.css';
+import '../../styles/App.modules.css'
+import '../../styles/sub-paginas.modules.css';
+import MenuSbar from '../../components/menuSbar';
+import MenuLbar from '../../components/menuLbar';
+import Footer from '../../components/footerBar';
+import Delete from '../../components/siteDelete';
 function App() {
   return (
       <div className='app-container'>
@@ -15,7 +16,7 @@ function App() {
             <MenuLbar />
           </div>
           <div className='conteudo'>
-            <Introducao/>
+            <Delete/>
           </div>
         </div>
         <Footer />

@@ -1,13 +1,14 @@
-import '../styles/sub-paginas.modules.css'
+import '../styles/sub-paginas.modules.css';
 
-function siteDelete(){
+function sitePost(){
+
     return(
         <div className="content al-bar-react">
         <div className="bloco-g">
             <div className="bloco-al margin-dir al-topo">
-                <h2>Site Delete</h2>
+                <h2>Site Post</h2>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum inventore aliquid error cum et eligendi repellendus repudiandae dolor dolore, quas suscipit tenetur optio reiciendis. Aperiam accusamus sequi voluptatem officiis deleniti!</p>
-                <p>Rota <span className="tag-esp">Delete</span> de Site:</p>
+                <p>Rota <span className="tag-esp">Post</span> de Site:</p>
                 <div className="label-n-edit" contenteditable="false">localhost:5000/src/produtos/cataolo/ean</div>
                 <hr />
             </div>
@@ -25,7 +26,7 @@ function siteDelete(){
                     <div className="al-img-txta">
                         <textarea id="cURL" name="story" rows="5" cols="47">codigo</textarea>
                         <div className="img-textarea">
-                            <img src="img/imagem-api-9.png" alt="Miniatura" />
+                            <img src="img/imagem-api.png" alt="Miniatura" />
                         </div>
                     </div>
                 </div>
@@ -165,11 +166,12 @@ function siteDelete(){
                     <div className="al-img-txta">
                         <textarea id="cURL" name="story" rows="5" cols="47">codigo</textarea>
                         <div className="img-textarea">
-                            <img src="img/imagem-api-8.png" alt="Miniatura" />
+                            <img src="img/imagem-api-3.png" alt="Miniatura" />
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
         <div className="texto-In">
             <hr />
@@ -183,7 +185,8 @@ function siteDelete(){
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae fugit facilis deleniti repellendus aspernatur ut praesentium sed perferendis maiores voluptate eligendi iusto animi doloremque, libero repudiandae officia ullam voluptates. Sint?</p>
         </div>
     </div>
-    )
+
+    );
 }
 
-export default siteDelete
+export default sitePost

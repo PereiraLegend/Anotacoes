@@ -18,10 +18,10 @@ function menuLbar(){
                     <details>
                         <summary>Site</summary>
                         <ul className="lista-menu-l-seletor">
-                        <li><Link href={'/'}>Site Post</Link></li>
-                        <li><Link href={'/'}>Site Get</Link></li>
-                        <li><Link href={'/'}>Site Put</Link></li>
-                        <li><Link href={'/'}>Site Delete</Link></li>
+                        <li><Link href={'/sitepost'}>Site Post</Link></li>
+                        <li><Link href={'/siteget'}>Site Get</Link></li>
+                        <li><Link href={'/siteput'}>Site Put</Link></li>
+                        <li><Link href={'/sitedelete'}>Site Delete</Link></li>
                         </ul>
                     </details>
                 </li>
