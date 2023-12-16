@@ -1,9 +1,12 @@
 import Image from 'next/image'
+import MenuSbar from './Components/menuSbar'
+import Introducao from './Components/introducao'
 
 export default function Home() {
   return (
-    <main className='bg-blue-500 h-14'>
-      <div className='text-center'>Hello World!</div>
-    </main>
+    <div>
+      <MenuSbar/>
+      <Introducao/>
+    </div>
   )
 }
