@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 //import InstagramEmbed from './InstagramEmbed';
 
 export default function introducao() {
@@ -12,7 +13,7 @@ export default function introducao() {
                             <h1 className='text-4xl'>Coleção de Inverno</h1>
                         </div>
                         <div className='flex justify-center mt-[5%]'>
-                            <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'>Conheça</div>
+                            <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'><Link href={'/produtos'}>Conheça</Link></div>
                         </div>
                     </div>
                 </div>
@@ -23,7 +24,7 @@ export default function introducao() {
                             <h1 className='text-4xl'>Coleção de Verão</h1>
                         </div>
                         <div className='flex justify-center mt-[5%]'>
-                            <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'>Conheça</div>
+                            <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'><Link href={'/produtos'}>Conheça</Link></div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +36,7 @@ export default function introducao() {
                                 <h1 className='text-3xl'>Sandálias</h1>
                             </div>
                             <div className='flex justify-center mt-[5%]'>
-                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'>Conheça</div>
+                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'><Link href={'/produtos'}>Conheça</Link></div>
                             </div>
                         </div>
                     </div>
@@ -47,7 +48,7 @@ export default function introducao() {
                                 <h1 className='text-3xl'>Chapéus</h1>
                             </div>
                             <div className='flex justify-center mt-[5%]'>
-                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'>Conheça</div>
+                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'><Link href={'/produtos'}>Conheça</Link></div>
                             </div>
                         </div>
                     </div>
@@ -59,7 +60,7 @@ export default function introducao() {
                                 <h1 className='text-3xl'>Bolsas</h1>
                             </div>
                             <div className='flex justify-center mt-[5%]'>
-                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'>Conheça</div>
+                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'><Link href={'/produtos'}>Conheça</Link></div>
                             </div>
                         </div>
                     </div>
@@ -71,7 +72,7 @@ export default function introducao() {
                                 <h1 className='text-3xl'>Acessórios</h1>
                             </div>
                             <div className='flex justify-center mt-[5%]'>
-                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'>Conheça</div>
+                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'><Link href={'/produtos'}>Conheça</Link></div>
                             </div>
                         </div>
                     </div>
@@ -90,7 +91,7 @@ export default function introducao() {
                                 <h1 className='text-3xl'>Moda Jeans</h1>
                             </div>
                             <div className='flex justify-center mt-[5%]'>
-                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'>Conheça</div>
+                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'><Link href={'/produtos'}>Conheça</Link></div>
                             </div>
                         </div>
                     </div>
@@ -101,7 +102,7 @@ export default function introducao() {
                                 <h1 className='text-3xl'>Moda Legging</h1>
                             </div>
                             <div className='flex justify-center mt-[5%]'>
-                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'>Conheça</div>
+                                <div className='border p-2 hover:cursor-pointer hover:bg-gray-700'><Link href={'/produtos'}>Conheça</Link></div>
                             </div>
                         </div>
                     </div>
@@ -116,7 +117,7 @@ export default function introducao() {
                         <img className="w-[40%]" src="imgs/modelo241.png" alt=""/>
                     </div>
                     <div className='flex justify-center mt-[5%]'>
-                        <div className='text-3xl text-gray-700 border border-gray-700  p-2 hover:cursor-pointer hover:bg-white'>Moda Infantil</div>
+                        <div className='text-3xl text-gray-700 border border-gray-700  p-2 hover:cursor-pointer hover:bg-white'><Link href={'/produtos'}>Conheça</Link></div>
                     </div>
                     <div className='flex justify-center'>
                         <img className="w-[40%]" src="imgs/modelo231.png" alt=""/>
@@ -136,13 +137,15 @@ export default function introducao() {
                 </div>
 
             </div>
-
-            <div className="bg-blue-960 h-[480px] w-[100%] flex">
+            {/**
+             *             <div className="bg-blue-960 h-[480px] w-[100%] flex">
                 <div className="bg-orange-800 h-[480px] w-[45%]"><img className="w-[100%] h-[100%]" src="imgs/lmodelo15.jpg" alt=""/></div>
                 <div className="bg-green-900 h-[480px] w-[55%]">
                     <h1>Visite Nossas Lojas</h1>
                 </div>
             </div>
+             */}
+
 
         </div>
     )
