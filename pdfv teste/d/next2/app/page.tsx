@@ -18,22 +18,49 @@ export default function Home() {
       </div>
       <div className="ml-[5%] mr-[5%] bg-gray-200 rounded-2xl mt-[-50px]">
         <div className="w-[100%] h-[400px] flex justify-center items-center justify-evenly">
-          <div className="w-[26%] h-[80%] bg-blue-300 rounded-2xl"></div>
-          <div className="w-[26%] h-[80%] bg-blue-300 rounded-2xl"></div>
-          <div className="w-[26%] h-[80%] bg-blue-300 rounded-2xl"></div>
+          <div className="w-[26%] h-[80%] bg-blue-300 rounded-2xl flex items-center justify-center flex-col">
+              <img src="/imgs/icone-ferramentas.png" className="w-[100px] h-[100px] mb-4" alt=""/>
+              <p className="font-serif text-3xl">A melhor qualidade</p>
+              <p className="p-4"> Utilizamos os melhores materiais com os melhores profissionais do mercado</p>
+          </div>
+          <div className="w-[26%] h-[80%] bg-blue-300 rounded-2xl flex items-center justify-center flex-col">
+              <img src="/imgs/icone-caminhao.png" className="w-[100px] h-[100px] mb-4" alt=""/>
+              <p className="font-serif text-3xl">A melhor entrega</p>
+              <p className="p-4"> Utilizamos os melhores materiais com os melhores profissionais do mercado</p>
+          </div>
+          <div className="w-[26%] h-[80%] bg-blue-300 rounded-2xl flex items-center justify-center flex-col">
+              <img src="/imgs/icone-qualidade.png" className="w-[100px] h-[100px] mb-4" alt=""/>
+              <p className="font-serif text-3xl">A melhor garantia</p>
+              <p className="p-4"> Utilizamos os melhores materiais com os melhores profissionais do mercado</p>
+          </div>
         </div>
       </div>
       <div className="flex justify-center">
         <h1 className="text-4xl font-serif font-bold mt-12 mb-6">Categorias</h1>
       </div>
       <div className="ml-[5%] mr-[5%] flex justify-between m-[30px]">
-        <div className="w-[48.8%] h-[250px] bg-red-300 rounded-2xl">
+        <div className="w-[48.8%] h-[250px] bg-red-300 rounded-2xl cursor-pointer relative">
+          <img src="/imgs/loja-lustre.jpg" alt="" className="w-[100%] h-[100%] rounded-2xl"/>
+          <div className="absolute inset-0 bg-black opacity-50 rounded-2xl"></div>
+          <p className="absolute bottom-0 left-0 text-white p-8 font-serif text-2xl">Luminárias <span className="text-sm">30</span></p>
         </div>
-        <div className="w-[48.8%] h-[250px] bg-red-300 rounded-2xl"></div>
+        <div className="w-[48.8%] h-[250px] bg-red-300 rounded-2xl cursor-pointer relative">
+          <img src="/imgs/loja-moveis.jpg" alt="" className="w-[100%] h-[100%] rounded-2xl"/>
+          <div className="absolute inset-0 bg-black opacity-50 rounded-2xl"></div>
+          <p className="absolute bottom-0 left-0 text-white p-8 font-serif text-2xl">Mobílias <span className="text-sm">33</span></p>
+        </div>
       </div>
       <div className="ml-[5%] mr-[5%] flex justify-between m-[30px]">
-        <div className="w-[48.8%] h-[250px] bg-red-300 rounded-2xl"></div>
-        <div className="w-[48.8%] h-[250px] bg-red-300 rounded-2xl"></div>
+        <div className="w-[48.8%] h-[250px] bg-red-300 rounded-2xl cursor-pointer relative">
+          <img src="/imgs/loja-sofas.jpg" alt="" className="w-[100%] h-[100%] rounded-2xl"/>
+          <div className="absolute inset-0 bg-black opacity-50 rounded-2xl"></div>
+          <p className="absolute bottom-0 left-0 text-white p-8 font-serif text-2xl">Sofás <span className="text-sm">20</span></p>
+        </div>
+        <div className="w-[48.8%] h-[250px] bg-red-300 rounded-2xl cursor-pointer relative">
+          <img src="/imgs/loja-jarros.jpg" alt="" className="w-[100%] h-[100%] rounded-2xl"/>
+          <div className="absolute inset-0 bg-black opacity-50 rounded-2xl"></div>
+          <p className="absolute bottom-0 left-0 text-white p-8 font-serif text-2xl">Decorações <span className="text-sm">60</span></p>
+        </div>
       </div>
       <div className="flex justify-center">
         <h1 className="text-4xl font-serif font-bold mt-12 mb-6">Produtos em Destaque</h1>
