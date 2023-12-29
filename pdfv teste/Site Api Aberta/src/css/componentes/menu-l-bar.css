@@ -18,7 +18,8 @@ body {
     /*font-weight: bold;*/
 }
 .sidebar ul{
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .lista-menu-l {
@@ -54,7 +55,7 @@ summary:active {
     color: var(--cor-fonte-1);
 }
 summary:not(:active){
-    colro: var(--cor-fonte-2);
+    color: var(--cor-fonte-2);
 }
 
 summary::-webkit-details-marker {

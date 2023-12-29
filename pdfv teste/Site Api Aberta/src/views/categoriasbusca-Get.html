@@ -33,10 +33,10 @@
             -->
             <div class="bloco-g">
                 <div class="bloco-al margin-dir al-topo">
-                    <h2>Adicionando produtos ao carrinho</h2>
-                    <p>Adicionando produtos no carrinho para efetuar a compra</p>
-                    <p>Rota <span class="tag-esp">Put</span> de Adicionar ao carrinho:</p>
-                    <div class="label-n-edit" contenteditable="false">https://api-n56x.onrender.com/v1/api/card</div>
+                    <h2>Buscar Categorias</h2>
+                    <p>Buscar produto por categoria e nome</p>
+                    <p>Rota <span class="tag-esp">Get</span> de Buscar Categorias:</p>
+                    <div class="label-n-edit" contenteditable="false">https://api-n56x.onrender.com/v1/api/search?nomeproduto=&page=</div>
                     <hr>
                 </div>
                 <div class="bloco-al margin-esq">
@@ -54,7 +54,7 @@
                             <textarea id="cURL" name="story" rows="5" cols="47">codigo</textarea>
                             <!---->
                             <div class="img-textarea">
-                                <img src="../imgs/imagem-api-4.png" alt="Miniatura">
+                                <img src="../imgs/imagem-api.png" alt="Miniatura">
                             </div>
                             <!---->
                         </div>
@@ -202,21 +202,22 @@
                             </div>
                         </div>
                         <div class="al-img-txta">
-                            <textarea id="cURL" name="story" rows="5" cols="47">{"product":[{"ean":"77777777777777","qnt":"5"}]}</textarea>
+                            <textarea id="cURL" name="story" rows="5" cols="47">ean,nomeproduto,descrição,imagem,valor</textarea>
                             <!---->
                             <div class="img-textarea">
-                                <img src="../imgs/imagem-api-6.png" alt="Miniatura">
+                                <img src="../imgs/imagem-api-3.png" alt="Miniatura">
                             </div>
                             <!---->
                         </div>
                     </div>
                     <!--<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia porro minima ipsa nisi, neque deserunt culpa delectus a quibusdam, consectetur officiis reprehenderit ex? Nam illo eos quibusdam est assumenda repellat!</p>-->
                 </div>
+                
             </div>
+            
             <div class="texto-In">
                 <hr>
             </div>
-
             <!--
             <center><h2>Explore a Api</h2></center>
             <div class="texto-In">
