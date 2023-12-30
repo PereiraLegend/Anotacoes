@@ -5,7 +5,7 @@ export default function Card(){
         
             <div className="w-[100%] h-[400px] bg-gray-50 cursor-pointer">
                 <div className="w-[100%] h-[300px] bg-blue-100 flex justify-center">
-                <img src="/imgs/mobilia7.png" className="h-[100%]" alt=""/>
+                <img src="/imgs/mobilia5.png" className="h-[100%]" alt=""/>
                 </div>
                 <div className="font-serif text-xl flex justify-center">Cadeira de Escritório</div>
                 <div className="text-lg flex justify-center">R$ 20,00</div>
