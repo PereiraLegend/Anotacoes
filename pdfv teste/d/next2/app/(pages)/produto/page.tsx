@@ -58,7 +58,18 @@ export default function Produto(){
                             <p className="pl-1 text-sm text-yellow-400 mt-1">80 Avaliações</p>
                         </div>
                         <p className="border-2 text-green-600 w-[240px] p-1 mt-2">Economize pagando pelo pix!</p>
-                        <p className="text-sm text-gray-600 line-through">De: R$ 40,00</p>
+                        <p className="text-sm pt-2 text-gray-600 line-through">De: R$ 40,00</p>
+                        <p className="text-sm pt-2">Por: <span className="text-5xl font-bold text-green-600">R$ 20,00</span></p>
+                        <p className="text-2sm pt-2 font-bold">à vista no Pix ou Cartão</p>
+                        <p className="text-sm pt-2">ou <span className="font-bold">R$ 25,00</span> em até <span className="font-bold">5x de R$ 5,00</span> no cartão sem juros</p>
+                        <p className="text-sm pt-2 underline cursor-pointer">Veja também outras formas de pagamento</p>
+                        <input type="button" value="Comprar" className="bg-green-600 text-white pt-4 pb-4 pl-24 pr-24 mt-2 font-bold text-2xl cursor-pointer hover:bg-green-700" />
+                        <p className="text-sm pt-4 font-bold">Calcular o frete e o prazo</p>
+                        <div className="flex pt-2">
+                            <input type="text" placeholder="Digite seu Cep" id=""  className="border-2 border-spacing-2 p-2"/>
+                            <input type="button" value="Calcular" className="bg-blue-800 ml-4 text-white pl-4 pr-4 cursor-pointer hover:bg-blue-900" />
+                        </div>
+                        <p className="text-sm pt-2 underline cursor-pointer">Não lembro o meu Cep</p>
                     </div>
 
                 </div>
