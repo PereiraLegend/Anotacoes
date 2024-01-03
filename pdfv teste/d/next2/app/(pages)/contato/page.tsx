@@ -7,7 +7,7 @@ export default function Contato() {
             <MenuSbar />
             <div className="w-[100%] h-[100%]">
                 <div className="w-[90%] ml-[5%] mr-[5%] mt-[30px] flex justify-around">
-                    <h1 className="font-serif flex justify-center text-3xl">Contatos</h1>
+                    <h1 className="font-serif flex justify-center text-5xl">Contatos</h1>
                 </div>
                 <div className="w-[90%] ml-[5%] mr-[5%] mt-[30px] flex justify-between">
                     <div className="bg-gray-400 w-[68%] h-[100%] rounded-2xl">

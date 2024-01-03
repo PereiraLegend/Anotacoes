@@ -21,7 +21,7 @@ export default function MenuSbar(){
                         <Link href="/loja"><div className="w-[100px] h-[100px] flex justify-center items-center hover:cursor-pointer text-white hover:border-b-2 hover:border-white">Loja</div></Link>
                         <Link href="/blog"><div className="w-[100px] h-[100px] flex justify-center items-center hover:cursor-pointer text-white hover:border-b-2 hover:border-white">Blog</div></Link>
                         <Link href="/contato"><div className="w-[100px] h-[100px] flex justify-center items-center hover:cursor-pointer text-white hover:border-b-2 hover:border-white">Contato</div></Link>
-                        <Link href="/conta"><div className="w-[100px] h-[100px] flex justify-center items-center hover:cursor-pointer text-white hover:border-b-2 hover:border-white">Minha Conta</div></Link>
+                        {/**<Link href="/conta"><div className="w-[100px] h-[100px] flex justify-center items-center hover:cursor-pointer text-white hover:border-b-2 hover:border-white">Minha Conta</div></Link>*/}
                     </div>
                 </div>
                 <div className="flex font-bold">
