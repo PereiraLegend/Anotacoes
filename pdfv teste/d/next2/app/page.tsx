@@ -2,6 +2,7 @@
 import MenuSbar from "./components/menuSbar"
 import Footer from "./components/footer"
 import { FiArrowRight, FiShoppingCart } from "react-icons/fi"
+import Cardpost from "./components/card-post"
 
 export default function Home() {
   return (
@@ -159,24 +160,10 @@ export default function Home() {
         <h1 className="text-lg font-serif mb-6">Confira as novas postagens</h1>
       </div>
       <div className="ml-[5%] mr-[5%] flex justify-between m-[30px]">
-        <div className="w-[31%] h-[400px] bg-gray-300">
-          <div className="w-[100%] h-[320px] bg-blue-100">
-            <img src="/imgs/sala1.jpg" className="h-[100%] w-[100%]" alt=""/>
-          </div>
-          <div className="font-serif text-2xl flex ">Como estilizar a sua sala de estar com as tendências desse inverno</div>
-        </div>
-        <div className="w-[31%] h-[400px] bg-gray-300">
-          <div className="w-[100%] h-[320px] bg-blue-100">
-          <img src="/imgs/sala2.jpg" className="h-[100%] w-[100%]" alt=""/>
-          </div>
-          <div className="font-serif text-2xl flex ">Como estilizar a sua sala de estar com as tendências desse inverno</div>
-        </div>
-        <div className="w-[31%] h-[400px] bg-gray-300">
-          <div className="w-[100%] h-[320px] bg-blue-100">
-          <img src="/imgs/sala3.jpg" className="h-[100%] w-[100%]" alt=""/>
-          </div>
-          <div className="font-serif text-2xl flex ">Como estilizar a sua sala de estar com as tendências desse inverno</div>
-        </div>
+        <Cardpost/>
+        <Cardpost/>
+        <Cardpost/>
+        <Cardpost/>
       </div>
       <div className="ml-[5%] mr-[5%] mt-20">
         <div className="bg-red-900 bg-[url(/imgs/textura.jpg)] w-[100%] h-[350px] rounded-2xl flex justify-center flex-col">
