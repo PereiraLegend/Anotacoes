@@ -1,4 +1,5 @@
 import app from './src/app.js'
+import conexao from './infra/conexao.js'
 // a conexao com o bd será chamada pelo servidor, pois só poderá ser usado o programa e a base de dados se o servidor estiver em pé
 
 const PORT = 5000
