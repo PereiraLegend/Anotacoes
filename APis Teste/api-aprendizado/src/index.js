@@ -1,5 +1,5 @@
 //import conexao from './database/conexao.js'
-const conexao = require('./database/conexao')
+//const conexao = require('./database/conexao')
 
 const express = require('express')
 const app = express()
@@ -7,7 +7,7 @@ const port = 3000
 
 // Escutar o servidor
 app.listen(port, () => {
-    console.log("O servidor está rodando!")
+    console.log("O servidor está rodando na porta:", port)
 })
 
 
