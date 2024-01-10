@@ -1,0 +1,15 @@
+Criar uma Api com funcionalidades para:
+- Usuários (Crud de usuários)
+- Produtos (Crud de produtos)
+- Algumas idéias a mais
+- Com fatores de segurança e token para esses mesmos arquivos
+- Fazer uma pequena simulação de e-commerce
+- Fazer uma pequena simulação de sistema de estoque
+
+Aqui foi instalado:
+nodemon
+mysql
+mysql2
+dotenv
+express
+cors (Liberar acesso para a api)

@@ -11,7 +11,23 @@ import conexao from './infra/conexao.js'
 conexao.connect((erro) => {
     if(erro){
         console.log(`A conexão falhou: ${erro}`)
-    } else {
+    } else {router.post('/produtos', async (req, res) => {
+    const body = req.body;
+
+    const adproduto = await connection.execute('INSERT INTO produtos SET ?', [body]);
+
+    // Retorna os resultados da inserção
+    return res.status(200).json(adproduto[0]);
+});
+router.post('/produtos', async (req, res) => {
+    const body = req.body;
+
+    const adproduto = await connection.execute('INSERT INTO produtos SET ?', [body]);
+
+    // Retorna os resultados da inserção
+    return res.status(200).json(adproduto[0]);
+});
+
         console.log('Conectado ao banco de dados com sucesso!')
         //Da forma que o ja é executado de cima para baixo, eu só consigo me conectar a aplicação se o banco de dados estiver prontamente conectado
         //Assim eu posso mover o "escutador" da porta para dentro do else
