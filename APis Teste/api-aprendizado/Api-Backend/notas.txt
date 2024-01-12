@@ -13,3 +13,4 @@ mysql2
 dotenv
 express
 cors (Liberar acesso para a api)
+axios (Para facilitar a conexão e requisição)

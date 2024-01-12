@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/teste.css">
   <title>Lista de Produtos</title>
 </head>
 <body>
@@ -40,93 +41,19 @@
       <!-- Dados da tabela serão inseridos aqui dinamicamente -->
     </tbody>
   </table>
+  
+  <!--Modal Editar-->
+  <div class="overlay" id="overlay" onclick="fecharModalEditar()"></div>
+  <div class="modal" id="modal">
+    <h2>Preencha os Campos para editar o item <span id="editartxt"></span></h2>
+    <input type="text" placeholder="Nome">
+    <input type="text" placeholder="Tipo">
+    <input type="text" placeholder="Categoria">
+    <input type="text" placeholder="Observação">
+    <button onclick="editarProduto()">Enviar</button>
+    <button onclick="fecharModalEditar()">Fechar</button>
+  </div>
 
-  <script>
-    const url = 'http://localhost:3000/produtos';
-    const produtoBody = document.getElementById('produtoBody');
-    const formularioProduto = document.getElementById('formularioProduto');
-
-    document.addEventListener('DOMContentLoaded', function () {
-      carregarProdutos();
-    });
-
-    function carregarProdutos() {
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          exibirProdutos(data);
-        })
-        .catch(error => {
-          console.error('Erro ao buscar dados:', error);
-        });
-    }
-
-    function exibirProdutos(produtos) {
-      produtoBody.innerHTML = ''; // Limpa a tabela antes de adicionar novos dados
-
-      produtos.forEach(function (produto) {
-        const row = criarLinhaProduto(produto);
-        produtoBody.appendChild(row);
-      });
-    }
-
-    function criarLinhaProduto(produto) {
-      const { id, nomeproduto, tipoprodutos, categoriaproduto, observacaoproduto } = produto;
-
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${id}</td>
-        <td>${nomeproduto}</td>
-        <td>${tipoprodutos}</td>
-        <td>${categoriaproduto}</td>
-        <td>${observacaoproduto}</td>
-        <td>
-          <button onclick="editarProduto(${id})">Editar</button>
-          <button onclick="excluirProduto(${id})">Excluir</button>
-        </td>
-      `;
-
-      return row;
-    }
-
-    function adicionarProduto(produto) {
-      const row = criarLinhaProduto(produto);
-      produtoBody.appendChild(row);
-    }
-
-    formularioProduto.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const nomeProduto = document.getElementById('nomeProduto').value;
-      const tipoProduto = document.getElementById('tipoProduto').value;
-      const categoriaProduto = document.getElementById('categoriaProduto').value;
-      const observacaoProduto = document.getElementById('observacaoProduto').value;
-
-      const novoProduto = {
-        id: Math.floor(Math.random() * 1000), // Gere um ID único (isso é apenas para exemplo)
-        nomeproduto: nomeProduto,
-        tipoprodutos: tipoProduto,
-        categoriaproduto: categoriaProduto,
-        observacaoproduto: observacaoProduto
-      };
-
-      adicionarProduto(novoProduto);
-
-      // Adicione lógica aqui para enviar o novo produto para o backend usando fetch ou outra abordagem.
-
-      // Limpe o formulário após adicionar o produto
-      formularioProduto.reset();
-    });
-
-    function editarProduto(id) {
-      // Lógica para edição do produto com o ID fornecido
-      console.log('Editar produto com ID:', id);
-    }
-
-    function excluirProduto(id) {
-      // Lógica para exclusão do produto com o ID fornecido
-      console.log('Excluir produto com ID:', id);
-    }
-  </script>
+  <script src="./js/teste.js"></script>
 </body>
 </html>

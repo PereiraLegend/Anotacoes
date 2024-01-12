@@ -65,7 +65,7 @@ router.put('/produtos/:id', async (req,res) => { // UPDATE
 
 router.delete('/produtos/:id', async (req,res) => { // DELETE
     try{
-        if (!req.id) {
+        if (!req.params.id) {
             return res.status(400).json({ error: 'Esse id não existe ou não pode ser apagado' });
         }
 
