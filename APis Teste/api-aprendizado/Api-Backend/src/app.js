@@ -4,6 +4,6 @@ const router = require('./router')
 const cors = require('cors')
 
 const app = express()
-app.use(router)
 app.use(cors())
+app.use(router)
 module.exports = app
