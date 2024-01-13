@@ -94,6 +94,7 @@ formularioProduto.addEventListener('submit', function (event) {
 
   // Limpe o formulário após adicionar o produto
   formularioProduto.reset();
+  location.reload()
 });
 
 function abrirModalEditar(id) {
@@ -107,13 +108,38 @@ function fecharModalEditar() {
   document.getElementById('overlay').style.display = 'none';
 }
 
+
 function editarProduto() {
-  const id = document.getElementById('editartxt')
+  const idE = document.querySelector('#editartxt').innerText
+
+  const editarProd = {
+    id: idE,
+    nomeproduto: document.getElementById("nomeEditar").value,
+    tipoprodutos: document.getElementById("tipoEditar").value,
+    categoriaproduto: document.getElementById("categoriaEditar").value,
+    observacaoproduto: document.getElementById("observacaoEditar").value
+  }
+
+  fetch(`${url}/${idE}`,{
+    method: 'PUT',
+    headers: {
+      'Content-Type':'application/json',
+    },
+    body: JSON.stringify(editarProd),
+  })
+  .then(data => {
+    console.log("Produto Editado: ", data)
+  })
+  .catch(error => {
+    console.log("Deu erro na edição do produto: ", error)
+  })
 
   // Lógica para edição do produto com o ID fornecido
   
-
-  console.log('Editado o produto com ID:', id);
+  //alert(`Produto ${idE} Editado`)
+  fecharModalEditar()
+  console.log('Editado o produto com ID:', idE);
+  location.reload()
 }
 
 
@@ -134,4 +160,5 @@ function excluirProduto(id) {
     })
 
   console.log('Excluir produto com ID:', id);
+  location.reload()
 }

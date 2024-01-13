@@ -37,6 +37,11 @@ router.get('/produtos/:id', async (req, res) => { // READ
 
 })
 
+router.get('/Uproduto', (req,res) => { // READ último produto
+    let ultimoId = connection.reduce((maxId, produtos) => Math.max(maxId, produtos.id), 0);
+    res.json({ ultimoId })
+})
+
 router.post('/produtos', async (req, res) => { // POST
     try {
         const body = req.body
