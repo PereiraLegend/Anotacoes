@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="all.css">
+    <title>Registro</title>
+</head>
+<body>
+    {{>header}}
+    <h1>Registro</h1>
+    <form id="formulario-registro" action="/registro" method="POST" class="form-registro">
+        <label for="nome">Nome: </label>
+        <input type="text" placeholder="nome" id="nome">
+        <label for="email">Email: </label>
+        <input type="email" placeholder="email" id="email">
+        <label for="senha">Senha: </label>
+        <input type="password" placeholder="senha" id="senha">
+
+        <input type="submit" value="Registrar">
+    </form>
+</body>
+</html>

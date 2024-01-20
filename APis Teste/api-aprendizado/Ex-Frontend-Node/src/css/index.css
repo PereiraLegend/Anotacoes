@@ -1,0 +1,17 @@
+body {
+    background-color: aquamarine;
+}
+.al-s-bar{
+    background-color: orange;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+}
+.lista-1{
+    display: flex;
+}
+.lista-1 li {
+    margin-left: 30px;
+    font-size: 20px;
+    list-style: none;
+}
