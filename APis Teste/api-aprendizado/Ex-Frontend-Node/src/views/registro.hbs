@@ -10,14 +10,18 @@
     {{>header}}
     <h1>Registro</h1>
     <form id="formulario-registro" action="/registro" method="POST" class="form-registro">
-        <label for="nome">Nome: </label>
-        <input type="text" placeholder="nome" id="nome">
-        <label for="email">Email: </label>
-        <input type="email" placeholder="email" id="email">
-        <label for="senha">Senha: </label>
-        <input type="password" placeholder="senha" id="senha">
+        <label for="nomeusuario">Nome: </label>
+        <input type="text" placeholder="nome" id="nomeusuario" name="nomeusuario">
+        <label for="emailusuario">Email: </label>
+        <input type="email" placeholder="email" id="emailusuario" name="emailusuario">
+        <label for="senhausuario">Senha: </label>
+        <input type="password" placeholder="senha" id="senhausuario" name="senhausuario">
+        <label for="senhausuario">Confirme a Senha: </label>
+        <input type="password" placeholder="Cenfirme a Senha" id="senhausuarioconf" name="senhausuarioconf">
 
         <input type="submit" value="Registrar">
     </form>
+
+    <script src="../js/server.js"></script>
 </body>
 </html>

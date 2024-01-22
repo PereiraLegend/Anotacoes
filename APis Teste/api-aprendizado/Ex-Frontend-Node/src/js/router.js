@@ -1,5 +1,7 @@
 const express = require('express')
 const rota = express.Router()
+const conecta = require('./database/conexao')
+const { register } = require('module')
 //const conexao = require('./database/conexao') 
 //const formularioregistro = document.getElementById('fomulario-registro')
 
@@ -33,7 +35,24 @@ rota.get("/teste", (req,res) => {
 // Rotas de Dados
 
 rota.post("/registro", async (req,res) => {
-    console.log(req.body)
+
+    const { nomeusuario,emailusuario,senhausuario,senhausuarioconf } = req.body
+    conecta.query('SELECT email FROM usuarios WHERE email = ?', [emailusuario], (error,results) => {
+        if(error) {
+            console.log(error)
+        } 
+        if( results.length > 0) {
+            return res.render('register', {
+                message: 'Este email já está sendo usado'
+            })
+        }
+        else if(senhausuario !== senhausuarioconf){
+            return res.render('register', {
+                message: 'Senhas não conferem'
+            })
+        }
+    })
+    console.log("Teste-->: ",req.body)
     res.send("<h1>Formulario Enviado</h1>")
 })
 
