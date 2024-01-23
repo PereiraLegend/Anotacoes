@@ -60,7 +60,7 @@ formularioProduto.addEventListener('submit', function (event) {
   const observacaoProduto = document.getElementById('observacaoProduto').value;
 
   const novoProduto = {
-    id: Math.floor(Math.random() * 1000), // Gere um ID único (isso é apenas para exemplo)
+    //id: Math.floor(Math.random() * 1000), // Gere um ID único (isso é apenas para exemplo)
     nomeproduto: nomeProduto,
     tipoprodutos: tipoProduto,
     categoriaproduto: categoriaProduto,
