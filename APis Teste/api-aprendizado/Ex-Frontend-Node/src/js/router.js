@@ -2,8 +2,8 @@ const express = require('express')
 const rota = express.Router()
 const conecta = require('./database/conexao')
 const { register } = require('module')
-//const conexao = require('./database/conexao') 
-//const formularioregistro = document.getElementById('fomulario-registro')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 
 rota.use(express.json())
 
@@ -37,7 +37,17 @@ rota.get("/teste", (req,res) => {
 rota.post("/registro", async (req,res) => {
 
     const { nomeusuario,emailusuario,senhausuario,senhausuarioconf } = req.body
-    conecta.query('SELECT email FROM usuarios WHERE email = ?', [emailusuario], (error,results) => {
+    /*
+    conecta.query('INSERT INTO usuarios SET ?', req.body, (error, results) => {
+        if (error) {
+            return console.log('Deu Erro ao inserir dados na tabela: ', error)
+        } else if (results){
+            return console.log('Dados cadastrados com sucesso! ', results)
+        }
+    })
+    */
+
+    conecta.query('SELECT emailusuario FROM usuarios WHERE emailusuario = ?', [emailusuario], async (error,results) => {
         if(error) {
             console.log(error)
         } 
@@ -48,12 +58,16 @@ rota.post("/registro", async (req,res) => {
         }
         else if(senhausuario !== senhausuarioconf){
             return res.render('register', {
-                message: 'Senhas não conferem'
+                message: 'alert(Senhas não conferem)'
             })
         }
+        let criptosenha = await bcrypt.hash(senhausuario, 8) // Criptografando a senha, aqui defino a variavél e o número de rodadas de criptografia eu quero
+        console.log(criptosenha)
+        
     })
+     
     console.log("Teste-->: ",req.body)
-    res.send("<h1>Formulario Enviado</h1>")
+    //res.send("<h1>Formulario Enviado</h1>")
 })
 
 module.exports = rota
