@@ -18,9 +18,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/dashboard/page.tsx", "app/registro/page.tsx", "app/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/usuarios/route.tsx", "src/app/api/produtos/route.tsx"],
   "exclude": ["node_modules"]
 }

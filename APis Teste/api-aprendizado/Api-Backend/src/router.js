@@ -84,4 +84,31 @@ router.delete('/produtos/:id', async (req,res) => { // DELETE
     }
 })
 
+// Rota teste
+
+router.get('/teste', async (req,res) => {
+    try{
+        const teste = await connection.execute('SELECT * FROM teste')
+        return res.status(200).json(teste[0])
+    } catch (error) {
+        console.log('Erro ao retornar itens: ', error)
+        return res.status(200).json({error: 'Erro ao retornar os itens'})
+    }
+})
+
+router.get('/teste/:id', async (req,res) => {
+    try{
+        if (!req.body) {
+            return res.status(400).json({ error: 'Esse id não existe ou não pode ser listado' });
+        }        
+
+        const id = req.params.id
+        const teste = await connection.execute('SELECT * FROM teste WHERE id=?', [id])
+        return res.status(200).json(teste[0])
+    } catch (error) {
+        console.log('Erro ao retornar as informações do item: ', error)
+        return res.status(200).json({error: 'Erro ao retornar as informações do item'})
+    }
+})
+
 module.exports = router
