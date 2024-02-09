@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import {MenuComponent} from "./menu/menu.component" // Aqui eu chamo o export do componente que eu criei e que quero usar nessa página
+import {MenuComponent} from "./components/menu/menu.component" // Aqui eu chamo o export do componente que eu criei e que quero usar nessa página
 
 @Component({
   selector: 'app-root',
