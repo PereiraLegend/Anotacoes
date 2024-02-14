@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TesteComponent } from './teste.component';
+import { IfRenderComponent } from './if-render.component';
 
-describe('TesteComponent', () => {
-  let component: TesteComponent;
-  let fixture: ComponentFixture<TesteComponent>;
+describe('IfRenderComponent', () => {
+  let component: IfRenderComponent;
+  let fixture: ComponentFixture<IfRenderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TesteComponent]
+      imports: [IfRenderComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TesteComponent);
+    fixture = TestBed.createComponent(IfRenderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

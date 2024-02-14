@@ -11,6 +11,11 @@ export class MenuComponent implements OnInit { // Importo o OnInit e o implement
   name: string = 'Lucas' // Aqui eu criou uma inferência
   age: number = 10
   profissao: string = 'Programador'
+  hobbie = ["Correr", "dirigir", "jogar"]
+  car = {
+    nome: "Eco",
+    ano: 2020
+  }
 
 
   ngOnInit(): void {
