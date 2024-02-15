@@ -8,6 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './if-render.component.css'
 })
 export class IfRenderComponent {
-  render: boolean = true
-
+  render: boolean = false
 }

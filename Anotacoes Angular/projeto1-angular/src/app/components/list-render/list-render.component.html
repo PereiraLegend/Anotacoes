@@ -1,0 +1,10 @@
+<div>
+  <hr>
+  <h1>List Render</h1>
+  <h2>Animais</h2>
+  <ul>
+    <li *ngFor="let animal of animals">Nome: {{animal.name}} - tipo: {{animal.type}} <button
+        (click)="showAge(animal)">Ver idade</button></li> <!--Aqui crio um loop para renderizar toda uma lista-->
+  </ul>
+  <h3>{{animalDetails}}</h3>
+</div>

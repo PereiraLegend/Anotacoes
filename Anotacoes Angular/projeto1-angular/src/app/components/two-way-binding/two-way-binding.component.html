@@ -1,0 +1,14 @@
+<div>
+  <hr>
+  <h1>Two Way Binding</h1>
+  <form action="">
+    <input type="text" [(ngModel)]="name" name="name" placeholder="Digite seu nome">
+    <input type="submit" value="Enviar">
+  </form>
+  <h2>O nome é: {{ name }}</h2>
+  <!--Nesse código até aqui eu não preciso mapear nada, o próprio angular que mapeia, ou seja o conceito de two way binding é definir em um lugar e alterar em outro-->
+  <!--Posso "brincar" com isso-->
+  <div *ngIf="name !==''"> <!--Condição-->
+    <h2>O nome vai ser: {{ name }}</h2> <!--Essa parte só aparece quando é digitado algo-->
+  </div>
+</div>
