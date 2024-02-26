@@ -11,11 +11,13 @@ import { ListRenderComponent } from './components/list-render/list-render.compon
 import { PipesComponent } from './components/pipes/pipes.component';
 import { TwoWayBindingComponent } from './components/two-way-binding/two-way-binding.component';
 import { FormsModule } from '@angular/forms';
+import { Rota1Component } from './components/rota1/rota1.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MenuComponent, ParentDataComponent, DirectivesComponent, IfRenderComponent, EventosComponent, EmitterComponent, ListRenderComponent, PipesComponent, TwoWayBindingComponent, FormsModule], // Aqui eu chamo a função
+  imports: [CommonModule, RouterOutlet, MenuComponent, ParentDataComponent, DirectivesComponent, IfRenderComponent, EventosComponent, EmitterComponent, ListRenderComponent, PipesComponent, TwoWayBindingComponent, FormsModule, Rota1Component,HttpClientModule], // Aqui eu chamo a função
   templateUrl: './app.component.html',
   //template: ` <h2>Teste</h2> `, // Ao invés de chamar apenas a url eu posso chamar diretamente o escopo do site por aqui;
   styleUrl: './app.component.css'
