@@ -13,7 +13,6 @@ import { TwoWayBindingComponent } from './components/two-way-binding/two-way-bin
 import { FormsModule } from '@angular/forms';
 import { Rota1Component } from './components/rota1/rota1.component';
 import { HttpClientModule } from '@angular/common/http';
-
 @Component({
   selector: 'app-root',
   standalone: true,

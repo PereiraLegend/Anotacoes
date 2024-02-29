@@ -3,6 +3,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { Animal } from '../../Animal'; // aqui eu importo a interface que eu criei
 import { ProdutosService } from '../../services/produtos.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-render',
@@ -11,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './list-render.component.html',
   styleUrl: './list-render.component.css'
 })
-export class ListRenderComponent {
+export class ListRenderComponent implements OnInit {
   /*
   animals: Animal[]= [ // Aqui eu chamo a interface
     {name: 'Tom', type: 'Gato', age: 1},
@@ -21,8 +22,9 @@ export class ListRenderComponent {
   ]
   */
 
-  animals: Animal[] = []
-  animalDetails = ''
+  animals: any[] = []
+  //animalDetails = ''
+  /*
   constructor(private produtosService: ProdutosService) {
     this.getAnimals()
   } // Aqui o angular vai entender que eu estou criando um novo serviço no caso o ProdutosService que estou importando // utilizo o p de produtos minusculo para dar nome a uma classe que stá chamando a função de outro arquivo
@@ -37,5 +39,13 @@ export class ListRenderComponent {
 
   getAnimals(): void {
     this.produtosService.getAll().subscribe((animals) => (this.animals = animals))
+  }
+  */
+  constructor(private produtosservice: ProdutosService) {}
+
+  ngOnInit(): void {
+    this.produtosservice.getAnimals().subscribe((data) => {
+      this.animals = data.animals2;
+    });
   }
 }
