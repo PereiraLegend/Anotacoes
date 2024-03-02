@@ -1,0 +1,18 @@
+{% load static %} <!--Aqui seguindo a sintaxe do django eu faço com que os arquivos estáticos carreguem aqui-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href="{% static "produtos/css/ver_produto.css" %}"> <!--Chamo o css aqui--> <!--Dessa forma os mesmo arquivos sempre virão independente do tipo de hospedagem-->
+        <title>Document</title>
+    </head>
+<body>
+    <div>
+        <h1>Ver Produto!</h1>
+        <h2>Olá {{nome}}, Bem vindo(a)</h2> <!--Aqui para apresentar dados, depois de passar um context eu apenas abro chaves e coloco o valor dentro-->
+        <!--Para inserir imagens seguindo a sintaxe do django-->
+        <img src="{% static "produtos/img/teste.png" %}">
+    </div>
+</body>
+</html>

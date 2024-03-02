@@ -1,0 +1,30 @@
+Primeiro criar uma máquina virtual:
+Ex: python -m venv v8
+    ./v8/Scripts/activate (ligar a máquina virtual)
+
+Segundo instalar as dependências do django:
+Ex: pip install django
+    django-admin startproject aprendizadodjango
+    cd aprendizadodjango
+    python manage.py migrate
+    python manage.py runserver
+
+Terceiro criar dependências e configurações básicas no django:
+(O Django trabalha com aplicativos e não com algo unico, uma idéia de dividir para conquistar)
+Ex: python manage.py startapp produtos
+    obs: cadastrar em settings.py ('INSTALLED_APPS= [...]') o 'produtos'
+    obs: alterar outras configurações em settings.py 
+
+Quarto criar rotas no django depois de criar uma nova dependência :
+(Obs.: Vou na pasta urls da aplicação base, inporto o include e passo a rota, mais o caminho para onde ela deve ir dentro do 'include')
+Ex: 'from django.urls import path, include'
+    'urlpatterns = [
+        ...
+        path('produtos/', include('produtos.urls'))
+    ]'
+    (Obs.: o arquivo 'urls' de produtos não existe, então eu o crio para então dentro dele chamar a 'view' do projeto de fato)
+    (Obs.: Para criar esse arquivo de produtos eu recrio atribuindo uma nova rota, fazendo as mesmas importações do primeiro, e quando for para verificar eu utilizo a rota 'http://127.0.0.1:8000/produtos/ver_produto/'
+    ou seja, eu coloquei uma rota dentro de outra rota, o que pode ser visto no código)
+    (Obs.: para adicionar arquivos html é necessário criar a pasta templates, que por padrão o django reconhece)
+
+Quinto deixar os arquivos como css e js como estáticos

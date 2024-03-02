@@ -46,6 +46,6 @@ export class ListRenderComponent implements OnInit {
   ngOnInit(): void {
     this.produtosservice.getAnimals().subscribe((data) => {
       this.animals = data.animals2;
-    });
+    }); 
   }
 }
