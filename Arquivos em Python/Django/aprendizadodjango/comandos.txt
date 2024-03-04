@@ -27,4 +27,18 @@ Ex: 'from django.urls import path, include'
     ou seja, eu coloquei uma rota dentro de outra rota, o que pode ser visto no código)
     (Obs.: para adicionar arquivos html é necessário criar a pasta templates, que por padrão o django reconhece)
 
-Quinto deixar os arquivos como css e js como estáticos
+Quinto deixar os arquivos como css e js como estáticos (static)
+
+Sexto envio de formulários e outros tipos de dados
+(Obs.: O Django é uma framework bem segura, e sempre faz as validações necessárias, ou seja precisamos criar um token para fazer com que o django tenha a certeza de que o formulário não seja falsificado, no caso essa parte é trabalhada na views)
+
+Sétimo ao trabalhar com banco de dados trabalhamos com ele dentro de models (criar e definir algumas regras assim como em views.py)
+Obs.: parar o servidor e executar os seguinte comandos
+    python manage.py makemigrations (Esse comando vai ler todos os arquivos de models.py dentro dos apps e ver o que é que foi alterado, (no caso o que estava dentro de models), nisso o python cria o arquivo migrations)
+    python manage.py migrate (Esse comando é que vai de fato trazer as modificações para o banco de dados, o certo é sempre usar os dois comandos juntos)
+
+Oitavo área administrativa
+(Obs.: Por padrão o django cria uma área administrativa na rota admin criada pelo mesmo)
+Para criar um usuário para o acesso a essa área é necessário rodar o comando:
+    python manage.py createsuperuser (E um superusuário de administardor será criado)
+(Obs.: Eu também posso cadastrar as minhas 'models' ou seja meu banco de dados na interface admin no arquivo 'admin.py')

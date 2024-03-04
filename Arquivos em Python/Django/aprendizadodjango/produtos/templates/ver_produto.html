@@ -13,6 +13,17 @@
         <h2>Olá {{nome}}, Bem vindo(a)</h2> <!--Aqui para apresentar dados, depois de passar um context eu apenas abro chaves e coloco o valor dentro-->
         <!--Para inserir imagens seguindo a sintaxe do django-->
         <img src="{% static "produtos/img/teste.png" %}">
+
+        <form action="{% url 'ver_produto' %}" method="POST">{% csrf_token %}<!--Com essa tag do django eu atribuo um token para o formulário--> <!--"action" é para onde os dados serão enviados, e o "method" é através de que verbo http serão enviados-->
+            <!--(Obs.: O Django é uma framework bem segura, e sempre faz as validações necessárias, ou seja precisamos criar um token para fazer com que o django tenha a certeza de que o formulário não seja falsificado)-->
+            <label>Nome:</label>
+            <input type="text" name="nome" placeholder="Informe seu nome"/>
+            <br>
+            <label>Idade:</label>
+            <input type="number" name="idade" placeholder="Informe sua idade"/>
+            <br>
+            <input type="submit" value="Enviar"/>
+        </form>
     </div>
 </body>
 </html>
