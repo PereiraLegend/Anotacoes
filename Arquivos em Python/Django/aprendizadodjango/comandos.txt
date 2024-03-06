@@ -1,21 +1,21 @@
-Primeiro criar uma máquina virtual:
+- Primeiro criar uma máquina virtual:
 Ex: python -m venv v8
     ./v8/Scripts/activate (ligar a máquina virtual)
 
-Segundo instalar as dependências do django:
+- Segundo instalar as dependências do django:
 Ex: pip install django
     django-admin startproject aprendizadodjango
     cd aprendizadodjango
     python manage.py migrate
     python manage.py runserver
 
-Terceiro criar dependências e configurações básicas no django:
+- Terceiro criar dependências e configurações básicas no django:
 (O Django trabalha com aplicativos e não com algo unico, uma idéia de dividir para conquistar)
 Ex: python manage.py startapp produtos
     obs: cadastrar em settings.py ('INSTALLED_APPS= [...]') o 'produtos'
     obs: alterar outras configurações em settings.py 
 
-Quarto criar rotas no django depois de criar uma nova dependência :
+- Quarto criar rotas no django depois de criar uma nova dependência :
 (Obs.: Vou na pasta urls da aplicação base, inporto o include e passo a rota, mais o caminho para onde ela deve ir dentro do 'include')
 Ex: 'from django.urls import path, include'
     'urlpatterns = [
@@ -27,17 +27,17 @@ Ex: 'from django.urls import path, include'
     ou seja, eu coloquei uma rota dentro de outra rota, o que pode ser visto no código)
     (Obs.: para adicionar arquivos html é necessário criar a pasta templates, que por padrão o django reconhece)
 
-Quinto deixar os arquivos como css e js como estáticos (static)
+- Quinto deixar os arquivos como css e js como estáticos (static)
 
-Sexto envio de formulários e outros tipos de dados
+- Sexto envio de formulários e outros tipos de dados
 (Obs.: O Django é uma framework bem segura, e sempre faz as validações necessárias, ou seja precisamos criar um token para fazer com que o django tenha a certeza de que o formulário não seja falsificado, no caso essa parte é trabalhada na views)
 
-Sétimo ao trabalhar com banco de dados trabalhamos com ele dentro de models (criar e definir algumas regras assim como em views.py)
+- Sétimo ao trabalhar com banco de dados trabalhamos com ele dentro de models (criar e definir algumas regras assim como em views.py)
 Obs.: parar o servidor e executar os seguinte comandos
     python manage.py makemigrations (Esse comando vai ler todos os arquivos de models.py dentro dos apps e ver o que é que foi alterado, (no caso o que estava dentro de models), nisso o python cria o arquivo migrations)
     python manage.py migrate (Esse comando é que vai de fato trazer as modificações para o banco de dados, o certo é sempre usar os dois comandos juntos)
 
-Oitavo área administrativa
+- Oitavo área administrativa
 (Obs.: Por padrão o django cria uma área administrativa na rota admin criada pelo mesmo)
 Para criar um usuário para o acesso a essa área é necessário rodar o comando:
     python manage.py createsuperuser (E um superusuário de administardor será criado)
