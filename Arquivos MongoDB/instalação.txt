@@ -1,0 +1,89 @@
+Para instalar o mongodb seguir o seguite tutorial:
+https://www.youtube.com/watch?v=aIVOpbOgye4
+
+Ao instalar o shell para criar as coisas via shell eu:
+Primeiro inicio o shell, Ex.: "mongosh"
+
+crio o banco, Ex.: "use pessoasData"
+
+posso listar os bancos, Ex.: "show dbs"
+
+crio uma colections (que seria uma espécie de tabela), Ex.: "db.pessoas.insertOne({ nome: "lucas", idade: 30, profissao: "Programador", estar_empregado: false })" (Obs.: com 'db' eu indico o banco de dados que estou, 'pessoas' eu crio a colection, 'insertOne()' eu adiciono colunas, dentro de insert eu crio um document ao abrir '{}' )
+
+para ver o banco e a colection criadas, Ex.: "show dbs" e o comando "show collections"
+
+para inserir mútiplos dados, Ex.: "db.pessoas.insertMany([
+                                    { nome: "joão", idade: 40, profissao: "Legista", estar_empregado: true },
+                                    { nome: "ana", idade: 20, profissao: "escritora", estar_empregado: false },
+                                  ])" (Obs.: Ao invés de passar uma chave eu passo um array, e vários documents)
+
+para verificar todos os dados inseridos, Ex.: "db.pessoas.find()" (Obs.: Posso passar dentro dos parênteses do find o filtro de busca dos dados)
+
+para melhoar a vizualização dos dadods, Ex.: "db.pessoas.find().pretty()"
+
+se eu quiser por exemplo encontrar apenas quem está enpregado, Ex.: "db.pessoa.find({ estar_empregado: true })" (Obs.: Eu passo um document dentro do find)
+
+para fazer uma contagem de dados, Ex.: "db.pessaos.find({ estar_empregado: true }).count()" (Obs.: Isso retorna apenas a contagem de dados com essa informação)
+
+para encontrar apenas um dado, Ex.: "db.pessoas.findOne()" (Obs.: Aqui eu recebo apenas um dado idependente do que seja)
+
+para trazer um dado único filtrado, Ex.: "db.pessoas.findOne({ nome: "joão" })" (Obs.: Aqui digo para me trazer um dado com esse nome, mas esse método apenas traz um único joão, é necessário usar o "find()" para obter a resposta de vários)
+
+para atualizar o dado do banco, Ex.: "db.pessoas.updateOne({ nome: "joão" }, { $set: { estar_empregado: false } })" (obs.: Aqui diferente dos outros métodos eu passo dois documents dentro de updateOne, onde em um eu passo o fitro e no outro eu passo a mudança, indicando $set e dentro disso eu crio mais um document com a mudança em si)
+
+para atualizar vários dados de uma única vez e adicionar um novo dado para todos, Ex.: "db.pessoas.updateMany({}, {$set: { salario: 5000 } })" (obs.: Aqui eu crio e atualizo para todos o salario mantrendo o filtro vazio e adicionando apenas os dados)
+
+posso criar e trabalhar com os dados de forma diferente, criando campos únicos para cada 'pessoa', Ex.: "db.pessoas.updateOne({nome: "lucas"}, {$set: { procurando_emprego: true }})" (obs.: Aqui crie um dado único que apenas essa pessoa vai ter)
+
+para deletar um dado do banco de dados, Ex.: "db.pessoas.deleteOne({ name: "jacira" })" (Obs.: Esse comando irá deletar o dado com nome jacira, ou seja delate um dado apenas sem filtro)
+
+para deletar um ou mais dados, Ex.: "db.pessoas.deleteMany({ name: "jacira" })" (Obs.: Deletando dessa forma corre o risco de apagar todos os valores parecidos com um mesmo dado de um banco)
+
+Operadores do MongoDB: (Obs.: Os operadores começam com "$")
+
+Operador "maior que": Ex.: "db.pessoas.find({ idade: { $gt: 30 } })" (obs.: Aqui é como se eu estivesse pesquisando quem tem idade maior que 30)
+
+Operador "maior ou igual a": Ex.: "db.pessoas.find({ idade: { $gte: 30 } })" (obs.: Aqui é como se eu estivesse pesquisando quem tem idade maior ou igual a 30)
+
+Operador  "menor que": Ex.: "db.pessoas.find({ idade: { $lt: 30 } })" (obs.: Aqui é como se eu estivesse pesquisando quem tem idade menor que 30)
+
+Operador "menor ou igual a": Ex.: "db.pessoas.find({ idade: { $lte: 30 } })" (obs.: Aqui é como se eu estivesse pesquisadno quem tem idade menor ou igual a 30)
+
+Outro exemplo de uso de operadores. Ex.: "db.pessoas.updateMany({ idade: { $gt: 30 } }, { $set: { prioridade: true } })" (obs.: Aqui eu digo que quem tem mais de 30 anos vai receber um dado chamado prioridade e que vai ser passado para o booleano como true)
+
+Tipos de dados qu eu posso inserir no MongoDB:
+
+Exemplo de tipo de dados: "db.pessoas.insertOne({
+                            nome: "Paulo",
+                            idade: 20,
+                            hobbies: ["Correr","Ler", "Trilhas"],
+                            esta_trabalhando: true,
+                            data_cadastro: new Date(),
+                            caracteristicas: {
+                                cor_dos_olhos: "azuis",
+                                altura: 1.72,
+                                perfil: "shy"
+                            }
+                          })" (obs.: Os tipos de dados que eu posso inserir são: String, Number, Arrays, Boolean, Datas, Documents (Obs.: Isso seria um 'subdocument'), Float )
+
+Operadores de update: (Obs.: Alguns operadores que são exclusivos do update)
+
+incrementando valores: Ex.: "db.pessoas.updateOne({nome: "lucas"}, { $inc: { salario: 1000 } })" (Obs.: Aqui ao adicionar o inc o valor que for adicionado nesse operador será incrementado)
+
+decrementando valores: Ex.: "db.pessoas.updateOne({nome: "lucas"}, { $inc: { salario: -500 } })" (Obs.: Para decrementar eu escrevo a quantidade a ser decrementada negativa)
+
+Indices: (Obs.: Os indices são uma forma mais performatica de deixar as consultas mais rápidas)
+
+para criar um indice no mongodb usamos, Ex.: "db.pessoas.createIndex({ "nome": 1 })"
+
+para atestar que o indice foi criado de fato, Ex.: "db.pessoas.getIndexes()" (Obs.: Ao criar o indice, sempre que eu burcar algo por ele a consulta vai ser otimizada)
+
+para atestar a velocidade utilizamos, Ex: "db.pessoas.explain().find()"
+
+para deletar um indice, Ex.: "db.pessoas.dropIndex("nome_1")"
+
+Outras coisas:
+
+Para deletar uma collection, Ex.: "db.pessoas.drop()"
+
+Para deletar o banco de dados, Ex.: "db.dropDatabase()"
