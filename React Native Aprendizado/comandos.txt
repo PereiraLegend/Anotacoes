@@ -1,0 +1,10 @@
+# Criando aplicação com React Native
+Para statar o projeto:
+    npm install --global expo-cli
+Para criar um novo projeto:
+    expo init my-project
+Para rodar o projeto:
+    npm start 
+    npm android
+    npm ios
+    npm web
