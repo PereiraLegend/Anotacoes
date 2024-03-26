@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button , StyleSheet, Vibration, TouchableOpacity, Keyboard, Pressable } from "react-native";
+import { View, Text, TextInput, Button , StyleSheet, Vibration, TouchableOpacity, Keyboard, Pressable, FlatList } from "react-native";
 import Resultado from "./resultado";
 import 'tailwindcss/tailwind.css';
 
@@ -12,12 +12,19 @@ export default function Formulario() {
     const [imc, setImc] = useState(null)
     const [botaotexto, setBotaotexto] = useState("Calcular")
     const [errorMensage, setErrormensage] = useState(null)
+    {/**Trabalhando com lista logo abaixo */}
+    const [imcLista, setImclista] = useState([])
 
     function imcCalculo() {
         {/**Uma regra é sempre pensar no usuário e para fazer isso tenho que prever comportamentos do mesmo, como por exemplo colocar a virgula e não o ponto, o que pode dar erro, por isso logo abaixo eu ponho a mesma */}
         let alturaf = altura.replace(",",".")
         let pesof = peso.replace(",",".")
-        return setImc((pesof / (alturaf * alturaf)).toFixed(2))
+        let totalImc =  (pesof / (alturaf * alturaf)).toFixed(2)
+        console.log("total imc: " + totalImc)
+        {/**Para gerar a lista de 'histórico de imcs' eu crio o id unico através da data logo abaixo */}
+        setImclista( (arr) => [...arr, {id: new Date().getTime(), imc: totalImc}]) 
+        setImc(totalImc)
+
     }
 
     function verificationImc() {
@@ -30,6 +37,7 @@ export default function Formulario() {
 
     function validationImc() {
         {/**Isso aqui vai verificar se o valor da altura e peso não está vazio */ }
+        console.log(imcLista)
         if (peso != null && altura != null) {
             imcCalculo()
             setAltura(null)
@@ -37,19 +45,21 @@ export default function Formulario() {
             setMessageResultImc("Seu imc é igual: ")
             setBotaotexto("Calcular novamente")
             setErrormensage(null)
-            return
         }
-        verificationImc()
-        setImc(null)
-        setBotaotexto("Calcular")
-        setMessageResultImc("Preencha o peso e a altura")
+        else {
+            verificationImc()
+            setImc(null)
+            setBotaotexto("Calcular")
+            setMessageResultImc("Preencha o peso e a altura")
+        }
     }
 
     return (
         <Pressable onPress={Keyboard.dismiss}> 
             {/** Utilizando o pressable eu torno toda a área pressionável e chamando o 'Keyboard.dismiss' eu faço com ao tocar fora do teclado ele recue*/}
             {/**Aqui eu crio o formulário */}
-            <View className="rounded-xl bg-gray-400 p-[50px]">
+            { imc == null ? 
+            <View className="rounded-xl bg-gray-400 p-[50px] w-[300px]">
                 <Text className="text-xl" >Altura:</Text>
                 <Text className=" text-red-600"> {errorMensage} </Text>
                 {/**Aqui chamo a máquina de estados do react para mudar o estado do texto */}
@@ -63,14 +73,41 @@ export default function Formulario() {
                     <Text className="font-bold text-lg">{botaotexto}</Text>
                 </TouchableOpacity>
                 {/**'TouchableOpacity' é melhor para construir botões principalmente para formulários*/}
-
             </View>
-            <View className="mt-[30px] text-xl flex justify-center items-center rounded-xl bg-slate-300 h-[300px]">
-                <Text className="text-xl">O Resultado é: </Text>
+            :
+            <View/>
+            }
+
+            {/**Com essa parte de baixo, a condição, a caixa resultado aparece apenas quando o imc for diferente de nulo */}
+            { imc != null ? 
+            <View className="mt-[30px] text-xl flex justify-center items-center rounded-xl bg-slate-300 h-[300px] w-[300px]">
+                {/**</View><Text className="text-xl">O Resultado é: </Text>*/}
                 <Text className="text-xl">
                     <Resultado className="text-xl" messageResultImc={messageResultImc} resultImc={imc} />
                 </Text>
+                <TouchableOpacity onPress={() => validationImc()} className="bg-yellow-300 rounded-lg h-[38px] flex items-center justify-center mt-[20px]">
+                    <Text className="font-bold text-lg">{botaotexto}</Text>
+                </TouchableOpacity>
             </View>
+            : 
+            <View/>
+            }
+            
+            {/** Criando lista logo abaixo, passo o data, o item a ser renderizado, e a chave de extração */}
+            <FlatList className="" data={imcLista.reverse()} renderItem={
+                ({item}) => {
+                    return( 
+                        <Text className="flex items-center bg-blue-300 mt-1 rounded-lg p-[5px]">
+                            <Text className="text-lg font-bold">Resultado imc = {item.imc}</Text>
+                        </Text>
+                        )
+                }}
+
+                keyExtractor={((item)=>{
+                    item.id
+                })}
+            />
+
         </Pressable>
     )
 }

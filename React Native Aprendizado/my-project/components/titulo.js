@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function Titulo() {
     return (
         <View>
-            <Text className="text-3xl font-bold">Medidor de Saúde</Text>
+            <Text className="text-3xl font-bold pt-[150px]">Medidor de Saúde</Text>
         </View>
     )
 }
