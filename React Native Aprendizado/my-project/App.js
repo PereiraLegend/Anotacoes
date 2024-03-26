@@ -5,8 +5,7 @@ import Formulario from './components/formulario';
 
 export default function App() {
   return (
-    <View className="flex-1 bg-[#fff] justify-center items-center">
-      <Text className="text-2xl">Lucas</Text>
+    <View className="flex-1 bg-[#fff] justify-center items-center w-[100%] h-[100%]">
       <Titulo/>
       <Formulario/>
       <StatusBar style="auto" />
