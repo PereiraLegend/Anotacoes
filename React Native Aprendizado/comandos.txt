@@ -8,3 +8,23 @@ Para rodar o projeto:
     npm android
     npm ios
     npm web
+Para instalar o tailwind: (Lembrar de sempre encerrar todos os terminais do projeto) (site: 'https://www.nativewind.dev/quick-starts/expo')
+    npm install nativewind
+    npm install --save-dev tailwindcss@3.3.2
+    npx tailwind init
+    
+    Alterar diretórios do arquivo gerado 'tailwind.config.js'
+    - content: [],
+    + content: ["./App.{js,jsx,ts,tsx}", "./<custom directory>/**/*.{js,jsx,ts,tsx}"],
+
+    Adicionar plugin no arquivo 'babel.config.js'
+    +   plugins: ["nativewind/babel"],
+Para instalar o react navigation: (No caso a navegação depende do tipo que deve ser feito no app) (site: ''https://reactnavigation.org/docs/getting-started/)
+    Ex.: Stack navigation
+    npm install @react-navigation/native @react-navigation/native-stack
+    npx expo install react-native-screens react-native-safe-area-context
+    
+    (Nisso tudo terá uma barra superior para cada página renderizada)
+    (Para fazer com que a barra saia do topo e seja feito na lateral nós utilizamos o drawer navigation, que no caso é só substituir cada palavra stack por drawer)
+    npm install @react-navigation/drawer
+    npm install @react-navigation/bottom-tabs

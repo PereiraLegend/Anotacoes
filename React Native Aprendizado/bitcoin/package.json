@@ -1,5 +1,5 @@
 {
-  "name": "my-project2",
+  "name": "bitcoin",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -10,13 +10,11 @@
   },
   "dependencies": {
     "expo": "~50.0.14",
-    "expo-camera": "~14.1.1",
-    "expo-contacts": "~12.8.2",
-    "expo-sensors": "~12.9.1",
     "expo-status-bar": "~1.11.1",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
-    "react-native": "0.73.6"
+    "react-native": "0.73.6",
+    "tailwind": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
