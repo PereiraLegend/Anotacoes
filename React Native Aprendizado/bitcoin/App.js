@@ -6,6 +6,25 @@ import HistoricoGrafico from './components/HitoricoGrafico';
 import ListaCotacao from './components/ListaCotacao';
 import ItemCotacao from './components/ListaCotacao/ItemCotacao';
 
+{/**Importando a Api */}
+function addZero(number){
+  if(number <= 9){
+    return "0" + number
+  }
+  else{
+    return number
+  }
+}
+
+function url(qtDias){
+  const data = new Date()
+  const listUltimosDias = qtDias
+  const end_date = `${data.getFullYear}-${addZero(data.getMonth()+1)}-${addZero(data.getDate())}`
+  data.setDate(data.getDate() - listUltimosDias)
+  const start_date = `${data.getFullYear}-${addZero(data.getMonth()+1)}-${addZero(data.getDate())}`
+  return `https://api.coindesk.com/v1/bpi/historical/close.json?start=${start_date}$end=${end_date}`
+}
+
 {/**Obs.: o safe area view serve mais para evitar que as dimensões extrapolem quando usadas no ios */}
 export default function App() {
   return (
