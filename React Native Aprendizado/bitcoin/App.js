@@ -86,8 +86,7 @@ export default function App() {
 
       <PrecoAtual/>
       <HistoricoGrafico/>
-      <ListaCotacao/>
-      <ItemCotacao filterDay={updateDias} listTranzacoes={ListaMoedas} />
+      <ListaCotacao filterDay={updateDias} listTranzacoes={ListaMoedas}/>
     </SafeAreaView>
   );
 }

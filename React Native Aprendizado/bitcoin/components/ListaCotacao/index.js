@@ -4,7 +4,6 @@ import ItemCotacao from "./ItemCotacao";
 
 export default function ListaCotacao(props){
     const diaQuery = props.filterDay
-    console.log(diaQuery)
     return (
         <Fragment>
             {/** O Fragment acima é como se fosse uma View vazia serve mais para não ter que colocar o mesmo componente, mas pode ser substituido por uma nova view facilmente*/}
@@ -19,11 +18,11 @@ export default function ListaCotacao(props){
 
                 <TouchableOpacity className="flex w-[50px] h-[30px] bg-[#f50d41] rounded-[50px] items-center justify-center" onPress={()=>diaQuery(180)}><Text className=" text-[#ffffff] font-bold text-[14px]">6M</Text></TouchableOpacity>
             </View>
-            <ScrollView>
+            <View>
                 <FlatList data={props.listTranzacoes} renderItem={({item})=>{
                     return <ItemCotacao valor={item.valor} data={item.data}/> 
                 }}/>
-            </ScrollView>
+            </View>
         </Fragment>
     )
 }

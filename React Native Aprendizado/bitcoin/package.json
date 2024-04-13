@@ -14,6 +14,8 @@
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-native": "0.73.6",
+    "react-native-chart-kit": "^6.12.0",
+    "react-native-svg": "^15.1.0",
     "tailwind": "^4.0.0"
   },
   "devDependencies": {
