@@ -55,8 +55,8 @@ export default function Home() {
       <div>
         Meio
       </div>
-      
-      <footer className="w-[100%] h-[34px] bg-[#EEEEEE] flex justify-center items-center fixed bottom-0 z-10">
+
+      <footer className="w-[100%] h-[34px] bg-[#EEEEEE] flex justify-center items-center fixed bottom-0">
         <div>MKS sistemas © Todos os direitos reservados</div>
       </footer>
     </div>
