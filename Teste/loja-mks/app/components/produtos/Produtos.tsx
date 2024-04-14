@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion"; // Importando motion do Framer Motion
 import Products from "../api/products";
 
 export default function Produtos() {
@@ -21,7 +22,7 @@ export default function Produtos() {
                 </div>
 
                 <div className="mr-[5%]">
-                    <input type="button" value="carrinho" onClick={MenuA} className="bg-white p-2 rounded-lg cursor-pointer hover:bg-slate-500" />
+                    <motion.input type="button" value="carrinho" onClick={MenuA} className="bg-white p-2 rounded-lg cursor-pointer hover:bg-slate-500" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}/>
                 </div>
             </main>
 
@@ -33,7 +34,7 @@ export default function Produtos() {
                 ) : data ? (
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 justify-center items-center">
                         {data.map((item, index) => (
-                            <div key={index} className="bg-white border rounded-xl shadow-md w-[218px] h-[285px] relative">
+                            <motion.div key={index} className="bg-white border rounded-xl shadow-md w-[218px] h-[285px] cursor-pointer relative" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <div className="flex justify-center items-center">
                                     <img src={item.photo} alt="" className="w-[150px] h-[150px]"/>
                                 </div>
@@ -44,8 +45,14 @@ export default function Produtos() {
                                     </div>
                                 </div>
                                 <p className="text-[#2C2C2C] text-[10px] leading-3 ">Redesigned from scratch and completely revised</p>
-                                <button className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl">COMPRAR</button>
-                            </div>
+                                <motion.button // Aplicando animação ao botão comprar
+                                    className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    COMPRAR
+                                </motion.button>
+                            </motion.div>
                         ))}
                     </div>
                 ) : (
@@ -65,7 +72,7 @@ export default function Produtos() {
                             <p className="text-white font-bold text-[27px]">Carrinho <br />de compras</p>
                         </div>
                         <div>
-                            <button onClick={MenuF} className="text-white hover:text-gray-800 hover:bg-white focus:outline-none font-bold bg-black p-1 rounded-[100%]">✕</button>
+                            <motion.button onClick={MenuF} className="text-white hover:text-gray-800 hover:bg-white focus:outline-none font-bold bg-black p-1 rounded-[100%]" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>✕</motion.button>
                         </div>
                     </div>
 
@@ -82,7 +89,7 @@ export default function Produtos() {
                         <div className="text-white font-bold text-[27px]">Total</div>
                         <div className="text-white font-bold text-[27px]">R$ XXXX</div>
                     </div>
-                    <input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" />
+                    <motion.input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}/>
                 </div>
             </div>
         </div>
