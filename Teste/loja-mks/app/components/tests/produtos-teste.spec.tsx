@@ -16,7 +16,6 @@ jest.mock('../api/products', () => ({
 describe('Produtos', () => {
   it('renderiza corretamente', () => {
     render(<Produtos />);
-    // Insira aqui os testes para garantir que os elementos esperados são renderizados corretamente
   });
 
   it('adiciona um item ao carrinho corretamente', async () => {
@@ -25,11 +24,9 @@ describe('Produtos', () => {
 
     fireEvent.click(button);
 
-    // Espera que o item seja adicionado ao carrinho
     await waitFor(() => {
       expect(getByText('Total')).toHaveTextContent('R$ 10');
     });
   });
 
-  // Insira aqui mais testes conforme necessário para cobrir os casos de uso do seu componente
 });
