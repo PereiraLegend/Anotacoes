@@ -1,21 +1,76 @@
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion"; // Importando motion do Framer Motion
+import { motion } from "framer-motion";
 import Products from "../api/products";
 import { IoCart } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
-import Skeleton from "react-loading-skeleton"; // Importando o Skeleton
+import Skeleton from "react-loading-skeleton";
+import { IoClose } from "react-icons/io5";
 
 export default function Produtos() {
     const [Abrir, setAbrir] = useState(false);
+    const [carrinho, setCarrinho] = useState([]);
+
     const MenuA = () => {
         setAbrir(!Abrir);
     };
+
     const MenuF = () => {
         setAbrir(false);
     };
 
     const { isLoading, isError, data } = Products();
+
+    const adicionarAoCarrinho = (item) => {
+        // Verificar se o item já está no carrinho
+        const existente = carrinho.find((produto) => produto.id === item.id);
+        if (existente) {
+            // Se existir, aumentar a quantidade
+            const novoCarrinho = carrinho.map((produto) =>
+                produto.id === item.id ? { ...produto, quantidade: produto.quantidade + 1 } : produto
+            );
+            setCarrinho(novoCarrinho);
+        } else {
+            // Se não existir, adicionar ao carrinho com quantidade 1
+            setCarrinho([...carrinho, { ...item, quantidade: 1 }]);
+        }
+    };
+
+    // Função para aumentar a quantidade de um item
+    const aumentarQuantidade = (index) => {
+        const novoCarrinho = [...carrinho];
+        novoCarrinho[index].quantidade++;
+        setCarrinho(novoCarrinho);
+    };
+
+    // Função para diminuir a quantidade de um item
+    const diminuirQuantidade = (index) => {
+        const novoCarrinho = [...carrinho];
+        if (novoCarrinho[index].quantidade > 1) {
+            novoCarrinho[index].quantidade--;
+            setCarrinho(novoCarrinho);
+        }
+    };
+
+    // Função para calcular o total de um item
+    const calcularTotalItem = (item) => {
+        return item.price * item.quantidade;
+    };
+
+    // Função para calcular o total do carrinho
+    const calcularTotal = () => {
+        return carrinho.reduce((total, item) => total + calcularTotalItem(item), 0);
+    };
+
+    const removerCardCarrinho = (index) => {
+        const novoCarrinho = [...carrinho];
+        novoCarrinho.splice(index, 1);
+        setCarrinho(novoCarrinho);
+    };
+
+    const calcularTotalItensCarrinho = () => {
+        return carrinho.reduce((total, item) => total + item.quantidade, 0);
+    };
 
     return (
         <div className="" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, lineHeight: '19px' }}>
@@ -25,7 +80,9 @@ export default function Produtos() {
                 </div>
 
                 <div className="mr-[5%]">
-                    <motion.button type="button" onClick={MenuA} className="bg-white p-2 rounded-lg cursor-pointer hover:bg-slate-500 flex items-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><IoCart size={19} className="mr-2" /> Contador</motion.button>
+                    <motion.button type="button" onClick={MenuA} className="bg-white p-2 rounded-lg cursor-pointer hover:bg-slate-500 flex items-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <IoCart size={19} className="mr-2" /><p style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700}}>{calcularTotalItensCarrinho()}</p>
+                    </motion.button>
                 </div>
 
             </main>
@@ -64,7 +121,7 @@ export default function Produtos() {
                                     </div>
                                 </div>
                                 <p style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, lineHeight: '12px' }} className="text-[#2C2C2C] text-[10px] leading-3 ml-3 mr-3">Redesigned from scratch and completely revised</p>
-                                <motion.button className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><FiShoppingBag className="mr-2" /> COMPRAR</motion.button>
+                                <motion.button onClick={() => adicionarAoCarrinho(item)} className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><FiShoppingBag className="mr-2" /> COMPRAR</motion.button>
                             </motion.div>
                         ))}
                     </div>
@@ -82,25 +139,38 @@ export default function Produtos() {
                 <div className="">
                     <div className="flex justify-between p-4">
                         <div>
-                            <p className="text-white font-bold text-[27px]">Carrinho <br />de compras</p>
+                            <p className="text-white font-bold text-[27px] pb-3" style={{lineHeight: '19px'}}>Carrinho </p>
+                            <p className="text-white font-bold text-[27px]" style={{lineHeight: '19px'}}>de compras</p>
+                            
                         </div>
                         <div>
-                            <motion.button onClick={MenuF} className="text-white hover:text-gray-800 hover:bg-white focus:outline-none font-bold bg-black p-1 rounded-[100%]" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>✕</motion.button>
+                            <motion.button onClick={MenuF} className="text-white hover:text-gray-800 hover:bg-white focus:outline-none font-bold bg-black p-1 rounded-[100%]" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><IoClose className="text-2xl" /></motion.button>
                         </div>
                     </div>
 
-                    <div className="p-4">
-                        <div className="bg-white h-[95px] flex felx-row justify-between items-center rounded-lg mb-[10px]">
-                            <div>Imagem</div>
-                            <div>Titulo</div>
-                            <div>qt</div>
-                            <div>valorT</div>
-                        </div>
+                    <div className="p-4" style={{ maxHeight: 'calc(100vh - 300px)', overflowY: 'auto' }}>
+                        {/**Card compra */}
+                        {carrinho.map((item, index) => (
+                            <div key={index} className="bg-white h-[95px] flex felx-row justify-between items-center rounded-lg mb-[10px] mr-2 ml-2 pr-2 pl-2 relative">
+                                <button onClick={() => removerCardCarrinho(index)} className="absolute top-[-5px] right-[-5px]  bg-black text-white p-1 rounded-full"><IoClose className="text-sm" /></button>
+                                <div><img src={item.photo} alt="" className="w-[50px] h-[50px] " /></div>
+                                <div className="w-[113px]">{item.name}</div>
+                                <div>
+                                    <p className="text-[5px] mb-[-1px]">Qtd:</p>
+                                    <div className="flex items-center border p-1 rounded-lg">
+                                        <button onClick={() => diminuirQuantidade(index)} className="pl-1 pr-1 border-r">-</button>
+                                        <span className="pl-1 pr-1">{item.quantidade}</span>
+                                        <button onClick={() => aumentarQuantidade(index)} className="pl-1 pr-1 border-l">+</button>
+                                    </div>
+                                </div>
+                                <div>R$ {calcularTotalItem(item)}</div>
+                            </div>
+                        ))}
                     </div>
 
                     <div className="flex items-center justify-between p-4">
                         <div className="text-white font-bold text-[27px]">Total</div>
-                        <div className="text-white font-bold font text-[27px]">R$ XXXX</div>
+                        <div className="text-white font-bold font text-[27px]">R$ {calcularTotal()}</div>
                     </div>
                     <motion.input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} />
                 </div>
