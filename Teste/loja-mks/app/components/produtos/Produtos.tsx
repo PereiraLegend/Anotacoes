@@ -1,12 +1,8 @@
-"use client";
 import Image from "next/image";
 import { useState } from "react";
 import Products from "../api/products";
 
-
-
 export default function Produtos() {
-
     const [Abrir, setAbrir] = useState(false);
     const MenuA = () => {
         setAbrir(!Abrir);
@@ -15,10 +11,7 @@ export default function Produtos() {
         setAbrir(false);
     };
 
-
-    { /**Api */ }
     const { isLoading, isError, data } = Products();
-
 
     return (
         <div className="">
@@ -29,38 +22,10 @@ export default function Produtos() {
 
                 <div className="mr-[5%]">
                     <input type="button" value="carrinho" onClick={MenuA} className="bg-white p-2 rounded-lg cursor-pointer hover:bg-slate-500" />
-                    <div className={`fixed top-0 right-0 h-full bg-[#0F52BA] shadow-lg transition-transform duration-300 ease-in-out transform ${Abrir ? 'translate-x-0' : 'translate-x-full'} w-96`}>
-                        <div className="">
-                            <div className="flex justify-between p-4">
-                                <div>
-                                    <p className="text-white font-bold text-[27px]">Carrinho <br />de compras</p>
-                                </div>
-                                <div>
-                                    <button onClick={MenuF} className="text-white hover:text-gray-800 hover:bg-white focus:outline-none font-bold bg-black p-1 rounded-[100%]">✕</button>
-                                </div>
-                            </div>
-
-                            <div className="p-4">
-                                <div className="bg-white h-[95px] flex felx-row justify-between items-center rounded-lg mb-[10px]">
-                                    <div>Imagem</div>
-                                    <div>Titulo</div>
-                                    <div>qt</div>
-                                    <div>valorT</div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center justify-between p-4">
-                                <div className="text-white font-bold text-[27px]">Total</div>
-                                <div className="text-white font-bold text-[27px]">R$ XXXX</div>
-                            </div>
-                            <input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" />
-                        </div>
-                    </div>
                 </div>
-
             </main>
 
-            <div className="flex justify-center items-center mt-[5%] mb-[5%]">
+            <div className="flex justify-center items-center mt-[5%] mb-[5%] relative">
                 {isLoading ? (
                     <p>Carregando...</p>
                 ) : isError ? (
@@ -79,11 +44,8 @@ export default function Produtos() {
                                     </div>
                                 </div>
                                 <p className="text-[#2C2C2C] text-[10px] leading-3 ">Redesigned from scratch and completely revised</p>
-                                {/**<p className="text-gray-800">{item.description}</p>*/}
-
-                                <input type="button" value="COMPRAR" className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 z-10 cursor-pointer text-[14px]" style={{ borderBottomLeftRadius: '11px', borderBottomRightRadius: '11px' }}/>
+                                <button className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl">COMPRAR</button>
                             </div>
-                            
                         ))}
                     </div>
                 ) : (
@@ -91,9 +53,38 @@ export default function Produtos() {
                 )}
             </div>
 
-            <footer className="w-[100%] h-[34px] bg-[#EEEEEE] flex justify-center items-center">
+            <footer className="w-[100%] h-[34px] bg-[#EEEEEE] flex justify-center items-center fixed bottom-0">
                 <div>MKS sistemas © Todos os direitos reservados</div>
             </footer>
+
+            {/** Barra lateral */}
+            <div className={`fixed top-0 right-0 h-full bg-[#0F52BA] shadow-lg transition-transform duration-300 ease-in-out transform ${Abrir ? 'translate-x-0' : 'translate-x-full'} w-96`}>
+                <div className="">
+                    <div className="flex justify-between p-4">
+                        <div>
+                            <p className="text-white font-bold text-[27px]">Carrinho <br />de compras</p>
+                        </div>
+                        <div>
+                            <button onClick={MenuF} className="text-white hover:text-gray-800 hover:bg-white focus:outline-none font-bold bg-black p-1 rounded-[100%]">✕</button>
+                        </div>
+                    </div>
+
+                    <div className="p-4">
+                        <div className="bg-white h-[95px] flex felx-row justify-between items-center rounded-lg mb-[10px]">
+                            <div>Imagem</div>
+                            <div>Titulo</div>
+                            <div>qt</div>
+                            <div>valorT</div>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-4">
+                        <div className="text-white font-bold text-[27px]">Total</div>
+                        <div className="text-white font-bold text-[27px]">R$ XXXX</div>
+                    </div>
+                    <input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" />
+                </div>
+            </div>
         </div>
     );
 }
