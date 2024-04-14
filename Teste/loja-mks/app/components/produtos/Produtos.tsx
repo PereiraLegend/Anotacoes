@@ -66,6 +66,11 @@ export default function Produtos() {
         return carrinho.reduce((total, item) => total + item.quantidade, 0);
     };
 
+    const finalizarCompra = () => {
+        alert("Compra finalizada");
+        window.location.reload();
+    };
+
     useEffect(() => {
         const funcaoResolucao = () => {
             setResolucao(window.innerWidth > 1366);
@@ -87,7 +92,7 @@ export default function Produtos() {
 
                 <div className="mr-[5%]">
                     <motion.button type="button" onClick={MenuA} className="bg-white p-2 rounded-lg cursor-pointer hover:bg-slate-500 flex items-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <IoCart size={19} className="mr-2" /><p style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700}}>{calcularTotalItensCarrinho()}</p>
+                        <IoCart size={19} className="mr-2" /><p style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700 }}>{calcularTotalItensCarrinho()}</p>
                     </motion.button>
                 </div>
 
@@ -99,7 +104,7 @@ export default function Produtos() {
                         {[...Array(8)].map((_, index) => (
                             <div key={index} className="bg-white border rounded-xl shadow-md w-[218px] h-[285px] cursor-pointer relative">
                                 <Skeleton width={218} height={150} className="rounded-t-xl" />
-                                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-xl font-bold" style={{ background: "linear-gradient(to right, blue, black)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",}}>Carregando...</motion.div>
+                                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-xl font-bold" style={{ background: "linear-gradient(to right, blue, black)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", }}>Carregando...</motion.div>
                                 <div className="flex justify-between p-2">
                                     <Skeleton width={150} height={20} />
                                     <div>
@@ -143,9 +148,9 @@ export default function Produtos() {
                 <div className="">
                     <div className="flex justify-between p-4">
                         <div>
-                            <p className="text-white font-bold text-[27px] pb-3" style={{lineHeight: '19px'}}>Carrinho </p>
-                            <p className="text-white font-bold text-[27px]" style={{lineHeight: '19px'}}>de compras</p>
-                            
+                            <p className="text-white font-bold text-[27px] pb-3" style={{ lineHeight: '19px' }}>Carrinho </p>
+                            <p className="text-white font-bold text-[27px]" style={{ lineHeight: '19px' }}>de compras</p>
+
                         </div>
                         <div>
                             <motion.button onClick={MenuF} className="text-white hover:text-gray-800 hover:bg-white focus:outline-none font-bold bg-black p-1 rounded-[100%]" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><IoClose className="text-2xl" /></motion.button>
@@ -172,16 +177,21 @@ export default function Produtos() {
                         ))}
                     </div>
 
-                    <div className="flex items-center justify-between p-4">
-                        <div className="text-white font-bold text-[27px]">Total</div>
-                        <div className="text-white font-bold font text-[27px]">R$ {calcularTotal()}</div>
+                    {/**Valor final */}
+                    <div className="absolute bottom-0 z-20 w-[100%]">
+
+                        <div className="flex items-center justify-between p-4  ">
+                            <div className="text-white font-bold text-[27px]">Total</div>
+                            <div className="text-white font-bold font text-[27px]">R$ {calcularTotal()}</div>
+                        </div>
+                        <motion.input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer " whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={finalizarCompra} />
+
                     </div>
-                    <motion.input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} />
                 </div>
             </div>
             <footer className={`w-[100%] h-[34px] bg-[#EEEEEE] flex justify-center items-center ${Resolucao ? "fixed bottom-0" : ""}`}>
-            <div>MKS sistemas © Todos os direitos reservados</div>
-        </footer>
+                <div>MKS sistemas © Todos os direitos reservados</div>
+            </footer>
         </div>
     );
 }
