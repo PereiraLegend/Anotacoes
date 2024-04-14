@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Products from "../api/products";
 import { IoCart } from "react-icons/io5";
@@ -10,6 +10,7 @@ import { IoClose } from "react-icons/io5";
 export default function Produtos() {
     const [Abrir, setAbrir] = useState(false);
     const [carrinho, setCarrinho] = useState([]);
+    const [Resolucao, setResolucao] = useState(false);
 
     const MenuA = () => {
         setAbrir(!Abrir);
@@ -22,28 +23,23 @@ export default function Produtos() {
     const { isLoading, isError, data } = Products();
 
     const adicionarAoCarrinho = (item) => {
-        // Verificar se o item já está no carrinho
         const existente = carrinho.find((produto) => produto.id === item.id);
         if (existente) {
-            // Se existir, aumentar a quantidade
             const novoCarrinho = carrinho.map((produto) =>
                 produto.id === item.id ? { ...produto, quantidade: produto.quantidade + 1 } : produto
             );
             setCarrinho(novoCarrinho);
         } else {
-            // Se não existir, adicionar ao carrinho com quantidade 1
             setCarrinho([...carrinho, { ...item, quantidade: 1 }]);
         }
     };
 
-    // Função para aumentar a quantidade de um item
     const aumentarQuantidade = (index) => {
         const novoCarrinho = [...carrinho];
         novoCarrinho[index].quantidade++;
         setCarrinho(novoCarrinho);
     };
 
-    // Função para diminuir a quantidade de um item
     const diminuirQuantidade = (index) => {
         const novoCarrinho = [...carrinho];
         if (novoCarrinho[index].quantidade > 1) {
@@ -52,12 +48,10 @@ export default function Produtos() {
         }
     };
 
-    // Função para calcular o total de um item
     const calcularTotalItem = (item) => {
         return item.price * item.quantidade;
     };
 
-    // Função para calcular o total do carrinho
     const calcularTotal = () => {
         return carrinho.reduce((total, item) => total + calcularTotalItem(item), 0);
     };
@@ -72,6 +66,18 @@ export default function Produtos() {
         return carrinho.reduce((total, item) => total + item.quantidade, 0);
     };
 
+    useEffect(() => {
+        const funcaoResolucao = () => {
+            setResolucao(window.innerWidth > 1366);
+        };
+
+        funcaoResolucao();
+        window.addEventListener("resize", funcaoResolucao);
+
+        return () => {
+            window.removeEventListener("resize", funcaoResolucao);
+        };
+    }, []);
     return (
         <div className="" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, lineHeight: '19px' }}>
             <main className="w-[100%] h-[101px] bg-[#0F52BA] flex justify-between items-center relative">
@@ -90,7 +96,7 @@ export default function Produtos() {
             <div className="flex justify-center items-center mt-[5%] mb-[5%] relative">
                 {isLoading ? (
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 justify-center items-center">
-                        {[...Array(4)].map((_, index) => (
+                        {[...Array(8)].map((_, index) => (
                             <div key={index} className="bg-white border rounded-xl shadow-md w-[218px] h-[285px] cursor-pointer relative">
                                 <Skeleton width={218} height={150} className="rounded-t-xl" />
                                 <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-xl font-bold" style={{ background: "linear-gradient(to right, blue, black)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",}}>Carregando...</motion.div>
@@ -110,7 +116,7 @@ export default function Produtos() {
                 ) : data ? (
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 justify-center items-center">
                         {data.map((item, index) => (
-                            <motion.div key={index} className="bg-white border rounded-xl shadow-md w-[218px] h-[285px] cursor-pointer relative" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <motion.div key={index} className="bg-white border rounded-xl shadow-md w-[218px] h-[285px] cursor-pointer relative" whileHover={{ scale: 1.05 }}>
                                 <div className="flex justify-center items-center">
                                     <img src={item.photo} alt="" className="w-[150px] h-[150px]" />
                                 </div>
@@ -130,9 +136,7 @@ export default function Produtos() {
                 )}
             </div>
 
-            <footer className="w-[100%] h-[34px] bg-[#EEEEEE] flex justify-center items-center fixed bottom-0">
-                <div>MKS sistemas © Todos os direitos reservados</div>
-            </footer>
+
 
             {/** Barra lateral */}
             <div className={`fixed top-0 right-0 h-full bg-[#0F52BA] shadow-lg transition-transform duration-300 ease-in-out transform ${Abrir ? 'translate-x-0' : 'translate-x-full'} w-96`}>
@@ -175,6 +179,9 @@ export default function Produtos() {
                     <motion.input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} />
                 </div>
             </div>
+            <footer className={`w-[100%] h-[34px] bg-[#EEEEEE] flex justify-center items-center ${Resolucao ? "fixed bottom-0" : ""}`}>
+            <div>MKS sistemas © Todos os direitos reservados</div>
+        </footer>
         </div>
     );
 }
