@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion"; // Importando motion do Framer Motion
+import { motion } from "framer-motion";
 import Products from "../api/products";
 import { IoCart } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
@@ -17,7 +17,7 @@ export default function Produtos() {
     const { isLoading, isError, data } = Products();
 
     return (
-        <div className="">
+        <div className="" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, lineHeight: '19px' }}>
             <main className="w-[100%] h-[101px] bg-[#0F52BA] flex justify-between items-center relative">
                 <div className="ml-[5%]">
                     <Image src="/logo.png" alt="Minha imagem" width={300} height={100} className="pt-2" />
@@ -46,7 +46,7 @@ export default function Produtos() {
                                         <p className="text-white bg-[#373737]  p-1 rounded-lg text-[15px] font-bold">R${Math.trunc(item.price)}</p>
                                     </div>
                                 </div>
-                                <p className="text-[#2C2C2C] text-[10px] leading-3 ">Redesigned from scratch and completely revised</p>
+                                <p style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, lineHeight: '12px' }} className="text-[#2C2C2C] text-[10px] leading-3 ml-3 mr-3">Redesigned from scratch and completely revised</p>
                                 <motion.button className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><FiShoppingBag className="mr-2" /> COMPRAR</motion.button>
                             </motion.div>
                         ))}
