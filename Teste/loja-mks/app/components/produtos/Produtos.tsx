@@ -2,6 +2,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion"; // Importando motion do Framer Motion
 import Products from "../api/products";
+import { IoCart } from "react-icons/io5";
+import { FiShoppingBag } from "react-icons/fi";
 
 export default function Produtos() {
     const [Abrir, setAbrir] = useState(false);
@@ -18,11 +20,11 @@ export default function Produtos() {
         <div className="">
             <main className="w-[100%] h-[101px] bg-[#0F52BA] flex justify-between items-center relative">
                 <div className="ml-[5%]">
-                    <Image src="/logo.png" alt="Minha imagem" width={300} height={100} />
+                    <Image src="/logo.png" alt="Minha imagem" width={300} height={100} className="pt-2" />
                 </div>
 
                 <div className="mr-[5%]">
-                    <motion.input type="button" value="carrinho" onClick={MenuA} className="bg-white p-2 rounded-lg cursor-pointer hover:bg-slate-500" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}/>
+                    <motion.button type="button" onClick={MenuA} className="bg-white p-2 rounded-lg cursor-pointer hover:bg-slate-500 flex items-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><IoCart size={19} className="mr-2" /> Contador</motion.button>
                 </div>
             </main>
 
@@ -45,7 +47,7 @@ export default function Produtos() {
                                     </div>
                                 </div>
                                 <p className="text-[#2C2C2C] text-[10px] leading-3 ">Redesigned from scratch and completely revised</p>
-                                <motion.button className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>COMPRAR</motion.button>
+                                <motion.button className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><FiShoppingBag className="mr-2" /> COMPRAR</motion.button>
                             </motion.div>
                         ))}
                     </div>
