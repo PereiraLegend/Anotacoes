@@ -3,7 +3,6 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Produtos from '../produtos/Produtos';
 
-// Mock do módulo Products
 jest.mock('../api/products', () => ({
   __esModule: true,
   default: jest.fn(() => ({
