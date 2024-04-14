@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // Importando motion do Framer Motion
 import Products from "../api/products";
 import { IoCart } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
+import Skeleton from "react-loading-skeleton"; // Importando o Skeleton
 
 export default function Produtos() {
     const [Abrir, setAbrir] = useState(false);
@@ -26,11 +27,27 @@ export default function Produtos() {
                 <div className="mr-[5%]">
                     <motion.button type="button" onClick={MenuA} className="bg-white p-2 rounded-lg cursor-pointer hover:bg-slate-500 flex items-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><IoCart size={19} className="mr-2" /> Contador</motion.button>
                 </div>
+
             </main>
 
             <div className="flex justify-center items-center mt-[5%] mb-[5%] relative">
                 {isLoading ? (
-                    <p>Carregando...</p>
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 justify-center items-center">
+                        {[...Array(4)].map((_, index) => (
+                            <div key={index} className="bg-white border rounded-xl shadow-md w-[218px] h-[285px] cursor-pointer relative">
+                                <Skeleton width={218} height={150} className="rounded-t-xl" />
+                                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-xl font-bold" style={{ background: "linear-gradient(to right, blue, black)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",}}>Carregando...</motion.div>
+                                <div className="flex justify-between p-2">
+                                    <Skeleton width={150} height={20} />
+                                    <div>
+                                        <Skeleton width={50} height={20} />
+                                    </div>
+                                </div>
+                                <Skeleton count={2} className="ml-3 mr-3 mb-2" />
+                                <motion.button className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><FiShoppingBag className="mr-2" /> COMPRAR</motion.button>
+                            </div>
+                        ))}
+                    </div>
                 ) : isError ? (
                     <p>Ocorreu um erro ao carregar os produtos.</p>
                 ) : data ? (
@@ -38,7 +55,7 @@ export default function Produtos() {
                         {data.map((item, index) => (
                             <motion.div key={index} className="bg-white border rounded-xl shadow-md w-[218px] h-[285px] cursor-pointer relative" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <div className="flex justify-center items-center">
-                                    <img src={item.photo} alt="" className="w-[150px] h-[150px]"/>
+                                    <img src={item.photo} alt="" className="w-[150px] h-[150px]" />
                                 </div>
                                 <div className="flex justify-between p-2">
                                     <h3 className="text-[16px] font-semibold text-[#2C2C2C]">{item.name}</h3>
@@ -85,7 +102,7 @@ export default function Produtos() {
                         <div className="text-white font-bold text-[27px]">Total</div>
                         <div className="text-white font-bold font text-[27px]">R$ XXXX</div>
                     </div>
-                    <motion.input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}/>
+                    <motion.input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} />
                 </div>
             </div>
         </div>
