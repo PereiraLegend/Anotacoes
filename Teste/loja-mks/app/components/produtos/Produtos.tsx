@@ -10,6 +10,7 @@ import { IoClose } from "react-icons/io5";
 export default function Produtos() {
     const [Abrir, setAbrir] = useState(false);
     const [carrinho, setCarrinho] = useState([]);
+    const [total, setTotal] = useState(0);
     const [Resolucao, setResolucao] = useState(false);
 
     const MenuA = () => {
@@ -29,8 +30,11 @@ export default function Produtos() {
                 produto.id === item.id ? { ...produto, quantidade: produto.quantidade + 1 } : produto
             );
             setCarrinho(novoCarrinho);
+            localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
         } else {
-            setCarrinho([...carrinho, { ...item, quantidade: 1 }]);
+            const novoCarrinho = [...carrinho, { ...item, quantidade: 1 }];
+            setCarrinho(novoCarrinho);
+            localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
         }
     };
 
@@ -38,6 +42,7 @@ export default function Produtos() {
         const novoCarrinho = [...carrinho];
         novoCarrinho[index].quantidade++;
         setCarrinho(novoCarrinho);
+        localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
     };
 
     const diminuirQuantidade = (index) => {
@@ -45,7 +50,15 @@ export default function Produtos() {
         if (novoCarrinho[index].quantidade > 1) {
             novoCarrinho[index].quantidade--;
             setCarrinho(novoCarrinho);
+            localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
         }
+    };
+
+    const removerCardCarrinho = (index) => {
+        const novoCarrinho = [...carrinho];
+        novoCarrinho.splice(index, 1);
+        setCarrinho(novoCarrinho);
+        localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
     };
 
     const calcularTotalItem = (item) => {
@@ -56,12 +69,6 @@ export default function Produtos() {
         return carrinho.reduce((total, item) => total + calcularTotalItem(item), 0);
     };
 
-    const removerCardCarrinho = (index) => {
-        const novoCarrinho = [...carrinho];
-        novoCarrinho.splice(index, 1);
-        setCarrinho(novoCarrinho);
-    };
-
     const calcularTotalItensCarrinho = () => {
         return carrinho.reduce((total, item) => total + item.quantidade, 0);
     };
@@ -70,6 +77,30 @@ export default function Produtos() {
         alert("Compra finalizada");
         window.location.reload();
     };
+
+    useEffect(() => {
+        // Carregar carrinho do localStorage ao montar o componente
+        const carrinhoLocalStorage = localStorage.getItem('carrinho');
+        if (carrinhoLocalStorage) {
+            setCarrinho(JSON.parse(carrinhoLocalStorage));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+        localStorage.setItem('total', JSON.stringify(calcularTotal()));
+    }, [carrinho]);
+
+    useEffect(() => {
+        const carrinhoLocalStorage = localStorage.getItem('carrinho');
+        const totalLocalStorage = localStorage.getItem('total');
+        if (carrinhoLocalStorage) {
+            setCarrinho(JSON.parse(carrinhoLocalStorage));
+        }
+        if (totalLocalStorage) {
+            setTotal(JSON.parse(totalLocalStorage));
+        }
+    }, []);
 
     useEffect(() => {
         const funcaoResolucao = () => {
@@ -83,6 +114,7 @@ export default function Produtos() {
             window.removeEventListener("resize", funcaoResolucao);
         };
     }, []);
+
     return (
         <div className="" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, lineHeight: '19px' }}>
             <main className="w-[100%] h-[101px] bg-[#0F52BA] flex justify-between items-center relative">
@@ -95,7 +127,6 @@ export default function Produtos() {
                         <IoCart size={19} className="mr-2" /><p style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700 }}>{calcularTotalItensCarrinho()}</p>
                     </motion.button>
                 </div>
-
             </main>
 
             <div className="flex justify-center items-center mt-[5%] mb-[5%] relative">
@@ -141,8 +172,6 @@ export default function Produtos() {
                 )}
             </div>
 
-
-
             {/** Barra lateral */}
             <div className={`fixed top-0 right-0 h-full bg-[#0F52BA] shadow-lg transition-transform duration-300 ease-in-out transform ${Abrir ? 'translate-x-0' : 'translate-x-full'} w-96`}>
                 <div className="">
@@ -150,7 +179,6 @@ export default function Produtos() {
                         <div>
                             <p className="text-white font-bold text-[27px] pb-3" style={{ lineHeight: '19px' }}>Carrinho </p>
                             <p className="text-white font-bold text-[27px]" style={{ lineHeight: '19px' }}>de compras</p>
-
                         </div>
                         <div>
                             <motion.button onClick={MenuF} className="text-white hover:text-gray-800 hover:bg-white focus:outline-none font-bold bg-black p-1 rounded-[100%]" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><IoClose className="text-2xl" /></motion.button>
@@ -179,16 +207,15 @@ export default function Produtos() {
 
                     {/**Valor final */}
                     <div className="absolute bottom-0 z-20 w-[100%]">
-
                         <div className="flex items-center justify-between p-4  ">
                             <div className="text-white font-bold text-[27px]">Total</div>
                             <div className="text-white font-bold font text-[27px]">R$ {calcularTotal()}</div>
                         </div>
                         <motion.input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer " whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={finalizarCompra} />
-
                     </div>
                 </div>
             </div>
+
             <footer className={`w-[100%] h-[34px] bg-[#EEEEEE] flex justify-center items-center ${Resolucao ? "fixed bottom-0" : ""}`}>
                 <div>MKS sistemas © Todos os direitos reservados</div>
             </footer>
