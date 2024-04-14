@@ -45,13 +45,7 @@ export default function Produtos() {
                                     </div>
                                 </div>
                                 <p className="text-[#2C2C2C] text-[10px] leading-3 ">Redesigned from scratch and completely revised</p>
-                                <motion.button // Aplicando animação ao botão comprar
-                                    className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    COMPRAR
-                                </motion.button>
+                                <motion.button className="text-white bg-[#0F52BA] w-[100%] h-[32px] flex justify-center items-center absolute bottom-0 cursor-pointer text-[14px] rounded-b-xl" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>COMPRAR</motion.button>
                             </motion.div>
                         ))}
                     </div>
@@ -87,7 +81,7 @@ export default function Produtos() {
 
                     <div className="flex items-center justify-between p-4">
                         <div className="text-white font-bold text-[27px]">Total</div>
-                        <div className="text-white font-bold text-[27px]">R$ XXXX</div>
+                        <div className="text-white font-bold font text-[27px]">R$ XXXX</div>
                     </div>
                     <motion.input type="button" value="Finalizar Compra" className="w-[100%] h-[97px] bg-[#000000] text-white text-[28px] cursor-pointer absolute bottom-0 z-20" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}/>
                 </div>
