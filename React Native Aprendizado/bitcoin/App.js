@@ -85,7 +85,7 @@ export default function App() {
       <StatusBar backgroundColor='#f50d41' barStyle="light-content" style="auto" />
 
       <PrecoAtual/>
-      <HistoricoGrafico/>
+      <HistoricoGrafico infoGraficoData={GraficoListaMoedas}/>
       <ListaCotacao filterDay={updateDias} listTranzacoes={ListaMoedas}/>
     </SafeAreaView>
   );
