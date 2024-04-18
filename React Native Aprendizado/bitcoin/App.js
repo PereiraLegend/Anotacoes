@@ -31,7 +31,7 @@ async function getListaPrecoMoedasGrafico(url){
   let responseApiG = await responseG.json()
   let selectListaCitacaoG = responseApiG.bpi
   const queryListaMoedas = Object.keys(selectListaCitacaoG).map((key)=>{
-      selectListaCitacaoG[key]
+      return selectListaCitacaoG[key]
   })
   let dataG = queryListaMoedas
   return dataG
@@ -59,9 +59,15 @@ export default function App() {
   const [GraficoListaMoedas, setGraficoListaMoedas] = useState([0])
   const [Dias, setDias] = useState(30)
   const [UpdateData, setUpdateData] = useState(true)
+  const [Preco,setPreco] = useState()
+
   function updateDias(number){
     setDias(number)
     setUpdateData(true)
+  }
+
+  function PrecoCotacao(){
+    setPreco(GraficoListaMoedas.pop())
   }
 
   useEffect(()=>{
@@ -73,6 +79,7 @@ export default function App() {
       setGraficoListaMoedas(dataG)
     })
     {/**Para evitar que a chamada de update da data no aplicativo fique em loop e dê erro */}
+    PrecoCotacao()
     if(UpdateData){
       setUpdateData(false)
     }
@@ -84,7 +91,7 @@ export default function App() {
       
       <StatusBar backgroundColor='#f50d41' barStyle="light-content" style="auto" />
 
-      <PrecoAtual/>
+      <PrecoAtual ultimaCotacao={Preco}/>
       <HistoricoGrafico infoGraficoData={GraficoListaMoedas}/>
       <ListaCotacao filterDay={updateDias} listTranzacoes={ListaMoedas}/>
     </SafeAreaView>
