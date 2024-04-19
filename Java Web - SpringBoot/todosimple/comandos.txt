@@ -1,0 +1,1 @@
+Comando para rodar o projeto via terminal: "mvn spring-boot:run"

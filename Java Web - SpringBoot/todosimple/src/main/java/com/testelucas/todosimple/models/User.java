@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,8 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity //Obrigatoriamente eu crio uma entidade
@@ -47,15 +50,26 @@ public class User {
     @Size(groups = {CreateUser.class, UpadateUser.class}, min = 8, max = 60)
     private String password;
 
-    //private List<Task> tasks = new Arraylist<Task>();
+    // Relacionado as Tasks aos usuários
+    @OneToMany(mappedBy = "user") // "Um para todos" // Aqui eu mapeio user para tasks
+    private List<Task> tasks = new ArrayList<Task>();
 
     // Criando os métodos (tudo pode ser gerado automáticamente):
     
-    // Como o Springboot usa construtores vazios, toda classe criada tem que ter construtores vazios
+    
+	// Como o Springboot usa construtores vazios, toda classe criada tem que ter construtores vazios
     public User() { //Construtor vazio
     }
-
+    
     // Também é necessário gerar o construtor com todos os campos
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     public User(Long id, String username, String password) {
         this.id = id;
         this.username = username;
