@@ -51,7 +51,7 @@ public class User {
     private String password;
 
     // Relacionado as Tasks aos usuários
-    @OneToMany(mappedBy = "user") // "Um para todos" // Aqui eu mapeio user para tasks
+    @OneToMany(mappedBy = "user") // "Um para todos" // Aqui eu mapeio user para tasks por uma chave estrangeira
     private List<Task> tasks = new ArrayList<Task>();
 
     // Criando os métodos (tudo pode ser gerado automáticamente):
