@@ -18,8 +18,6 @@ public class UserService { // aqui crio a camada de serviço para modularizar me
     @Autowired // Com o autowired eu aviso que é para utilizar as anotações do springboot para instanciar e fazer as anotações necessárias para a classe, ou seja  o "Autowired" é o construtor do service
     private UserRepository userRepository; // Sempre lembrar de deixar privado para ninguém ter acesso a isso // Eu importo os repositories que eu criei
 
-    @Autowired
-    private TaskRepository taskRepository;
 
     // Não usamos getters e setters em services, apenas construtores que podem ser gerados:
 
@@ -38,7 +36,7 @@ public class UserService { // aqui crio a camada de serviço para modularizar me
     public User create(User obj){ 
         obj.setId(null); // Sempre que for criado um novo usuário é necessário resetar o id para evitar uma falha de segurança de o novo usuário atualizar um já existente pelo método create
         obj = this.userRepository.save(obj); // Aqui eu salvo o novo usuário
-        this.taskRepository.saveAll(obj.getTasks()); // Aqui eu salvo todas as tasks, mesmo que o novo usuário não tenha as tasks
+        //this.taskRepository.saveAll(obj.getTasks()); // Aqui eu salvo todas as tasks, mesmo que o novo usuário não tenha as tasks
         return obj;
     }
 
