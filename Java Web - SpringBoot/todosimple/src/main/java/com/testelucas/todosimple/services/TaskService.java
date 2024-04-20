@@ -1,5 +1,6 @@
 package com.testelucas.todosimple.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -25,6 +26,12 @@ public class TaskService {
         return task.orElseThrow(() -> new RuntimeException(
             "Tarefa não encontrada!" + id + ", Tipo" + Task.class.getName()
         ));
+    }
+
+    // Pesquisar todas as tasks de um usuário:
+    public List<Task> findAllByUserId(long userid){
+        List<Task> tasks = this.taskRepository.findByUser_Id(userid);
+        return tasks;
     }
 
     @Transactional
