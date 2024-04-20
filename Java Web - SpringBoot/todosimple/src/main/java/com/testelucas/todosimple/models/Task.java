@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
+// aqui eu crio os models, ou seja o banco de dados
 @Entity
 @Table(name = Task.TABLE_NAME)
 public class Task {

@@ -1,1 +1,3 @@
 Comando para rodar o projeto via terminal: "mvn spring-boot:run"
+
+Para vizualizar melhor é bom estudar através das camadas: models > repositories > services > controllers

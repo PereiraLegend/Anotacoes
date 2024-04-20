@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.testelucas.todosimple.models.Task;
 import java.util.List;
 
-
+//Aqui eu chamo as funções para criar as services no bd
 public interface TaskRepository extends JpaRepository<Task, Long>{
     // Caso eu queira fazer de uma forma mais avançada através de uma busca do sql, sem utilizar o "JpaRepositorys"
     // Aqui eu quero buscar uma lista de tasks do usuário:

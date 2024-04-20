@@ -11,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+// aqui eu crio os models, ou seja o banco de dados
 @Entity //Obrigatoriamente eu crio uma entidade
 @Table(name = User.TABLE_NAME) //Aqui eu estarei criando as tabelas do banco de dados
 public class User {
@@ -62,8 +64,9 @@ public class User {
     }
     
     // Também é necessário gerar o construtor com todos os campos
+    @JsonIgnore // Esse método serve para quando eu buscar um usuário e não busqeu todas as tasks do mesmo, no caso na lógica eu quero apenas buscar os dados do usuário e não tudo sobre ele
     public List<Task> getTasks() {
-        return tasks;
+        return this.tasks;
     }
 
     public void setTasks(List<Task> tasks) {

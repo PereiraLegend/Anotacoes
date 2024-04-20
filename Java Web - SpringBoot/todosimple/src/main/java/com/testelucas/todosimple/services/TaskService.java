@@ -11,6 +11,7 @@ import com.testelucas.todosimple.models.Task;
 import com.testelucas.todosimple.models.User;
 import com.testelucas.todosimple.repositories.TaskRepository;
 
+// Aqui crio as funções de comunicação e inserção com o bd
 @Service
 public class TaskService {
     @Autowired

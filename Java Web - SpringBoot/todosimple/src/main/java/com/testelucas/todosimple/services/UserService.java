@@ -9,9 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.testelucas.todosimple.models.User;
-import com.testelucas.todosimple.repositories.TaskRepository;
+// import com.testelucas.todosimple.repositories.TaskRepository;
 import com.testelucas.todosimple.repositories.UserRepository;
 
+// Aqui crio as funções de comunicação e inserção com o bd
 @Service
 public class UserService { // aqui crio a camada de serviço para modularizar meu código em "Services"
     
