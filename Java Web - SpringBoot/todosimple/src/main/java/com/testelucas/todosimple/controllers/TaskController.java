@@ -5,6 +5,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.testelucas.todosimple.models.Task;
 import com.testelucas.todosimple.services.TaskService;
+import com.testelucas.todosimple.services.UserService;
 
 import java.net.URI;
 import java.util.List;
@@ -21,12 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
-
-
-
+// import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/task")
@@ -35,6 +31,9 @@ public class TaskController {
     
     @Autowired
     private TaskService taskService;
+
+    @Autowired
+    private UserService userService;
 
     // Pesquisar tarefa pelo id:
     @GetMapping("/{id}")
@@ -46,6 +45,7 @@ public class TaskController {
     // Pesquisar todas as tarefas de um usuário:
     @GetMapping("/user/{userId}")    
     public ResponseEntity<List<Task>> findAllByUsrId(@PathVariable Long userId){
+        userService.findById(userId); // Adiciono isso para dar erro na hora que um usuário inexistente for chamado para mostrar as suas tarefas
         List<Task> objs = this.taskService.findAllByUserId(userId);
         return ResponseEntity.ok().body(objs);
     }
