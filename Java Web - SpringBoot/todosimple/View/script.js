@@ -3,6 +3,7 @@ const url = "http://localhost:8080/task/user/1";
 // Função para controlar o loader
 function hideLoader() {
     document.getElementById("loading").style.display = "none";
+    alert("Foi")
 }
 
 // Função de criação da tabela
@@ -31,7 +32,7 @@ async function getAPI(url){
     const response = await fetch(url, { method: "GET"});
     var data = await response.json();
     console.log(data);
-    if (response) hideLoader();
+    // if (response) hideLoader();
     show(data);
 }
 getAPI(url);
