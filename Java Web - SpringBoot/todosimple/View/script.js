@@ -29,7 +29,10 @@ function show(tasks){
 
 // Função de conexão com a api
 async function getAPI(url){
-    const response = await fetch(url, { method: "GET"});
+    const response = await fetch(url, {
+        mode: "no-cors",
+        method: "GET"
+    });
     var data = await response.json();
     console.log(data);
     // if (response) hideLoader();

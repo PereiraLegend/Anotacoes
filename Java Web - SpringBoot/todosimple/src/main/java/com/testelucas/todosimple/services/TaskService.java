@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.testelucas.todosimple.models.Task;
 import com.testelucas.todosimple.models.User;
 import com.testelucas.todosimple.repositories.TaskRepository;
+import com.testelucas.todosimple.services.exceptions.DataBindingViolationException;
+import com.testelucas.todosimple.services.exceptions.ObjectNotFoundException;
 
 // Aqui crio as funções de comunicação e inserção com o bd
 @Service
@@ -23,7 +25,7 @@ public class TaskService {
 
     public Task findById(Long id){
         Optional<Task> task = this.taskRepository.findById(id);
-        return task.orElseThrow(() -> new RuntimeException(
+        return task.orElseThrow(() -> new ObjectNotFoundException(
             "Tarefa não encontrada!" + id + ", Tipo" + Task.class.getName()
         ));
     }
@@ -55,8 +57,8 @@ public class TaskService {
         try {
             this.taskRepository.deleteById(id);
         } catch (Exception e) {
-            // TODO: handle exception
-            throw new RuntimeException("Não é possivel excluir pois há entidades relacionadas");
+            // TODO: handle exception // Caso não use o tratamento de erro eu suboistituo o "DataBindingViolationException" por "RuntimeException"
+            throw new DataBindingViolationException("Não é possivel excluir pois há entidades relacionadas");
         }
     }
 }
