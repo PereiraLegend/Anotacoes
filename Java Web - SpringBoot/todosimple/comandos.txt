@@ -1,5 +1,7 @@
 Comando para rodar o projeto via terminal: "mvn spring-boot:run"
 
-Para vizualizar melhor é bom estudar através das camadas: models > repositories > services > controllers
+Para vizualizar melhor é bom estudar através das camadas: resources > models > repositories > services > controllers > exceptions > config > enums > security
 
 Obs.: Uma vez que eu adiciono no pom.xml o jsonwebtoken e as configurações de autenticação, a api que até então estava aberta fica bloqueada até eu criar as configurações de acesso
+
+Obs.: Na pasta security eu uso o usedetails, onde coloco os detalhes, atributos e métodos necessários para preencher o filtro para pegar os dados que o usuário tem na hora de ele fazer login, isso é uma camada dentro do filtro que serve para instanciar o usuário no sistema de autenticação, o que o faz diferente do usuário no sistema de autenticação
