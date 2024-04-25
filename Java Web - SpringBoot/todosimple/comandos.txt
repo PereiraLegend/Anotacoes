@@ -1,3 +1,5 @@
 Comando para rodar o projeto via terminal: "mvn spring-boot:run"
 
 Para vizualizar melhor é bom estudar através das camadas: models > repositories > services > controllers
+
+Obs.: Uma vez que eu adiciono no pom.xml o jsonwebtoken e as configurações de autenticação, a api que até então estava aberta fica bloqueada até eu criar as configurações de acesso
