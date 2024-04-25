@@ -1,7 +1,10 @@
 package com.testelucas.todosimple.models;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,14 +17,21 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.testelucas.todosimple.models.enums.ProfileEnum;
+
+import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 // aqui eu crio os models, ou seja o banco de dados
 @Entity //Obrigatoriamente eu crio uma entidade
 @Table(name = User.TABLE_NAME) //Aqui eu estarei criando as tabelas do banco de dados
+@Data
 public class User {
     //Criando uma interface
     public interface CreateUser {} // Eu criei interfaces vazias sem nenhum método e nem nada para garantir que na hora da criação eu possa verificar se é "@NotNull", se não é @NotEmpty e o @Size
@@ -54,11 +64,29 @@ public class User {
 
     // Relacionado as Tasks aos usuários
     @OneToMany(mappedBy = "user") // "Um para todos" // Aqui eu mapeio user para tasks por uma chave estrangeira
+    @JsonProperty(access = Access.WRITE_ONLY)
     private List<Task> tasks = new ArrayList<Task>();
+
+    // // Adicionando tipos de usuários derivados do arquivo "./enums/ProfileEnum.java" utilizando a idéia de autenticação // //
+    @ElementCollection(fetch = FetchType.EAGER) // Aqui ele sempre busca os perfis quando for buscar o usuário para que as validações sejam corretas
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // Nisso eu garanto que não retorno para o usuário quais que são os perfis do mesmo
+    @CollectionTable(name = "user_profile")
+    @Column(name = "profile", nullable = false)
+    private Set<Integer> profiles = new HashSet<>(); // O método "Set" e "HashSet" garantem que o valor seja único
+
+    public Set<ProfileEnum> getProfiles () {
+        return this.profiles.stream().map(x -> ProfileEnum.toEnum(x)).collect(Collectors.toSet()); // Esse tipo de função é uma função lambda excession, onde ele vai estar pegando os perfis de "profiles" (que é retirado do arquivo enums) transformando em uma stream que podemos percorrer mapeando cada um dos valores, pegando "profileenum" e passando "toEnum", e transformando em um set pelo collect
+    }
+
+    public void addProfile(ProfileEnum profileEnum) {
+        this.profiles.add(profileEnum.getCode());
+    }
+     // // // //
+
 
     // Criando os métodos (tudo pode ser gerado automáticamente):
     
-    
+    /*
 	// Como o Springboot usa construtores vazios, toda classe criada tem que ter construtores vazios
     public User() { //Construtor vazio
     }
@@ -104,9 +132,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    
     // Gerando os validadores:
     @Override
+    */
     // A classe comentada é o padrão e o logo abaixo dela é o criado manualmente
     /*
         public boolean equals(Object o) {
@@ -119,7 +148,7 @@ public class User {
         return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password);
     }
      */
-
+    /*
     public boolean equals(Object obj) {
         if(obj == this)
             return true;
@@ -147,5 +176,6 @@ public class User {
         result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
         return result;
     }
+    */
     
 }

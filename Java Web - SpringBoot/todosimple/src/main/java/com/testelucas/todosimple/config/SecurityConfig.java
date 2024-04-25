@@ -26,7 +26,7 @@ public class SecurityConfig {
     };
 
     private static final String[] PUBLIC_MATCHERS_POST ={ // Para a rota post aqui eu libero o acesso as rotas post, por exemplo em users onde eu crio usuários // Obs.: fora disso o "/login" não é implementado pelo desenvolvedor, ele é abstrato do spring, no próprio spring security
-        "/users",
+        "/user",
         "/login"
     };
 
@@ -35,10 +35,10 @@ public class SecurityConfig {
         http.cors().and().csrf().disable(); // Essa linah é uma proteção contra ataques ao cors de requisição de http request, mas a nivel de desenvolvimento eu o deixo desabilitado
         
         // Aqui é a parte principal da autenticação, que é aonde vamos exigir que esteja autenticado:
-        http.authorizeRequests()
-            .antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll() // Aqui digo que qualquer método de post eu vou permitir
-            .antMatchers(PUBLIC_MATCHERS).permitAll() // Aqui eu digo que o get, put, update e delete irão ser permitidos
-            .anyRequest().authenticated(); // Aqui eu digo que para qualquer outro request que eu não deixarei passar sem autenticação
+        http.authorizeRequests(requests -> requests
+                .antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll() // Aqui digo que qualquer método de post eu vou permitir
+                .antMatchers(PUBLIC_MATCHERS).permitAll() // Aqui eu digo que o get, put, update e delete irão ser permitidos
+                .anyRequest().authenticated()); // Aqui eu digo que para qualquer outro request que eu não deixarei passar sem autenticação
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // Obs.: Não vamos construir um sistema de salvar seção, então eu digo que o http session management cria uma politica STATELESS
         
