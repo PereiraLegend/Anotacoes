@@ -29,5 +29,10 @@ public class ErrorResponse { // Aqui eu faço a configuração do tratamento de 
         this.errors.add(new ValidationError(field, message));
     }
 
+    public String toJson() {
+        return "{\"status\": " + getStatus() + ", " + "\"message\": \"" + getMessage() + "\" }";
+    }
+
     // Gerando Getters e Seters, Obs.: Eles foram gerados com o lombok com a tag @Data
+
 }

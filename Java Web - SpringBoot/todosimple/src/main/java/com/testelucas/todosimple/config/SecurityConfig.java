@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.testelucas.todosimple.security.JWTAuthenticationFilter;
 import com.testelucas.todosimple.security.JWTUtil;
 
 //Aqui é aondefica o primeiro filtro de sengurança da autenticação de usuário
@@ -55,11 +56,15 @@ public class SecurityConfig {
         // // // //
         
         // Aqui é a parte principal da autenticação, que é aonde vamos exigir que esteja autenticado:
-        http.authorizeRequests(requests -> requests
+        http.authorizeRequests()
                 .antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll() // Aqui digo que qualquer método de post eu vou permitir
                 .antMatchers(PUBLIC_MATCHERS).permitAll() // Aqui eu digo que o get, put, update e delete irão ser permitidos
-                .anyRequest().authenticated()); // Aqui eu digo que para qualquer outro request que eu não deixarei passar sem autenticação
+                .anyRequest().authenticated().and() // Aqui eu digo que para qualquer outro request que eu não deixarei passar sem autenticação
+                .authenticationManager(authenticationManager);
 
+        // // Aqui eu adiciono o filtro criado // //
+        http.addFilter(new JWTAuthenticationFilter(this.authenticationManager, this.jwtUtil));
+        // // // //
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // Obs.: Não vamos construir um sistema de salvar seção, então eu digo que o http session management cria uma politica STATELESS
         
         return http.build();

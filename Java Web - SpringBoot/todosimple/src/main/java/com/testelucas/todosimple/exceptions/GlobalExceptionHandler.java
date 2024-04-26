@@ -1,5 +1,11 @@
 package com.testelucas.todosimple.exceptions;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 //import java.io.IOException;
 
 //import javax.servlet.ServletException;
@@ -13,6 +19,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+//import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 //import org.springframework.security.access.AccessDeniedException;
 //import org.springframework.security.core.AuthenticationException;
 //import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -37,7 +46,7 @@ import lombok.extern.slf4j.Slf4j;
 //Nessa classe abaixo eu capturo globalmente os erros e faço as devidas atribuições do mesmo
 @RestControllerAdvice
 @Slf4j(topic = "GLOBAL_EXEPTION_HANDLER") //Aqui é um logger, ele sempre vai mostrar no console as anotações da classe
-public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler implements AuthenticationFailureHandler{ // Para dizer que essa classe também vai tratar erros do authenticator eu adiciono " implements AuthenticationFailureHandler"
     @Value("${server.error.include-exception}")
     private boolean printStackTrace; // Não é certo mostrar o trace, que no caso é todo o relatório de erro que o javascript mostra no console caso haja uma exception, mas aqui estou fazendo ao contrario, estou criando o boolean para verificar se estou em "produção" ou não, no caso se retorno isso ou não
     
@@ -113,5 +122,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
             errorResponse.setStackTrace(ExceptionUtils.getStackTrace(exception));
         }
         return ResponseEntity.status(httpStatus).body(errorResponse);
+    }
+
+    @Override
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException exception) throws IOException, ServletException {
+
+        // Adicionando autenticação Login
+        Integer status = HttpStatus.FORBIDDEN.value();
+        response.setStatus(status);
+        response.setContentType("application/json");
+        ErrorResponse errorResponse = new ErrorResponse(status, "Email ou senha inválidos");
+        response.getWriter().append(errorResponse.toJson());
     }
 }
