@@ -4,10 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.testelucas.todosimple.models.User;
-import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
-
 
 
 //Aqui eu chamo as funções para criar as services no bd

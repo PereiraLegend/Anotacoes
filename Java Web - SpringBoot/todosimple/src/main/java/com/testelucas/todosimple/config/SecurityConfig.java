@@ -20,6 +20,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.testelucas.todosimple.security.JWTAuthenticationFilter;
+import com.testelucas.todosimple.security.JWTAuthorizationFilter;
 import com.testelucas.todosimple.security.JWTUtil;
 
 //Aqui é aondefica o primeiro filtro de sengurança da autenticação de usuário
@@ -64,6 +65,7 @@ public class SecurityConfig {
 
         // // Aqui eu adiciono o filtro criado // //
         http.addFilter(new JWTAuthenticationFilter(this.authenticationManager, this.jwtUtil));
+        http.addFilter(new JWTAuthorizationFilter(this.authenticationManager, this.jwtUtil, this.userDetailsService));
         // // // //
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // Obs.: Não vamos construir um sistema de salvar seção, então eu digo que o http session management cria uma politica STATELESS
         

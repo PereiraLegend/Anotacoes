@@ -40,17 +40,20 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userCredentials.getUsername(), userCredentials.getPassword(), new ArrayList<>());
             Authentication authentication = this.authenticationManager.authenticate(authToken);
             return authentication;
-        } catch (Exception e) {
-            throw new RuntimeException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     // Caso a autenticação não tenha tido sucesso:
-    protected void successfullAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain, Authentication authentication) throws IOException, ServletException {
+    @Override
+    protected void successfulAuthentication(HttpServletRequest request,
+            HttpServletResponse response, FilterChain filterChain, Authentication authentication)
+            throws IOException, ServletException {
         UserSpringSecurity userSpringSecurity = (UserSpringSecurity) authentication.getPrincipal();
         String username = userSpringSecurity.getUsername();
-        String token = this.jwtUtil.generteToken(username);
-        response.addHeader("Authorization", "Bearer " + token); // Alguns sistemas não passam o "Bearer" e para receber é necessário tirar o Bearer
+        String token = this.jwtUtil.generateToken(username);
+        response.addHeader("Authorization", "Bearer " + token);
         response.addHeader("access-control-expose-headers", "Authorization");
     }
 
