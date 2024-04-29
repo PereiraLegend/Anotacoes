@@ -1,5 +1,6 @@
 package com.testelucas.todosimple.services;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -7,6 +8,7 @@ import java.util.stream.Stream;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import com.testelucas.todosimple.models.User;
 import com.testelucas.todosimple.models.enums.ProfileEnum;
 // import com.testelucas.todosimple.repositories.TaskRepository;
 import com.testelucas.todosimple.repositories.UserRepository;
+import com.testelucas.todosimple.security.UserSpringSecurity;
+import com.testelucas.todosimple.services.exceptions.AuthorizationException;
 import com.testelucas.todosimple.services.exceptions.DataBindingViolationException;
 import com.testelucas.todosimple.services.exceptions.ObjectNotFoundException;
 
@@ -34,6 +38,13 @@ public class UserService { // aqui crio a camada de serviço para modularizar me
 
     // Aqui eu crio as funcionalidades
     public User findById(Long id){ // Para fazer pesquisas pelo id
+        
+        // // Para autenticação eu faço a verificação antes de buscar o usuário // //
+        UserSpringSecurity userSpringSecurity = authenticaded();
+        if(!Objects.nonNull(userSpringSecurity) || !userSpringSecurity.hasRole(ProfileEnum.ADMIN) && !id.equals(userSpringSecurity.getId())) // Aqui eu digo que se eu não tiver autenticado (logado) e se eu não tiver a permissão do admin e digo que eu também não posso buscar um id que não é o dele eu nego o acesso
+            throw new AuthorizationException("Acesso Negado!");
+        // // // //
+
         // Para evitar erro de null pointer exception eu utilizo:
         Optional<User> user = this.userRepository.findById(id);
         return user.orElseThrow(() -> new ObjectNotFoundException( // Utilizando "orelseThrow" eu retorno um usuário se ele estiver preenchido // Se eu fizer um tratamento de erro colocando apenas uma Exception o programa vai parar ou seja, seguindo a lógica, toda vez que alguém procura por um usuário nulo a aplicação pararia, e para evitar isso uso "RuntimeException"
@@ -69,6 +80,15 @@ public class UserService { // aqui crio a camada de serviço para modularizar me
         } catch (Exception e) {
             // TODO: handle exception // Caso não use o tratamento de erro eu suboistituo o "DataBindingViolationException" por "RuntimeException"
             throw new DataBindingViolationException("Não é possivel excluir o usuário, pois há entidades relacionadas ao mesmo");
+        }
+    }
+
+    public static UserSpringSecurity authenticaded() { // Verificando e passando autenticações para o springboot
+        // O objetivo é fazer que o usuário administrador autenticado tenha acesso a todos os outros usuários passando a autorização
+        try {
+            return (UserSpringSecurity) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // Se o usuário existir eu passo isso
+        } catch (Exception e) {
+            return null; // Se ele não existir o retorno é null
         }
     }
     

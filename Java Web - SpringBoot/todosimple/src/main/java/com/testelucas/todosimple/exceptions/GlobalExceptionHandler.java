@@ -22,7 +22,7 @@ import org.springframework.http.ResponseEntity;
 //import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-//import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.AccessDeniedException;
 //import org.springframework.security.core.AuthenticationException;
 //import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.validation.FieldError;
@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.testelucas.todosimple.services.exceptions.AuthorizationException;
 import com.testelucas.todosimple.services.exceptions.DataBindingViolationException;
 import com.testelucas.todosimple.services.exceptions.ObjectNotFoundException;
 
@@ -109,6 +110,29 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
         log.error("Falied to find the request element", DataBindingViolationException);
         return buildErrorResponse(DataBindingViolationException, HttpStatus.NOT_FOUND, request);
     }
+
+    // Para os erros de exceção de autenticação
+    @ExceptionHandler(AuthenticationException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ResponseEntity<Object> handleAuthenticationException(AuthenticationException authenticationException, WebRequest request){
+        log.error("Authentication ERROR", authenticationException);
+        return buildErrorResponse(authenticationException, HttpStatus.UNAUTHORIZED, request);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseEntity<Object> handleAccessDeniedException(AccessDeniedException accessDeniedException, WebRequest request){
+        log.error("Authorization Error", accessDeniedException);
+        return buildErrorResponse(accessDeniedException, HttpStatus.FORBIDDEN, request);
+    }
+
+    @ExceptionHandler(AuthorizationException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseEntity<Object> handleAuthorizationException(AuthorizationException authorizationException, WebRequest request) {
+        log.error("Authorization Error 2", authorizationException);
+        return buildErrorResponse(authorizationException, HttpStatus.FORBIDDEN, request);
+    }
+
 
     // Construtores
 
