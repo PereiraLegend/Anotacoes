@@ -4,8 +4,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.testelucas.todosimple.models.User;
-import com.testelucas.todosimple.models.User.CreateUser;
-import com.testelucas.todosimple.models.User.UpadateUser;
+import com.testelucas.todosimple.models.dto.UserCreateDTO;
+import com.testelucas.todosimple.models.dto.UserUpdateDTO;
+//import com.testelucas.todosimple.models.User.CreateUser;
+//import com.testelucas.todosimple.models.User.UpadateUser;
 import com.testelucas.todosimple.services.UserService;
 
 import java.net.URI;
@@ -44,18 +46,20 @@ public class UserController {
     }
 
     @PostMapping
-    @Validated(CreateUser.class) // Aqui eu não passo uma classe, mas sim uma interface
-    public ResponseEntity<Void> create(@Valid @RequestBody User obj){ // Observação sempre passa o dado do create e do update apenas no body, e get e delete não se passa dado no body
-        this.userService.create(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+    //@Validated(CreateUser.class) // Aqui eu não passo uma classe, mas sim uma interface // Observação, como na ultima etapa de desenvolvimento eu retirei a validação por interface eu comentei os @Validated
+    public ResponseEntity<Void> create(@Valid @RequestBody UserCreateDTO obj){ // Observação sempre passa o dado do create e do update apenas no body, e get e delete não se passa dado no body // o invés de criar o usuário de 'User' depois da refatoração eu crio o usuário através de UserCreateDTO
+        User user = this.userService.fromDTO(obj);
+        User newUser = this.userService.create(user);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newUser.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping("/{id}")
-    @Validated(UpadateUser.class)
-    public ResponseEntity<Void> update(@Valid @RequestBody User obj, @PathVariable Long id){
+    //@Validated(UpadateUser.class)
+    public ResponseEntity<Void> update(@Valid @RequestBody UserUpdateDTO obj, @PathVariable Long id){
         obj.setId(id);
-        obj = this.userService.update(obj);
+        User user = this.userService.fromDTO(obj);
+        this.userService.update(user);
         return ResponseEntity.noContent().build(); // "noContent()" vai retornar um status 200
     }
 

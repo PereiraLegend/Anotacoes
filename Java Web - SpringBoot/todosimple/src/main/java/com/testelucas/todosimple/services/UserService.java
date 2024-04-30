@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.testelucas.todosimple.models.User;
+import com.testelucas.todosimple.models.dto.UserCreateDTO;
+import com.testelucas.todosimple.models.dto.UserUpdateDTO;
 import com.testelucas.todosimple.models.enums.ProfileEnum;
 // import com.testelucas.todosimple.repositories.TaskRepository;
 import com.testelucas.todosimple.repositories.UserRepository;
@@ -90,6 +93,21 @@ public class UserService { // aqui crio a camada de serviço para modularizar me
         } catch (Exception e) {
             return null; // Se ele não existir o retorno é null
         }
+    }
+
+    // Novas funções adicionadas após a refatoração do projeto
+    public User fromDTO(@Valid UserCreateDTO obj) {
+        User user = new User();
+        user.setUsername(obj.getUsername());
+        user.setPassword(obj.getPassword());
+        return user;
+    }
+
+    public User fromDTO(@Valid UserUpdateDTO obj){
+        User user = new User();
+        user.setId(obj.getId());
+        user.setPassword(obj.getPassword());
+        return user;
     }
     
 }

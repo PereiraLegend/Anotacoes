@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.testelucas.todosimple.models.Task;
+import com.testelucas.todosimple.models.projection.TaskProjection;
 import com.testelucas.todosimple.services.TaskService;
 //import com.testelucas.todosimple.services.UserService;
 
@@ -44,9 +45,9 @@ public class TaskController {
 
     // Pesquisar todas as tarefas de um usuário:
     @GetMapping("/user")    
-    public ResponseEntity<List<Task>> findAllByUser(){ // Com a nova alteração é buscado apenas os usuários logados e não todos como era feito antes
+    public ResponseEntity<List<TaskProjection>> findAllByUser(){ // Com a nova alteração é buscado apenas os usuários logados e não todos como era feito antes
         //userService.findById(); // Adiciono isso para dar erro na hora que um usuário inexistente for chamado para mostrar as suas tarefas
-        List<Task> objs = this.taskService.findAllByUser();
+        List<TaskProjection> objs = this.taskService.findAllByUser();
         return ResponseEntity.ok().body(objs);
     }
 

@@ -8,14 +8,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+//import javax.validation.constraints.NotEmpty;
+//import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Objects;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+//import java.util.Objects;
 
 // aqui eu crio os models, ou seja o banco de dados
 @Entity
 @Table(name = Task.TABLE_NAME)
+@AllArgsConstructor
+@NoArgsConstructor // Os validadores também podem ser substituidos
+@Data // Ao invés de gerar os getters e setters tudo e ter o código grande eu posso simplemente colocar @Data que substitui isso, contudo ele não substitui os construtores
 public class Task {
     
     public static final String TABLE_NAME = "task";
@@ -30,12 +39,12 @@ public class Task {
     private User user;
 
     @Column(name = "description", length = 255, nullable = false)
-    @NotNull
-    @NotEmpty
+    @NotBlank // O @NotEmpty e o @NotNull podem ser substituidos pelo @NotBlank, no caso isso serve apenas para string e não para int ou object
     @Size(min=1, max=255) // Obs.: Sempre tratar o tamanho para caso haja algum erro ele ser tratado diretamente aqui sem dar complicações para o banco de dados
     private String description;
 
     // Gerando tudo
+    /*
     public Task() {
     }
 
@@ -83,7 +92,7 @@ public class Task {
         setDescription(description);
         return this;
     }
-
+    */
     //Validadores padrão
     /*
     @Override
@@ -96,6 +105,7 @@ public class Task {
         return Objects.hash(id, user, description);
     }
     */
+    /*
     public boolean equals (Object obj) {
         if (obj == this)
             return true;
@@ -112,6 +122,7 @@ public class Task {
         return Objects.equals(this.id, other.id) && Objects.equals(this.user, other.user) && Objects.equals(this.description, other.description);
 
     }
+    */
     /* // Por enquanto isso abaixo não é necessário
     @Override
     public String toString() {

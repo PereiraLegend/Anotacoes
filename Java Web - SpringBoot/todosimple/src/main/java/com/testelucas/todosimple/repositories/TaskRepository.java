@@ -5,13 +5,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 // import org.springframework.data.repository.query.Param;
 
 import com.testelucas.todosimple.models.Task;
+import com.testelucas.todosimple.models.projection.TaskProjection;
+
 import java.util.List;
 
 //Aqui eu chamo as funções para criar as services no bd
 public interface TaskRepository extends JpaRepository<Task, Long>{
     // Caso eu queira fazer de uma forma mais avançada através de uma busca do sql, sem utilizar o "JpaRepositorys"
     // Aqui eu quero buscar uma lista de tasks do usuário:
-    List<Task> findByUser_Id(Long id); // aqui no no "findByUser_Id" eu coloco o "_" para dizer que eu estou pesquisando pelo "user" e dentro dele o "id"
+    List<TaskProjection> findByUser_Id(Long id); // aqui no no "findByUser_Id" eu coloco o "_" para dizer que eu estou pesquisando pelo "user" e dentro dele o "id" // Obs.: Com a refatoração eu mudo de Task para TaskProjection
 
     // Posso fazer de outra forma, utilizando um conceito do Spring, o "jpql", que é uma forma de misturar o java com slq:
     // @Query(value = "SELECT t FROM Task t WHERE t.user.id = :id")
