@@ -15,7 +15,7 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
-	<packaging>jar</packaging>
+	<packaging>jar</packaging>	<!--Aqui enbaixo eu estou gerando um arquivo.jar para o docker-->
 	<build>
 		<plugins>
 			<plugin>

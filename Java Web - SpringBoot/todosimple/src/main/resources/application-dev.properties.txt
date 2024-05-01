@@ -1,4 +1,3 @@
-# Aqui eu salvo as configurações para o desenvolvimento
 spring.application.name=todosimple
 spring.output.ansi.enabled=ALWAYS
 
@@ -8,6 +7,7 @@ spring.output.ansi.enabled=ALWAYS
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 #Nesse comando eu informo a conexão e o tipo dela e crio um banco de dados
+# Logo abaixo quando for para mover para o docker final eu apago tudo e coloco as credenciais em um arquivo .env
 spring.datasource.url=jdbc:mysql://localhost:3306/todossimple?createDatabaseIfNotExist=true
 #Nesses dois comandos abixo eu passo as credenciais de acesso ao meu banco de dados
 spring.datasource.username=root

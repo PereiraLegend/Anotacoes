@@ -1,0 +1,6 @@
+# Data Config # Aqui eu digo quais são os arquivos em produção # (Isso está incompleto)
+spring.datasource.url=jdbc:mysql://localhost:3306/todossimple?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=1234
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
