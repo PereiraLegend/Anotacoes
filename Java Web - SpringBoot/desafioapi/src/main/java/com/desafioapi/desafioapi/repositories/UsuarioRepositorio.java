@@ -7,12 +7,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.desafioapi.desafioapi.models.Usuario;
+import java.util.List;
+
 
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
-    @Transactional(readOnly = true)
+    //@Transactional(readOnly = true)
     Usuario findByUsername(String username);
 
-    Optional<Usuario> procurarporId(Long id);
+    Optional<Usuario> findById(Long id);
 
 }

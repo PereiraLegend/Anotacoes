@@ -35,14 +35,12 @@ public class UsuarioController {
         return ResponseEntity.ok("deucerto");
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<Usuario> procurarporId(@PathVariable Long id){
-        Usuario obj = this.usuarioService.procurarporId(id);
+        Usuario obj = this.usuarioService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
     
-    
-
     @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody Usuario obj){
         Usuario usuario = this.usuarioService.create(obj);

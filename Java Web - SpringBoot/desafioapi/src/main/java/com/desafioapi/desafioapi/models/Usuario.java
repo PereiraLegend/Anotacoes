@@ -38,7 +38,7 @@ public class Usuario {
     private String username;
     
     @JsonProperty(access = Access.WRITE_ONLY)
-    @Column(name = "password", length = 11,nullable = false, unique = true)
+    @Column(name = "password", length = 11,nullable = false)
     @NotBlank
     @Size(min = 2, max = 100)
     private String password;

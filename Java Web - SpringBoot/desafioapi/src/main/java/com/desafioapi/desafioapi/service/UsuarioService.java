@@ -22,8 +22,8 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
     
-    public Usuario procurarporId(Long id){
-        Optional<Usuario> usuario = this.usuarioRepositorio.procurarporId(id);
+    public Usuario findById(Long id){
+        Optional<Usuario> usuario = this.usuarioRepositorio.findById(id);
         return usuario.orElseThrow(() -> new RuntimeException("Usuário não encontrado! Id: " + id ));
 
     }
