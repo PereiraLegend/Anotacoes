@@ -2,13 +2,13 @@ package com.desafioapi.desafioapi.service;
 
 import java.util.Optional;
 
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.desafioapi.desafioapi.models.Funcionario;
 import com.desafioapi.desafioapi.models.Usuario;
 import com.desafioapi.desafioapi.repositories.UsuarioRepositorio;
 
@@ -16,8 +16,8 @@ import com.desafioapi.desafioapi.repositories.UsuarioRepositorio;
 @Service
 public class UsuarioService {
     
-    //@Autowired
-    //private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -28,16 +28,39 @@ public class UsuarioService {
 
     }
     
-
     @Transactional
     public Usuario create(Usuario obj){
         obj.setId(null);
-        //obj.setPassword(this.bCryptPasswordEncoder.encode(obj.getPassword())); //
-        //obj.setPassword(obj.getPassword());
+        obj.setPassword(this.bCryptPasswordEncoder.encode(obj.getPassword()));
+        obj.setPassword(obj.getPassword());
 
         obj = this.usuarioRepositorio.save(obj);
         return obj;
+    }
+    /*
+    @Transactional
+    public Usuario update(Usuario obj){
+        Usuario newObj = findById(obj.getId());
+        newObj.setPassword(this.bCryptPasswordEncoder.encode(obj.getPassword()));
+        return this.usuarioRepositorio.save(newObj);
+    }
+    */
+    @Transactional
+    public Usuario update(Usuario obj) {
+        findById(obj.getId());
+        obj.setPassword(bCryptPasswordEncoder.encode(obj.getPassword()));
+        return usuarioRepositorio.save(obj);
+    }
+    
 
+    @Transactional
+    public void delete(Long id){
+        findById(id);
+        try {
+            this.usuarioRepositorio.deleteById(id);
+        } catch (Exception e) {
+            new RuntimeException("Não foi possivel excluir o usuário");
+        }
     }
     
 }

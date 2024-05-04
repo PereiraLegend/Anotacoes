@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+//import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -27,6 +29,11 @@ public class Usuario {
     
     public static final String TABLE_NAME = "Usuario";
 
+    public enum TipoCadastro{
+        VISTO,
+        REGISTRO
+    }
+
     @Id
     @Column(name="id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +43,10 @@ public class Usuario {
     @NotBlank
     @Size(min=2,max=100)
     private String username;
+
+    @Column(name = "tipocadastro", length = 100, nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoCadastro tipocadastro;
     
     @JsonProperty(access = Access.WRITE_ONLY)
     @Column(name = "password", length = 11,nullable = false)

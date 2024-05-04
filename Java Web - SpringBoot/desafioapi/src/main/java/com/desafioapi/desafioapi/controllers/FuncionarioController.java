@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.desafioapi.desafioapi.models.Usuario;
-import com.desafioapi.desafioapi.service.UsuarioService;
+import com.desafioapi.desafioapi.models.Funcionario;
+import com.desafioapi.desafioapi.service.FuncionarioService;
 
 import jakarta.validation.Valid;
 
@@ -26,47 +26,49 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/funcionario")
 @Validated
-public class UsuarioController {
+public class FuncionarioController {
 
     @Autowired
-    private UsuarioService usuarioService;
+    private FuncionarioService funcionarioService;
 
     @GetMapping()
-    private ResponseEntity getAllUsuarios(){
+    private ResponseEntity getAllFuncionarios(){
         return ResponseEntity.ok("deucerto");
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> findById(@PathVariable Long id){
-        Usuario obj = this.usuarioService.findById(id);
+    public ResponseEntity<Funcionario> findById(@PathVariable Long id){
+        Funcionario obj = this.funcionarioService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
     
     @PostMapping
-    public ResponseEntity<Void> create(@Valid @RequestBody Usuario obj){
-        Usuario usuario = this.usuarioService.create(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();
+    public ResponseEntity<Void> create(@Valid @RequestBody Funcionario obj){
+        Funcionario funcionario = this.funcionarioService.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(funcionario.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
-
+    
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@Valid @RequestBody Usuario obj, @PathVariable Long id) {
-        /*
-        if (!id.equals(obj.getId())){
-            return ResponseEntity.badRequest().build();
-        }
-        */
+    public ResponseEntity<Void> update(@Valid @RequestBody Funcionario obj, @PathVariable Long id) {
         obj.setId(id);
-        //Usuario usuario = this.usuarioService.update(obj);
-        this.usuarioService.update(obj);
+        this.funcionarioService.update(obj);
         return ResponseEntity.noContent().build();
     }
+    
+    /*
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> update(@Valid @RequestBody Funcionario funcionario, @PathVariable Long id) {
+        funcionarioService.update(funcionario);
+        return ResponseEntity.noContent().build();
+    }
+    */
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        this.usuarioService.delete(id);
+        this.funcionarioService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

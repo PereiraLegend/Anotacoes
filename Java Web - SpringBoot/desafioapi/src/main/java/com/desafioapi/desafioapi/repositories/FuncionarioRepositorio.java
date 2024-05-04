@@ -6,16 +6,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 //import org.springframework.transaction.annotation.Transactional;
 
-import com.desafioapi.desafioapi.models.Usuario;
+import com.desafioapi.desafioapi.models.Funcionario;
 //import java.util.List;
 
 
 @Repository
-public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
+public interface FuncionarioRepositorio extends JpaRepository<Funcionario, Long> {
     //@Transactional(readOnly = true)
-    //Usuario findByUsername(String username);
+    //Funcionario findByUsername(String username);
 
-    //Usuario update(Usuario usuario); //
-    Optional<Usuario> findById(Long id);
+    //Funcionario update(Funcionario Funcionario); //
+    Optional<Funcionario> findById(Long id);
 
 }
