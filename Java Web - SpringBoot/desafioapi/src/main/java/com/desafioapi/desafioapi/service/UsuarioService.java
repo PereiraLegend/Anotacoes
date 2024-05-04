@@ -1,6 +1,7 @@
 package com.desafioapi.desafioapi.service;
 
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -49,6 +50,11 @@ public class UsuarioService {
     public Usuario update(Usuario obj) {
         findById(obj.getId());
         obj.setPassword(bCryptPasswordEncoder.encode(obj.getPassword()));
+        if("ATIVO".equals(obj.getStatus())){
+            obj.setCodigounico(gerarCodigoUnico());
+        } else {
+            obj.setCodigounico("");
+        }
         return usuarioRepositorio.save(obj);
     }
     
@@ -61,6 +67,26 @@ public class UsuarioService {
         } catch (Exception e) {
             new RuntimeException("Não foi possivel excluir o usuário");
         }
+    }
+    /*
+    public void atualizaCodigoUnico(Usuario obj){
+        if("ATIVO".equals(obj.getStatus())){
+            obj.setCodigounico(gerarCodigoUnico());
+        } else {
+            obj.setCodigounico("");
+        }
+        usuarioRepositorio.save(obj);
+    }
+    */
+
+    private String gerarCodigoUnico(){
+        Random aleatorio = new Random();
+        StringBuilder codigo = new StringBuilder();
+        for (int i = 0; i < 10; i++){
+            codigo.append(aleatorio.nextInt(10));
+        }
+        codigo.append("PI");
+        return codigo.toString();
     }
     
 }

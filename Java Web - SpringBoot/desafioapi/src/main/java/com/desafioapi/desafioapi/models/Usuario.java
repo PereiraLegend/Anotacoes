@@ -78,4 +78,15 @@ public class Usuario {
     @Size(min=1, max=255)
     private String titulo;
 
+    @Column(name = "datavisto", length = 20)
+    private String datavisto;
+
+    @Column(name = "dataregistro", length = 20)
+    private String dataregistro;
+
+    @Column(name = "status", length = 20)
+    private String status;
+
+    @Column(name = "codigounico", length = 12, unique = true)
+    private String codigounico;
 }

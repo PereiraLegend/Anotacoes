@@ -32,7 +32,7 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", length = 100, nullable = false)
+    @Column(name = "username", length = 100, nullable = false, unique = true)
     @NotBlank
     @Size(min=2,max=100)
     private String username;

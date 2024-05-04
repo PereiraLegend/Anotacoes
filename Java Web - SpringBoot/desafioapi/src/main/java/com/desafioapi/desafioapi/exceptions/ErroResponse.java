@@ -1,4 +1,4 @@
-/*
+
 package com.desafioapi.desafioapi.exceptions;
 
 import java.util.ArrayList;
@@ -34,4 +34,3 @@ public class ErroResponse {
     }
 
 }
-*/
