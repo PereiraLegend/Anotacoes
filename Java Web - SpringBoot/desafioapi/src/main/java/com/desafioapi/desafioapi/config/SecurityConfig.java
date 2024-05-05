@@ -42,7 +42,7 @@ public class SecurityConfig {
     };
 
     private static final String[] PUBLIC_MATCHERS_POST ={
-        //"/user",
+        "/user",
         "/login"
     };
 
