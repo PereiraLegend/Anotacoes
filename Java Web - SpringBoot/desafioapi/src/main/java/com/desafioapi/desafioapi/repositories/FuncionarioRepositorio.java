@@ -8,15 +8,18 @@ import org.springframework.stereotype.Repository;
 
 import com.desafioapi.desafioapi.models.Funcionario;
 //import java.util.List;
+import java.util.List;
+
 
 
 @Repository
 public interface FuncionarioRepositorio extends JpaRepository<Funcionario, Long> {
     //@Transactional(readOnly = true)
-    //Funcionario findByUsername(String username);
+    Funcionario findByUsername(String username);
 
     //Funcionario update(Funcionario Funcionario); //
-    Optional<Funcionario> findByUsername(String username);
+    //Funcionario findByUsername(String username);
+    //Optional<Funcionario> findByUsername(String username);
     Optional<Funcionario> findById(Long id);
     boolean existsByUsername(String username);
 
