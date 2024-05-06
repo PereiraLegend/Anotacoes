@@ -1,5 +1,6 @@
 package com.desafioapi.desafioapi.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -27,6 +28,10 @@ public class UsuarioService {
         Optional<Usuario> usuario = this.usuarioRepositorio.findById(id);
         return usuario.orElseThrow(() -> new RuntimeException("Usuário não encontrado! Id: " + id ));
 
+    }
+
+    public List<Usuario> getAllUsers() {
+        return usuarioRepositorio.findAll(); 
     }
     
     @Transactional

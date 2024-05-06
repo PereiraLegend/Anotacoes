@@ -1,6 +1,7 @@
 package com.desafioapi.desafioapi.controllers;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,11 @@ public class UsuarioController {
     @GetMapping()
     private ResponseEntity getAllUsuarios(){
         return ResponseEntity.ok("deucerto");
+    }
+
+    @GetMapping("/all")
+    public List<Usuario> getAllUsers() {
+        return usuarioService.getAllUsers();
     }
 
     @GetMapping("/{id}")

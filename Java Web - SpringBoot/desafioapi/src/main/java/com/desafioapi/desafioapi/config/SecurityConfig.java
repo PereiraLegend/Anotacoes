@@ -43,7 +43,15 @@ public class SecurityConfig {
 
     private static final String[] PUBLIC_MATCHERS_POST ={
         "/user",
-        "/login"
+        "/login",
+        "/funcionario"
+    };
+
+    private static final String[] PUBLIC_MATCHERS_GET ={
+        "/user",
+        "/user/{id}",
+        "/user/all",
+        "/funcionario"
     };
 
     @SuppressWarnings("removal")
@@ -57,6 +65,7 @@ public class SecurityConfig {
         
         http.authorizeRequests()
                 .requestMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
+                .requestMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
                 .requestMatchers(PUBLIC_MATCHERS).permitAll() 
                 .anyRequest().authenticated().and()
                 .authenticationManager(authenticationManager);
