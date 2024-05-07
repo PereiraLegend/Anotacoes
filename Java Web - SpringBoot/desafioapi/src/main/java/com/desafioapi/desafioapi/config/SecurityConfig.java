@@ -53,6 +53,13 @@ public class SecurityConfig {
         "/user/all",
         "/funcionario"
     };
+    private static final String[] PUBLIC_MATCHERS_DELETE ={
+        "/user",
+        "/funcionario"
+    };
+    private static final String[] PUBLIC_MATCHERS_PUT={
+        "/user"
+    };
 
     @SuppressWarnings("removal")
     @Bean
@@ -66,6 +73,8 @@ public class SecurityConfig {
         http.authorizeRequests()
                 .requestMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
                 .requestMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
+                .requestMatchers(HttpMethod.DELETE, PUBLIC_MATCHERS_DELETE).permitAll()
+                .requestMatchers(HttpMethod.PUT, PUBLIC_MATCHERS_PUT).permitAll()
                 .requestMatchers(PUBLIC_MATCHERS).permitAll() 
                 .anyRequest().authenticated().and()
                 .authenticationManager(authenticationManager);
