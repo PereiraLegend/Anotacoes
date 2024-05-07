@@ -1,15 +1,20 @@
 package com.desafioapi.desafioapi.models;
 
+import com.desafioapi.desafioapi.service.Listener.UsuarioListener;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -26,14 +31,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EntityListeners(UsuarioListener.class)
 public class Usuario {
     
     public static final String TABLE_NAME = "Usuario";
-
+    /*
     public enum TipoCadastro{
         VISTO,
         REGISTRO
     }
+     */
 
     @Id
     @Column(name="id", unique = true)
@@ -45,9 +52,9 @@ public class Usuario {
     @Size(min=2,max=100)
     private String username;
 
-    @Column(name = "tipocadastro", length = 100, nullable = false)
-    @Enumerated(EnumType.STRING)
-    private TipoCadastro tipocadastro;
+    //@Column(name = "tipocadastro", length = 100, nullable = false)
+    //@Enumerated(EnumType.STRING)
+    //private TipoCadastro tipocadastro;
     
     @JsonProperty(access = Access.WRITE_ONLY)
     @Column(name = "password", length = 11,nullable = false)
@@ -79,6 +86,11 @@ public class Usuario {
     @Size(min=1, max=255)
     private String titulo;
 
-    @OneToOne
+    //@OneToOne
+    //private Status status;
+    //@JsonIgnore
+    @JsonManagedReference
+    @OneToOne(mappedBy = "usuario")
+    @JoinColumn(name = "usuario_id", nullable = false, updatable = false)
     private Status status;
 }

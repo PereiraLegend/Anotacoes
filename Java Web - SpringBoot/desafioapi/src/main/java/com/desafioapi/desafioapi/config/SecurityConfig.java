@@ -43,22 +43,30 @@ public class SecurityConfig {
 
     private static final String[] PUBLIC_MATCHERS_POST ={
         "/user",
+        "/user/{id}",
         "/login",
-        "/funcionario"
+        "/funcionario",
+        "/status",
+        "/status/{id}"
     };
 
     private static final String[] PUBLIC_MATCHERS_GET ={
         "/user",
         "/user/{id}",
         "/user/all",
-        "/funcionario"
+        "/funcionario",
+        "/status",
+        "/status/{id}",
+        "/ultimoid"
     };
     private static final String[] PUBLIC_MATCHERS_DELETE ={
         "/user",
         "/funcionario"
     };
     private static final String[] PUBLIC_MATCHERS_PUT={
-        "/user"
+        "/user",
+        "/status",
+        "/status/{id}"
     };
 
     @SuppressWarnings("removal")

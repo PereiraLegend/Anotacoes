@@ -49,6 +49,12 @@ public class UsuarioController {
         Usuario obj = this.usuarioService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
+
+    @GetMapping("/ultimoid")
+    public ResponseEntity<Long> getLastUserId() {
+        Long lastUserId = usuarioService.getLastUserId();
+        return ResponseEntity.ok(lastUserId);
+    }
     
     @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody Usuario obj){

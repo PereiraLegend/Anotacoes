@@ -13,6 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.desafioapi.desafioapi.models.Funcionario;
 import com.desafioapi.desafioapi.models.Usuario;
 import com.desafioapi.desafioapi.repositories.UsuarioRepositorio;
+import com.desafioapi.desafioapi.service.Listener.UsuarioListener;
+
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 
 @Service
@@ -23,6 +28,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
+
+    @PersistenceContext
+    private EntityManager entityManager;
     
     public Usuario findById(Long id){
         Optional<Usuario> usuario = this.usuarioRepositorio.findById(id);
@@ -33,6 +41,11 @@ public class UsuarioService {
     public List<Usuario> getAllUsers() {
         return usuarioRepositorio.findAll(); 
     }
+
+    public Long getLastUserId() {
+        String sqlQuery = "SELECT MAX(id) FROM Usuario";
+        return entityManager.createQuery(sqlQuery, Long.class).getSingleResult();
+    }    
     
     @Transactional
     public Usuario create(Usuario obj){
