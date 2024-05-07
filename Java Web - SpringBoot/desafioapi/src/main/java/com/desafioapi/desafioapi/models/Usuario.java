@@ -10,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 //import jakarta.validation.constraints.NotEmpty;
@@ -78,15 +79,6 @@ public class Usuario {
     @Size(min=1, max=255)
     private String titulo;
 
-    @Column(name = "datavisto", length = 20)
-    private String datavisto;
-
-    @Column(name = "dataregistro", length = 20)
-    private String dataregistro;
-
-    @Column(name = "status", length = 20)
-    private String status;
-
-    @Column(name = "codigounico", length = 12, unique = true)
-    private String codigounico;
+    @OneToOne
+    private Status status;
 }

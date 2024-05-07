@@ -55,11 +55,13 @@ public class UsuarioService {
     public Usuario update(Usuario obj) {
         findById(obj.getId());
         obj.setPassword(bCryptPasswordEncoder.encode(obj.getPassword()));
+        /*
         if("ATIVO".equals(obj.getStatus())){
             obj.setCodigounico(gerarCodigoUnico());
         } else {
             obj.setCodigounico("");
         }
+        */
         return usuarioRepositorio.save(obj);
     }
     
