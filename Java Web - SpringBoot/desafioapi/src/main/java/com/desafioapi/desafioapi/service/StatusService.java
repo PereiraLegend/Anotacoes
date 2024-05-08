@@ -43,6 +43,7 @@ public class StatusService {
         return statusRepositorio.save(obj);
     }
 
+    //Verificador de Exitência do código unico
     private boolean codigoUnicoExiste(String codigo) {
         return statusRepositorio.existsByCodigounico(codigo);
     }
