@@ -23,9 +23,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.PutMapping;
 
-
-
-
 @RestController
 @RequestMapping("/user")
 @Validated
@@ -65,13 +62,7 @@ public class UsuarioController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(@Valid @RequestBody Usuario obj, @PathVariable Long id) {
-        /*
-        if (!id.equals(obj.getId())){
-            return ResponseEntity.badRequest().build();
-        }
-        */
         obj.setId(id);
-        //Usuario usuario = this.usuarioService.update(obj);
         this.usuarioService.update(obj);
         return ResponseEntity.noContent().build();
     }

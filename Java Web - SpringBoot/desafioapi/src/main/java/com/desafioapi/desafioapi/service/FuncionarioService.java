@@ -37,15 +37,6 @@ public class FuncionarioService {
         return obj;
     }
 
-    /*
-    @Transactional
-    public Funcionario update(Funcionario obj){
-        Funcionario newObj = findById(obj.getId());
-        newObj.setPassword(this.bCryptPasswordEncoder.encode(obj.getPassword()));
-        return this.funcionarioRepositorio.save(newObj);
-    }
-    */
-
     @Transactional
     public Funcionario update(Funcionario funcionario) {
         findById(funcionario.getId());
@@ -53,7 +44,6 @@ public class FuncionarioService {
         return funcionarioRepositorio.save(funcionario);
     }
     
-
     @Transactional
     public void delete(Long id){
         findById(id);

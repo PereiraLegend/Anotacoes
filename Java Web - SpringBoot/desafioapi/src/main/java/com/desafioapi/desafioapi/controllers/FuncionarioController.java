@@ -22,9 +22,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.PutMapping;
 
-
-
-
 @RestController
 @RequestMapping("/funcionario")
 @Validated
@@ -57,14 +54,6 @@ public class FuncionarioController {
         this.funcionarioService.update(obj);
         return ResponseEntity.noContent().build();
     }
-    
-    /*
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@Valid @RequestBody Funcionario funcionario, @PathVariable Long id) {
-        funcionarioService.update(funcionario);
-        return ResponseEntity.noContent().build();
-    }
-    */
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

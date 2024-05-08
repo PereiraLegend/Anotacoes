@@ -1,13 +1,7 @@
 package com.desafioapi.desafioapi.models;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-//import com.desafioapi.desafioapi.models.Usuario.TipoCadastro;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,7 +9,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 
@@ -49,10 +43,6 @@ public class Status {
     @Enumerated(EnumType.STRING)
     private TipoCadastro tipocadastro;
 
-    // @OneToOne(mappedBy = "status", cascade = CascadeType.ALL)
-    // @JoinColumn(name = "status_id", nullable = false, updatable = false)
-    // private Usuario usuario;
-    // @JsonIgnore
     @JsonBackReference
     @OneToOne
     private Usuario usuario;

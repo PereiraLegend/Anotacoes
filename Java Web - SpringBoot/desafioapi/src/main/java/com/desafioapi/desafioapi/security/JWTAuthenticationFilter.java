@@ -1,7 +1,6 @@
 package com.desafioapi.desafioapi.security;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -15,7 +14,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.desafioapi.desafioapi.exceptions.GlobalExceptionHandler;
 import com.desafioapi.desafioapi.models.Funcionario;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -26,7 +24,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
-        //setAuthenticationFailureHandler(new GlobalExceptionHandler());
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
     }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.desafioapi.desafioapi.models.Status;
-import com.desafioapi.desafioapi.models.Usuario;
 import com.desafioapi.desafioapi.repositories.StatusRepositorio;
 
 @Service
@@ -28,30 +27,6 @@ public class StatusService {
         obj = this.statusRepositorio.save(obj);
         return obj;
     }
-    /*
-
-    @Transactional
-    public Status update(Status obj) {
-        findById(obj.getId());
-
-        if("ATIVO".equals(obj.getStatus())){
-            obj.setCodigounico(gerarCodigoUnico());
-        } else {
-            obj.setCodigounico("");
-        }
-        return statusRepositorio.save(obj);
-    }
-
-    private String gerarCodigoUnico(){
-        Random aleatorio = new Random();
-        StringBuilder codigo = new StringBuilder();
-        for (int i = 0; i < 10; i++){
-            codigo.append(aleatorio.nextInt(10));
-        }
-        codigo.append("PI");
-        return codigo.toString();
-    }
-    */
 
     @Transactional
     public Status update(Status obj) {
