@@ -1,0 +1,63 @@
+function carregarProfissionais() {
+    fetch('http://localhost:8080/user/all')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao carregar os dados da API');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const tableBody = document.querySelector('#tabelaprofissionais tbody');
+        // Limpa o conteúdo da tabela antes de adicionar os novos dados
+        tableBody.innerHTML = '';
+        // Loop pelos dados recebidos e adiciona-os à tabela
+        data.forEach(profissional => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${profissional.id}</td>
+                <td>${profissional.username}</td>
+                <td>${profissional.tipocadastro}</td>
+                <td>${profissional.cpf}</td>
+                <td>${profissional.email}</td>
+                <td>${profissional.datanascimento}</td>
+                <td>${profissional.telefone}</td>
+                <td>${profissional.titulo}</td>
+                <td>${profissional.status}</td>
+                <td>${profissional.codigounico}</td>
+                <td>
+                    <button onclick="editarUsuario(${profissional.id})">Registrar/Visar</button>
+                    <button onclick="excluirUsuario(${profissional.id})">Cancelar Registo</button>
+                    <button onclick="detalhesUsuario(${profissional.id})">Detalhes</button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+        console.log("Deu certo!");
+    })
+    .catch(error => console.error('Erro ao carregar os dados:', error));
+}
+
+function editarUsuario(id) {
+    // Lógica para editar o usuário com o ID fornecido
+}
+
+function excluirUsuario(id) {
+    // Lógica para excluir o usuário com o ID fornecido
+}
+
+function detalhesUsuario(id) {
+	console.log(id);
+}
+
+function fecharModal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+function abrirModal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = 'block';
+}
+
+// Chama a função ao carregar a página para preencher a tabela
+window.onload = carregarProfissionais;

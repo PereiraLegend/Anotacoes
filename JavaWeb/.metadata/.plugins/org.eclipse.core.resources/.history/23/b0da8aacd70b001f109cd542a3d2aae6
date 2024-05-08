@@ -1,0 +1,19 @@
+function cadastrarF() {
+    var formData = new FormData();
+    formData.append("username", document.getElementById("form:username").value);
+    formData.append("password", document.getElementById("form:password").value);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:8080/funcionario");
+    xhr.onload = function() {
+        if (xhr.status === 201) {
+            alert("Cadastro corporativo efetuado com sucesso!");
+            window.location.href = "Dashboard.xhtml";
+        } else if (xhr.status === 403) {
+            alert("Erro ao cadastrar, nome de usuário já em uso. Por favor, tente novamente!");
+        } else {
+            alert("Erro desconhecido: " + xhr.status);
+        }
+    };
+    xhr.send(formData);
+}

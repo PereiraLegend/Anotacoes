@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cadastro de Funcionários</title>
+    <!-- <h:outputStylesheet library="css" name="style/CadastroFuncionarios.css" />-->
+</h:head>
+<h:body>
+	<h:form id="form">
+	    <h1>Cadastro de Funcionários</h1>
+	    <h:panelGrid>
+	        Nome<h:inputText id="username"/>
+	        Senha<h:inputSecret id="password"/>
+	        <h:commandButton value="Cadastrar" onclick="cadastrarF();" style="width: 158px;"/>
+	    </h:panelGrid>
+	</h:form>
+	<script>
+		function cadastrarF(){
+		    var username = document.getElementById("username").value;
+		    var password = document.getElementById("password").value;
+		            
+		    var formData = {
+		        username: username,
+		        password: password
+		    };
+		            
+		    var xhr = new XMLHttpRequest();
+		    xhr.open('POST', 'http://localhost:8080/funcionario', true);
+		    xhr.setRequestHeader('Content-Type', 'application/json');
+		    xhr.onload = function() {
+		        if (xhr.status === 201 || xhr.status === 200) {
+		            alert('Cadastro corporativo efetuado com sucesso!');
+		            window.location.href = 'LoginFuncionario.xhtml';
+		        } if(xhr.status === 403) {
+		            alert('Erro ao cadastrar, nome de usuário já em uso. Por favor, tente novamente!');
+		        } else {
+				    alert('Error');
+				}
+		    };
+		    xhr.send(JSON.stringify(formData));
+		}
+	</script>
+</h:body>
+</html>

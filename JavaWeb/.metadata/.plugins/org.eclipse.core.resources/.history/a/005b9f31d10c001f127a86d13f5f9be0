@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cadastro de Profissionais</title>
+</h:head>
+<h:body>
+    <h:form id="form">
+        <h1>Cadastro de Profissionais</h1>
+        <h:panelGrid>
+            Tipo de Cadastro
+            <h:selectOneMenu id="tipocadastro">
+                <f:selectItem itemLabel="VISTO" itemValue="VISTO" />
+                <f:selectItem itemLabel="REGISTRO" itemValue="REGISTRO" />
+            </h:selectOneMenu>
+            Nome <h:inputText id="username" />
+            CPF <h:inputText id="cpf" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 11)" maxlength="11" />
+            E-mail <h:inputText id="email" />
+            Senha <h:inputSecret id="password" style="width: 157px;" />
+            Data de Nascimento <h:inputText id="datanascimento" />
+            Telefone <h:inputText id="telefone" />
+            Títulos <h:inputTextarea id="titulo" rows="5" cols="50" />
+            <h:commandButton type="button" value="Cadastrar" style="width: 158px;" onclick="cadastrar()" />
+        </h:panelGrid>
+    </h:form>
+     <h:commandButton type="button" onClick="Voltar()" value="Voltar" action="Main"/>
+    <script src="scripts/CadastroProfissionais.js"></script>
+</h:body>
+</html>

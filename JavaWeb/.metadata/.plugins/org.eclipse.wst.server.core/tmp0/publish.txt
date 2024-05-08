@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Wed May 08 16:13:05 BRT 2024
+org.eclipse.jst.jee.server\:frontend-desafio=C\:\\Program Files (x86)\\Java\\apache-tomcat-9.0.88\\apache-tomcat-9.0.86\\wtpwebapps\\frontend-desafio
+org.eclipse.jst.jee.server\:HelloWorld=C\:\\Program Files (x86)\\Java\\apache-tomcat-9.0.88\\apache-tomcat-9.0.86\\wtpwebapps\\HelloWorld

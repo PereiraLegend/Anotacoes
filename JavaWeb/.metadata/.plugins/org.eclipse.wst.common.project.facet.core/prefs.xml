@@ -1,0 +1,10 @@
+<root>
+  <facet id="jst.jsf">
+    <node name="libprov">
+      <node name="last-provider-used">
+        <attribute name="2.2" value="jsf-no-op-library-provider"/>
+        <attribute name="2.3" value="jsf-no-op-library-provider"/>
+      </node>
+    </node>
+  </facet>
+</root>

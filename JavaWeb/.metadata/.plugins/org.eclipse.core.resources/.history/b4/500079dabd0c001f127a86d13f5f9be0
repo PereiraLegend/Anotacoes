@@ -1,0 +1,37 @@
+function cadastrar() {
+	console.log(document.getElementById("form:username"));
+    var username = document.getElementById("form:username").value;
+    var tipocadastro = document.getElementById("form:tipocadastro").value;
+    var password = document.getElementById("form:password").value;
+    var cpf = document.getElementById("form:cpf").value;
+    var email = document.getElementById("form:email").value;
+    var datanascimento = document.getElementById("form:datanascimento").value;
+    var telefone = document.getElementById("form:telefone").value;
+    var titulo = document.getElementById("form:titulo").value;
+
+    var formData = {
+        username: username,
+        tipocadastro: tipocadastro,
+        password: password,
+        cpf: cpf,
+        email: email,
+        datanascimento: datanascimento,
+        telefone: telefone,
+        titulo: titulo,
+        status: "INATIVO",
+        codigounico: ""
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:8080/user', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 201) {
+            alert('Cadastro efetuado com sucesso!');
+            window.location.href = 'index.xhtml';
+        } else {
+            alert('Erro ao cadastrar, EMAIL ou CPF já existentes. Por favor, tente novamente.');
+        }
+    };
+    xhr.send(JSON.stringify(formData));
+}

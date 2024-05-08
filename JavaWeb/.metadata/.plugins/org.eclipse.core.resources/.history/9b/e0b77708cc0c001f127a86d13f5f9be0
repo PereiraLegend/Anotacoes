@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>CREA Simplificado</title>
+    <script src="scripts/index.js"></script> <!-- Importe seu arquivo JavaScript aqui -->
+</h:head>
+<h:body>
+    <h:form>
+        <h1>Olá, seja bem-vindo(a) ao CREA Simplificado!</h1>
+        <h:panelGrid>
+            <h2>Você é um profissional e deseja fazer o cadastro?</h2>
+            <h:commandButton value="Cadastro" onclick="CadastroProfissionais()" style="width: 158px; "/>
+            
+            <h2>É um usuário corporativo? Faça já o login!</h2>
+            <h:commandButton value="Login" onclick="LoginCorporativo()" style="width: 158px; "/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

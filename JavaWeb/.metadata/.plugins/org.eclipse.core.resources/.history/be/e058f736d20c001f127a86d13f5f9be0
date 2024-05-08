@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Dashboard</title>
+    <h:outputStylesheet library="primefaces" name="themes/nova-light/theme.css" />
+    <style>
+        /* Estilos para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="carregarProfissionais()">
+    <h1>CREA Simplificado - Dashboard</h1>
+    <p:dataTable id="tabelaprofissionais" var="profissional" value="#{dashboardBean.profissionais}" 
+                 emptyMessage="Nenhum profissional encontrado." paginator="true" rows="10">
+        <p:column headerText="ID">
+            <h:outputText value="#{profissional.id}" />
+        </p:column>
+        <p:column headerText="USUÁRIO">
+            <h:outputText value="#{profissional.usuario}" />
+        </p:column>
+        <p:column headerText="CPF">
+            <h:outputText value="#{profissional.cpf}" />
+        </p:column>
+        <p:column headerText="EMAIL">
+            <h:outputText value="#{profissional.email}" />
+        </p:column>
+        <p:column headerText="DATA DE NASCIMENTO">
+            <h:outputText value="#{profissional.dataNascimento}" />
+        </p:column>
+        <p:column headerText="TELEFONE">
+            <h:outputText value="#{profissional.telefone}" />
+        </p:column>
+        <p:column headerText="TÍTULO">
+            <h:outputText value="#{profissional.titulo}" />
+        </p:column>
+        <p:column headerText="#">
+            <p:commandButton value="Detalhes" oncomplete="PF('modal').show()" 
+                             update=":profissionalDetails" />
+        </p:column>
+    </p:dataTable>
+
+    <p:dialog id="myModal" widgetVar="modal" modal="true" draggable="false">
+        <div class="modal-content">
+            <span class="close" onclick="PF('modal').hide()">x</span>
+            <div id="profissionalDetails"></div>
+        </div>
+    </p:dialog>
+</body>
+</html>

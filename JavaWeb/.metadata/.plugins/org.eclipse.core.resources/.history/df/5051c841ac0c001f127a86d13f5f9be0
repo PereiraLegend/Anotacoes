@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Dashboard</title>
+    <script src="scripts/Dashboard.js"></script>
+    <style>
+        /* Estilos para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="carregarProfissionais()">
+    <h1>CREA Simplificado - Dashboard</h1>
+    <table id="tabelaprofissionais">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>USUÁRIO</th>
+                <th>TIPO DE CADASTRO</th>
+                <th>CPF</th>
+                <th>EMAIL</th>
+                <th>DATA DE NASCIMENTO</th>
+                <th>TELEFONE</th>
+                <th>TÍTULO</th>
+                <th>STATUS</th>
+                <th>CÓDIGO ÚNICO</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">x</span>
+            <div id="profissionalDetails"></div>
+        </div>
+    </div>
+</body>
+</html>

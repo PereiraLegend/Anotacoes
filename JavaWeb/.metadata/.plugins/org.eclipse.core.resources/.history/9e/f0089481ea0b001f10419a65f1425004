@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Import jQuery -->
+    <style>
+        /* Estilos para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</h:head>
+<h:body>
+<h:form>
+    <h1>CREA Simplificado - Dashboard</h1>
+    <h:panelGrid>
+        <h2>Profissionais</h2>
+        <!-- Tabela com profissionais e outras funcionalidades -->
+        <table id="tabelaprofissionais">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>USUÁRIO</th>
+                <th>TIPO DE CADASTRO</th>
+                <th>CPF</th>
+                <th>EMAIL</th>
+                <th>DATA DE NASCIMENTO</th>
+                <th>TELEFONE</th>
+                <th>TÍTULO</th>
+                <th>STATUS</th>
+                <th>CÓDIGO ÚNICO</th>
+                <th>Detalhes</th> <!-- Adicionado cabeçalho para o botão de detalhes -->
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Os dados serão preenchidos dinamicamente via JavaScript -->
+            </tbody>
+        </table>
+    </h:panelGrid>
+</h:form>
+
+<!-- Modal para detalhes do profissional -->
+<p:dialog modal="true" height="400" width="400" widgetVar="detalheProfissional">
+    <h:form>
+        <h:panelGrid>
+            <p>ID: <span id="modalProfissionalId"></span></p>
+            <p>Usuário: <span id="modalProfissionalUsername"></span></p>
+            <p>Tipo de Cadastro: <span id="modalProfissionalTipoCadastro"></span></p>
+            <p>CPF: <span id="modalProfissionalCpf"></span></p>
+            <p>Email: <span id="modalProfissionalEmail"></span></p>
+            <p>Data de Nascimento: <span id="modalProfissionalDataNascimento"></span></p>
+            <p>Telefone: <span id="modalProfissionalTelefone"></span></p>
+            <p>Título: <span id="modalProfissionalTitulo"></span></p>
+            <p>Status: <span id="modalProfissionalStatus"></span></p>
+            <p>Código Único: <span id="modalProfissionalCodigoUnico"></span></p>
+        </h:panelGrid>
+    </h:form>
+</p:dialog>
+
+</h:body>
+<script>
+    // Quando o documento estiver pronto, carregar os profissionais
+    $(document).ready(function () {
+        carregarProfissionais();
+    });
+
+    function carregarProfissionais() {
+        $.ajax({
+            url: 'http://localhost:8080/user/all', // Altere para a URL correta da sua API
+            type: 'GET',
+            success: function (data) {
+                // Limpar a tabela
+                $('#tabelaprofissionais tbody').empty();
+                // Preencher a tabela com os dados dos profissionais
+                data.forEach(function (profissional) {
+                    var row = `
+                        <tr>
+                            <td>${profissional.id}</td>
+                            <td>${profissional.username}</td>
+                            <td>${profissional.tipocadastro}</td>
+                            <td>${profissional.cpf}</td>
+                            <td>${profissional.email}</td>
+                            <td>${profissional.datanascimento}</td>
+                            <td>${profissional.telefone}</td>
+                            <td>${profissional.titulo}</td>
+                            <td>${profissional.status}</td>
+                            <td>${profissional.codigounico}</td>
+                            <td>
+                                <button onclick="detalhesUsuario(${profissional.id})">Detalhes</button>
+                            </td>
+                        </tr>
+                    `;
+                    $('#tabelaprofissionais tbody').append(row);
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Erro ao carregar os dados:', errorThrown);
+            }
+        });
+    }
+
+    function detalhesUsuario(profissionalId) {
+        // Fazer requisição AJAX para a API para obter os detalhes do profissional
+        $.ajax({
+            url: 'http://localhost:8080/user/' + profissionalId, // Altere para a URL correta da sua API
+            type: 'GET',
+            success: function (profissional) {
+                // Preencher os campos do modal com os detalhes do profissional
+                $('#modalProfissionalId').text(profissional.id);
+                $('#modalProfissionalUsername').text(profissional.username);
+                $('#modalProfissionalTipoCadastro').text(profissional.tipocadastro);
+                $('#modalProfissionalCpf').text(profissional.cpf);
+                $('#modalProfissionalEmail').text(profissional.email);
+                $('#modalProfissionalDataNascimento').text(profissional.datanascimento);
+                $('#modalProfissionalTelefone').text(profissional.telefone);
+                $('#modalProfissionalTitulo').text(profissional.titulo);
+                $('#modalProfissionalStatus').text(profissional.status);
+                $('#modalProfissionalCodigoUnico').text(profissional.codigounico);
+
+                // Exibir o modal
+                PF('detalheProfissional').show();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Erro ao carregar detalhes do profissional:', errorThrown);
+            }
+        });
+    }
+</script>
+</html>

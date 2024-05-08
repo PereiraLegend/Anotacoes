@@ -1,0 +1,33 @@
+function cadastrarF(){
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    
+    if (username.trim() === "") {
+        alert("Por favor, insira um nome de usuário.");
+        return false;
+    }
+
+    if (password.trim() === "") {
+        alert("Por favor, insira uma senha.");
+        return false;
+    }
+            
+    var formData = {
+        username: username,
+        password: password
+    };
+            
+    var xhrFunc = new XMLHttpRequest();
+    xhrFunc.open('POST', 'http://localhost:8080/funcionario', true);
+    xhrFunc.setRequestHeader('Content-Type', 'application/json');
+    xhrFunc.onload = function() {
+        if (xhrFunc.status === 200 || xhrFunc.status === 201) {
+			console.log("Foi")
+            alert('Cadastro corporativo efetuado com sucesso!');
+            window.location.href = 'LoginFuncionario.xhtml';
+        } else {
+            alert('Erro ao cadastrar, nome de usuário já em uso. Por favor, tente novamente!');
+        }
+    };
+    xhrFunc.send(JSON.stringify(formData));
+}

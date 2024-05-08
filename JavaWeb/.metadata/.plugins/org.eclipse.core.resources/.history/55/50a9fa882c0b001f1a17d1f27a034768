@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required />
+        <br/>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+        <br/>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var data = {
+                username: username,
+                password: password
+            };
+
+            fetch('https://localhost:8080/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Se a resposta for bem-sucedida (status 200), redirecione para Dashboard.xhtml
+                    window.location.href = "Dashboard.xhtml";
+                } else {
+                    // Se a resposta não for bem-sucedida, exiba uma mensagem de erro
+                    alert("Erro de login: Credenciais inválidas");
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao fazer login:', error);
+                alert("Erro ao fazer login");
+            });
+        }
+    </script>
+</body>
+</html>

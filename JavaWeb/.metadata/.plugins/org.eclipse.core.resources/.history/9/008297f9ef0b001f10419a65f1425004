@@ -1,0 +1,81 @@
+function carregarProfissionais() {
+    fetch('http://localhost:8080/user/all')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao carregar os dados da API');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const tableBody = document.querySelector('#tabelaprofissionais tbody');
+        // Limpa o conteúdo da tabela antes de adicionar os novos dados
+        tableBody.innerHTML = '';
+        // Loop pelos dados recebidos e adiciona-os à tabela
+        data.forEach(profissional => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${profissional.id}</td>
+                <td>${profissional.username}</td>
+                <td>${profissional.tipocadastro}</td>
+                <td>${profissional.cpf}</td>
+                <td>${profissional.email}</td>
+                <td>${profissional.datanascimento}</td>
+                <td>${profissional.telefone}</td>
+                <td>${profissional.titulo}</td>
+                <td>${profissional.status}</td>
+                <td>${profissional.codigounico}</td>
+                <td>
+                    <button onclick="detalhesUsuario(${profissional.id}, '${profissional.username}', '${profissional.tipocadastro}', '${profissional.cpf}', '${profissional.email}', '${profissional.datanascimento}', '${profissional.telefone}', '${profissional.titulo}', '${profissional.status}', '${profissional.codigounico}')">Detalhes</button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+        console.log("Deu certo!");
+    })
+    .catch(error => console.error('Erro ao carregar os dados:', error));
+}
+
+function detalhesUsuario(id, username, tipocadastro, cpf, email, datanascimento, telefone, titulo, status, codigounico) {
+    // Seleciona os elementos do modal e atualiza seu conteúdo com os dados do profissional
+    const modalContent = document.querySelector('.modal-content');
+    modalContent.innerHTML = `
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <p>ID: ${id}</p>
+        <p>Usuário: ${username}</p>
+        <p>Tipo de Cadastro: ${tipocadastro}</p>
+        <p>CPF: ${cpf}</p>
+        <p>Email: ${email}</p>
+        <p>Data de Nascimento: ${datanascimento}</p>
+        <p>Telefone: ${telefone}</p>
+        <p>Título: ${titulo}</p>
+        <p>Status: ${status}</p>
+        <p>Código Único: ${codigounico}</p>
+        <button onclick="registrarVisar(${id})">Registrar/Visar</button>
+        <button onclick="cancelar(${id})">Cancelar</button>
+    `;
+    
+    // Abre o modal
+    abrirModal();
+}
+
+function fecharModal() {
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'none';
+}
+
+function abrirModal() {
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'block';
+}
+
+function registrarVisar(){
+	//Transforma o status de INATIVO para ATIVO
+	//Se o tipocadastro do usuario for REGISTRO puxa a hora local e registra em dataregistro
+	//Se o tipocadastro do usuario for VISTO puxa a hora loca e registra com datavisto 
+}
+
+function cancelar(){
+	//Transforma o status de ATIVO para INATIVO
+}
+// Chama a função ao carregar a página para preencher a tabela
+window.onload = carregarProfissionais;

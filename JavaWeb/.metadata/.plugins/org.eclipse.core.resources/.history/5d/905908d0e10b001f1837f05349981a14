@@ -1,0 +1,7 @@
+function CadastroProfissionais(){
+    window.location.href = 'CadastroProfissionais.xhtml';
+} 
+        
+function LoginCorporativo(){
+    window.location.href = 'LoginFuncionarios.xhtml';
+}

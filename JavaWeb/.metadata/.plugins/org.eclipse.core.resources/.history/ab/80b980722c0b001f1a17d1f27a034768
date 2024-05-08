@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Login de Funcionários</title>
+    <script>
+    function Login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        console.log(username, password);
+
+        var form = document.getElementById('loginForm');
+        var formData = new FormData(form);
+
+        fetch("http://localhost:8080/login", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                showToast("#okToast");
+                setTimeout(function () {
+                    window.location.href = "Dashboard.xhtml";
+                }, 2000);
+            } else {
+                showToast("#errorToast");
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+        });
+    }
+
+      
+    function showToast(id) {
+        var toastElList = [].slice.call(document.querySelectorAll(id));
+        var toastList = toastElList.map(function (toastEl) {
+          return new bootstrap.Toast(toastEl);
+        });
+        toastList.forEach((toast) => toast.show());
+    }
+    </script>
+</h:head>
+<h:body>
+    <h:form id="loginForm">
+        <h1>Login de Funcionários</h1>
+        <h:panelGrid>
+            Nome<h:inputText id="username" binding="#{username}" />
+            Senha<h:inputSecret id="password" binding="#{password}" />
+            <h:commandButton value="login" onclick="Login(); return false;" />
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

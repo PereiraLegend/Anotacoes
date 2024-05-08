@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+C:\Users\lp359\OneDrive\Documentos\GitHub\Anotacoes\JavaWeb\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3082434705.index
+3190941554.index
+2289993259.index
+3243768531.index
+399392514.index
+2380175872.index
+3070774139.index
+2382167931.index

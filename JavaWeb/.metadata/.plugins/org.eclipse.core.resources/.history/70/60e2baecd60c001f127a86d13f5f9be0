@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Cadastro de Profissionais</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f7f7f7;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            #form {
+                max-width: 600px;
+                margin: auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                font-size: 16px; /* Aumenta o tamanho da fonte em 4px */
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+                font-size: 24px; /* Aumenta o tamanho da fonte em 4px */
+            }
+
+            h:panelGrid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            h:panelGrid label {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            h:inputText, h:inputSecret, h:inputTextarea, h:selectOneMenu {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            h:commandButton[type="button"] {
+                width: 100%;
+                padding: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            h:commandButton[type="button"]:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <h1>Cadastro de Profissionais</h1>
+            <h:panelGrid>
+                <label for="tipocadastro">Tipo de Cadastro</label>
+                <h:selectOneMenu id="tipocadastro">
+                    <f:selectItem itemLabel="VISTO" itemValue="VISTO" />
+                    <f:selectItem itemLabel="REGISTRO" itemValue="REGISTRO" />
+                </h:selectOneMenu>
+                <label for="username">Nome</label>
+                <h:inputText id="username" />
+                <label for="cpf">CPF</label>
+                <h:inputText id="cpf" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 11)" maxlength="11" />
+                <label for="email">E-mail</label>
+                <h:inputText id="email" />
+                <label for="password">Senha</label>
+                <h:inputSecret id="password" />
+                <label for="datanascimento">Data de Nascimento</label>
+                <h:inputText id="datanascimento" />
+                <label for="telefone">Telefone</label>
+                <h:inputText id="telefone" />
+                <label for="titulo">Títulos</label>
+                <h:inputTextarea id="titulo" rows="5" cols="50" />
+            </h:panelGrid>
+            <h:commandButton type="button" value="Cadastrar" onclick="cadastrar()" />
+        </h:form>
+        <script src="scripts/CadastroProfissionais.js"></script>
+    </h:body>
+</html>

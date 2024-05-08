@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Login de Funcionário</title>
+    <link rel="stylesheet" type="text/css" href="styles/LoginFuncionario.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        #loginForm {
+            width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #loginForm input[type="text"],
+        #loginForm input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        #loginForm button {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-sizing: border-box;
+        }
+        #loginForm button:hover {
+            background-color: #0056b3;
+        }
+        .cadastar-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .cadastar-button a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+        .cadastar-button a:hover {
+            color: #0056b3;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form id="loginForm">
+        <h1>Login de Funcionários</h1>
+        <h:panelGrid>
+            Nome<h:inputText id="username" style="width: 163px; "/>
+            Senha<h:inputSecret id="password" style="width: 163px; "/>
+            <button type="button" onclick="login()" style="width: 170px; ">Login</button>
+        </h:panelGrid>
+    </h:form>
+    <h:commandButton value="Cadastar" onclick="cadastrarFunc();" action="CadastroFuncionarios" style="width: 158px;"/>
+    <script src="scripts/LoginFuncionario.js"></script>
+    <script>
+        function cadastrarFunc() {
+            return window.location.href = "CadastroFuncionarios.xhtml";
+        }
+    </script>
+</h:body>
+</html>

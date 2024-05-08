@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Dashboard</title>
+        <script>
+            function CadastroC() {
+                window.location.href = "CadastroProfissionais.xhtml";
+            }
+            function carregarProfissionais() {
+                fetch('http://localhost:8080/user/all')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#tabelaprofissionais tbody');
+
+                    // Limpa o conteúdo da tabela antes de adicionar os novos dados
+                    tableBody.innerHTML = '';
+
+                    // Loop pelos dados recebidos e adiciona-os à tabela
+                    data.forEach(profissional => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                        	<td>${profissional.id}</td>
+                        	<td>${profissional.username}</td>
+                        	<td>${profissional.tipocadastro}</td>
+                        	<td>${profissional.cpf}</td>
+                        	<td>${profissional.email}</td>
+                        	<td>${profissional.datanascimento}</td>
+                        	<td>${profissional.telefone}</td>
+                        	<td>${profissional.titulo}</td>
+                        	<td>${profissional.status}</td>
+                        	<td>${profissional.codigounico}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar os dados:', error));
+                console.log("Deu certo!");
+            }
+
+            // Chama a função ao carregar a página para preencher a tabela
+            window.onload = carregarProfissionais;
+            
+        </script>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1>CREA Simplificado - Dashboard</h1>
+            <h:panelGrid>
+            
+                <h2>Profissionais</h2>
+                <!-- Tabela com profissionais e outras funcionalidades -->
+                <table id="tabelaprofissionais">
+	                <thead>
+	                	<tr>
+	                		<th>id</th>
+	                		<th>username</th>
+	                		<th>tipocadastro</th>
+	                		<th>cpf</th>
+	                		<th>email</th>
+	                		<th>datanascimento</th>
+	                		<th>telefone</th>
+	                		<th>titulo</th>
+	                		<th>status</th>
+	                		<th>codigounico</th>
+	                	</tr>
+	                </thead>
+	                <tbody>
+	                
+	                </tbody>              
+                </table>
+                
+                
+                <h2>Cadastrar Novo Usuário Corporativo:</h2>
+                <!-- Usando um botão HTML padrão -->
+                <button onclick="CadastroC()" style="width: 158px;">Cadastrar</button>
+                
+                <h2>Usuários corporativos</h2>
+                <!-- Tabela com usuários corporativos e outras funcionalidades -->
+            
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

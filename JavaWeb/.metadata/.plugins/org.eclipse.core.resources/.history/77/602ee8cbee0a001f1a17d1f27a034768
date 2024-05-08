@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cadastro de Profissionais</title>
+    <script>
+        function cadastrar() {
+            var formData = {
+                tipoCadastro: document.getElementById('tipoCadastro').value,
+                nome: document.getElementById('nome').value,
+                cpf: document.getElementById('cpf').value,
+                email: document.getElementById('email').value,
+                senha: document.getElementById('senha').value,
+                dataNascimento: document.getElementById('dataNascimento').value,
+                telefone: document.getElementById('telefone').value,
+                titulos: document.getElementById('titulos').value
+            };
+
+            // Envie os dados para a API usando AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:8080/user', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Exiba o pop-up de sucesso
+                    alert('Cadastro efetuado com sucesso!');
+                    // Redirecione para a página index.xhtml
+                    window.location.href = 'index.xhtml';
+                } else {
+                    // Se a solicitação falhar, exiba uma mensagem de erro
+                    alert('Erro ao cadastrar. Por favor, tente novamente.');
+                }
+            };
+            xhr.send(JSON.stringify(formData));
+        }
+    </script>
+</h:head>
+<h:body>
+
+    <h:form>
+        <h1>Cadastro de Profissionais</h1>
+        <h:panelGrid>
+            Tipo de Cadastro
+            <h:selectOneMenu id="tipoCadastro">
+                <f:selectItem itemLabel="VISTO" itemValue="VISTO" />
+                <f:selectItem itemLabel="REGISTRO" itemValue="REGISTRO" />
+            </h:selectOneMenu>
+            Nome <h:inputText id="nome" />
+            CPF <h:inputText id="cpf" />
+            E-mail <h:inputText id="email" />
+            Senha <h:inputSecret id="senha" style="width: 157px;" />
+            Data de Nascimento <h:inputText id="dataNascimento" />
+            Telefone <h:inputText id="telefone" />
+            Títulos <h:inputTextarea id="titulos" rows="5" cols="50" />
+            <h:commandButton type="button" value="Cadastrar" style="width: 158px;" onclick="cadastrar();" />
+        </h:panelGrid>
+    </h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Dashboard</title>
+        <script>
+            function CadastroC() {
+                window.location.href = "CadastroProfissionais.xhtml";
+            }
+            
+            
+        </script>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1>CREA Simplificado - Dashboard</h1>
+            <h:panelGrid>
+            
+                <h2>Profissionais</h2>
+                <!-- Tabela com profissionais e outras funcionalidades -->
+                
+                
+                <h2>Cadastrar Novo Usuário Corporativo:</h2>
+                <!-- Usando um botão HTML padrão -->
+                <button onclick="CadastroC()" style="width: 158px;">Cadastrar</button>
+                
+                <h2>Usuários corporativos</h2>
+                <!-- Tabela com usuários corporativos e outras funcionalidades -->
+            
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

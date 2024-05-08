@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http//www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</h:head>
+<h:body>
+
+<h:form>
+	<h1>Casdastro de Usuário</h1>
+	<h:panelGrid>
+		Tipo de Cadastro<h:selectOneMenu style="width: 158px; ">
+							<f:selectItem itemLabel="VISTO" itemValue="VISTO"/>
+							<f:selectItem itemLabel="REGISTRO" itemValue="REGISTRO"/>
+						</h:selectOneMenu>
+		Nome<h:inputText/>
+		CPF<h:inputText/>
+		E-mail<h:inputText/>
+		Senha<h:inputSecret style="width: 157px; "/>
+		Data de Nascimento<h:inputText/>
+		Telefone<h:inputText/>
+		Títulos <h:inputTextarea id="texto" rows="5" cols="50" value="#{bean.valor}"/>
+		<h:commandButton value="Cadastrar" style="width: 158px; "/>
+	</h:panelGrid>
+</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Dashboard</title>
+    <script src="scripts/Dashboard.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/Dashboard.css" />
+</head>
+<body onload="carregarProfissionais()">
+    <h1>CREA Simplificado - Dashboard</h1>
+    <table id="tabelaprofissionais">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>USUÁRIO</th>
+                <th>CPF</th>
+                <th>EMAIL</th>
+                <th>DATA DE NASCIMENTO</th>
+                <th>TELEFONE</th>
+                <th>TÍTULO</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">x</span>
+            <div id="profissionalDetails"></div>
+        </div>
+    </div>
+</body>
+</html>
