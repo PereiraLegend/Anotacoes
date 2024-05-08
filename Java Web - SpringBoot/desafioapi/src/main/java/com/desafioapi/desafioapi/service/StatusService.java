@@ -28,6 +28,7 @@ public class StatusService {
         obj = this.statusRepositorio.save(obj);
         return obj;
     }
+    /*
 
     @Transactional
     public Status update(Status obj) {
@@ -45,6 +46,36 @@ public class StatusService {
         Random aleatorio = new Random();
         StringBuilder codigo = new StringBuilder();
         for (int i = 0; i < 10; i++){
+            codigo.append(aleatorio.nextInt(10));
+        }
+        codigo.append("PI");
+        return codigo.toString();
+    }
+    */
+
+    @Transactional
+    public Status update(Status obj) {
+        Status existingStatus = findById(obj.getId());
+        if ("ATIVO".equals(obj.getStatus())) {
+            String novoCodigoUnico;
+            do {
+                novoCodigoUnico = gerarCodigoUnico();
+            } while (codigoUnicoExiste(novoCodigoUnico));
+            obj.setCodigounico(novoCodigoUnico);
+        } else {
+            obj.setCodigounico("");
+        }
+        return statusRepositorio.save(obj);
+    }
+
+    private boolean codigoUnicoExiste(String codigo) {
+        return statusRepositorio.existsByCodigounico(codigo);
+    }
+
+    private String gerarCodigoUnico() {
+        Random aleatorio = new Random();
+        StringBuilder codigo = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
             codigo.append(aleatorio.nextInt(10));
         }
         codigo.append("PI");

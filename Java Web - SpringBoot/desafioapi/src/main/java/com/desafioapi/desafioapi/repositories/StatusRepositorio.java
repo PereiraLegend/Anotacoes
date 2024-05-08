@@ -9,4 +9,6 @@ import com.desafioapi.desafioapi.models.Usuario;
 
 public interface StatusRepositorio extends JpaRepository<Status, Long>{
     Optional<Status> findById(Long id);
+
+    boolean existsByCodigounico(String codigo);
 }
