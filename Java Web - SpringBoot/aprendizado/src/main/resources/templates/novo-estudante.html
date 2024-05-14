@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Estudante</title>
+    <style>
+        .mensagem{
+            color: red;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="padding-bottom:30px;">
+            <div class="col">
+                <h2>Cadastro de Estudante</h2>
+                <form th:action="@{/gravar}" th:object="${novoEstudante}" method="post"> <!--Aqui eu adiciono o apelido criado no arquivo "PagesController.java" utilizando o termo: ' th:object="${novoEstudante}" ', e para fazer o envio de dados e altero o action como: ' th:action="@{/gravar}" ', ou seja quando a pessoa clicar no botão submit vai ser disparado uma requisição com o mapeamento gravar como uma requisição via post-->
+                    <!--Div para mostrar a mensagem ao usuário:-->
+                    <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" ></button>
+                        <span th:text="${mensagem}"></span>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="col-sm-1 col-form-label">Nome:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" th:field="*{name}"> <!--ao colocar o apelido definido eu preciso associar os inputs as propriedades ao objeto que o apelido faz referência utilizando o termo: ' th:field="*{nome}"' -->
+                        </div>
+                        <div class="col-sm-5">
+                            <span class="mensagem" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span> <!-- Aqui em "th:if" diz que se tiver erros em "name" eles serão apresentados no "th:erros=...", os erros que são acusados aqui são os que o banco de dados retorna-->
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="col-sm-1 col-form-label">Idade:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text" th:field="*{idade}">
+                        </div>
+                        <div class="col-sm-5">
+                            <span class="mensagem" th:if="${#fields.hasErrors('idade')}" th:errors="*{idade}"></span> <!-- Aqui em "th:if" diz que se tiver erros em "name" eles serão apresentados no "th:erros=..."-->
+                        </div>
+                    </div>
+                    
+                    <input class="btn btn-primary" type="submit" value="Gravar">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

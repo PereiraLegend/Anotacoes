@@ -27,16 +27,15 @@ public class Estudante {
     @Id
     @Column(name = "id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column( name = "name", length = 100, nullable = false)
-    @NotBlank(message = "O novo deve ser informado")
+    @NotBlank(message = "O nome deve ser informado")
     @Size(min = 2, message = "O nome deve possuir mais caracteres")
     private String name;
 
     @Column( name = "idade", length = 20)
     @NotNull
-    @NotEmpty
     @Min( value = 18, message = "O aluno deve ter no minimo 18 anos")
-    private int idade;
+    private Long idade;
 }

@@ -25,6 +25,6 @@ public class EstudanteController {
     @GetMapping()
     public ResponseEntity getAllEstudantes(){
         return ResponseEntity.ok("Deu certo!");
-    }
+    }    
     
 }
