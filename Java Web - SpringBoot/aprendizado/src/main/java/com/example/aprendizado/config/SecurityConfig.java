@@ -35,7 +35,10 @@ public class SecurityConfig {
         "/",
         "/novo",
         "/estudante",
-        "/estudante/{id}"
+        "/estudante/",
+        "/estudante/{id}",
+        "/estudante/all",
+        "/lista-estudantes"
     };
 
     private static final String[] PUBLIC_MATCHERS_DELETE = {

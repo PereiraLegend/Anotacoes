@@ -14,6 +14,29 @@
                 <a th:href="@{/novo}" class="btn btn-primary">Novo Estudante</a> <!--Navegabilidde de páginas no springboot-->
             </div>
         </div>
+        <!-- Para trazer toda a lista aqui eu criuo um laço de repetição que percorre toda a lista para listar todos os itens-->
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Idade</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Aqui eu chamo a referência e com o if eu verifico se não está vazio-->
+                    <tr th:if="${#lists.isEmpty(listaEstudantes)}"> 
+                        <td colspan="3">Não existem estudantes cadastrados!</td>
+                    </tr>
+                    <tr th:each="estudante : ${listaEstudantes}"> <!--Aqui eu crio um laço de repetição utilizando o for each com a tag "each", criando um objeto estudante para armazenar cada item a cada loop de repetição -->
+                        <td><span th:text="${estudante.id}"></span></td> <!-- Para apresentar os dados eu utilizo a propriedade ":text" do timeleaf-->
+                        <td><span th:text="${estudante.name}"></span></td>
+                        <td><span th:text="${estudante.idade}"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
