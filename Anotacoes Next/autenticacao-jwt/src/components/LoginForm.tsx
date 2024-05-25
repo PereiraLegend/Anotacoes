@@ -1,9 +1,13 @@
-"use client"
+"use client"//Adiciono essa parte aqui pois quero que essa parte seja rodada no lado do cliente
 import { FormEvent } from "react"
-
+import { signIn } from "next-auth/react" // Chamando o next auth
+import { useSearchParams } from "next/navigation"
 
 // Aula referência: https://www.youtube.com/watch?v=oSDjImNvlGs
 export default function LoginForm() {
+    const searchParams = useSearchParams()
+    const error = searchParams.get('error')
+
     async function login (e: FormEvent<HTMLFormElement>){ //chamar os dados que estão dentor do formulário
         e.preventDefault() // Evitar erros
         const formData = new FormData(e.currentTarget) // Adicionando os dados que estão dentro do formulário a um objeto
@@ -14,6 +18,11 @@ export default function LoginForm() {
             password: formData.get("password"),
         }
         console.log(data)
+        // Adicionando o NextAuth ao projeto
+        signIn("credentials", { // Aqui eu digo que passo o tipo "credentials"
+            ...data, // Aqui eu pego os dados do mock crido anteriormente de "data"
+            callbackUrl: "/dashboard", // Aqui eu falo para onde devo mandar "ele"
+        })
     }
 
     return (
@@ -62,6 +71,9 @@ export default function LoginForm() {
                             Logar
                         </button>
                     </div>
+                        {error === "CredentialsSignin" && (
+                            <div className="text-red-500">Erro no Login</div>
+                        )}                   
                 </form>
             </div>
         </div>
