@@ -1,0 +1,2 @@
+Orden de criação para teste geral 1 de autenticacão: 
+LoginForm > dashboard e dashboardAdmin > "api/auth/[...nextauth]/route.ts" > "libs/fetchClient/index.ts" > "libs/fetchServer/index.ts"
