@@ -2,7 +2,7 @@
 import { getCookie } from "cookies-next"
 import { signOut } from "next-auth/react"
 
-export const fetchClient = async (
+export const fetchClient = async ( // Aqui eu faço a configuração global do header adicionando globalmente a autenticação da chave global senpre que eu chamar esse método para lidar com apis
     input: string | URL | Request,
     init?: RequestInit | undefined
 ): Promise<Response> => {
