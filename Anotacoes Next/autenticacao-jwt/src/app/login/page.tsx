@@ -1,12 +1,13 @@
 "use client"//Adiciono essa parte aqui pois quero que essa parte seja rodada no lado do cliente
 import { FormEvent } from "react"
 import { signIn } from "next-auth/react" // Chamando o next auth
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 // Aula referência: https://www.youtube.com/watch?v=oSDjImNvlGs
 export default function LoginForm() {
     const searchParams = useSearchParams()
     const error = searchParams.get('error')
+    const router = useRouter()
 
     async function login (e: FormEvent<HTMLFormElement>){ //chamar os dados que estão dentor do formulário
         e.preventDefault() // Evitar erros
@@ -19,10 +20,26 @@ export default function LoginForm() {
         }
         console.log(data)
         // Adicionando o NextAuth ao projeto
-        signIn("credentials", { // Aqui eu digo que passo o tipo "credentials"
+        const result = await signIn("credentials", { // Aqui eu digo que passo o tipo "credentials"
+            redirect: false,
             ...data, // Aqui eu pego os dados do mock crido anteriormente de "data"
-            callbackUrl: "/dashboard", // Aqui eu falo para onde devo mandar "ele"
+            //callbackUrl: "/dashboard", // Aqui eu falo para onde devo mandar "ele"
         })
+
+        if (result?.ok) {
+            const response = await fetch("/api/auth/session")
+            const session = await response.json()
+            
+            console.log("teste-O->:", session?.user?.role)
+
+            if(session?.user?.role === "Admin") {
+                router.push("/dashboardAdmin")
+            } else {
+                router.push("/dashboard")
+            }
+        } else {
+            console.log("Erro de Login: ", result?.error)
+        }
     }
 
     return (

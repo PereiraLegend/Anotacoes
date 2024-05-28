@@ -9,6 +9,14 @@ export default async function dashboardAdmin() {
     }
     return(
         <div>
+            <main>
+                <div>
+
+                </div>
+                <div>
+                    
+                </div>
+            </main>
             Dashboard Admin
         </div>
     )

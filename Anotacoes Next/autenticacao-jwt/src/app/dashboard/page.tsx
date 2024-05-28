@@ -10,7 +10,7 @@ export default async function dashboard() {
     if(!session) {
         redirect("/")
     }
-
+    //console.log('Verificando:', session.user?.name)
     return(
         <div>
             <div>Olá, {session?.user?.name}</div>

@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 
 const handler = NextAuth({
     pages: {     // Para adicionar a minha página de login customizada
-        signIn: "/"
+        signIn: "/login",
     },
     providers: [
         CredentialsProvider({
@@ -20,27 +20,28 @@ const handler = NextAuth({
 
                 try {
                     const response = await fetch("http://localhost:5001/api/usuario/login", {
-                        method: "POST", 
+                        method: "POST",
                         body: JSON.stringify({
                             nome: credentials.nome,
                             password: credentials.password,
                         }),
-                        headers: {"Content-Type": "application/json"},
+                        headers: { "Content-Type": "application/json" },
                     })
-                    if (response.status !== 200){
+                    if (response.status !== 200) {
                         return null
                     }
                     const authData = await response.json()
-                    console.log("token------:",authData.token)
+                    console.log("token------:", authData.token)
                     console.log("nome-------:", authData.nome)
-                    //console.log("id---------:", authData.id)
-                    if(!authData.token || !authData.nome){
+                    console.log("regra------:", authData.regra)
+                    if (!authData.token || !authData.nome) {
                         return null
                     }
                     cookies().set("jwt", authData.token)
                     return {
                         id: authData.id,
-                        nome: authData.nome
+                        role: authData.regra,
+                        name: authData.nome,
                     }
                 } catch (e) {
                     return null
@@ -73,6 +74,18 @@ const handler = NextAuth({
                 */
             }
         })
-    ]
+    ],
+    callbacks: { // Aqui eu adiciono regras
+        async jwt({ token, user }) {
+            if (user) {
+                token.role = user.role; // Adicionar a regra ao token
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            session.user.role = token.role; // Salvar a regra na sessão
+            return session;
+        }
+    }
 })
 export { handler as GET, handler as POST }

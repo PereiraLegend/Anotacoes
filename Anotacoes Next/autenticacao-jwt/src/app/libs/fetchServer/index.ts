@@ -1,4 +1,5 @@
 // Caso eu precise de uma comunicação direta com o servidor
+/*
 import { getCookie } from "cookies-next"
 import { redirect } from "next/navigation"
 
@@ -22,3 +23,4 @@ export const fetchServer = async ( // Aqui eu faço a configuração global do h
 
     return response
 }
+*/

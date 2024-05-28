@@ -1,3 +1,4 @@
+/*
 import { fetchServer } from "../app/libs/fetchServer";
 
 export default async function ServerTeste() {
@@ -15,3 +16,4 @@ export default async function ServerTeste() {
 
     return <pre>{JSON.stringify(sistemas, null, 2)}</pre>
 }
+*/
