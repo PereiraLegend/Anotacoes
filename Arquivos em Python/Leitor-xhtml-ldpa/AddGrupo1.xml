@@ -1,0 +1,8 @@
+<add class-name="Grupo">
+  <add-attr attr-name="Identificador">
+	<value type="string">Grupo1</value>
+  </add-attr>
+  <add-attr attr-name="Descricao">
+	<value type="string">Grupo de Testes 1</value>
+  </add-attr>
+</add>

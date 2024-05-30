@@ -1,0 +1,15 @@
+<add class-name="Usuario">
+  <add-attr attr-name="Nome Completo">
+	<value type="string">Usuario de Teste1</value>
+  </add-attr>
+  <add-attr attr-name="Login">
+	<value type="string">Teste1</value>
+  </add-attr>
+  <add-attr attr-name="Telefone">
+	<value type="string">(11) 98765-4321</value>
+  </add-attr>
+  <add-attr attr-name="Grupo">
+	<value type="string">Grupo1</value>
+	<value type="string">Grupo2</value>
+  </add-attr>
+</add>
