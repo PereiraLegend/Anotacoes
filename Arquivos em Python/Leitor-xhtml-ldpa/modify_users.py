@@ -1,33 +1,45 @@
-import os
+import re
 from ldap_config import connect_to_ldap
-from xml_processor import parse_xml, get_elements_by_xpath
+from xml_processor import parse_xml, get_modification_data
+from ldap3 import MODIFY_ADD, MODIFY_DELETE
 
-def modify_user(conn, dn, add_values=[], remove_values=[]):
-    conn.modify(dn, {'member': [(ldap3.MODIFY_ADD, value) for value in add_values],
-                     'member': [(ldap3.MODIFY_DELETE, value) for value in remove_values]})
+def modify_user_group_associations(conn, user_dn, add_groups, remove_groups):
+    for group in remove_groups:
+        group_dn = f"cn={group},ou=groups,dc=example,dc=com"
+        conn.modify(group_dn, {'uniqueMember': [(MODIFY_DELETE, [user_dn])]})
+        if conn.result['description'] == 'success':
+            print(f"Usuário {user_dn} removido do grupo {group_dn} com sucesso!")
+        else:
+            print(f"Erro ao remover usuário {user_dn} do grupo {group_dn}: {conn.result}")
+
+    for group in add_groups:
+        group_dn = f"cn={group},ou=groups,dc=example,dc=com"
+        conn.modify(group_dn, {'uniqueMember': [(MODIFY_ADD, [user_dn])]})
+        if conn.result['description'] == 'success':
+            print(f"Usuário {user_dn} adicionado ao grupo {group_dn} com sucesso!")
+        elif conn.result['description'] == 'attributeOrValueExists':
+            print(f"Usuário {user_dn} já é membro do grupo {group_dn}.")
+        else:
+            print(f"Erro ao adicionar usuário {user_dn} ao grupo {group_dn}: {conn.result}")
 
 def main():
+    conn = None
     try:
-        print("Conectando ao servidor LDAP...")
         conn = connect_to_ldap()
-        print("Conexão LDAP estabelecida com sucesso.")
+        modification_tree = parse_xml('./models/ModifyUsuario.xml')
+        modification_data = get_modification_data(modification_tree)
         
-        tree = parse_xml('ModifyUsuario.xml')
-        modifications = get_elements_by_xpath(tree, './/modify[@class-name="Usuario"]')
+        login = modification_data.get("Login")
+        add_groups = modification_data.get("AddGroups", [])
+        remove_groups = modification_data.get("RemoveGroups", [])
 
-        for mod in modifications:
-            user_cn = mod.find('association').text
-            add_values = [value.text for value in mod.findall('modify-attr[@attr-name="Grupo"]/add-value/value')]
-            remove_values = [value.text for value in mod.findall('modify-attr[@attr-name="Grupo"]/remove-value/value')]
+        user_dn = f"cn={login},ou=users,dc=example,dc=com"
 
-            dn = f"cn={user_cn},ou=users,dc=example,dc=com"
+        modify_user_group_associations(conn, user_dn, add_groups, remove_groups)
 
-            modify_user(conn, dn, add_values=add_values, remove_values=remove_values)
-
-        print("Operações concluídas com sucesso!")
+        print("Modificações processadas com sucesso!")
     except Exception as e:
         print("Ocorreu um erro durante a execução do script:", e)
-
     finally:
         if conn:
             conn.unbind()

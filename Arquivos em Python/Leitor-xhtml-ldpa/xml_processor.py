@@ -1,32 +1,3 @@
-# # xml_processor.py
-# from lxml import etree
-
-# def parse_xml(file_path):
-#     tree = etree.parse(file_path)
-#     return tree
-
-# def get_elements_by_xpath(tree, xpath):
-#     return tree.xpath(xpath)
-
-
-# import xml.etree.ElementTree as ET
-
-# def parse_xml(file_path):
-#     tree = ET.parse(file_path)
-#     return tree
-
-# def get_elements_by_xpath(tree, xpath):
-#     elements = tree.findall('.//add[@class-name="Grupo"]')
-#     return elements
-
-# import xml.etree.ElementTree as ET
-
-# def parse_xml(file_path):
-#     tree = ET.parse(file_path)
-#     return tree
-
-# def get_elements_by_xpath(tree, xpath):
-#     return tree.findall(xpath)
 import xml.etree.ElementTree as ET
 
 def parse_xml(file_path):
@@ -62,3 +33,22 @@ def get_group_data(tree):
             group_data[attr_name] = values
     print(f"Dados extraídos do XML: {group_data}")
     return group_data
+
+def get_modification_data(tree):
+    root = tree.getroot()
+    modification_data = {
+        "Login": root.find('association').text,
+        "AddGroups": [],
+        "RemoveGroups": []
+    }
+
+    for modify_attr in root.findall('modify-attr'):
+        attr_name = modify_attr.get('attr-name')
+        if attr_name == "Grupo":
+            for add_value in modify_attr.findall('add-value'):
+                modification_data["AddGroups"].append(add_value.find('value').text)
+            for remove_value in modify_attr.findall('remove-value'):
+                modification_data["RemoveGroups"].append(remove_value.find('value').text)
+
+    print(f"Dados de modificação extraídos do XML: {modification_data}")
+    return modification_data

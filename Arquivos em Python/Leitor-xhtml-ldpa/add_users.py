@@ -1,54 +1,36 @@
 import re
-
 import ldap3
 from ldap3 import MODIFY_ADD
 from ldap_config import connect_to_ldap, create_users_container
 from xml_processor import parse_xml, get_user_data
 
-# def validate_user_data(name, login, phone):
-#     name_pattern = re.compile(r"^[a-zA-Z\s]+$")
-#     phone_pattern = re.compile(r"^\d+$")
-
-#     if not name_pattern.match(name):
-#         raise ValueError("Nome inválido")
-#     phone_digits = re.sub(r'\D', '', phone)
-#     if not phone_pattern.match(phone_digits):
-#         raise ValueError("Telefone inválido")
-
 def create_user(conn, dn, attributes):
     conn.add(dn, attributes=attributes)
 
 def main():
-    conn = None  # Inicializa a variável conn fora do bloco try-except
+    conn = None
     try:
         conn = connect_to_ldap()
         
-        # Criar contêiner de usuários se ainda não existir
         create_users_container(conn)
         
-        tree = parse_xml('AddUsuario2.xml')
-        user_data = get_user_data(tree)
+        user_tree = parse_xml('./models/AddUsuario1.xml')
+        user_data = get_user_data(user_tree)
 
-        name = user_data.get("Nome Completo")
-        login = user_data.get("Login")
-        phone = user_data.get("Telefone")
+        user_nome = user_data.get("Nome Completo")
+        user_login = user_data.get("Login")
+        user_telefone = user_data.get("Telefone")
         groups = user_data.get("Grupo")
         
         if isinstance(groups, str):
             groups = [groups]
 
-        # try:
-        #     validate_user_data(name, login, phone)
-        # except ValueError as e:
-        #     print(e)
-        #     return
-
-        dn = f"cn={login},ou=users,dc=example,dc=com"
+        dn = f"cn={user_login},ou=users,dc=example,dc=com"
         attributes = {
             'objectClass': ['inetOrgPerson'],
-            'cn': login,
-            'sn': name,
-            'telephoneNumber': re.sub(r'\D', '', phone),  # Remove non-numeric characters from phone
+            'cn': user_login,
+            'sn': user_nome,
+            'telephoneNumber': re.sub(r'\D', '', user_telefone),
             #'groups': groups
         }
 
