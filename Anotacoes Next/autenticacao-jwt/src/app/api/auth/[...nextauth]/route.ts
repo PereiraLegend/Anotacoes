@@ -40,8 +40,8 @@ const handler = NextAuth({
                     cookies().set("jwt", authData.token)
                     return {
                         id: authData.id,
-                        role: authData.regra,
                         name: authData.nome,
+                        role: authData.regra
                     }
                 } catch (e) {
                     return null
@@ -80,12 +80,78 @@ const handler = NextAuth({
             if (user) {
                 token.role = user.role; // Adicionar a regra ao token
             }
+            console.log("JWT Callback - Token:", token);
             return token;
         },
-        async session({ session, token }) {
+        async session({ session, token  }) {
             session.user.role = token.role; // Salvar a regra na sessão
+            console.log("Session Callback - Session:", session);
             return session;
         }
     }
 })
 export { handler as GET, handler as POST }
+
+//////////
+
+export const authOptions = {
+    pages: {
+        signIn: "/login",
+    },
+    providers: [
+        CredentialsProvider({
+            name: 'Credentials',
+            credentials: {
+                nome: { label: "Nome", type: "text", placeholder: "****" },
+                password: { label: "Senha", type: "password", placeholder: "****" }
+            },
+            async authorize(credentials) {
+                if (!credentials) {
+                    return null;
+                }
+
+                try {
+                    const response = await fetch("http://localhost:5001/api/usuario/login", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            nome: credentials.nome,
+                            password: credentials.password,
+                        }),
+                        headers: { "Content-Type": "application/json" },
+                    });
+                    if (response.status !== 200) {
+                        return null;
+                    }
+                    const authData = await response.json();
+                    if (!authData.token || !authData.nome) {
+                        return null;
+                    }
+                    cookies().set("jwt", authData.token);
+                    return {
+                        id: authData.id,
+                        role: authData.regra,
+                        name: authData.nome,
+                    };
+                } catch (e) {
+                    return null;
+                }
+            }
+        })
+    ],
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.role = user.role;
+            }
+            console.log("JWT Callback - Token:", token);
+            return token;
+        },
+        async session({ session, token }) {
+            session.user.role = token.role;
+            console.log("Session Callback - Session:", session);
+            return session;
+        }
+    }
+};
+
+export default NextAuth( authOptions );

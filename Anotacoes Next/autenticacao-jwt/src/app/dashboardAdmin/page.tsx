@@ -1,23 +1,25 @@
+import { redirect } from 'next/navigation'; 
 import { getServerSession } from "next-auth"
-import { redirect } from "next/navigation"
+import CabecalhoAdmin from '@/components/CabecalhoAdmin';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
-export default async function dashboardAdmin() {
-    const session = await getServerSession()
+export default async function DashboardAdmin() {
+    //const response = await fetch("/api/auth/session")
+    //const sessionr = await response.json()
 
-    if(!session) {
+    const session = await getServerSession(authOptions)
+    console.log("Regra: ", session?.user?.role)
+    console.log("RRRRRRRRRR: ", session)
+
+    if(!session || session?.user?.role !== "Admin") {
         redirect("/")
-    }
-    return(
+    } 
+    return (
         <div>
-            <main>
-                <div>
-
-                </div>
-                <div>
-                    
-                </div>
-            </main>
-            Dashboard Admin
+            <CabecalhoAdmin/> 
+            <div>
+            <div className='flex items-center justify-center text-xl pt-5 font-bold'>Olá, seja bem vindo(a) {session?.user?.name}!</div>
+            </div>
         </div>
     )
 }
