@@ -4,11 +4,12 @@ import TesteSistemas from "@/components/TesteSistemas"
 // import ServerTeste from "@/components/ServerTeste"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
+import { authOptions } from "../api/auth/[...nextauth]/route"
 
 export default async function dashboard() {
-    const session = await getServerSession()
+    const session = await getServerSession(authOptions)
 
-    if(!session) {
+    if(!session || session?.user?.role !== "Usuario") {
         redirect("/")
     }
     //console.log('Verificando:', session.user?.name)
