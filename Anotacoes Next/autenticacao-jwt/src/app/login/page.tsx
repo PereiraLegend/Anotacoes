@@ -33,7 +33,7 @@ export default function LoginForm() {
             console.log("teste-O->:", session?.user?.role)
 
             if(session?.user?.role === "Admin") {
-                router.push("/dashboardAdmin")
+                router.push("/admin/dashboard")
             } else {
                 router.push("/dashboard")
             }

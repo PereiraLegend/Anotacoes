@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'; 
 import { getServerSession } from "next-auth"
 import CabecalhoAdmin from '@/components/CabecalhoAdmin';
-import { authOptions } from '../api/auth/[...nextauth]/route';
+import { authOptions } from '../../api/auth/[...nextauth]/route';
 
 export default async function DashboardAdmin() {
     //const response = await fetch("/api/auth/session")
@@ -12,7 +12,7 @@ export default async function DashboardAdmin() {
     console.log("RRRRRRRRRR: ", session)
 
     if(!session || session?.user?.role !== "Admin") {
-        redirect("/")
+        redirect("/login")
     } 
     return (
         <div>
