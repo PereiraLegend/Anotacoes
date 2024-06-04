@@ -5,11 +5,9 @@ import { FaArrowDown, FaTrash } from 'react-icons/fa';
 import { MdEditSquare, MdGroups } from 'react-icons/md';
 import { TbPlayerTrackNextFilled, TbPlayerTrackPrevFilled } from 'react-icons/tb';
 import { IoIosAdd } from 'react-icons/io';
-import { GiOfficeChair } from 'react-icons/gi';
 import axios from 'axios';
-//import { cookies } from 'next/headers';
 
-const SistemasAdmin = () => {
+const UsuariosAdmin = () => {
     const [dados, setDados] = useState([]);
     const [filtro, setFiltro] = useState('');
     const [dadosFiltrados, setDadosFiltrados] = useState([]);
@@ -17,17 +15,19 @@ const SistemasAdmin = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
     const [nome, setNome] = useState('');
-    const [departamento, setDepartamento] = useState('');
+    const [password, setPassword] = useState('');
+    const [regra, setRegra] = useState('');
     const [atualPage, setAtualPage] = useState(1);
     const [isEditOpen, setIsEditOpen] = useState(false);
-    const [sistemaId, setSistemaId] = useState(null);
+    const [usuarioId, setUsuarioId] = useState(null);
     const [editNome, setEditNome] = useState('');
-    const [editDepartamento, setEditDepartamento] = useState('');
+    const [editPassword, setEditPassword] = useState('');
+    const [editRegra, setEditRegra] = useState('');
 
     const token = document.cookie.split('; ').find(row => row.startsWith('jwt=')).split('=')[1];
 
     useEffect(() => {
-        axios.get('http://localhost:5001/api/sistema', {
+        axios.get('http://localhost:5001/api/usuario/all', {
             headers: {
                 "authorization": `${token}`
             }
@@ -35,7 +35,7 @@ const SistemasAdmin = () => {
             .then(response => {
                 setDados(response.data);
                 setDadosFiltrados(response.data);
-                console.log("Deu certo")
+                console.log("Dados carregados com sucesso");
             })
             .catch(error => {
                 console.error('Erro ao buscar dados da API:', error);
@@ -43,27 +43,28 @@ const SistemasAdmin = () => {
             });
     }, []);
 
-    const btnAlterar = (sistema) => {
-        setSistemaId(sistema._id)
-        setEditNome(sistema.nome);
-        setEditDepartamento(sistema.descricao);
+    const btnAlterar = (usuario) => {
+        setUsuarioId(usuario._id);
+        setEditNome(usuario.nome);
+        setEditPassword(usuario.password);
+        setEditRegra(usuario.regra);
         setIsEditOpen(true);
     };
 
     const btnDeletar = (id) => {
-        axios.delete(`http://localhost:5001/api/sistema/${id}`, {
+        axios.delete(`http://localhost:5001/api/usuario/${id}`, {
             headers: {
                 "authorization": `${token}`
             }
         })
             .then(response => {
                 setDadosFiltrados(prevData => prevData.filter(item => item._id !== id));
-                alert(`Item com ID ${id} deletado com sucesso!`);
-                setItemToDelete(null)
+                alert(`Usuário com ID ${id} deletado com sucesso!`);
+                setItemToDelete(null);
             })
             .catch(error => {
-                console.error(`Erro ao deletar item com ID ${id}:`, error);
-                alert(`Erro ao deletar item com ID ${id}: ` + error.message);
+                console.error(`Erro ao deletar usuário com ID ${id}:`, error);
+                alert(`Erro ao deletar usuário com ID ${id}: ` + error.message);
             });
     };
 
@@ -76,7 +77,7 @@ const SistemasAdmin = () => {
         setFiltro(valorFiltro);
         const dadosFiltrados = dados.filter(item =>
             item.nome.toLowerCase().includes(valorFiltro.toLowerCase()) ||
-            item.descricao.toLowerCase().includes(valorFiltro.toLowerCase())
+            item.regra.toLowerCase().includes(valorFiltro.toLowerCase())
         );
         setDadosFiltrados(dadosFiltrados);
     };
@@ -104,25 +105,27 @@ const SistemasAdmin = () => {
     const EnviarFormulario = async (e) => {
         e.preventDefault();
 
-        const sistemaData = {
+        const usuarioData = {
             nome,
-            descricao: departamento
+            password,
+            regra
         };
 
         try {
-            const response = await axios.post('http://localhost:5001/api/sistema', sistemaData, {
+            const response = await axios.post('http://localhost:5001/api/usuario/register', usuarioData, {
                 headers: {
                     "authorization": `${token}`
                 }
             });
 
-            if (response.status === 201) {
+            if (response.status === 200) {
                 const result = response.data;
                 setDados([...dados, result]);
                 setDadosFiltrados([...dados, result]);
                 setIsOpen(false);
                 setNome('');
-                setDepartamento('');
+                setPassword('');
+                setRegra('');
                 alert('Cadastro realizado com sucesso!');
                 window.location.reload();
             } else {
@@ -137,13 +140,14 @@ const SistemasAdmin = () => {
     const AlterarFormulario = async (e) => {
         e.preventDefault();
 
-        const sistemaData = {
+        const usuarioData = {
             nome: editNome,
-            descricao: editDepartamento
+            password: editPassword,
+            regra: editRegra
         };
 
         try {
-            const response = await axios.put(`http://localhost:5001/api/sistema/${sistemaId}`, sistemaData, {
+            const response = await axios.put(`http://localhost:5001/api/usuario/${usuarioId}`, usuarioData, {
                 headers: {
                     "authorization": `${token}`
                 }
@@ -151,12 +155,14 @@ const SistemasAdmin = () => {
 
             if (response.status === 200) {
                 const result = response.data;
-                setDados(prevData => prevData.map(item => (item._id === sistemaId ? { ...item, ...result } : item)));
-                setDadosFiltrados(prevData => prevData.map(item => (item._id === sistemaId ? { ...item, ...result } : item)));
+                setDados(prevData => prevData.map(item => (item._id === usuarioId ? { ...item, ...result } : item)));
+                setDadosFiltrados(prevData => prevData.map(item => (item._id === usuarioId ? { ...item, ...result } : item)));
                 setIsEditOpen(false);
                 setEditNome('');
-                setEditDepartamento('');
+                setEditPassword('');
+                setEditRegra('');
                 alert('Alteração realizada com sucesso!');
+                window.location.reload();
             } else {
                 alert('Erro ao alterar. Por favor, tente novamente.');
             }
@@ -194,7 +200,7 @@ const SistemasAdmin = () => {
                     <div className="flex">
                         <input
                             type="text"
-                            placeholder="Buscar Sistema..."
+                            placeholder="Buscar Usuário..."
                             className="border pl-2 pr-2 rounded mr-2"
                             value={filtro}
                             onChange={handleFiltroChange}
@@ -202,12 +208,12 @@ const SistemasAdmin = () => {
                         <button className="bg-[#4F46E5] text-white p-4 rounded mr-2" title="Ordenar por Nome" onClick={() => funcOrdenacao('nome')}>
                             <FaArrowDown />
                         </button>
-                        <button className="bg-[#4F46E5] text-white p-4 rounded" title="Ordenar por Departamento" onClick={() => funcOrdenacao('descricao')}>
+                        <button className="bg-[#4F46E5] text-white p-4 rounded" title="Ordenar por Regra" onClick={() => funcOrdenacao('regra')}>
                             <MdGroups />
                         </button>
                     </div>
                     <div className="flex bg-[#4F46E5] text-white p-0 rounded items-center justify-center pr-2 pl-1 cursor-pointer"
-                        title='Cadastrar Sistema'
+                        title='Cadastrar Usuário'
                         onClick={() => setIsOpen(true)}>
                         <div>
                             <IoIosAdd />
@@ -223,23 +229,23 @@ const SistemasAdmin = () => {
                             <tr>
                                 <th className="py-2 px-4 border-b">#</th>
                                 <th className="py-2 px-4 border-b cursor-pointer" onClick={() => funcOrdenacao('nome')}>Nome</th>
-                                <th className="py-2 px-4 border-b cursor-pointer" onClick={() => funcOrdenacao('descricao')}>Descrição</th>
-                                <th className="py-2 px-4 border-b cursor-pointer">Data Criação</th>
+                                <th className="py-2 px-4 border-b cursor-pointer" onClick={() => funcOrdenacao('regra')}>Regra</th>
+                                <th className="py-2 px-4 border-b">Data Criação</th>
                                 <th className="py-2 px-4 border-b">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {getPaginatedData().map((sistema, index) => (
-                                <tr key={sistema._id}>
+                            {getPaginatedData().map((usuario, index) => (
+                                <tr key={usuario._id}>
                                     <td className="py-2 px-4 border-b">{numeroLinha(index)}</td>
-                                    <td className="py-2 px-4 border-b">{sistema.nome}</td>
-                                    <td className="py-2 px-4 border-b">{sistema.descricao}</td>
-                                    <td className="py-2 px-4 border-b">{new Date(sistema.createdAt).toLocaleDateString()}</td>
+                                    <td className="py-2 px-4 border-b">{usuario.nome}</td>
+                                    <td className="py-2 px-4 border-b">{usuario.regra}</td>
+                                    <td className="py-2 px-4 border-b">{new Date(usuario.createdAt).toLocaleDateString()}</td>
                                     <td className="py-2 px-4 border-b">
-                                        <button className="bg-blue-500 text-white p-2 rounded mr-2" title="Editar" onClick={() => btnAlterar(sistema)}>
+                                        <button className="bg-blue-500 text-white p-2 rounded mr-2" title="Editar" onClick={() => btnAlterar(usuario)}>
                                             <MdEditSquare />
                                         </button>
-                                        <button className="bg-red-500 text-white p-2 rounded" title="Deletar" onClick={() => btnDelete(sistema._id)}>
+                                        <button className="bg-red-500 text-white p-2 rounded" title="Deletar" onClick={() => btnDelete(usuario._id)}>
                                             <FaTrash />
                                         </button>
                                     </td>
@@ -272,7 +278,7 @@ const SistemasAdmin = () => {
             {isOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white p-8 rounded shadow-md">
-                        <h2 className="text-xl mb-4">Cadastrar Sistema</h2>
+                        <h2 className="text-xl mb-4">Cadastrar Usuário</h2>
                         <form onSubmit={EnviarFormulario}>
                             <div className="mb-4">
                                 <label htmlFor="nome" className="block font-bold mb-2">Nome</label>
@@ -285,14 +291,27 @@ const SistemasAdmin = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="descricao" className="block font-bold mb-2">Descrição</label>
+                                <label htmlFor="password" className="block font-bold mb-2">Senha</label>
                                 <input
-                                    id="descricao"
-                                    type="text"
+                                    id="password"
+                                    type="password"
                                     className="border p-2 rounded w-full"
-                                    value={departamento}
-                                    onChange={e => setDepartamento(e.target.value)}
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
                                 />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="regra" className="block font-bold mb-2">Regra</label>
+                                <select
+                                    id="regra"
+                                    className="border p-2 rounded w-full"
+                                    value={regra}
+                                    onChange={e => setRegra(e.target.value)}
+                                >
+                                    <option value="">Selecione uma regra</option>
+                                    <option value="Usuario">Usuario</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
                             </div>
                             <div className="flex justify-between">
                                 <button
@@ -318,7 +337,7 @@ const SistemasAdmin = () => {
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white p-8 rounded shadow-md">
                         <h2 className="text-xl mb-4">Confirmação</h2>
-                        <p>Tem certeza de que deseja excluir este item?</p>
+                        <p>Tem certeza de que deseja excluir este usuário?</p>
                         <div className="flex justify-between mt-4">
                             <button
                                 className="bg-gray-500 text-white p-2 rounded"
@@ -340,7 +359,7 @@ const SistemasAdmin = () => {
             {isEditOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white p-8 rounded shadow-md">
-                        <h2 className="text-xl mb-4">Editar Sistema</h2>
+                        <h2 className="text-xl mb-4">Editar Usuário</h2>
                         <form onSubmit={AlterarFormulario}>
                             <div className="mb-4">
                                 <label htmlFor="nome" className="block font-bold mb-2">Nome</label>
@@ -353,14 +372,27 @@ const SistemasAdmin = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="descricao" className="block font-bold mb-2">Descrição</label>
+                                <label htmlFor="password" className="block font-bold mb-2">Senha</label>
                                 <input
-                                    id="descricao"
-                                    type="text"
+                                    id="password"
+                                    type="password"
                                     className="border p-2 rounded w-full"
-                                    value={editDepartamento}
-                                    onChange={e => setEditDepartamento(e.target.value)}
+                                    value={editPassword}
+                                    onChange={e => setEditPassword(e.target.value)}
                                 />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="regra" className="block font-bold mb-2">Regra</label>
+                                <select
+                                    id="regra"
+                                    className="border p-2 rounded w-full"
+                                    value={editRegra}
+                                    onChange={e => setEditRegra(e.target.value)}
+                                >
+                                    <option value="">Selecione uma regra</option>
+                                    <option value="Usuario">Usuario</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
                             </div>
                             <div className="flex justify-between">
                                 <button
@@ -385,4 +417,4 @@ const SistemasAdmin = () => {
     );
 };
 
-export default SistemasAdmin;
+export default UsuariosAdmin;
