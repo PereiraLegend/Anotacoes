@@ -276,7 +276,7 @@ const UsuariosAdmin = () => {
                                     <td className="py-2 px-4 border-b">{usuario.nome}</td>
                                     <td className="py-2 px-4 border-b">{usuario.email}</td>
                                     <td className="py-2 px-4 border-b">{usuario.regra}</td>
-                                    <td className="py-2 px-4 border-b">{usuario.tags}</td>
+                                    <td className="py-2 px-4 border-b">{usuario.tags.join(', ')}</td>
                                     <td className="py-2 px-4 border-b">{new Date(usuario.createdAt).toLocaleDateString()}</td>
                                     <td className="py-2 px-4 border-b">
                                         <button className="bg-blue-500 text-white p-2 rounded mr-2" title="Editar" onClick={() => btnAlterar(usuario)}>
@@ -364,10 +364,10 @@ const UsuariosAdmin = () => {
                             <div className="mb-4">
                                 <label htmlFor="tags" className="block font-bold mb-2">Tags</label>
                                 <Select
-                                    options={tags.map((tag) => ({ value: tag.nome, label: tag.nome }))}
-                                    value={selectedTags.map(tag => ({ value: tag.label, label: tag.label }))}
-                                    onChange={handleTagChange}
-                                    isMulti
+                                options={tags.map((tag) => ({ value: tag.nome, label: tag.nome }))}
+                                value={selectedTags}
+                                onChange={handleTagChange}
+                                isMulti
                                 />
                             </div>
                             <div className="flex justify-between">
