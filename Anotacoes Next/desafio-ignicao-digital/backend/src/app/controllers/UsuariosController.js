@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken")
 
 const UsuariosController = {
     register: async (req,res) => {
-        const {nome, email, password, regra} = req.body;
+        const {nome, email, password, regra, tags} = req.body;
         try {
             let usuario = await UsuariosModel.findOne({ email })
             if (usuario) {
@@ -16,6 +16,7 @@ const UsuariosController = {
                 email,
                 password,
                 regra,
+                tags,
             })
 
             const salt = await bcrypt.genSalt(10)
@@ -103,6 +104,7 @@ const UsuariosController = {
             const usuario = {
                 nome: req.body.nome,
                 regra: req.body.regra,
+                tags: req.body.tags,
             }
 
             const updateUsuario = await UsuariosModel.findByIdAndUpdate(id, usuario)

@@ -6,6 +6,7 @@ import { MdEditSquare, MdGroups } from 'react-icons/md';
 import { TbPlayerTrackNextFilled, TbPlayerTrackPrevFilled } from 'react-icons/tb';
 import { IoIosAdd } from 'react-icons/io';
 import axios from 'axios';
+import Select from "react-select";
 
 const UsuariosAdmin = () => {
     const [dados, setDados] = useState([]);
@@ -24,6 +25,9 @@ const UsuariosAdmin = () => {
     const [editNome, setEditNome] = useState('');
     const [editPassword, setEditPassword] = useState('');
     const [editRegra, setEditRegra] = useState('');
+
+    const [tags, setTags] = useState([]); // Armazena as tags do banco de dados
+    const [selectedTags, setSelectedTags] = useState([]); // Armazena as tags selecionadas
 
     const token = document.cookie.split('; ').find(row => row.startsWith('jwt=')).split('=')[1];
 
@@ -44,11 +48,30 @@ const UsuariosAdmin = () => {
             });
     }, []);
 
+    useEffect(() => {
+        axios.get("http://localhost:5001/api/tag",{
+            headers: {
+                "authorization":`${token}`
+            }
+        })
+          .then((response) => {
+            setTags(response.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }, []);
+
+      const handleTagChange = (selectedTags) => {
+        setSelectedTags(selectedTags);
+      };
+
     const btnAlterar = (usuario) => {
         setUsuarioId(usuario._id);
         setEditNome(usuario.nome);
         setEditPassword(usuario.password);
         setEditRegra(usuario.regra);
+        setSelectedTags(usuario.tags.map(tag => ({ value: tag, label: tag })));
         setIsEditOpen(true);
     };
 
@@ -110,9 +133,10 @@ const UsuariosAdmin = () => {
             nome,
             email,
             password,
-            regra
+            regra,
+            tags: selectedTags.map((tag) => tag.label),
         };
-
+        console.log("Dados enviados: ", usuarioData)
         try {
             const response = await axios.post('http://localhost:5001/api/usuario/register', usuarioData, {
                 headers: {
@@ -129,6 +153,8 @@ const UsuariosAdmin = () => {
                 setEmail('');
                 setPassword('');
                 setRegra('');
+                //setTags([]);
+                setSelectedTags([])
                 alert('Cadastro realizado com sucesso!');
                 window.location.reload();
             } else {
@@ -146,8 +172,10 @@ const UsuariosAdmin = () => {
         const usuarioData = {
             nome: editNome,
             password: editPassword,
-            regra: editRegra
+            regra: editRegra,
+            tags: selectedTags.map((tag) => tag.label),
         };
+        console.log("Dados alterados: ", usuarioData)
 
         try {
             const response = await axios.put(`http://localhost:5001/api/usuario/${usuarioId}`, usuarioData, {
@@ -164,6 +192,8 @@ const UsuariosAdmin = () => {
                 setEditNome('');
                 setEditPassword('');
                 setEditRegra('');
+                //setTags([]);
+                setSelectedTags([])
                 alert('Alteração realizada com sucesso!');
                 window.location.reload();
             } else {
@@ -327,9 +357,18 @@ const UsuariosAdmin = () => {
                                     onChange={e => setRegra(e.target.value)}
                                 >
                                     <option value="">Selecione uma regra</option>
-                                    <option value="Usuario">Usuario</option>
+                                    <option value="Cliente">Cliente</option>
                                     <option value="Admin">Admin</option>
                                 </select>
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="tags" className="block font-bold mb-2">Tags</label>
+                                <Select
+                                    options={tags.map((tag) => ({ value: tag.nome, label: tag.nome }))}
+                                    value={selectedTags.map(tag => ({ value: tag.label, label: tag.label }))}
+                                    onChange={handleTagChange}
+                                    isMulti
+                                />
                             </div>
                             <div className="flex justify-between">
                                 <button
@@ -411,6 +450,15 @@ const UsuariosAdmin = () => {
                                     <option value="Cliente">Cliente</option>
                                     <option value="Admin">Admin</option>
                                 </select>
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="tags" className="block font-bold mb-2">Tags</label>
+                                <Select
+                                options={tags.map((tag) => ({ value: tag.nome, label: tag.nome }))}
+                                value={selectedTags}
+                                onChange={handleTagChange}
+                                isMulti
+                                />
                             </div>
                             <div className="flex justify-between">
                                 <button

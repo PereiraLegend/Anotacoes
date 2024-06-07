@@ -20,7 +20,7 @@ const UsuariosSchema = new Schema({
         enum: ['Admin', 'Cliente']
     },
     tags: [{
-        type: mongoose.Schema.Types.ObjectId, ref : 'Tags'
+        type: Array,
     }]
 }, {timestamps: true})
 
