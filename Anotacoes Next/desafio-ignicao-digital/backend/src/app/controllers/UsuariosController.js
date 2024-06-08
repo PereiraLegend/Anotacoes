@@ -58,13 +58,14 @@ const UsuariosController = {
                 usuario: {
                     id: usuario.id,
                     regra: usuario.regra,
-                    nome: usuario.nome
+                    nome: usuario.nome,
+                    tags: usuario.tags
                 }
             }
 
             jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 360000 }, (error, token) => {
                 if (error) throw error
-                res.json({ token, email, regra: usuario.regra, nome: usuario.nome })
+                res.json({ token, email, regra: usuario.regra, nome: usuario.nome, tags: usuario.tags })
             })
         } catch (error) {
             console.error(error.message)
@@ -85,6 +86,28 @@ const UsuariosController = {
             res.status(200).json(usuarios)
         } catch (error) {
             console.log(`Deu erro em: ${error}`)
+        }
+    },
+
+    getMe: async (req, res) => {
+        try {
+            const token = req.header("Authorization").replace("Bearer ", "");
+            if (!token) {
+                return res.status(401).json({ msg: 'Token JWT não fornecido' });
+            }
+    
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            if (!decoded || !decoded.usuario || !decoded.usuario.id) {
+                return res.status(401).json({ msg: 'Token JWT inválido ou não contém informações do usuário' });
+            }
+    
+            const userId = decoded.usuario.id;
+            const tagsId = decoded.usuario.tags;
+    
+            res.status(200).json({ id: userId, tags: tagsId });
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).send("Erro no Servidor");
         }
     },
 

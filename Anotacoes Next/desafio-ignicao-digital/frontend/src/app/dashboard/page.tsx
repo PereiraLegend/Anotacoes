@@ -1,8 +1,9 @@
-import CabecalhoUser from "@/components/CabeclhoUser"
+import CabecalhoCliente from "@/components/CabecalhoCliente"
 //import TesteSistemas from "@/components/TesteSistemas"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
 import { authOptions } from "../api/auth/[...nextauth]/route"
+import UsuariosCliente from "@/components/UsuariosCliente"
 
 export default async function dashboard() {
     const session = await getServerSession(authOptions)
@@ -13,12 +14,11 @@ export default async function dashboard() {
     //console.log('Verificando:', session.user?.name)
     return (
         <div>
-            <CabecalhoUser />
-            <div>Olá, {session?.user?.name}</div>
-            <div>Dashboard User</div>
-            {/* <div><LogoutButton/></div> */}
-            {/* <div><TesteSistemas /></div> */}
-            {/* <div><ServerTeste/></div> */}
+            <CabecalhoCliente />
+            <div className='flex items-center justify-center text-xl pt-5 font-bold'>
+                    Olá, seja bem vindo(a) {session?.user?.name}!
+                </div>
+            <UsuariosCliente/>
         </div>
     )
 }
