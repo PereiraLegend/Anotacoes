@@ -1,4 +1,4 @@
-'use client'; // Adicione essa linha no topo do arquivo
+'use client'
 
 import React, { useState, useEffect } from 'react';
 import { FaArrowDown, FaTrash } from 'react-icons/fa';
@@ -26,13 +26,13 @@ const UsuariosAdmin = () => {
     const [editPassword, setEditPassword] = useState('');
     const [editRegra, setEditRegra] = useState('');
 
-    const [tags, setTags] = useState([]); // Armazena as tags do banco de dados
-    const [selectedTags, setSelectedTags] = useState([]); // Armazena as tags selecionadas
+    const [tags, setTags] = useState([]);
+    const [selectedTags, setSelectedTags] = useState([]);
 
     const token = document.cookie.split('; ').find(row => row.startsWith('jwt=')).split('=')[1];
 
     useEffect(() => {
-        axios.get('http://localhost:5001/api/usuario/all', {
+        axios.get(`http://localhost:5001/api/usuario/all`, {
             headers: {
                 "authorization": `${token}`
             }
@@ -49,22 +49,22 @@ const UsuariosAdmin = () => {
     }, []);
 
     useEffect(() => {
-        axios.get("http://localhost:5001/api/tag",{
+        axios.get("http://localhost:5001/api/tag", {
             headers: {
-                "authorization":`${token}`
+                "authorization": `${token}`
             }
         })
-          .then((response) => {
-            setTags(response.data);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }, []);
+            .then((response) => {
+                setTags(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
 
-      const handleTagChange = (selectedTags) => {
+    const handleTagChange = (selectedTags) => {
         setSelectedTags(selectedTags);
-      };
+    };
 
     const btnAlterar = (usuario) => {
         setUsuarioId(usuario._id);
@@ -101,7 +101,8 @@ const UsuariosAdmin = () => {
         setFiltro(valorFiltro);
         const dadosFiltrados = dados.filter(item =>
             item.nome.toLowerCase().includes(valorFiltro.toLowerCase()) ||
-            item.regra.toLowerCase().includes(valorFiltro.toLowerCase())
+            item.regra.toLowerCase().includes(valorFiltro.toLowerCase()) ||
+            item.email.toLowerCase().includes(valorFiltro.toLowerCase())
         );
         setDadosFiltrados(dadosFiltrados);
     };
@@ -157,12 +158,22 @@ const UsuariosAdmin = () => {
                 setSelectedTags([])
                 alert('Cadastro realizado com sucesso!');
                 window.location.reload();
-            } else {
+            }
+            else if (response.status === 400) {
+                alert('Erro ao cadastrar. Email de usuário já existente')
+                return
+            }
+            else {
                 alert('Erro ao cadastrar. Por favor, tente novamente.');
+                return
             }
         } catch (error) {
             console.error('Erro:', error);
-            alert('Erro ao cadastrar. Por favor, tente novamente.');
+            if (error.response && error.response.data && error.response.data.msg) {
+                alert(`Erro ao cadastrar: ${error.response.data.msg}`);
+            } else {
+                alert('Erro ao cadastrar. Por favor, tente novamente.');
+            }
         }
     };
 
@@ -285,7 +296,7 @@ const UsuariosAdmin = () => {
                                         <button className="bg-red-500 text-white p-2 rounded" title="Deletar" onClick={() => btnDelete(usuario._id)}>
                                             <FaTrash />
                                         </button>
-                                        
+
                                     </td>
                                 </tr>
                             ))}
@@ -326,6 +337,7 @@ const UsuariosAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={nome}
                                     onChange={e => setNome(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -336,6 +348,7 @@ const UsuariosAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={email}
                                     onChange={e => setEmail(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -346,6 +359,7 @@ const UsuariosAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={password}
                                     onChange={e => setPassword(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -355,6 +369,7 @@ const UsuariosAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={regra}
                                     onChange={e => setRegra(e.target.value)}
+                                    required
                                 >
                                     <option value="">Selecione uma regra</option>
                                     <option value="Cliente">Cliente</option>
@@ -364,10 +379,10 @@ const UsuariosAdmin = () => {
                             <div className="mb-4">
                                 <label htmlFor="tags" className="block font-bold mb-2">Tags</label>
                                 <Select
-                                options={tags.map((tag) => ({ value: tag.nome, label: tag.nome }))}
-                                value={selectedTags}
-                                onChange={handleTagChange}
-                                isMulti
+                                    options={tags.map((tag) => ({ value: tag.nome, label: tag.nome }))}
+                                    value={selectedTags}
+                                    onChange={handleTagChange}
+                                    isMulti
                                 />
                             </div>
                             <div className="flex justify-between">
@@ -426,6 +441,7 @@ const UsuariosAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={editNome}
                                     onChange={e => setEditNome(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -436,6 +452,7 @@ const UsuariosAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={editPassword}
                                     onChange={e => setEditPassword(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -445,6 +462,7 @@ const UsuariosAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={editRegra}
                                     onChange={e => setEditRegra(e.target.value)}
+                                    required
                                 >
                                     <option value="">Selecione uma regra</option>
                                     <option value="Cliente">Cliente</option>
@@ -454,10 +472,10 @@ const UsuariosAdmin = () => {
                             <div className="mb-4">
                                 <label htmlFor="tags" className="block font-bold mb-2">Tags</label>
                                 <Select
-                                options={tags.map((tag) => ({ value: tag.nome, label: tag.nome }))}
-                                value={selectedTags}
-                                onChange={handleTagChange}
-                                isMulti
+                                    options={tags.map((tag) => ({ value: tag.nome, label: tag.nome }))}
+                                    value={selectedTags}
+                                    onChange={handleTagChange}
+                                    isMulti
                                 />
                             </div>
                             <div className="flex justify-between">

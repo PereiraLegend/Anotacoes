@@ -1,5 +1,4 @@
-"use client"//Adiciono essa parte aqui pois quero que essa parte seja rodada no lado do cliente
-import { FormEvent } from "react"
+"use client"
 import { signIn } from "next-auth/react"
 import { useRouter, useSearchParams } from "next/navigation"
 
@@ -8,7 +7,7 @@ export default function LoginForm() {
     const error = searchParams.get('error')
     const router = useRouter()
 
-    async function login (e: FormEvent<HTMLFormElement>){
+    async function login(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
         console.log(formData.get("email"))
@@ -27,10 +26,10 @@ export default function LoginForm() {
         if (result?.ok) {
             const response = await fetch("/api/auth/session")
             const session = await response.json()
-            
+
             console.log("teste-O->:", session?.user?.role)
 
-            if(session?.user?.role === "Admin") {
+            if (session?.user?.role === "Admin") {
                 router.push("/admin/dashboard")
             } else {
                 router.push("/dashboard")
@@ -44,7 +43,7 @@ export default function LoginForm() {
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
                 <div>
-                    <h1 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login</h1>
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login</h2>
                 </div>
                 <form className="mt-8 space-y-6" action="#" method="POST" onSubmit={login}>
                     <input type="hidden" name="remember" defaultValue="true" />
@@ -79,9 +78,9 @@ export default function LoginForm() {
                             Logar
                         </button>
                     </div>
-                        {error === "CredentialsSignin" && (
-                            <div className="text-red-500">Erro no Login</div>
-                        )}                   
+                    {error === "CredentialsSignin" && (
+                        <div className="text-red-500">Erro no Login</div>
+                    )}
                 </form>
             </div>
         </div>

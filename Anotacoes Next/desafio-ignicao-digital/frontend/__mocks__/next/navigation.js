@@ -1,12 +1,9 @@
-// __mocks__/next/navigation.js
-const useRouter = () => ({
-    push: jest.fn(),
-    prefetch: jest.fn().mockResolvedValue(undefined),
-  });
-  
-  const useSearchParams = jest.fn(() => ({
-    get: jest.fn().mockReturnValue(null),
-  }));
-  
-  export { useRouter, useSearchParams };
-  
+const useRouter = jest.fn();
+const useSearchParams = jest.fn().mockReturnValue({
+    get: jest.fn(),
+});
+
+module.exports = {
+    useRouter,
+    useSearchParams,
+};

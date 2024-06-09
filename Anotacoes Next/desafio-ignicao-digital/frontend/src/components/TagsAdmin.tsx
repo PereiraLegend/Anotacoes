@@ -1,5 +1,4 @@
-'use client'; // Adicione essa linha no topo do arquivo
-
+'use client'
 import React, { useState, useEffect } from 'react';
 import { FaArrowDown, FaTrash } from 'react-icons/fa';
 import { MdEditSquare, MdGroups } from 'react-icons/md';
@@ -27,7 +26,7 @@ const TagsAdmin = () => {
     const token = document.cookie.split('; ').find(row => row.startsWith('jwt=')).split('=')[1];
 
     useEffect(() => {
-        axios.get('http://localhost:5001/api/tag', {
+        axios.get(`http://localhost:5001/api/tag`, {
             headers: {
                 "authorization": `${token}`
             }
@@ -283,6 +282,7 @@ const TagsAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={nome}
                                     onChange={e => setNome(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -293,6 +293,7 @@ const TagsAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={departamento}
                                     onChange={e => setDepartamento(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="flex justify-between">
@@ -351,6 +352,7 @@ const TagsAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={editNome}
                                     onChange={e => setEditNome(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -361,6 +363,7 @@ const TagsAdmin = () => {
                                     className="border p-2 rounded w-full"
                                     value={editDepartamento}
                                     onChange={e => setEditDepartamento(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="flex justify-between">

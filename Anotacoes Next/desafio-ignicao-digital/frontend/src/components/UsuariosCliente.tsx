@@ -20,7 +20,7 @@ const UsuariosCliente = () => {
                     console.log("Tags carregadas com sucesso");
                 } else {
                     console.error('Tags do usuário não foram encontradas.');
-                    //alert('Tags do usuário não foram encontradas.');
+                    alert('Tags do usuário não foram encontradas.');
                 }
             })
             .catch(error => {

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
-
 export default function CabecalhoAdmin() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const router = useRouter()

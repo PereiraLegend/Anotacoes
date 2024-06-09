@@ -37,7 +37,7 @@ const UsuariosController = {
 
         } catch (error) {
             console.error(error.message)
-            res.status(500).send("Erro no Servidor")
+            res.status(400).send("Erro ao criar usuário")
         }
     },
 
@@ -86,6 +86,7 @@ const UsuariosController = {
             res.status(200).json(usuarios)
         } catch (error) {
             console.log(`Deu erro em: ${error}`)
+            res.status(400).send("Erro ao listar usuário")
         }
     },
 
@@ -107,7 +108,7 @@ const UsuariosController = {
             res.status(200).json({ id: userId, tags: tagsId });
         } catch (error) {
             console.error(error.message);
-            res.status(500).send("Erro no Servidor");
+            res.status(500).send("Erro ao buscar informações");
         }
     },
 
@@ -117,6 +118,7 @@ const UsuariosController = {
             res.status(200).json(usuarios)
         } catch (error) {
             console.log(`Deu erro em: ${error}`)
+            res.status(400).send("Erro ao listar usuários")
         }
     },
 
@@ -139,7 +141,8 @@ const UsuariosController = {
 
             res.status(200).json({ updateUsuario, msg: "Usuario atualizado com sucesso!" })
         } catch (error) {
-            console.log(`Erro ao atualizar usuario`)
+            console.log(`Deu erro em: ${error}`)
+            res.status(400).send("Erro ao atualizar usuário")
         }
     },
 
@@ -156,6 +159,7 @@ const UsuariosController = {
             res.status(200).json({ deleteUsuario, msg: "Usuaro deletado com sucesso!" })
         } catch (error) {
             console.log(`Erro ao deletar dados: ${error}`)
+            res.status(400).send("Erro ao deletar usuário")
         }
     }
 }

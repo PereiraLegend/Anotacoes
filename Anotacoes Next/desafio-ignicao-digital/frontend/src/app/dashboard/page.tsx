@@ -1,5 +1,4 @@
 import CabecalhoCliente from "@/components/CabecalhoCliente"
-//import TesteSistemas from "@/components/TesteSistemas"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
 import { authOptions } from "../api/auth/[...nextauth]/route"
@@ -16,9 +15,9 @@ export default async function dashboard() {
         <div>
             <CabecalhoCliente />
             <div className='flex items-center justify-center text-xl pt-5 font-bold'>
-                    Olá, seja bem vindo(a) {session?.user?.name}!
-                </div>
-            <UsuariosCliente/>
+                Olá, seja bem vindo(a) {session?.user?.name}!
+            </div>
+            <UsuariosCliente />
         </div>
     )
 }

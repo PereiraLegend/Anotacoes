@@ -6,12 +6,14 @@ export default function Main() {
     const btnLogin = () => {
         route.push('/login')
     }
-    return(
+    return (
         <div className="flex justify-center items-center">
-            <main className="flex flex-col justify-center items-center rounded-lg bg-blue-300 w-[400px] mt-4">
-                <div className="text-2xl mb-4 mt-4 font-bold">Login Gerenciador</div>
-                <div className="mb-4">
-                    <div className="mr-4 bg-white p-2 rounded-lg cursor-pointer hover:bg-gray-300" onClick={btnLogin}>Login</div>
+            <main className="flex w-[100%] justify-between bg-[#4F46E5] items-center p-5">
+                <div className="text-white text-3xl font-bol cursor-pointer" >
+                    Gerenciador
+                </div>
+                <div className="flex justify-evenly">
+                    <button className="mr-4 bg-white p-2 rounded-lg cursor-pointer hover:bg-gray-300" onClick={btnLogin} >Login</button>
                 </div>
             </main>
         </div>

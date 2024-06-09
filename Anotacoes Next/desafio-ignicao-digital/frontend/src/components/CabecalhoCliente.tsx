@@ -1,7 +1,6 @@
 "use client"
 import { signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-//import LogoutButton from "@/components/LogoutButton"
 
 export default function CabecalhoUser() {
 

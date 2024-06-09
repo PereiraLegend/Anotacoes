@@ -13,7 +13,8 @@ const TagsController = {
 
             res.status(200).json(tags)
         } catch (error) {
-            console.log(`Deu erro em: ${error}`)
+            console.log(`Deu erro em : ${error}`)
+            res.status(400).send("Erro ao listar tag")
         }
     },
 
@@ -23,11 +24,19 @@ const TagsController = {
             res.status(200).json(tags)
         } catch (error) {
             console.log(`Deu erro em: ${error}`)
+            res.status(400).send("Erro ao listar tags")
         }
     },
 
     create: async (req,res) => {
         try {
+            const { nome, descricao } = req.body;
+            const tag = await TagsModels.findOne({ nome });
+
+            if (tag) {
+                return res.status(400).json({ error: 'Tag já existe' });
+            }
+
             const tags = {
                 nome: req.body.nome, 
                 descricao: req.body.descricao,
@@ -38,6 +47,7 @@ const TagsController = {
             res.status(201).json({ response, msg: "Tag cadastrada com sucesso!" })
         } catch (error) {
             console.log(`Deu erro em: ${error}`)
+            res.status(400).send("Erro ao criar tag")
         }
     },
 
@@ -60,6 +70,7 @@ const TagsController = {
             res.status(200).json({ updateTags, msg: "Tag atualizada com sucesso!" })
         } catch (error) {
             console.log(`Erro ao atualizar a tag: ${error}`)
+            res.status(400).send("Erro ao atualizar tag")
         }
     },
 
@@ -75,6 +86,7 @@ const TagsController = {
             res.status(200).json({ deleteTag, msg: "Tag deletada com sucesso! " })
         } catch (error) {
             console.log(`Deu erro em: ${error}`)
+            res.status(400).send("Erro ao deletar tag")
         }
     }
 }
