@@ -21,14 +21,7 @@ const mock = new MockAdapter(axios);
 describe('UsuariosAdmin Component', () => {
     beforeEach(() => {
         mock.onGet('http://localhost:5001/api/usuario/all').reply(200, [
-            {
-                _id: '1',
-                nome: 'Ana Clara',
-                email: 'ana@gmail.com',
-                regra: 'Admin',
-                tags: ['tag1'],
-                createdAt: new Date().toISOString(),
-            },
+            {  _id: '1', nome: 'Ana Clara', email: 'ana@gmail.com', regra: 'Admin', tags: ['tag1'], createdAt: new Date().toISOString(), },
         ]);
 
         mock.onGet('http://localhost:5001/api/tag').reply(200, [
@@ -109,12 +102,7 @@ describe('UsuariosAdmin Component', () => {
     it('deve abrir e enviar o formulário de adição de usuário', async () => {
         mock.onGet('http://localhost:5001/api/usuario/all').reply(200, []);
         mock.onPost('http://localhost:5001/api/usuario/register').reply(200, {
-            _id: '3',
-            nome: 'Alice Camargo',
-            email: 'alice@gmail.com',
-            regra: 'Cliente',
-            tags: [],
-            createdAt: new Date().toISOString()
+            _id: '3', nome: 'Alice Camargo', email: 'alice@gmail.com', regra: 'Cliente', tags: [], createdAt: new Date().toISOString()
         });
 
         render(<UsuariosAdmin />);
@@ -124,6 +112,29 @@ describe('UsuariosAdmin Component', () => {
         await waitFor(() => {
             expect(screen.getByText('Cadastrar Usuário')).toBeInTheDocument();
         });
+    });
+
+    it('deve abrir e enviar o formulário de edição de usuário', async () => {
+        mock.onGet('http://localhost:5001/api/usuario/all').reply(200, [
+            { _id: '1', nome: 'Ana Clara', email: 'ana@gmail.com', regra: 'Admin', tags: ['tag1'], createdAt: new Date().toISOString() },
+        ]);
+
+        mock.onPut('http://localhost:5001/api/usuario/1').reply(200, {
+            _id: '1', nome: 'Ana Clara Editada', email: 'ana@gmail.com', regra: 'Admin', tags: ['tag1'], createdAt: new Date().toISOString()
+        });
+
+        render(<UsuariosAdmin />);
+
+        await waitFor(() => expect(screen.getByText('Ana Clara')).toBeInTheDocument());
+
+        fireEvent.click(screen.getByTitle('Editar'));
+
+        await waitFor(() => expect(screen.getByText('Editar Usuário')).toBeInTheDocument());
+
+        fireEvent.change(screen.getByLabelText('Nome'), { target: { value: 'Ana Clara Editada' } });
+
+        fireEvent.click(screen.getByText('Editar'));
+
     });
 
     it('deve lidar com a exclusão do usuário', async () => {
