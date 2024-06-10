@@ -45,7 +45,7 @@ const UsuariosAdmin = () => {
                 console.error('Erro ao buscar dados da API:', error);
                 alert('Erro ao buscar dados da API: ' + error.message);
             });
-    }, []);
+    }, [token]);
 
     useEffect(() => {
         axios.get("http://localhost:5001/api/tag", {
@@ -59,7 +59,7 @@ const UsuariosAdmin = () => {
             .catch((error) => {
                 console.error(error);
             });
-    }, []);
+    }, [token]);
 
     const handleTagChange = (selectedTags) => {
         setSelectedTags(selectedTags);

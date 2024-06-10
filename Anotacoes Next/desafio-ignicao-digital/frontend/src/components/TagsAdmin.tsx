@@ -40,7 +40,7 @@ const TagsAdmin = () => {
                 console.error('Erro ao buscar dados da API:', error);
                 alert('Erro ao buscar dados da API: ' + error.message);
             });
-    }, []);
+    }, [token]);
 
     const btnAlterar = (tag) => {
         setTagId(tag._id)

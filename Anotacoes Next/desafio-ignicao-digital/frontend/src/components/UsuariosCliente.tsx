@@ -5,8 +5,9 @@ import axios from 'axios';
 const UsuariosCliente = () => {
     const [tags, setTags] = useState([]);
 
+    const token = document.cookie.split('; ').find(row => row.startsWith('jwt=')).split('=')[1];
+    
     useEffect(() => {
-        const token = document.cookie.split('; ').find(row => row.startsWith('jwt=')).split('=')[1];
         axios.get('http://localhost:5001/api/usuario/me', {
             headers: {
                 "authorization": `${token}`
@@ -27,7 +28,7 @@ const UsuariosCliente = () => {
                 console.error('Erro ao buscar tags do usuário:', error);
                 alert('Erro ao buscar tags do usuário: ' + error.message);
             });
-    }, []);
+    }, [token]);
 
     return (
         <div className='flex flex-col justify-center items-center mt-4 text-xl'>

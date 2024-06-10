@@ -1,0 +1,51 @@
+{
+	"name": "fn-args",
+	"version": "5.0.0",
+	"description": "Get the arguments of a function, arrow function, generator function, async function",
+	"license": "MIT",
+	"repository": "sindresorhus/fn-args",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"test": "xo && ava test.js && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"keywords": [
+		"function",
+		"arguments",
+		"tostring",
+		"extract",
+		"parse",
+		"generator",
+		"async",
+		"arrow"
+	],
+	"devDependencies": {
+		"ava": "^1.4.1",
+		"esm": "^3.2.22",
+		"semver": "^6.0.0",
+		"tsd": "^0.7.2",
+		"xo": "^0.24.0"
+	},
+	"xo": {
+		"ignores": [
+			"test*.js"
+		]
+	},
+	"ava": {
+		"babel": false,
+		"compileEnhancements": false,
+		"require": [
+			"esm"
+		]
+	}
+}
