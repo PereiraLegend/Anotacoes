@@ -1,103 +1,363 @@
-// const request = require('supertest');
-// const app = require('../app'); // Importe o app do arquivo principal
-// const mongoose = require('mongoose');
-// const { Usuarios } = require('../app/models/UsuariosModels');
-// const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const UsuariosController = require("../app/controllers/UsuariosController");
+const { Usuarios } = require("../app/models/UsuariosModels");
 
-// let tokenAdmin, tokenCliente;
+describe("Testes para o Usuarios", () => {
 
-// beforeAll(async () => {
-//   // Conectando ao banco de dados
-//   await mongoose.connect(`${process.env.MONGODB}`, { useNewUrlParser: true, useUnifiedTopology: true });
+    it("deve criar um novo usuário", async () => {
+        const req = {
+            body: {
+                nome: "Teste",
+                email: "teste@gmail.com",
+                password: "123456",
+                regra: "Cliente",
+                tags: ["tag1", "tag2"],
+            },
+        };
 
-//   // Criando usuários para teste
-//   const admin = new Usuarios({
-//     nome: 'Admin User',
-//     email: 'admin@example.com',
-//     password: await bcrypt.hash('password123', 10),
-//     regra: 'Admin'
-//   });
-//   await admin.save();
-//   tokenAdmin = jwt.sign({ usuario: { id: admin._id, regra: admin.regra } }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
 
-//   const cliente = new Usuarios({
-//     nome: 'Cliente User',
-//     email: 'cliente@example.com',
-//     password: await bcrypt.hash('password123', 10),
-//     regra: 'Cliente'
-//   });
-//   await cliente.save();
-//   tokenCliente = jwt.sign({ usuario: { id: cliente._id, regra: cliente.regra } }, process.env.JWT_SECRET, { expiresIn: '1h' });
-// });
+        Usuarios.findOne = jest.fn().mockResolvedValue(null);
 
-// beforeEach(async () => {
-//   // Limpar a coleção de usuários antes de cada teste
-//   await Usuarios.deleteMany({});
-// });
+        Usuarios.prototype.save = jest.fn().mockResolvedValue({
+            _id: "123",
+            nome: "Teste",
+            email: "teste@gmail.com",
+            regra: "Cliente",
+            tags: ["tag1", "tag2"],
+        });
 
-// afterAll(async () => {
-//   if (mongoose.connection.readyState === 1) {
-//     await mongoose.connection.db.dropDatabase();
-//     await mongoose.connection.close();
-//   }
-// });
+        bcrypt.genSalt = jest.fn().mockResolvedValue("salt");
+        bcrypt.hash = jest.fn().mockResolvedValue("hashedPassword");
 
-// describe('User Endpoints', () => {
-//   it('should register a new user', async () => {
-//     const res = await request(app)
-//       .post('/usuario/register')
-//       .send({
-//         nome: 'Test User',
-//         email: 'test@example.com',
-//         password: 'password123',
-//         regra: 'Cliente'
-//       });
-//     expect(res.statusCode).toEqual(201); // Corrigido para 201 - Created
-//     expect(res.body).toHaveProperty('token');
-//   });
+        jwt.sign = jest.fn().mockImplementation((payload, secret, options, callback) => {
+            callback(null, "token");
+        });
 
-//   it('should login an existing user', async () => {
-//     const res = await request(app)
-//       .post('/usuario/login')
-//       .send({
-//         email: 'admin@example.com',
-//         password: 'password123'
-//       });
-//     expect(res.statusCode).toEqual(200);
-//     expect(res.body).toHaveProperty('token');
-//     expect(res.body.email).toEqual('admin@example.com');
-//   });
+        await UsuariosController.register(req, res);
 
-//   it('should get all users for admin', async () => {
-//     const res = await request(app)
-//       .get('/usuario/all')
-//       .set('Authorization', `Bearer ${tokenAdmin}`);
-//     expect(res.statusCode).toEqual(200);
-//     expect(res.body.length).toBeGreaterThan(0);
-//   });
+        expect(res.json).toHaveBeenCalledWith({ token: "token" });
+    });
 
-//   it('should not get all users for client', async () => {
-//     const res = await request(app)
-//       .get('/usuario/all')
-//       .set('Authorization', `Bearer ${tokenCliente}`);
-//     expect(res.statusCode).toEqual(403);
-//   });
+    it("deve retornar status 400 se o usuário já existir", async () => {
+        const req = {
+            body: {
+                email: "teste@gmail.com",
+            },
+        };
 
-//   it('should get a user by ID for admin', async () => {
-//     const adminUser = await Usuarios.findOne({ email: 'admin@example.com' });
-//     const res = await request(app)
-//       .get(`/usuario/${adminUser._id}`)
-//       .set('Authorization', `Bearer ${tokenAdmin}`);
-//     expect(res.statusCode).toEqual(200);
-//     expect(res.body).toHaveProperty('email', 'admin@example.com');
-//   });
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
 
-//   it('should delete a user by ID for admin', async () => {
-//     const clientUser = await Usuarios.findOne({ email: 'cliente@example.com' });
-//     const res = await request(app)
-//       .delete(`/usuario/${clientUser._id}`)
-//       .set('Authorization', `Bearer ${tokenAdmin}`);
-//     expect(res.statusCode).toEqual(200);
-//   });
-// });
+        Usuarios.findOne = jest.fn().mockResolvedValue({});
+
+        await UsuariosController.register(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(400);
+        expect(res.json).toHaveBeenCalledWith({ msg: "Usuário já existe" });
+    });
+
+    it("deve retornar as informações do usuário autenticado com sucesso", async () => {
+        const req = {
+            header: jest.fn().mockReturnValue("Bearer token"),
+        };
+
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
+
+        jwt.verify = jest.fn().mockReturnValue({
+            usuario: {
+                id: "usuarioId",
+                tags: ["tag1", "tag2"],
+            },
+        });
+
+        await UsuariosController.getMe(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith({ id: "usuarioId", tags: ["tag1", "tag2"] });
+    });
+
+    it("deve retornar todos os usuários", async () => {
+        const req = {};
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
+
+        Usuarios.find = jest.fn().mockResolvedValue([
+            {
+                _id: "1",
+                nome: "Usuário 1",
+                email: "usuario1@gmail.com",
+                regra: "Cliente",
+                tags: ["tag1", "tag2"],
+            },
+            {
+                _id: "2",
+                nome: "Usuário 2",
+                email: "usuario2@gmail.com",
+                regra: "Admin",
+                tags: ["tag3", "tag4"],
+            },
+        ]);
+
+        await UsuariosController.getAll(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith([
+            {
+                _id: "1",
+                nome: "Usuário 1",
+                email: "usuario1@gmail.com",
+                regra: "Cliente",
+                tags: ["tag1", "tag2"],
+            },
+            {
+                _id: "2",
+                nome: "Usuário 2",
+                email: "usuario2@gmail.com",
+                regra: "Admin",
+                tags: ["tag3", "tag4"],
+            },
+        ]);
+    });
+
+    it("deve lidar com erro ao buscar usuários", async () => {
+        const req = {};
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            send: jest.fn(),
+        };
+
+        Usuarios.find = jest.fn().mockRejectedValue(new Error("Erro ao buscar usuários"));
+
+        await UsuariosController.getAll(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(400);
+        expect(res.send).toHaveBeenCalledWith("Erro ao listar usuários");
+    });
+
+    it("deve retornar o usuário correspondente ao ID fornecido", async () => {
+        const req = {
+            params: {
+                id: "1",
+            },
+        };
+
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
+
+        Usuarios.findById = jest.fn().mockResolvedValue({
+            _id: "1",
+            email: "teste@gmail.com",
+            regra: "Cliente",
+            nome: "Teste",
+            tags: ["tag1", "tag2"],
+        });
+
+        await UsuariosController.getId(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith({
+            _id: "1",
+            email: "teste@gmail.com",
+            regra: "Cliente",
+            nome: "Teste",
+            tags: ["tag1", "tag2"],
+        });
+    });
+
+    it("deve retornar uma mensagem de erro se o usuário não for encontrado", async () => {
+        const req = {
+            params: {
+                id: "2",
+            },
+        };
+
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
+
+        Usuarios.findById = jest.fn().mockResolvedValue(null);
+
+        await UsuariosController.getId(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(404);
+        expect(res.json).toHaveBeenCalledWith({ msg: "Usuário não encontrado!" });
+    });
+
+    it("deve retornar uma mensagem de erro se ocorrer um erro ao buscar o usuário", async () => {
+        const req = {
+            params: {
+                id: "id_do_usuario",
+            },
+        };
+
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            send: jest.fn(),
+        };
+
+        Usuarios.findById = jest.fn().mockRejectedValue(new Error("Erro ao buscar usuário"));
+
+        await UsuariosController.getId(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(400);
+        expect(res.send).toHaveBeenCalledWith("Erro ao listar usuário");
+    });
+
+    it("deve atualizar um usuário existente", async () => {
+        const req = {
+            params: {
+                id: "1",
+            },
+            body: {
+                nome: "Teste",
+                regra: "Cliente",
+                tags: ["Tag1", "Tag2"],
+            },
+        };
+
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
+
+        Usuarios.findByIdAndUpdate = jest.fn().mockResolvedValue({
+            _id: "1",
+            nome: "Teste",
+            regra: "Cliente",
+            tags: ["Tag1", "Tag2"],
+        });
+
+        await UsuariosController.update(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith({
+            updateUsuario: {
+                _id: "1",
+                nome: "Teste",
+                regra: "Cliente",
+                tags: ["Tag1", "Tag2"],
+            },
+            msg: "Usuario atualizado com sucesso!",
+        });
+    });
+
+    it("Deve retornar status 404 se o usuário não for encontrado", async () => {
+        const req = {
+            params: {
+                id: "1",
+            },
+            body: {
+                nome: "Teste",
+                regra: "Cliente",
+                tags: ["novaTag1", "novaTag2"],
+            },
+        };
+
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
+
+        Usuarios.findByIdAndUpdate = jest.fn().mockResolvedValue(null);
+
+        await UsuariosController.update(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(404);
+        expect(res.json).toHaveBeenCalledWith({ msg: "Usuario não encontrado" });
+    });
+
+    it("Deve retornar status 400 em caso de erro ao atualizar o usuário", async () => {
+        const req = {
+            params: {
+                id: "1",
+            },
+            body: {
+                nome: "Teste",
+                regra: "Cliente",
+                tags: ["novaTag1", "novaTag2"],
+            },
+        };
+
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            send: jest.fn(),
+        };
+
+        Usuarios.findByIdAndUpdate = jest.fn().mockRejectedValue(new Error("Erro ao atualizar usuário"));
+
+        await UsuariosController.update(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(400);
+        expect(res.send).toHaveBeenCalledWith("Erro ao atualizar usuário");
+    });
+
+    it("deve deletar um usuário existente pelo ID", async () => {
+        const req = {
+            params: {
+                id: "1234567890",
+            },
+        };
+
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
+
+        Usuarios.findById = jest.fn().mockResolvedValue({
+            _id: "1234567890",
+            email: "teste@gmail.com",
+            nome: "Teste",
+            regra: "Cliente",
+            tags: ["tag1", "tag2"],
+        });
+
+        Usuarios.findByIdAndDelete = jest.fn().mockResolvedValue({
+            _id: "1234567890",
+            email: "teste@gmail.com",
+            nome: "Teste",
+            regra: "Cliente",
+            tags: ["tag1", "tag2"],
+        });
+
+        await UsuariosController.delete(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(200);
+    });
+
+    it("Deve retornar um status 404 se o usuário não existir", async () => {
+
+        const req = {
+            params: {
+                id: "2",
+            },
+        };
+
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
+
+        Usuarios.findById = jest.fn().mockResolvedValue(null);
+
+        await UsuariosController.delete(req, res);
+
+        expect(res.status).toHaveBeenCalledWith(404);
+
+        expect(res.json).toHaveBeenCalledWith({ msg: "Usuario não encontrado" });
+    });
+});
