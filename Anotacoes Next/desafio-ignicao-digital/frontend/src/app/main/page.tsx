@@ -10,7 +10,7 @@ export default function Main() {
         <div className="flex justify-center items-center">
             <main className="flex w-[100%] justify-between bg-[#4F46E5] items-center p-5">
                 <div className="text-white text-3xl font-bol cursor-pointer" >
-                    Gerenciador
+                    Gerenciador de Dados
                 </div>
                 <div className="flex justify-evenly">
                     <button className="mr-4 bg-white p-2 rounded-lg cursor-pointer hover:bg-gray-300" onClick={btnLogin} >Login</button>
