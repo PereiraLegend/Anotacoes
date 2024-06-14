@@ -9,7 +9,7 @@ import { authOptions } from "../api/auth/[...nextauth]/route"
 export default async function dashboard() {
     const session = await getServerSession(authOptions)
 
-    if (!session || session?.user?.role !== "Usuario") {
+    if (!session || session?.user?.role !== "USER") {
         redirect("/")
     }
     //console.log('Verificando:', session.user?.name)

@@ -12,10 +12,10 @@ export default function LoginForm() {
     async function login (e: FormEvent<HTMLFormElement>){ //chamar os dados que estão dentor do formulário
         e.preventDefault() // Evitar erros
         const formData = new FormData(e.currentTarget) // Adicionando os dados que estão dentro do formulário a um objeto
-        console.log(formData.get("nome"))
+        console.log(formData.get("email"))
 
         const data = { // Criando um mock de dados conforme o que existe dentro do objeto
-            nome: formData.get("nome"),
+            email: formData.get("email"),
             password: formData.get("password"),
         }
         console.log(data)
@@ -32,7 +32,7 @@ export default function LoginForm() {
             
             console.log("teste-O->:", session?.user?.role)
 
-            if(session?.user?.role === "Admin") {
+            if(session?.user?.role === "ADMIN") {
                 router.push("/admin/dashboard")
             } else {
                 router.push("/dashboard")
@@ -52,8 +52,8 @@ export default function LoginForm() {
                     <input type="hidden" name="remember" defaultValue="true" />
                     <div className="rounded-md shadow-sm -space-y-px">
                         <div>
-                            <label htmlFor="nome-address" className="sr-only">Username</label>
-                            <input id="nome-address" name="nome" type="text" autoComplete="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Username" />
+                            <label htmlFor="email-address" className="sr-only">Email</label>
+                            <input id="email-address" name="email" type="email" autoComplete="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Username" />
                         </div>
                         <div>
                             <label htmlFor="password" className="sr-only">Password</label>

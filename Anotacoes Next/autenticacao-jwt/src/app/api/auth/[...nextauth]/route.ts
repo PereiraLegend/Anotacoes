@@ -10,7 +10,7 @@ export const authOptions = {
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
-                nome: { label: "Nome", type: "text", placeholder: "****" },
+                email: { label: "Email", type: "email", placeholder: "****" },
                 password: { label: "Senha", type: "password", placeholder: "****" }
             },
             async authorize(credentials) {
@@ -22,7 +22,7 @@ export const authOptions = {
                     const response = await fetch("http://localhost:5001/api/usuario/login", {
                         method: "POST",
                         body: JSON.stringify({
-                            nome: credentials.nome,
+                            email: credentials.email,
                             password: credentials.password,
                         }),
                         headers: { "Content-Type": "application/json" },
@@ -34,20 +34,23 @@ export const authOptions = {
 
                     const authData = await response.json();
                     console.log("token------:", authData.token);
-                    console.log("nome-------:", authData.nome);
+                    console.log("email------:", authData.email);
                     console.log("regra------:", authData.regra);
+                    console.log("nome-------:", authData.nome)
 
-                    if (!authData.token || !authData.nome) {
+                    if (!authData.token || !authData.email) {
                         return null;
                     }
 
                     cookies().set("jwt", authData.token);
                     return {
                         id: authData.id,
-                        name: authData.nome,
+                        name: authData.name,
+                        email: authData.email,
                         role: authData.regra,
                     };
-                } catch (e) {
+                } catch (error) {
+                    console.error(`Erro de autorização: ${error}`)
                     return null;
                 }
             }
@@ -62,7 +65,9 @@ export const authOptions = {
             return token;
         },
         async session({ session, token }) {
-            session.user.role = token.role; // Salvar a regra na sessão
+            if(token) {
+                session.user.role = token.role; // Salvar a regra na sessão
+            }
             console.log("Session Callback - Session:", session);
             return session;
         }

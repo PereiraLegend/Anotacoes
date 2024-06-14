@@ -9,7 +9,7 @@ export default async function sistemasAdmin(){
     console.log("Regra: ", session?.user?.role)
     console.log("RRRRRRRRRR: ", session)
 
-    if(!session || session?.user?.role !== "Admin") {
+    if(!session || session?.user?.role !== "ADMIN") {
         redirect("/login")
     } 
     
